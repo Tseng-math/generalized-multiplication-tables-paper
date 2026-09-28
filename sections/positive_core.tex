@@ -1,0 +1,307 @@
+
+\section{Actual prime clocks and the positive core}
+\label{positive:section}
+
+The lower construction requires one sufficiently large fixed length lift.
+The upper bound has no such restriction. We prove here the precise
+extension needed in Proposition~\ref{profile:lift-removal}:
+\begin{theorem}[Positive-core upper]
+\label{positive:upper}
+For each fixed $k$, the numerical profile of
+\eqref{profile:raw} satisfies
+\begin{equation}
+ K_k(\log3+L_1,\ldots,\log3+L_k)
+       \leq C_k\Psi_k(L),\qquad L_i\geq1.
+ \label{positive:claim}
+\end{equation}
+The optimizer, its owners, and all endpoint scores in this formula are
+taken at the displayed physical vector $L$. No optimizer is taken at a
+rounded prime-cell vector.
+\end{theorem}
+
+We give the arithmetic and probability details of this extension.
+The geometric covers, scalar all-count estimates, and conditional owner
+tower are the established inputs and theorems of
+Section~\ref{upper:section}. Their length thresholds concern only
+effective scalar banks; bounded banks are treated below. No lower
+occupancy event or squarefree supply estimate is used.
+Lemma~\ref{artrunc:lemma} first restricts the full arithmetic sum to the
+size-truncated original tuples used by those covers, at a factor of two.
+Its prime blocks include the original first primes $2$ and $3$.
+
+\subsection{Actual prime banks and their exact harmonic clock}
+Put $H=k+1$. All physical saddle products, Gibbs probabilities and rates
+are frozen. By \eqref{profile:compact}, all parameters needed by the
+nondegenerate scalar laws belong to dimension-dependent compact sets.
+For an original block, with either forward or reverse log-log coordinate
+$t(p)$, the uniform prime harmonic estimate gives
+\begin{equation}
+ \left|\sum_{p:\,t(p)\in[a,a+v)}\frac1p-v\right|\leq C_H.
+ \label{positive:harmonic}
+\end{equation}
+The constant covers open endpoints and fixed omitted initial primes.
+An empty terminal piece has bounded length and causes the same error.
+This estimate is uniform in $a,v$ and the original block.
+
+For clarity about the initial primes, set
+\[
+ \eta_* =\min_{2\leq h\leq H}\frac{\log h}{h-1},
+ \qquad Q_H\geq\max(3,4/\eta_*).
+\]
+Deleting one prime from an actual divisor union costs at most its $H$
+possible labels. Summing over the presence of the finitely many primes
+$p\leq Q_H$ costs at most
+\[
+ \prod_{p\leq Q_H}(1+H/p),
+\]
+a fixed dimension constant. Deletion preserves each original upper size
+constraint. The remaining calculation still uses the original physical
+optimizer and budgets: the missing harmonic mass is part of the bounded
+error in \eqref{positive:harmonic}. This is an upper operation, not an
+extra roughness assumption on the input.
+
+On a deterministic native bank $I$, write
+$H_I=\sum_{p\in I}1/p$. The generalized inverse $T$ of its harmonic
+cumulative measure obeys
+\begin{equation}
+ |T(s)-s|\leq C_H\quad(0\leq s\leq H_I),
+ \qquad H_I=|I|+O_H(1).
+ \label{positive:quantile}
+\end{equation}
+Push a homogeneous rate-$Z_i$ Poisson process through $T$, retaining its
+iid Gibbs marks. The image is exactly the required prime process with
+intensity $Z_i\sum_{p\in I}p^{-1}\delta_{t(p)}$. In particular this
+identity permits arbitrarily many occurrences at a single prime.
+Disjoint deterministic actual banks are independent.
+
+The signed wall comparisons are pointwise. For a positive-jump lower
+wall, the homogeneous partial sum inside a collapsed atom is at least
+the actual pre-jump sum. For a negative-jump wall use the actual post-jump
+minimum: an incomplete sum of the negative jumps is larger. The linear
+clock error in \eqref{positive:quantile} and a fixed logarithmic soft
+allowance enlarge the reserve by $O_H(1)$. Thus an actual necessary wall
+implies the corresponding homogeneous necessary wall with that enlarged
+reserve. No multiplicity or central-count bound is involved.
+
+The middle-binomial atom is likewise an all-count assertion:
+conditional on the actual middle count $N_I$, it is at most
+$C(1+N_I)^{-1/2}$, uniformly in the band center and in every outside
+private word. For fixed $a>0$,
+\begin{equation}
+ \mathbb E(1+N_I)^{-a}\leq C_{H,a}(1+|I|)^{-a}.
+ \label{positive:middle}
+\end{equation}
+For large $|I|$ this follows from the Poisson lower-tail estimate and
+\eqref{positive:quantile}; for bounded $|I|$ the right side has a fixed
+positive lower bound. The translated half-line binomial bound proves
+the same extension for a proper count window of width $1/d$.
+
+All prefix shot and insertion arguments remain on these actual atomic
+processes. For a fixed number of inserted occurrences, condition their
+marks and enlarge each necessary reserve by at most the number inserted
+times the largest mark. The middle bound can still use the original
+free middle occurrences. A fixed-degree shot polynomial has a finite
+Mecke partition, so only a fixed finite number of such insertions occurs.
+Its exponentially or summably polynomially weighted intensity moments
+remain bounded under \eqref{positive:quantile}. The joint subset moment
+estimate therefore retains the original power $\sigma_j$ of every owner.
+No assertion about arbitrary changes of an already averaged path mass is
+needed.
+
+\subsection{Bounded effective banks}
+If an effective bank has length exceeding a fixed scalar threshold plus
+$2C_H$, its harmonic length is comparable to its physical length. Apply
+the sharp signed one-end bound of Theorem~\ref{pr:one} after
+\eqref{positive:quantile}. The reserve change is harmless because the
+factor contains $1+$reserve.
+
+If an effective bank is bounded, its numerical persistence factor has
+a fixed positive lower bound. Indeed the selected one-end regime has
+$\overline T\asymp_H(1+Y)/\sqrt\ell$, and the selected two-end regime has
+the product of the two normalized reserves. Since each reserve is at
+least one, bounded $\ell$ cannot give a vanishing factor. Discard that
+test in the upper and keep the other banks and the count middle, with
+the rarity cutoff fixed in the order of Remark~\ref{upper:constant-order}.
+A bounded total native owner length also
+has a count factor bounded below; both weighted half-lines are at most
+one. These arguments are uniform for all $L_i\geq1$.
+
+\subsection{One domination for the entire completed Poisson law}
+The unread ordinary root suffix is conveniently represented by equal
+mass cells. The following elementary fact handles the completion without
+changing any private power or invoking monotonicity under added points.
+
+\begin{lemma}[Whole-law mass completion]
+\label{positive:poisson-domination}
+Let $0\leq\mu_c\leq\mu_c^*$ on a finite collection of cells, and let
+$\Delta=\sum_c(\mu_c^*-\mu_c)$. Attach the same conditional Gibbs label
+law to the counts under both product Poisson measures. For every
+nonnegative measurable functional $F$ of the entire environment and
+private word,
+\begin{equation}
+ \mathbb E_{\mu}F\leq e^\Delta\mathbb E_{\mu^*}F.
+ \label{positive:whole-domination}
+\end{equation}
+This remains true conditionally on any unchanged prefix.
+\end{lemma}
+\begin{proof}
+On the support of the first measure its likelihood ratio is
+\[
+ \frac{d\mathbb P_\mu}{d\mathbb P_{\mu^*}}(n)
+   =e^\Delta\prod_c(\mu_c/\mu_c^*)^{n_c}\leq e^\Delta.
+\]
+Use the usual support convention for zero means. The identical Gibbs
+conditional law cancels from the ratio. Integrating $F$ proves the claim.
+\end{proof}
+
+For example $F$ may contain the minimum of all actual rectangles, the
+true root tilt, shots, and several conditional masses raised to different
+owner powers. There is no exchange of powers or conditional expectations
+in \eqref{positive:whole-domination}. The optional coupling
+$N_c^*=N_c+\operatorname{Pois}(\mu_c^*-\mu_c)$ does not assert that
+$F(N_c)$ is pointwise dominated by $F(N_c^*)$.
+
+In our use the actual same-tuple minimum has already been formed. All
+prefix costs and gates are fixed before the ordinary suffix is sampled.
+We apply the lemma to its whole nonnegative suffix integrand. In
+particular we do not sum an uncontrolled sequence of insertion constants
+over a new Poisson count.
+
+\subsection{A bounded total cell deficit and the physical rectangle}
+For an ordinary block with $h$ colors put $\eta=\log h/(h-1)$.
+Greedily group successive primes above $Q_H$ until adding the next prime
+would exceed mass $\eta$. If $p_j$ begins a complete cell and $p_{j+1}$
+begins the next one, its harmonic mass $H_j$ satisfies
+\begin{equation}
+ \eta-1/p_{j+1}\leq H_j\leq\eta,
+ \qquad H_j\geq3\eta/4.
+ \label{positive:cell-deficit}
+\end{equation}
+Since the prime sum is at most the corresponding integer harmonic sum,
+\[
+ H_j\leq 1/p_j+\log(p_{j+1}/p_j).
+\]
+Our choice of $Q_H$ gives
+\begin{equation}
+ p_{j+1}\geq e^{\eta/2}p_j,\qquad
+ \sum_j(\eta-H_j)
+   \leq\frac1{Q_H(e^{\eta/2}-1)}.
+ \label{positive:total-deficit}
+\end{equation}
+A final partial cell and an initial clipped piece each add at most
+$\eta$ to the deficit. Complete them too. There are at most $k$ blocks
+and their rates are at most $H$, so the total tilted Poisson mass added
+is bounded solely by $H$. Lemma~\ref{positive:poisson-domination}
+therefore costs a fixed multiplicative constant.
+
+If $U_i'$ is the number of completed cells times $\eta_i$, then
+\begin{equation}
+ U_i'=L_i+O_H(1).
+ \label{positive:budget}
+\end{equation}
+Every partial sum of the cell deficits is bounded by the same constant
+in \eqref{positive:total-deficit}. Combining it with
+\eqref{positive:harmonic}, a prime in cell $j$ has log-log coordinate
+within $O_H(1)$ of $j\eta_i$. Consequently replacing actual positions by
+cell positions multiplies a whole expression
+$1+\sum_\ell e^{t_\ell}$ by at most $e^{O_H(1)}$.
+Its exponent $h-1$ is bounded. There is no error exponential in the
+number of occurrences. The actual original rectangle is proved before
+this replacement and before repeated-prime enlargement.
+
+Under the completed Poisson law, conditional on the total $N=n$, cell
+indices are iid uniform indices. They can be realized by $n$ independent
+uniform continuous positions on $[0,U_i']$ and rounding to cells.
+For either signed minimum, use the appropriate boundary of the cell;
+the loss is at most its fixed linear-clock width, irrespective of the
+number of points in the cell. This realizes the same all-$n$ ordinary
+ballot bound with all $n+1$ spacings retained. For the actual rectangle
+the precise ordered-sum estimate is Lemma~\ref{ordsum:rectangle-tail};
+its proof does not impose centrality or exclude count zero.
+
+\subsection{The unchanged root and the all-count suffix integral}
+Write $w_i=\log h_i$, $c_i=h_i-1$ on the unread suffix. With its same
+counts and the original root coefficient $r$,
+\begin{align}
+ Z_{\rm phys}&=\sum_i(w_iN_i-c_iL_i),
+ \qquad Z_{\rm cell}=\sum_i(w_iN_i-c_iU_i'),\notag\\
+ X&=\kappa+rZ_{\rm phys}=\kappa'+rZ_{\rm cell},\notag\\
+ \kappa'&=\kappa+r\sum_i c_i(U_i'-L_i).
+ \label{positive:exact-root}
+\end{align}
+This is an exact identity, with $\kappa'-\kappa=O_H(1)$. There is no
+second root draw and no change of the suffix's conditional Gibbs law.
+
+Let $D>0$ be the complete prefix cost after the causal cover. The
+all-count ordinary rectangle theorem of
+Proposition~\ref{upper:root-contract} is valid for every real translate
+\[
+ H_*=\frac{-\log D-\kappa'}r.
+\]
+On the completed suffix it yields
+\begin{equation}
+ C D^s e^{-t(H_*)_-}(1+U')^{-1/2}
+ \min\left\{1,
+   \frac{(1+B')[1+(H_*)_++A']}{1+M'}\right\}.
+ \label{positive:root-upper}
+\end{equation}
+It also permits the established fixed polynomial outgoing envelope.
+The single largest-block Poisson atom and the ballot denominator were
+extracted jointly in this bound. Lemma~\ref{positive:poisson-domination}
+does not supply, or require, an additional atom.
+
+All quantities with $1+$length in \eqref{positive:root-upper} are
+comparable to their physical versions. For a large suffix one may use
+its physical largest block, whose completed length remains comparable;
+for a bounded suffix the numerical factors have a fixed positive lower
+bound. A grid mean negative by $O_H(1)$ causes no problem, since the
+translate in \eqref{positive:root-upper} is arbitrary. The physical KKT
+inequality $D_{\rm nat}\geq c_HV_{\rm pre}$ is used only when averaging
+the prefix. The bounded change of $\kappa$ is absorbed by
+$1+D_{\rm nat}+A$. The joint subset moment and the one-count Mecke bound
+then give the same physical ordinary factor as in
+Theorem~\ref{upper:sharp-upper}.
+
+\subsection{Completion of the positive-core proof}
+\begin{proof}[Proof of Theorem~\ref{positive:upper}]
+Apply every geometric cover to the original size-truncated tuple and
+only then enlarge its nonnegative analytic envelope. All finite KKT
+comparisons, original eligibility rules and causal gates are valid at
+positive physical lengths. The actual harmonic comparison above supplies
+their all-count prefix estimates. Bounded effective banks have fixed
+factor floors and can be omitted. The unread suffix is completed by
+Lemma~\ref{positive:poisson-domination}, with its true root preserved by
+\eqref{positive:exact-root}. Thus the complete causal proof, its
+different owner powers and its single root integration apply for every
+$L_i\geq1$. All constants are independent of $L$.
+
+It remains to identify the numerical profile. This comparison takes
+place at the same physical optimizer. Fixed proof reserves and window
+constants can be replaced by the finite scores in
+\eqref{profile:scores}, because their reference and good-group terms
+are nonnegative. For paired contexts the reference increment is
+$\nu L_i$, independent of the outside context. Nonnegativity of their
+minima gives $|\nu|L_i\leq X_i+Y_i$. Therefore a strongly drifting or
+omitted saturated canonical edge contributes a factor bounded below.
+For a genuinely rare edge, the speed-centered and natural correlations
+differ by $O_H(|\nu|+1/L_i)=O_H(T_e)$. The local Lipschitz estimate for
+$\chi$ and boundedness of $T_e|\log T_e|$ allow the exponent replacement
+at constant cost. Including all the finitely many canonical edges is
+therefore legitimate. The count widths similarly become
+$(1+d\sqrt{1+T})^{-\sigma}$, and the explicit ordinary suffix has the
+same factor. This proves \eqref{positive:claim}.
+\end{proof}
+
+\begin{corollary}[No unspecified lift in the definition]
+\label{positive:explicit-profile}
+The finite-infimum formula of Section~\ref{profile:definition}, together
+with the established large-lift lower, satisfies
+$K_k(\ell)\asymp_k\Phi_k(\ell)$ on $[\log3,\infty)^k$.
+\end{corollary}
+\begin{proof}
+Use Theorem~\ref{positive:upper} in
+Proposition~\ref{profile:lift-removal}. The unknown lower-source lift
+occurs only in that proof, not in the definition or its finite search
+range. The only comparison between different physical vectors is the
+independent arithmetic stability theorem for $K_k$.
+\end{proof}

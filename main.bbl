@@ -1,0 +1,140 @@
+\begin{thebibliography}{10}
+
+\bibitem{BarbourRossZheng2024}
+A.~D. Barbour, Nathan Ross, and Guangqu Zheng.
+\newblock Stein's method, smoothing and functional approximation.
+\newblock {\em Electronic Journal of Probability}, 29:1--29, 2024.
+\newblock Paper No. 20. Theorem numbering refers to
+  \href{https://arxiv.org/abs/2106.01564v4}{arXiv:2106.01564v4}.
+
+\bibitem{CameronMartin1944}
+R.~H. Cameron and W.~T. Martin.
+\newblock Transformations of {Wiener} integrals under translations.
+\newblock {\em Annals of Mathematics. Second Series}, 45(2):386--396, 1944.
+
+\bibitem{CDP}
+Wei-Kuo Chen, Nikos Dafnis, and Grigoris Paouris.
+\newblock Improved {H\"older} and reverse {H\"older} inequalities for
+  {Gaussian} random vectors.
+\newblock {\em Advances in Mathematics}, 280:643--689, 2015.
+\newblock Theorem numbering refers to
+  \href{https://arxiv.org/abs/1306.2410v2}{arXiv:1306.2410v2}.
+
+\bibitem{DuembgenMoesching2023}
+Lutz D{\"u}mbgen and Alexandre M{\"o}sching.
+\newblock On stochastic orders and total positivity.
+\newblock \href{https://arxiv.org/abs/2209.07868v3}{arXiv:2209.07868v3}, 2023.
+\newblock Version 3, 7 March 2023.
+
+\bibitem{Erdos1955}
+Paul Erd\H{o}s.
+\newblock Some remarks on number theory.
+\newblock {\em Riveon Lematematika}, 9:45--48, 1955.
+\newblock In Hebrew, with an English summary.
+
+\bibitem{Fallat}
+Shaun Fallat, Steffen Lauritzen, Kayvan Sadeghi, Caroline Uhler, Nanny Wermuth,
+  and Piotr Zwiernik.
+\newblock Total positivity in {Markov} structures.
+\newblock {\em The Annals of Statistics}, 45(3):1152--1184, 2017.
+\newblock Theorem numbering refers to
+  \href{https://arxiv.org/abs/1510.01290v2}{arXiv:1510.01290v2}.
+
+\bibitem{FordDivisors2008}
+Kevin Ford.
+\newblock The distribution of integers with a divisor in a given interval.
+\newblock {\em Annals of Mathematics}, 168(2):367--433, 2008.
+
+\bibitem{FordDyadic2008}
+Kevin Ford.
+\newblock Integers with a divisor in {$(y,2y]$}.
+\newblock In Jean-Marie {De Koninck}, Andrew Granville, and Florian Luca,
+  editors, {\em Anatomy of Integers}, volume~46 of {\em CRM Proceedings \&
+  Lecture Notes}, pages 65--80. American Mathematical Society, Providence, RI,
+  2008.
+
+\bibitem{FordSmirnov2008}
+Kevin Ford.
+\newblock Sharp probability estimates for generalized {Smirnov} statistics.
+\newblock {\em Monatshefte f{\"u}r Mathematik}, 153(3):205--216, 2008.
+
+\bibitem{GreenSawhney2026}
+Ben Green and Mehtaab Sawhney.
+\newblock The proportion of permutations fixing a {$k$}-set.
+\newblock \href{https://arxiv.org/abs/2604.28116v1}{arXiv:2604.28116v1}, 2026.
+\newblock Version 1, 30 April 2026.
+
+\bibitem{KoukThesis2010}
+Dimitris Koukoulopoulos.
+\newblock {\em Generalized and restricted multiplication tables of integers}.
+\newblock PhD thesis, University of Illinois at Urbana-Champaign, August 2010.
+
+\bibitem{KoukLocal}
+Dimitris Koukoulopoulos.
+\newblock Localized factorizations of integers.
+\newblock {\em Proceedings of the London Mathematical Society},
+  101(2):392--426, 2010.
+\newblock Citations to Lemmas 5.1--5.3 use the
+  \href{https://dms.umontreal.ca/~koukoulo/documents/publications/locfact.pdf}{author
+  version}.
+
+\bibitem{Kouk}
+Dimitris Koukoulopoulos.
+\newblock On the number of integers in a generalized multiplication table.
+\newblock {\em Journal f{\"u}r die reine und angewandte Mathematik},
+  689:33--99, 2014.
+\newblock Theorem numbering refers to
+  \href{https://arxiv.org/abs/1102.3236v3}{arXiv:1102.3236v3}.
+
+\bibitem{Pitt}
+Loren~D. Pitt.
+\newblock Positively correlated normal variables are associated.
+\newblock {\em The Annals of Probability}, 10(2):496--499, 1982.
+
+\bibitem{Prekopa1973}
+Andr{\'a}s Pr{\'e}kopa.
+\newblock On logarithmic concave measures and functions.
+\newblock {\em Acta Scientiarum Mathematicarum (Szeged)}, 34:335--343, 1973.
+
+\bibitem{RosserSchoenfeld1962}
+J.~Barkley Rosser and Lowell Schoenfeld.
+\newblock Approximate formulas for some functions of prime numbers.
+\newblock {\em Illinois Journal of Mathematics}, 6(1):64--94, 1962.
+
+\bibitem{SabuncuTafula2026}
+Cihan Sabuncu and Christian T{\'a}fula.
+\newblock The multiplication table problem in large dimensions.
+\newblock \href{https://arxiv.org/abs/2608.16163v1}{arXiv:2608.16163v1}, 2026.
+\newblock Version 1, 17 August 2026.
+
+\bibitem{Sakhanenko1984}
+A.~I. Sakhanenko.
+\newblock Rate of convergence in the invariance principle for variables with
+  exponential moments that are not identically distributed.
+\newblock {\em Trudy Instituta Matematiki Sibirskogo Otdeleniya AN SSSR},
+  3:4--49, 1984.
+\newblock In Russian.
+
+\bibitem{SawhneyGreenAnnouncement2025}
+Mehtaab Sawhney.
+\newblock $.086\ldots$ and $1+2\times10^{-7}$ ({The Multiplication Table
+  Problem}).
+\newblock {\em Oberwolfach Reports}, 22(4):2725--2727, 2025.
+\newblock Joint work with Ben Green. Contribution to Analytic Number Theory,
+  Report 51/2025; report published online 4 March 2026. The full report is
+  \href{https://doi.org/10.4171/OWR/2025/51}{doi:10.4171/OWR/2025/51}.
+
+\bibitem{Tenenbaum1984}
+G{\'e}rald Tenenbaum.
+\newblock Sur la probabilit{\'e} qu'un entier poss{\`e}de un diviseur dans un
+  intervalle donn{\'e}.
+\newblock {\em Compositio Mathematica}, 51(2):243--263, 1984.
+
+\bibitem{WLR}
+Ian Waudby-Smith, Martin Larsson, and Aaditya Ramdas.
+\newblock Nonasymptotic and distribution-uniform
+  {Koml{\'o}s--Major--Tusn{\'a}dy} approximation.
+\newblock \href{https://arxiv.org/abs/2502.06188v2}{arXiv:2502.06188v2}, 2025.
+\newblock Version 2, 30 September 2025.
+
+\end{thebibliography}

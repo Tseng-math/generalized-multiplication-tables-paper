@@ -1,0 +1,544 @@
+\subsection{Physical prefix guards}
+\label{paper:ep-prefix-guards}
+Keep the original groups, including old groups, indexed by $g=1,\ldots,m$,
+$m\leq H$, with capacities $r_g$ and transported coefficients
+$\kappa_g$.  Zero-length original groups may retain their indices;
+the coefficients are those of the same fixed complete-chain optimizer.
+For $\mu_g=\kappa_g(r_g+z)L_g$ and $\beta_g=z/(r_g+z)$, fix actual
+total and child counts in the own-group windows
+\begin{equation}\label{paper:ep-own-central}
+ |n_g-\mu_g|+|k_g-\beta_g\mu_g|\leq B\sqrt{1+\mu_g}.
+\end{equation}
+The child positions and the old word may also be fixed.  Define
+\begin{align}
+ w_g&=\log(r_g+z)n_g-\log z\,k_g-r_gL_g,\nonumber\\
+ \zeta_g&=\log(r_g+z)(n_g-\mu_g)
+                   -\log z(k_g-\beta_g\mu_g),\nonumber\\
+ Y&=\sum_gw_g=\sum_g\zeta_g,\qquad b_0=a_0-Y,
+       \qquad Z_l=\sum_{g>l}\zeta_g.\label{paper:ep-binary-remainder}
+\end{align}
+The equality for $Y$ is reference balance, not conditional expectation.
+The entrance $a_0$ is the actual entrance, with all its dependence on
+the old word retained.
+\begin{lemma}[Clipped positive prefixes]\label{paper:ep-clipped-prefix}
+Let $m_l$ be the least reference cost of a lawful endpoint rank profile
+positive through group $l$ and zero thereafter; set $m_0=0$.
+Then
+\begin{equation}\label{paper:ep-clipped-formula}
+ m_l=\min_{1\leq R\leq r_a}
+       \sum_{g\leq l}L_gg_g(\min(r_g,R))
+       \geq c_H\min(V_l,T-V_l),\qquad m_m=0.
+\end{equation}
+If $a_0,b_0\geq-h_0$, then, for each fixed $\theta>0$,
+\begin{equation}\label{paper:ep-guard}
+ b_0+Z_l+\theta m_l\geq-h_{\rm bin}\quad(0\leq l\leq m),
+\end{equation}
+where $h_{\rm bin}$ depends only on $H,B,h_0,\theta$.
+\end{lemma}
+\begin{proof}
+Apply original-group reverse compression to the positive prefix,
+starting the benchmark at one instead of zero.  Every update still
+preserves the already processed comparisons: for old groups its
+threshold is $1/\kappa_{\rm current}$, with larger coefficients
+already processed, and for native groups it is the same secant
+comparison as before.  Thus every positive rank profile dominates
+some clipped profile.  Conversely, retain the deepest $R$ eligible
+names, delete each on expiry, and cut the rest at $V_l$.  This realizes
+the clipped prefix lawfully and proves the equality in
+\eqref{paper:ep-clipped-formula}.  Each candidate is nonnegative by
+the full-history certificate; no stationarity for a truncated system
+is invoked.
+
+For fixed $R$ put $k_g=\min(r_g,R)$ and
+\[
+ f_g=g_g(k_g)=k_g(1-S_g^{t_g}),\qquad
+ t_g=\frac{\log(\kappa_gE_{k_g}(z)/k_g)}{\log S_g},
+ \qquad S_g=r_g+z.
+\]
+Across old groups and the first native transition,
+$t_{g+1}-t_g\geq d_*/\log H$.  At native capacity $h$ write
+\[
+ t_g=\sigma-T_h(R),\quad
+ T_h(R)=1-\frac{\log(E_{\min(h,R)}(z)/\min(h,R))}{\log(h+z)}.
+\]
+For $h\leq R$, Lemma~\ref{paper:ep-secants} gives
+$T_h'(R)\geq1/(24H^2)$; for $h\geq R$,
+\[
+ T_h'(R)=\frac{\log(E_R/R)}{(h+z)\log^2(h+z)}
+ \geq\frac{\log(2\log2)}{H\log^2H}.
+\]
+The function is continuous at $R$, and native capacities fall by
+positive integers.  Therefore every original transition raises $t_g$
+by at least
+\[
+ d_0=\min\left\{\frac{d_*}{\log H},\frac1{24H^2},
+                    \frac{\log(2\log2)}{H\log^2H}\right\}>0.
+\]
+Set $c_H=1-2^{-d_0/3}$.  If $f_g\leq c_H$, then
+$t_g\geq-d_0/3$; hence every later $f_v\leq1-2^{2d_0/3}\leq-c_H$.
+Thus either all prefix coefficients exceed $c_H$, or all tail
+coefficients are at most $-c_H$.  In the first case its cost is at
+least $c_HV_l$; in the second the retained multiplier gives
+\[
+ \sum_{g\leq l}L_gf_g=\Lambda_R-\sum_{g>l}L_gf_g
+                 \geq c_H(T-V_l).
+\]
+Minimizing proves \eqref{paper:ep-clipped-formula}.  At $l=m$,
+$R=r_a$ gives zero.
+
+Own-group centrality implies for every consecutive group set $I$
+\[
+ \left|\sum_{g\in I}\zeta_g\right|
+       \leq C_B\sqrt{1+\sum_{g\in I}L_g}.
+\]
+Use both exact expressions for the same remainder,
+\[
+ b_0+Z_l=b_0+\sum_{g>l}\zeta_g
+         =a_0-\sum_{g\leq l}\zeta_g.
+\]
+Their lower bounds give $-h_0-C_B\sqrt{1+D_l}$, where
+$D_l=\min(V_l,T-V_l)$.  The single inequality
+$C_B\sqrt{D_l}\leq\theta c_HD_l+C_B^2/(4\theta c_H)$ proves
+\eqref{paper:ep-guard}, with
+$h_{\rm bin}=h_0+C_B+C_B^2/(4\theta c_H)$.
+\end{proof}
+Only original physical endpoints occur in this lemma.  Splitting a
+weak block artificially would destroy the strict increase of $t_g$.
+Its actual full-stop row is
+\begin{equation}\label{paper:ep-full-stop}
+ C_{\rm stop}(l)=b_0+\sum_{g>l}w_g
+ =a_0-\sum_{g\leq l}w_g
+ =C_{\rm stop}^{\rm nat}(l)+b_0+Z_l,
+ \quad C_{\rm stop}^{\rm nat}(l)=\sum_{g\leq l}L_gg_g(r_g).
+\end{equation}
+In particular the two extreme rows require the actual bounds on
+$a_0,b_0$; fresh exterior names cannot repair them.
+
+It is useful to see why a carry bound alone is insufficient here.
+At an internal native endpoint $j$, let $n_0$ be the incoming count,
+$C_j^{\rm route}$ the count routed to the next child, and $K_j^{\rm past}$
+the permanent-child count in all old and native groups through $j$.
+Then
+\begin{align*}
+ T_j&=\log S_a\,n_0+\sum_{i=a}^j\log S_i\,n_i
+       -\log S_{j+1}\,C_j^{\rm route}-\sum_{l=a}^jV_l,\\
+ W_j&=W_{\rm in}+T_j-\sum_{l=a}^jy_l,\\
+ H_j&=\log S_{j+1}\,C_j^{\rm route}
+                   -\log z\,K_j^{\rm past}-r_{j+1}V_j.
+\end{align*}
+Direct cancellation yields
+\begin{equation}\label{paper:ep-signed-stop}
+ \sum_{g\leq j}w_g=T_j+H_j,\qquad
+ C_{\rm stop}(j)=a_0+W_{\rm in}-W_j-\sum_{l=a}^jy_l-H_j.
+\end{equation}
+Fresh naming changes $T_j,H_j$ oppositely.  The old routed-child risk
+in $H_j$ is not a later native wall.  Lemma~\ref{paper:ep-clipped-prefix}
+absorbs this remainder directly, using centrality of each old physical
+group; an aggregate old window would not suffice at an old internal
+endpoint.
+
+\subsection{A common count box for every endpoint}
+\label{paper:ep-endpoint-boxes}
+\begin{proposition}[Displaced exterior counts]\label{paper:ep-count-box}
+Fix all original clocks, total and permanent-child counts, child binary
+words, and old prerefinement data, with \eqref{paper:ep-own-central}.
+Assume the natural full balance and nonnegativity of every completed
+named-star reference history.  Conditional on this data, fresh exterior
+labels in group $g$ are independent uniform labels from its nested
+eligible set $D_g$, of size $r_g$.
+There is an event of conditional probability at least $c_{\rm box}>0$
+on which, simultaneously for every completed endpoint history $v$,
+\begin{equation}\label{paper:ep-box-strong}
+ C_v\geq(1-\theta)\overline C_v+b_0+Z_{l(v)}
+                  +T_{{\rm good},v}-C_\theta.
+\end{equation}
+Here $0<\theta<1$ is fixed, $l(v)$ is the last positive-rank group,
+and $T_{{\rm good},v}$ is a nonnegative sum of square-root exterior
+counts defined in the proof.  If the guards
+$b_0+Z_l+\theta' m_l\geq-h_{\rm bin}$ hold, the constants can be
+chosen so that the same event satisfies
+\begin{equation}\label{paper:ep-box-row}
+ C_v\geq c_0\overline C_v-h_{\rm bin}-C
+ \quad\hbox{for every }v
+\end{equation}
+for any fixed $c_0<1$.
+For every nonnegative prerefinement-measurable weight $F_0$,
+$\mathbb E(F_0\mathbf1_{\rm box})\geq c_{\rm box}\mathbb EF_0$.
+\end{proposition}
+\begin{proof}
+Write $N_g=n_g-k_g$ for the exterior count and $n_{gc}$ for its count
+of name $c$.  Let $c_g$ be the shallowest eligible name.  A proper
+row of rank $0<q<r_g$ is called good on this group if it omits $c_g$,
+and bad if it retains $c_g$.
+A bad row has a missing deeper name $d$ with later deadline.  Its
+cut is no later than the left endpoint of the group, whereas $c_g$
+is retained through the right endpoint.  Move the cut of $c_g$ to
+that of $d$, and, in a second comparison, move that of $d$ to the
+cut of $c_g$.  Both histories are lawful.  The exact second difference
+is at least $\kappa_gL_g/H$, so reference nonnegativity gives
+$\overline C_v\geq\kappa_gL_g/(2H)$ for each bad group.
+There are at most $H$ such groups, hence
+\begin{equation}\label{paper:ep-bad-budget}
+ \overline C_v\geq\frac{\kappa_*}{2H^2}
+                           \sum_{g\ {\rm bad}}L_g.
+\end{equation}
+
+For a proper rank-$q$ row retaining $A_g$, exact expansion of its
+entropy costs gives
+\begin{equation}\label{paper:ep-row-expansion}
+ C_v=b_0+\overline C_v+Z_{l(v)}
+      +\sum_{g\ {\rm proper}}e_{vg}
+      -\sum_{g\ {\rm proper}}\log(q+z)
+                 \sum_{c\in A_g}(n_{gc}-N_g/r_g),
+\end{equation}
+where
+\[
+ e_{vg}=\left[\log S_g-\frac q{r_g}\log(q+z)\right](n_g-\mu_g)
+       -\left(1-\frac q{r_g}\right)\log(q+z)(k_g-\beta_g\mu_g).
+\]
+There is no fresh-name error for a full or empty row.
+By centrality, $|e_{vg}|\leq C_B(1+\sqrt{N_g})$ and
+$N_g\leq C_B(1+L_g)$.
+
+Choose a fixed small $\epsilon>0$ and then a large fixed $K$.
+For sufficiently large $N_g$, require every nonshallow count to lie
+in the interval
+\begin{equation}\label{paper:ep-displaced-type}
+ n_{gc}=N_g/r_g-K\sqrt{N_g}+[-\epsilon,\epsilon]\sqrt{N_g}
+ \quad(c\ne c_g),
+\end{equation}
+with the shallow count determined by the total.  A good proper row
+then gains $qK\sqrt{N_g}+O_H(\epsilon\sqrt{N_g})$, while a bad
+row loses at most $C_HK\sqrt{N_g}$.  Choosing $K$ after $B$ makes
+the gain pay the good binary errors and leaves $\sqrt{N_g}$ on
+every sufficiently large good group.  Define their sum to be
+$T_{{\rm good},v}$.
+For large $N_g$ these boxes are interior, contain
+$\gg_HN_g^{(r_g-1)/2}$ lattice points, and each point has multinomial
+mass $\asymp_HN_g^{-(r_g-1)/2}$ by Stirling's formula with all
+coordinates in fixed central windows.  Their probability is therefore
+bounded below.  On bounded groups choose a supported balanced type;
+its minimum positive probability is a fixed constant.  A group with
+$r_g=1$ has no exterior choice.  The finitely many independent group
+boxes thus have conditional probability at least $c_{\rm box}$.
+
+The total remaining bad error is at most
+$C_K\sum_{g\ {\rm bad}}\sqrt{1+L_g}$.
+Apply Young's inequality once and use
+\eqref{paper:ep-bad-budget} to bound it by
+$\theta\overline C_v+C_\theta$.  Substitution in
+\eqref{paper:ep-row-expansion} proves
+\eqref{paper:ep-box-strong} simultaneously for the finite family.
+Taking $\theta=\theta'=(1-c_0)/2$ and using
+$\overline C_v\geq m_{l(v)}$ yields
+\eqref{paper:ep-box-row}.  More economically, the guard can use
+$\min_{v:l(v)=l}(\theta\overline C_v+T_{{\rm good},v})$,
+which is at least $\theta m_l$.
+Finally the probability bound holds for every fixed unread environment;
+conditioning proves the weighted assertion.  It applies to the whole
+type event before any fractional power.  The input likelihood, fixed
+by the original totals and binary child words, is unchanged.
+\end{proof}
+A named regularity event whose conditional failure probability is at
+most $c_{\rm box}/2$ for every fixed child word may be intersected
+with this box.  The weighted assertion does not permit a weight that
+reads the fresh exterior labels.
+
+\begin{lemma}[Monotone transport to the box]\label{paper:ep-count-transport}
+Fix the same original clocks and child binary words.  Let the source be
+any subset of exterior count types with
+$|n_{gc}-N_g/r_g|\leq K_{\rm src}\sqrt{1+N_g}$.
+There is a target distribution of constant conditional mass in a fixed
+wider central window, satisfying the endpoint box, and a coupling from
+each source type to each target type that changes only nonshallow names
+into the shallowest name.  For every nonnegative functional increasing
+under these replacements,
+\begin{equation}\label{paper:ep-transport-inequality}
+ \mathbb E[\mathbf1_{\rm target}\Phi]
+             \geq c_{\rm tar}\,
+                         \mathbb E[\mathbf1_{\rm source}\Phi].
+\end{equation}
+\end{lemma}
+\begin{proof}
+Choose \eqref{paper:ep-displaced-type} with
+$K>\sqrt2K_{\rm src}+\epsilon$, enlarged as required for the box.
+Every target nonshallow count $m_c$ is then at most its source count
+$n_c$.  For bounded $N<N_0$ choose the all-shallow target, of probability
+at least $H^{-N_0}$; this lies in a fixed wider central window.
+The large-count Stirling estimate proves target mass at least
+$c_{\rm tar}>0$.
+Given a uniform source word of type $n$, retain a uniformly selected
+$m_c$ of the $n_c$ occurrences of each nonshallow $c$, and change the
+rest to the shallow name $0$.  The resulting word is uniform of type
+$m$.  Indeed a fixed target word has
+$m_0!/[n_0!\prod_{c\ne0}(n_c-m_c)!]$ source preimages; multiplying
+by the source word probability $n_0!\prod_{c\ne0}n_c!/N!$ and the
+retention probability $\prod_{c\ne0}\binom{n_c}{m_c}^{-1}$ gives
+$m_0!\prod_{c\ne0}m_c!/N!$, its required uniform probability.
+All original slots, times and child marks stay fixed.
+Monotonicity therefore gives
+$\mathbb E(\Phi\mid m)\geq\mathbb E(\Phi\mid n)$ for every
+source and target pair.  Average over the normalized source
+acceptance, then over target types and use source mass at most one.
+This proves \eqref{paper:ep-transport-inequality}; truncation handles
+unbounded $\Phi$.  The target endpoint support follows from
+Proposition~\ref{paper:ep-count-box} and the already fixed two-entrance
+guards.  No within-block path or filtered regularity assertion is
+part of this transport.
+\end{proof}
+
+\subsection{The strict-exit packet on original counts}
+\label{paper:ep-diagonal-section}
+\begin{proposition}[Diagonal strict exits]\label{paper:ep-diagonal}
+Let maximal platforms be indexed in decreasing products
+$\sigma_1>\cdots>\sigma_M$, with
+$u_j=\sigma_{j+1}/\sigma_j$ and $d_j=1/u_j-1$.
+Let $T_j$ be the native length of proper platform $j$, and suppose
+$V_j\leq C_HT_j$ and $T_j\geq T_0$ for the proper platforms in
+question.  Conditional on admitted original uncolored count windows,
+there is a count-only acceptance, in fixed full-leaf central windows,
+of mass
+\begin{equation}\label{paper:ep-diagonal-mass}
+ \asymp_H\prod_{j<M}\frac{R_j}{\sqrt{T_j}},\qquad
+ R_j=\max\{R_0,\min(\sqrt{T_j},d_j^{-1})\},
+\end{equation}
+on which all strict carries satisfy
+$aR_j\leq\eta_j\leq bR_j$ for fixed $0<a<b$.
+This acceptance can be transported through the proper endpoint boxes,
+with a further dimension-only factor and without changing the carries.
+\end{proposition}
+\begin{proof}
+Choose in each proper platform an original block $B_j$ of length at
+least $T_j/H$.  In it choose its current shallow name $t_j$ and the
+first shallow fine leaf $c_j$ of the immediate child.  Set
+$A_j=\log S_{a_j}$ and $b_j=u_jA_{j+1}=\log z_j$.
+These are uniformly bounded above and away from zero.  The two
+original probabilities obey
+$p_{c_j}/p_{t_j}=S_{\rm child}^{u_j-1}$ and both lie in a fixed
+interior probability interval.
+Coarsen just the pair $\{c_j,t_j\}$, fixing its total count $m_j$,
+all coarsened words and all other leaf words.  Its unread split count
+$K_j$, counting $t_j$, has the original binomial law
+$\operatorname{Bin}(m_j,p_j)$, independently for different $j$.
+These are original conditional words, not new point lists.
+
+Let $Z_j$ be the grouped platform output and
+$\eta_j=Z_j-y_j+\eta_{j-1}/u_{j-1}$.
+Changing one $c_j$ to $t_j$ raises $Z_j$ by $b_j$, lowers
+$Z_{j+1}$ by $A_{j+1}$ and changes no other grouped output.
+The expansion
+\[
+ \eta_l=\sum_{a\leq l}\frac{\sigma_a}{\sigma_l}(Z_a-y_a)
+\]
+therefore cancels the two effects for $l>j$, giving the simultaneous
+exact diagonalization
+\begin{equation}\label{paper:ep-diagonal-equation}
+ \eta_j=h_j+b_jK_j.
+\end{equation}
+There is a fixed central coarsening event of constant probability on
+which all coarsened categories and all other original-block leaf
+counts lie in their own-scale central windows.  It leaves all $K_j$
+unread.  On it $m_j\asymp_HT_j$ and
+$|h_j+b_jm_jp_j|\leq C_H\sqrt{T_j}$.
+To verify the last estimate, the natural grouped proper output has
+mean zero at a strict boundary; the sum of finitely many own-group
+errors through $j$ is $O_H(\sqrt{1+V_j})$, while the admitted targets
+$0\leq y_j\leq C_y\log(2+T_j)$ are absorbed by the same bound.
+
+Choose $R_0$ large enough that $(b-a)R_0>2\sup_jb_j$, then
+$T_0\geq R_0^2$ large enough for all resulting binomial windows to
+be interior.  For each coarsening, the condition
+$aR_j\leq h_j+b_jK_j\leq bR_j$ is an interval of
+$\asymp_HR_j$ integers within $C_H\sqrt{m_j}$ of its mean.
+Each such atom has mass $\asymp_Hm_j^{-1/2}$, so independence of
+the unread split counts proves \eqref{paper:ep-diagonal-mass}.
+The full fine-leaf counts still lie in fixed enlarged central windows.
+The event is an explicit polytope of original counts; neither a
+count-of-types loss nor an early fractional power has been introduced.
+
+Its actual entrances are $a_{0j}=y_j+\eta_j\geq0$ and
+$b_{0j}=\eta_{j-1}/u_{j-1}\geq0$.
+Apply Lemma~\ref{paper:ep-count-transport} successively to the
+finitely many proper owners.  Each replacement preserves that owner's
+permanent-child word, all preceding coarse words and the finer child
+word, hence every $Z_j$ and $\eta_j$.  The source acceptance remains
+inside the linear integral at each step.  The resulting subprobability
+measure has mass reduced only by a dimension constant; its bounded
+density can be normalized to an acceptance in $[0,1]$.
+This is an unfiltered count transport.  A later path condition is
+imposed only after this count source has been built.
+Finally $0\leq d_j\eta_j\leq C_H$ on the bands, so the exact
+full-word likelihood ratios in \eqref{paper:ep-likelihood-cancel}
+are bounded above and below; the native products themselves have not
+been replaced or perturbed.
+\end{proof}
+A weight measurable with respect to the coarsened words can be retained
+in the conditional diagonal calculation.  A weight reading the unread
+$K_j$ or their paths cannot be inserted at that stage.
+
+\subsection{Local endpoint representatives and terminal admission}
+\label{paper:ep-localization}
+\begin{lemma}[A local representative of a common endpoint pair]
+\label{paper:ep-local-pair}
+Suppose the actual minima of the two endpoints on original block $i$
+satisfy, throughout an admitted whole-count support,
+\[
+ aX_i\leq x_i\leq bX_i,\qquad aY_i\leq y_i\leq bY_i,
+ \qquad y_i-x_i=\Delta_i(K_i),
+\]
+where $0<a\leq b$ are fixed, $X_i,Y_i>0$ are deterministic scores,
+and $K_i$ is the original local binary count.  Then
+\begin{equation}\label{paper:ep-local-pair-formula}
+ x_i^-(K_i)=\max\{aX_i,aY_i-\Delta_i(K_i)\},\qquad
+ y_i^-(K_i)=x_i^-(K_i)+\Delta_i(K_i)
+\end{equation}
+satisfy the same scale bounds from below and are no greater than the
+actual minima coordinatewise.  They have exactly the original endpoint
+difference and read only the local count (and its fixed original total).
+\end{lemma}
+\begin{proof}
+The actual $x_i$ is at least both entries in the first maximum;
+adding its fixed difference proves the right-end comparison.  The
+second maximum is equivalently
+$\max\{aX_i+\Delta_i(K_i),aY_i\}$, which proves its lower bound.
+For a native edge the exact difference is
+\[
+ \Delta_i(K_i)=(r_i-q_i)L_i-n_i\log S_i+K_i\log B_i.
+\]
+Every outside context uses this same difference.  Its centered
+empirical bridge is also the same original binary bridge $E_i(t)$.
+Thus the chord between \eqref{paper:ep-local-pair-formula} lies below
+every actual endpoint chord.  If $\theta>0$ is the fixed allocation
+fraction, the sufficient wall
+$\theta\ell_i^-(t)+E_i(t)\geq g\,d_i(t)^\gamma$ (or its fixed
+intercept version) implies all corresponding allocated walls on the
+admitted count support.
+Choose the fixed shift in the scores so that their lower bounds
+exceed the scalar reserve threshold.  The scalar all-reserve theorem
+then evaluates this local pair on the same scale, using its required
+interior type and compact original clock.  For bounded blocks use
+the admitted finite support.  A deterministic-mark bridge uses the
+ordinary scalar theorem rather than a zero-variance substitution in
+the binary theorem.
+\end{proof}
+This construction avoids choosing two independent corners of an
+endpoint rectangle.  The path event alone does not assert the count
+support on which the comparisons hold.
+
+\begin{lemma}[Forgetting private terminal names]\label{paper:ep-terminal-marginal}
+Let $\pi$ be the genuine full-leaf word law after fixing original
+uncolored totals.  Write $C$ for the complete coarse word retaining
+all proper names and treating the entire last platform as one compound
+symbol, and $V$ for its private refinement.  Then
+\[
+ \pi(dC,dV)=\pi_c(dC)\pi_t(dV\mid C).
+\]
+For a count-only acceptance $0\leq A(C,V)\leq1$ of mass $W$, its
+conditional average $A_c(C)=\mathbb E_{\pi_t}[A(C,V)\mid C]$ has
+the same mass.  If $A$ is invariant under within-block permutations,
+$A_c$ depends only on coarse counts.  Every condition depending only
+on $C$ that holds on the source still holds where $A_c>0$.
+\end{lemma}
+\begin{proof}
+Conditional terminal labels are uniform among genuinely eligible names
+at each original slot, independently between slots.  Applying the
+same within-block permutation to $C$ and $V$ preserves this conditional
+law, proving the count assertion.  The mass identity is conditional
+expectation.  If a coarse condition fails at $C$, the original
+acceptance vanishes for almost every refinement there, so its average
+also vanishes.  The new measure is $A_c(C)\pi(dC,dV)$, leaving $V$
+at its genuine conditional law.  Thus proper endpoints, strict exits,
+proper canonical binary types, own-group coarse centrality and proper
+coarse paths survive.  An old test or arbitrary weight of the private
+$V$ need not survive.  After a count transport this averaging is done
+after its bounded-density normalization, and introduces no further
+mass loss or fractional power.
+\end{proof}
+
+\begin{proposition}[Prefix source before the unread suffix]
+\label{paper:ep-prefix-source}
+Condition on admitted own-scale original uncolored totals before the
+terminal suffix of Proposition~\ref{paper:ep-binary-free}.
+There is a count-only prefix acceptance $0\leq A_{\rm pre}\leq1$,
+independent of the uncolored counts and paths in that suffix, of mass
+\begin{equation}\label{paper:ep-prefix-mass}
+ W\asymp_H\prod_{j<M}w_j,\qquad w_j=R_j/\sqrt{T_j},
+\end{equation}
+with all proper strict-exit bands and endpoint boxes, all admitted
+proper binary types, and own-group terminal-prefix central and
+exterior count windows.  Its original full-leaf type law is retained.
+The constants can be fixed uniformly for every suffix count vector
+in the central lower construction of the root theorem.
+\end{proposition}
+\begin{proof}
+The diagonal packet and each proper-owner count transport read only
+blocks through their proper owner.  In particular they read no
+terminal native block and can be formed with zero common target
+before any suffix count.  Their mass is
+\eqref{paper:ep-prefix-mass}.  Apply
+Lemma~\ref{paper:ep-terminal-marginal} to forget the private terminal
+names; this preserves the mass and the proper coarse conditions.
+The absence of suffix \emph{uncolored} count dependence follows from
+the preceding construction, not merely from this marginalization.
+Refine the terminal lists already present in the prefix with their
+genuine conditional uniform law.  Require permanent-$0$ counts in
+fixed sufficiently wide own-group central windows, and then impose
+the displaced exterior count boxes on these prefix groups.
+Binomial centrality and Proposition~\ref{paper:ep-count-box} give
+a fixed conditional factor on each of at most $H$ groups.  These
+restrictions do not affect any proper coarse condition, and read no
+newly sampled clock.  The resulting acceptance has the asserted mass.
+All constants are chosen to cover the uniform central windows of
+the root construction, so this construction works for each of its
+later admitted root count vectors.  Within every exact full-leaf type
+the bridge words retain their original uniform permutations.
+\end{proof}
+
+\begin{proposition}[Terminal counts after the one root atom]
+\label{paper:ep-terminal-admission}
+Use the zero common-target prefix source above and the genuine
+uncolored Euler root band
+$-r_*W_0\leq X_1\leq0$.
+After the one suffix reservoir count has been selected by the root
+theorem, the terminal endpoint box can be imposed with a conditional
+probability bounded below uniformly for every admitted coarse prefix
+and root count vector.  It changes neither that root count nor any
+proper coarse word.  With $a_0=0$ its terminal entrance is
+\begin{equation}\label{paper:ep-terminal-entrance}
+ b_0=\eta_{\rm prev}/u_{\rm prev}-X_1/r_*\geq0,
+ \qquad 1+b_0\asymp_H1+R_{\rm prev}/u_{\rm prev}.
+\end{equation}
+For an absent proper predecessor set $R_{\rm prev}=0$.
+The admitted rows satisfy
+\begin{equation}\label{paper:ep-terminal-raw-row}
+ C_v\geq b_0+\zeta_{{\rm tail},v}
+                     +\tfrac34\overline C_v+G_v-C_{\rm box},
+\end{equation}
+where $G_v$ is the good-group square-root gain.
+\end{proposition}
+\begin{proof}
+The exact carry relation for the whole terminal platform is
+$Z_{\rm term}=X_1/r_*-\eta_{\rm prev}/u_{\rm prev}$.
+Thus $a_0=0$, $b_0=-Z_{\rm term}$ give
+\eqref{paper:ep-terminal-entrance}; the root error is bounded and
+the proper exit is in its positive band.
+Condition now on the coarse prefix and every original uncolored count,
+including the already chosen root reservoir count.  Each old group's
+actual entering terminal total is in its own-scale coarse window.
+Refine terminal names by the genuine conditional law of
+Lemma~\ref{paper:ep-terminal-marginal}.  Require the permanent-name
+$0$ count in a sufficiently wide central interval.  Binomial
+Chebyshev bounds give a fixed simultaneous probability, using the
+supported finite convention on bounded groups.  With these counts
+and positions fixed, impose Proposition~\ref{paper:ep-count-box}.
+Its full-stop guards follow deterministically from
+Lemma~\ref{paper:ep-clipped-prefix} and the two nonnegative entrances.
+For terminal $z=1$, each full-group logarithmic sum is
+$\log(r_g+1)n_g$, independent of all refinements.  Hence neither
+$Z_{\rm term}$, the uncolored root, nor $b_0$ changes, and no second
+root atom is paid.  Proper binary words are coarse and remain fixed.
+The stronger row \eqref{paper:ep-box-strong}, with $\theta=1/4$,
+is exactly \eqref{paper:ep-terminal-raw-row}.
+This is a count admission; terminal within-block paths are imposed
+subsequently.
+\end{proof}

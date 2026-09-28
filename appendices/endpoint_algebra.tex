@@ -1,0 +1,254 @@
+\subsection{Exact carries and the full word density}
+\label{paper:ep-carries}\label{proof:A02}
+
+We first allow a decreasing alphabet chain
+$H=h_1>\cdots>h_m\ge2$, $m\ge2$, with positive lengths $L_i$.
+Write $p_j=h_j-h_{j+1}$ for $j<m$, $p_m=h_m-1$, and
+$V_j=\sum_{i\le j}L_i$. At its ordered saddle, set
+\[
+ S_m=h_m,\quad S_j=p_j+S_{j+1}^{s_{j+1}/s_j},\quad
+ Z_i=S_i^{s_i},\quad
+ J=\sum_iL_i+\sum_js_jp_jV_j-\sum_iL_iZ_i.
+\]
+The compactness theorem gives
+$1/2<s_m\le\cdots\le s_1<1-\epsilon_H$. Define
+\begin{gather*}
+ u_j=s_{j+1}/s_j,\qquad d_j=u_j^{-1}-1,\qquad
+ r_j=s_j/s_1,\qquad a_j=\log S_j,\qquad
+ \beta_j=S_{j+1}^{u_j}/S_j,\\
+ A_j=a_j-u_j\beta_ja_{j+1}\ (j<m),\qquad A_m=a_m,\\
+ \lambda_j=-\sum_{i\le j}\partial_iJ,\qquad
+ \lambda_0=\lambda_m=0,\qquad m_j=\lambda_j-\lambda_{j-1}.
+\end{gather*}
+The signed margin $m_j$ is distinct from the number $m$ of levels.
+Complementarity and summation by parts give
+\begin{equation}
+ \lambda_j\ge0,\quad\lambda_j(s_j-s_{j+1})=0,\quad
+ \sum_js_jm_j=0,\quad\sum_jm_j=0,\quad
+ \sum_{j<m}r_jm_j=r_m\lambda_{m-1}.
+ \label{paper:ep-complementarity}
+\end{equation}
+Indeed the first sum is
+$\sum_{j<m}(s_j-s_{j+1})\lambda_j$.
+With $\mu_i=L_iZ_i$, differentiation of the perspective recursion yields
+\begin{equation}
+ A_j\sum_{i\le j}\mu_i\prod_{i\le q<j}\beta_q=p_jV_j+m_j.
+ \label{paper:ep-stationarity}
+\end{equation}
+Euler homogeneity of $G_i=s_i\log S_i$ then gives the uncolored root identity
+\begin{equation}
+ T_1:=\sum_jr_jp_jV_j=\sum_ir_ia_i\mu_i.
+ \label{paper:ep-euler}
+\end{equation}
+For the difference, multiplied by $s_1$, is
+$\sum_js_j\partial_jJ=0$ by \eqref{paper:ep-complementarity}.
+
+Use the original recursive color law on a fixed uncolored tuple.
+At level $j<m$, let $M_j$ count the incoming and native slots and let
+$C_j$ count those routed to the child. Put
+\[
+ Y_j=a_jM_j-u_ja_{j+1}C_j-p_jV_j,\qquad
+ X_m=a_mM_m-p_mV_m,\qquad
+ X_1=\sum_ir_ia_iN_i-T_1.
+\]
+Here $X_1$ denotes the uncolored root residual, not $Y_1$.
+Using $M_{j+1}=C_j+N_{j+1}$ and $r_{j+1}=r_ju_j$, every child count
+cancels and gives
+\begin{equation}
+ X_1=\sum_{j<m}r_jY_j+r_mX_m.
+ \label{paper:ep-root-telescope}
+\end{equation}
+Under the natural marked Poisson law,
+$\mathbb EY_j=m_j$ and $\mathbb EX_m=m_m=-\lambda_{m-1}$.
+The full word probability $\pi(\omega)$ includes the terminal free names.
+The negative log probability of an exterior name is $a_j$, and that of
+a child route is $a_j-u_ja_{j+1}$; subsequent refinement contributes at
+its own level. Therefore, term by term,
+\begin{equation}
+ -\log\pi(\omega)=B_{\rm geom}+\sum_{j<m}Y_j+X_m,
+ \qquad B_{\rm geom}=\sum_jp_jV_j.
+ \label{paper:ep-word-density}
+\end{equation}
+If $q_j=s_j/s_m-1$, $q_m=0$, elimination of $X_m$ gives
+\begin{equation}
+ 1=A_{\rm eff}\pi(\omega)
+       \exp\!\left(-\sum_{j<m}q_jY_j\right),\qquad
+ A_{\rm eff}=\exp(B_{\rm geom}+X_1/r_m).
+ \label{paper:ep-rn}
+\end{equation}
+These identities require no independence among the residuals.
+
+Let $y_j$ be fixed by the uncolored environment before its private
+refinements, and define carries by
+\begin{equation}
+ Y_j=m_j+y_j+\xi_j-\xi_{j-1}/u_{j-1},\qquad \xi_0=0.
+ \label{paper:ep-carry-bands}
+\end{equation}
+The index-zero term is zero. Put $x=\sum_{j<m}r_jy_j$. If
+$x-C_{\rm root}<X_1\le x$, then
+\begin{equation}
+ X_m=(X_1-x)/r_m-\lambda_{m-1}-\xi_{m-1}/u_{m-1}.
+ \label{paper:ep-terminal-margin}
+\end{equation}
+Thus the terminal margin retains the last cumulative multiplier.
+For example, solving for the last native count by
+\[
+ N_m^*=\left\lfloor
+ \frac{T_1+x-\sum_{i<m}r_ia_iN_i}{r_ma_m}\right\rfloor
+\]
+would give $C_{\rm root}=r_ma_m$ when this count is admissible.
+Centrality and nonnegativity of this count are separate probability
+requirements; the identity alone supplies neither when $L_m$ is small.
+
+Since $\sum_jq_jm_j=0$ and $q_j-q_{j+1}/u_j=d_j$, the exact cancellation is
+\begin{equation}
+ \sum_{j<m}q_jY_j=\sum_{j<m}q_jy_j+\sum_{j<m}d_j\xi_j.
+ \label{paper:ep-likelihood-cancel}
+\end{equation}
+Combining this with the factor $e^{-s_1X_1}$ gives
+\begin{equation}
+ (r_m^{-1}-s_1)X_1-\sum_{j<m}q_jY_j
+ =\sum_{j<m}(1-s_j)y_j-\sum_{j<m}d_j\xi_j
+        +(r_m^{-1}-s_1)(X_1-x).
+ \label{paper:ep-full-tilt}
+\end{equation}
+Here $(r_m^{-1}-s_1)r_j-q_j=1-s_j$.
+Thus $y_j=\log(C_j^*/D_j)$ produces the powers $D_j^{s_j-1}$,
+with no additional multiplier-dependent rate.
+
+\subsection{Comparison of the original posteriors}
+\label{paper:ep-posteriors}
+
+Fix one complete uncolored environment $G$, one accepted full-chain
+weight $0\le F_G\le1$, and the original prior $\pi_G$ on all its fine
+words. The carries in \eqref{paper:ep-carry-bands} can be defined for
+any word; bounds on them are additional support conditions. Write
+$E(\omega)=\sum_{j<m}d_j\xi_j(\omega)$. For two retained words,
+\[
+ \frac{\pi_G(\omega)}{\pi_G(\omega')}
+   =e^{E(\omega)-E(\omega')}.
+\]
+Let $Q_h(\omega)$ be any genuine original comparison class, including
+classes that mix parent and child cells, and put
+\[
+ q_h=\mathbb E_\pi[F_G(\omega')\mid Q_h(\omega)],\qquad
+ q_h^{\rm rel}=\mathbb E_\pi[
+ F_G(\omega')e^{E(\omega)-E(\omega')}\mid Q_h(\omega)].
+\]
+If the oscillation of $E$ on $\{F_G>0\}$ is at most $B_H$, positivity
+on this same class gives
+\begin{equation}
+ e^{-B_H}q_h\le q_h^{\rm rel}\le e^{B_H}q_h.
+ \label{paper:ep-relative-posterior}
+\end{equation}
+For the actual geometric factor $\Phi_h$, define
+$I_h=\log\Phi_h+\log[\pi_G(Q_h)/\pi_G(\omega)]$. Direct substitution gives
+\[
+ e^{I_h}q_h^{\rm rel}=\Phi_h\sum_{\omega'\in Q_h}F_G(\omega').
+\]
+Consequently \eqref{paper:ep-relative-posterior} compares the full-history
+sums for every fixed positive collision power. The same argument applies
+to an enlarged whole cell with its actual class and original geometric factor.
+A sufficient oscillation condition is
+\[
+ |\xi_j-c_j|\le w_j,\qquad
+ \sum_{j<m}d_jw_j\le B_H/2,
+\]
+where the centers $c_j$ are common to the environment. If
+$E_c=\sum d_jc_j$, the nominal mass is
+\[
+ \mathbb E_\pi[F_Ge^{-E}]\asymp e^{-E_c}\mathbb E_\pi F_G.
+\]
+The center factor is retained even when the oscillation is bounded.
+
+Now group the levels into maximal owners $[a_\nu,b_\nu]$, with
+products $\sigma_1>\cdots>\sigma_M$. Put
+\[
+ u_\nu=\sigma_{\nu+1}/\sigma_\nu,\quad
+ d_\nu=u_\nu^{-1}-1,\quad\eta_\nu=\xi_{b_\nu},\quad
+ y^{(\nu)}=\sum_{j=a_\nu}^{b_\nu}y_j,\quad
+ Z_\nu=\sum_{j=a_\nu}^{b_\nu}Y_j\quad(\nu<M).
+\]
+Exterior multipliers vanish, and internal ratios equal one. Hence
+\begin{gather}
+ Z_\nu=y^{(\nu)}+\eta_\nu-\eta_{\nu-1}/u_{\nu-1},\qquad
+ E=\sum_{\nu<M}d_\nu\eta_\nu,\label{paper:ep-grouped-carry}\\
+ Z_M:=\sum_{j=a_M}^{m-1}Y_j+X_m
+ =\frac{X_1-x}{r_m}+\sum_{j=a_M}^{m-1}y_j
+       -\eta_{M-1}/u_{M-1}.\label{paper:ep-grouped-terminal}
+\end{gather}
+Common owner sums of the targets suffice in these formulas; individual
+internal targets may be redistributed while those sums and the grouped
+bands are maintained. If the strict exits have widths $R_\nu$ satisfying
+\[
+ 0\le\eta_\nu\le C_HR_\nu,\quad
+ R_\nu\le C_H\sqrt{1+T_\nu},\quad d_\nu R_\nu\le C_H,
+\]
+then $E=O_H(1)$. The lattice-sized floor of
+$\sqrt{1+T_\nu}/(1+d_\nu\sqrt{1+T_\nu})$ has these properties.
+Internal equal-product carries have coefficient zero. In the one-owner
+case the full word probability is independent of the routing at fixed
+$G$, although a proper atomic projection need not be uniform.
+
+Formula \eqref{paper:ep-full-tilt} expresses the nominal integrand as
+\[
+ \prod_{j<m}D_j^{s_j-1}\,\mathbb E_\pi[F_Ge^{-E}],
+\]
+up to the fixed target constants and bounded root factor. Grouping retains
+the corresponding owner powers $\sigma_\nu-1$. Evaluating this expression
+requires the conditional first-mass estimate at each stage with its
+entire type mixture inside the power. The algebra itself asserts no
+factorization of $F_G$ and remains valid for coupled count acceptance.
+
+For completeness, the distinction between a full word and its atomic
+projection can be seen from one parent and child. If the parent output
+is $Z=y+\eta$, then
+\[
+ \pi_{\rm full}(w,v)=\pi_p(w)\pi_c(v\mid w),\qquad
+ -\log\pi_p(w)=B_p+Z(w).
+\]
+For two accepted full words,
+\begin{align*}
+ \log\frac{\pi_p(w_0)}{\pi_p(w)}&=\eta-\eta_0,\\
+ \log\frac{\pi_{\rm full}(w_0,v_0)}{\pi_{\rm full}(w,v)}
+   &=d(\eta_0-\eta),\\
+ \log\frac{\pi_c(v_0\mid w_0)}{\pi_c(v\mid w)}&=(\eta_0-\eta)/u.
+\end{align*}
+The child fiber supplies the cancellation even when $d=0$.
+Thus full-word posterior comparison is applied after the fine-history
+estimate, retaining the actual child conditional mass.
+
+\subsection{A finite shift of the strict-exit targets}
+\label{paper:ep-cascade}
+
+Let $A_\nu=\log S_{a_\nu}$ denote the mark of the shallowest exterior
+leaf of owner $\nu$, and put
+$b_\nu=u_\nu A_{\nu+1}=\log z_\nu$ for $\nu<M$.
+In a native bank of owner $\nu$, change $e_\nu$ leaves that are the
+immediate child's shallowest exterior into the owner's eligible shallow
+name. The banks lie in disjoint original native blocks. With $e_0=0$,
+\[
+ \Delta Z_\nu=b_\nu e_\nu-A_\nu e_{\nu-1}\quad(\nu<M),\qquad
+ \Delta Z_M=-A_Me_{M-1}.
+\]
+For desired nonnegative shifts $y_\nu$, choose successively
+\[
+ e_\nu=\left\lceil\frac{y_\nu+A_\nu e_{\nu-1}}{b_\nu}\right\rceil,
+ \qquad
+ \delta_\nu=b_\nu e_\nu-A_\nu e_{\nu-1}-y_\nu\in[0,b_\nu).
+\]
+Comparison of \eqref{paper:ep-grouped-carry} before and after the change gives
+\[
+ \Delta\eta_\nu=\delta_\nu+\Delta\eta_{\nu-1}/u_{\nu-1}
+ =\sum_{l\le\nu}\frac{\sigma_l}{\sigma_\nu}\delta_l=O_H(1).
+\]
+Thus an existing exit window is preserved with a fixed enlargement.
+If $y_\nu=O_H(\log(2+T_\nu))$, the owner length hierarchy gives
+$T_l\le C_HT_\nu$ for $l<\nu$, and the finite recursion yields
+$e_\nu=O_H(\log(2+T_\nu))$. These changes fit a macroscopic native
+bank with a central required-leaf count once its own total is large.
+The weighted sum of the output changes is zero because
+$r_\nu b_\nu=r_{\nu+1}A_{\nu+1}$, so the private changes leave the
+uncolored root unchanged. Its desired target rises by
+$\sum r_\nu y_\nu$; the unread reservoir must therefore be selected
+under that target before the private construction.

@@ -1,0 +1,363 @@
+\subsection{Actual endpoint scores and their intrinsic normalization}
+\label{paper:ep-intrinsic-section}
+We now distinguish the raw local cost from the cost that enters a native
+wall.  This distinction matters when a platform inherits a large
+entrance from its predecessor.
+For a named endpoint star template $v$, let $A_{v,g}$ be its retained
+exterior names in group $g$, $q_g=|A_{v,g}|$, and $l=l(v)$ its last
+positive-rank group.  Its reference cost is
+\[
+ \overline C_v=\sum_gL_gg_g(q_g).
+\]
+Let $\mathcal B_v$ and $\mathcal G_v$ be respectively its bad and good
+proper groups, as in Proposition~\ref{paper:ep-count-box}, and put
+\[
+ L_{\rm bad}=\sum_{g\in\mathcal B_v}L_g,\qquad
+ L_{\rm zero}=T-V_l,\qquad
+ S_{\rm good}(v)=\sum_{g\in\mathcal G_v}\sqrt{L_g}.
+\]
+All other groups are full and incur no exposed-name discrepancy.
+The reference estimates and the displaced box give, simultaneously,
+\begin{align}
+ \overline C_v&\geq a_HL_{\rm bad},\qquad
+ \overline C_v\geq b_H\min(V_l,T-V_l),\nonumber\\
+ C_v&\geq b_0+Z_l+\tfrac34\overline C_v+G_v-C_{\rm box},
+ \qquad G_v\geq c_HS_{\rm good}(v)-C_H.
+ \label{paper:ep-corner-input}
+\end{align}
+The last comparison follows from own-scale centrality: on a large group
+$N_g\geq c_HL_g$, whereas bounded $N_g$ forces bounded $L_g$.
+
+\begin{lemma}[Early and late corner payment]\label{paper:ep-corner-payment}
+On this single box, every named endpoint star corner obeys
+\begin{align}
+ V_l\leq T/2:&\qquad C_v\geq a_0+c_HV_l-C_H,
+                       \label{paper:ep-early-payment}\\
+ V_l\geq T/2:&\qquad C_v\geq b_0+c_HL_{\rm zero}
+                 +c_HL_{\rm bad}+c_HS_{\rm good}(v)-C_H.
+                       \label{paper:ep-late-payment}
+\end{align}
+The all-zero and complete-deadline corners have costs exactly $a_0$
+and $b_0$, respectively.
+\end{lemma}
+\begin{proof}
+In the early case use $b_0+Z_l=a_0-\sum_{g\leq l}\zeta_g$.
+Its error is $O(\sqrt{1+V_l})$ and is absorbed once by the positive
+prefix charge in \eqref{paper:ep-corner-input}, retaining a fixed
+fraction of $V_l$.  In the late case use
+$b_0+Z_l=b_0+\sum_{g>l}\zeta_g$; only the zero-rank tail has a
+square-root error.  Split the $3\overline C_v/4$ budget into two
+equal pieces for $L_{\rm bad}$ and $L_{\rm zero}$, absorb that error
+with half the latter piece, and retain the good-group gain.
+The extreme identities follow directly from
+\eqref{paper:ep-full-stop}.  The same proof, with a fixed constant,
+includes $T=0$.
+\end{proof}
+
+Here is the exact cancellation behind two-sided scores.  With $N_g(A)$
+the exterior count in $A$, write
+\[
+ H_g=\log S_g\,n_g-\log z\,k_g,\qquad
+ H_g(A)=\log(q_g+z)[k_g+N_g(A)]-\log z\,k_g.
+\]
+For an empty group $H_g(A)=0$; for a full group it is $H_g$ exactly.
+The notation $\overline H_g$ below means the deterministic natural
+reference potential, including unconditioned old routing.  Set
+\[
+ \nu_{vg}=[H_g-H_g(A_{v,g})]
+                  -[\overline H_g-\overline H_g(A_{v,g})].
+\]
+Then $\nu_{vg}=0$ identically on every full group, and direct expansion
+of $C_v=a_0+\sum_{g\leq l}[q_gL_g-H_g(A_{v,g})]$ gives
+\begin{equation}\label{paper:ep-exact-residual}
+ C_v=a_0-\sum_{g\leq l}\zeta_g+\overline C_v
+                   +\sum_{g\ {\rm proper}}\nu_{vg}
+     =b_0+\sum_{g>l}\zeta_g+\overline C_v
+                   +\sum_{g\ {\rm proper}}\nu_{vg}.
+\end{equation}
+Every repaired named count is within $C_H\sqrt{1+L_g}$ of its own
+natural group mean.  Therefore
+\begin{equation}\label{paper:ep-residual-central}
+ |\nu_{vg}|\leq C_H\sqrt{1+L_g},\qquad
+ \left|\sum_{g\in J}\zeta_g\right|
+                  \leq C_H\sqrt{1+\sum_{g\in J}L_g}
+\end{equation}
+for consecutive $J$.  In the late formula the discrepancies of large
+full groups have canceled, rather than contributing a spurious
+$\sqrt T$ error.
+
+\begin{lemma}[Raw finite scores]\label{paper:ep-raw-scores}
+Suppose $a_0,b_0\geq0$ lie in fixed comparable intervals of deterministic
+scales $A_{\rm in},B_{\rm in}$, respectively, allowing scale zero for
+an identically zero entrance.  For a fixed sufficiently large $h$, set
+\[
+ S_v^{\rm raw}=\begin{cases}
+ h+A_{\rm in}+\overline C_v,&V_l\leq T/2,\\
+ h+B_{\rm in}+\overline C_v+S_{\rm good}(v),&V_l>T/2.
+ \end{cases}
+\]
+Then $c_HS_v^{\rm raw}\leq C_v+h\leq C_HS_v^{\rm raw}$
+simultaneously on every admitted count type.
+\end{lemma}
+\begin{proof}
+For an early corner all proper groups are in the prefix, and
+\eqref{paper:ep-exact-residual}--\eqref{paper:ep-residual-central}
+give
+$C_v\leq a_0+\overline C_v+C_H\sqrt{1+V_l}$.
+Since $V_l\ll_H\overline C_v$, this is
+$a_0+C_H'\overline C_v+C_H'$.
+For the lower bound use the first expression for $b_0+Z_l$ in
+\eqref{paper:ep-corner-input}, discard $G_v\geq0$, and absorb its
+square root with at most $\overline C_v/4$ to get
+\begin{equation}\label{paper:ep-early-raw}
+ C_v\geq a_0+\tfrac12\overline C_v-C_H.
+\end{equation}
+For a late corner, the stronger box row similarly gives
+\begin{equation}\label{paper:ep-late-raw}
+ C_v\geq b_0+\tfrac12\overline C_v
+                         +c_HS_{\rm good}(v)-C_H.
+\end{equation}
+The tail formula gives an upper bound by
+$b_0+\overline C_v$ plus the square roots of the zero tail, bad groups
+and good groups.  The first two are bounded by $C_H(1+\overline C_v)$;
+the last are $C_HS_{\rm good}+C_H$.  A fixed large $h$ completes both
+comparisons, including the literal extreme rows.
+\end{proof}
+These raw scores describe $C_v$.  They are not the native reserve
+scores, which must account for the normalization in the full cost.
+
+For later use we spell out how the raw payment interacts with exact
+competitor classes.  Let $A$ be a finite nonnegative complete-type weight
+in the own-group central support, $W=\mathbb E_\pi A$, and let
+$\mathcal E_v=\mathcal B_v\cup\mathcal G_v\cup\{g>l(v)\}$
+be its exposed groups.  Full groups have one cell containing all eligible
+names.  The exact count-reveal estimate \eqref{ld:reveal-bound} therefore
+gives, in the original class of the retained anchor,
+\begin{equation}\label{paper:ep-corner-reveal}
+ W_v:=\mathbb E_\pi[A\mid\operatorname{Class}_v]
+ \leq C_HW\prod_{g\in\mathcal E_v}(1+n_g)^{(a_g-1)/2}.
+\end{equation}
+There is no full-group count factor and no class-probability factor.
+If a predeclared selected-bridge cost satisfies
+$D_g\geq c_D(1+n_g)^{-A_D}$ (and $D_g=1$ on unselected groups),
+then \eqref{paper:ep-late-payment} pays every polynomial in
+\eqref{paper:ep-corner-reveal} on a late corner, giving
+\begin{equation}\label{paper:ep-late-class-payment}
+ e^{-C_v}W_v\leq C_He^{-b_0}W\prod_{g\in\mathcal E_v}D_g.
+\end{equation}
+Indeed $n_g\ll_H1+L_g$, and a positive fraction of $L_g$ on a bad or
+zero-tail group, or of $\sqrt{L_g}$ on a good group, dominates any
+fixed multiple of $\log(1+L_g)$ up to a fixed constant.  The same
+argument works for any fixed positive fraction of $C_v-b_0$.
+Under the same-class bank hypotheses of \eqref{ld:class-banks}, apply
+the bank theorem with every $\mathcal E_v$ slot exposed and depth zero
+elsewhere.  Its bounds $q_{g,0}\leq C_HD_g$ then give, for an
+acceptance $0\leq F\leq A$ with the stated path tests,
+\begin{equation}\label{paper:ep-late-all-banks}
+ e^{-C_v}\mathbb E_\pi[F\mid\operatorname{Class}_v]
+       \leq C_He^{-b_0}W\prod_{g\ {\rm selected}}D_g.
+\end{equation}
+An early corner instead uses the literal bound
+$q_v=\mathbb E_\pi[F\mid\operatorname{Class}_v]\leq1$ for
+$0\leq F\leq1$.  It yields
+$e^{-C_v}q_v\leq C_He^{-a_0}e^{-c_HV_l}$.
+In the normalization $a_0=Y,b_0=0$, an independently verified same-family
+target condition
+\begin{equation}\label{paper:ep-target-contract}
+ e^{-Y}\leq C_{\rm target}D_{\rm global},\qquad
+ D_{\rm global}=W\prod_{g\ {\rm selected}}D_g,
+\end{equation}
+pays all early corners.  Combining with
+\eqref{paper:ep-late-all-banks}, and the dimension-bounded number of
+endpoint templates, gives for fixed $\delta>0$
+\[
+ \sum_v e^{-\delta C_v}q_v^\delta\leq C_\delta D_{\rm global}^\delta.
+\]
+Condition \eqref{paper:ep-target-contract} is an additional target
+input, not a consequence of the count box.  In particular a short
+prefix is never asked to pay count factors from an unrelated long
+zero-rank tail.  The type envelope $A$ may be unbounded as long as the
+actual early-corner acceptance $F$ is bounded by one.
+
+\begin{theorem}[Intrinsic endpoint reserve]\label{paper:ep-intrinsic}
+Let $V_{\rm old}$ be the total original old length and assume
+\begin{equation}\label{paper:ep-incoming-size}
+ a_0,b_0\geq0,\qquad b_0\leq B\sqrt{1+V_{\rm old}}.
+\end{equation}
+Define the intrinsic cost
+\[
+ K_v=Y-I_v=C_v-b_0\quad\hbox{when }C_v=a_0-I_v,
+ \qquad Y=a_0-b_0.
+\]
+For every lawful endpoint template with $t_v=V_{l(v)}\geq V_{\rm old}$,
+set
+\begin{equation}\label{paper:ep-intrinsic-score}
+ S_v^{\rm intr}=\begin{cases}
+ h+A_{\rm in}+\overline C_v,&t_v\leq T/2,\\
+ h+\overline C_v+S_{\rm good}(v),&t_v>T/2.
+ \end{cases}
+\end{equation}
+For a fixed sufficiently large $h$, uniformly on the same count support,
+\begin{equation}\label{paper:ep-intrinsic-comparison}
+ c_HS_v^{\rm intr}\leq K_v+h\leq C_HS_v^{\rm intr},\qquad
+ K_v\geq c_0\overline C_v-C_0.
+\end{equation}
+The assertion also holds for terminal $z=1$ using
+Proposition~\ref{paper:ep-terminal-admission}; no proper-child
+branching gap is needed for it.
+\end{theorem}
+\begin{proof}
+If $V_{\rm old}\leq t_v\leq T/2$, the prefix reference charge
+and \eqref{paper:ep-incoming-size} give, by one Young inequality,
+$b_0\leq B\sqrt{1+t_v}\leq\overline C_v/4+C_B$.
+Subtracting $b_0$ from \eqref{paper:ep-early-raw}, while retaining
+$a_0$ with coefficient one, yields
+\[
+ K_v\geq a_0+\tfrac14\overline C_v-C_B.
+\]
+Its upper bound follows from the exact prefix formula and $b_0\geq0$:
+$K_v\leq a_0+\overline C_v+C_H\sqrt{1+t_v}
+\leq a_0+C_H'\overline C_v+C_H'$.
+The case $t_v=V_{\rm old}=0$ is covered by the fixed constant.
+For $t_v>T/2$, subtract $b_0$ in the exact tail formula itself:
+\[
+ K_v=Z_{l(v)}+\overline C_v+
+                         \sum_{g\ {\rm proper}}\nu_{vg}.
+\]
+The proof of \eqref{paper:ep-late-raw} now gives directly
+$K_v\geq\overline C_v/2+c_HS_{\rm good}-C_H$;
+its upper proof gives
+$K_v\leq C_H(\overline C_v+S_{\rm good})+C_H$.
+Only the zero-tail and bad-group errors are absorbed, and full-group
+errors cancel exactly.  These inequalities prove the theorem after
+increasing $h$ once.
+\end{proof}
+On the zero-target packet, $b_0=\eta_{\rm prev}/u_{\rm prev}$
+satisfies \eqref{paper:ep-incoming-size}: the preceding native length
+is at most $V_{\rm old}$, its exit scale is bounded by a fixed multiple
+of its square root, and $u_{\rm prev}$ is bounded below.  Terminal
+root rounding adds only a fixed constant.  The complete-deadline
+template has $K_v=0$ and intrinsic score $h$.  The all-zero template
+has $K_v=a_0-b_0$ and is excluded when $V_{\rm old}>0$; that exclusion
+is essential.  The late score in \eqref{paper:ep-intrinsic-score}
+contains no $B_{\rm in}$ or preceding exit reserve.
+
+\begin{corollary}[Legal native pairs]\label{paper:ep-intrinsic-pair}
+For a genuine native synchronous edge in block $i=[l_i,b_i]$ having
+at least one exterior cut, retain its lawful outside endpoint contexts.
+Let $v^-,v^+$ denote their left and right completions and set
+\begin{align*}
+ X_i^{\rm intr}&=\min_vS_{v^-}^{\rm intr},&
+ Y_i^{\rm intr}&=\min_vS_{v^+}^{\rm intr},\\
+ x_i^{\rm intr}&=\min_v(K_{v^-}+h),&
+ y_i^{\rm intr}&=\min_v(K_{v^+}+h).
+\end{align*}
+These actual minima are in the corresponding common scale boxes.
+For a canonical full-to-deepest-$q$ edge they satisfy
+\begin{equation}\label{paper:ep-intrinsic-increment}
+ y_i^{\rm intr}-x_i^{\rm intr}
+ =\Delta_i=(r_i-q)L_i-\log S_i\,n_i
+                             +\log(q+z)K_{i,B}.
+\end{equation}
+A sufficient local pair, reading only this original local type, is
+\begin{equation}\label{paper:ep-intrinsic-local}
+ x_i^- =\max\{c_HX_i^{\rm intr},c_HY_i^{\rm intr}-\Delta_i\},
+ \qquad y_i^-=x_i^-+\Delta_i.
+\end{equation}
+\end{corollary}
+\begin{proof}
+The actual name cut in $A\setminus B$ ensures every endpoint template
+has $t_v\geq l_i\geq V_{\rm old}$, including a legal cut at the
+old/native boundary.  Theorem~\ref{paper:ep-intrinsic} applies to
+every member, so taking minima proves the common boxes.
+Moving the synchronous cut across block $i$ changes only its original
+rank and logarithmic count contribution.  This is exactly
+\eqref{paper:ep-intrinsic-increment}, independent of outside context.
+Subtracting the same $b_0$ from both raw endpoints changes no increment;
+therefore the minimum right value equals the minimum left value plus
+$\Delta_i$.  Lemma~\ref{paper:ep-local-pair} proves
+\eqref{paper:ep-intrinsic-local}.  All original types, words and clocks
+are retained.  Choose $h$ before any fixed reserve contraction so that
+the contracted endpoints exceed its scalar threshold.
+\end{proof}
+
+\begin{proposition}[Allocation in a native-containing chamber]
+\label{paper:ep-intrinsic-allocation}
+In a lawful activation chamber containing a cut assigned to a native
+physical block, the simultaneous cost allocation is valid with
+$K=C-b_0$.  If $E_i$ is the original centered empirical bridge in
+coordinate $i$, $L_{\rm intr}$ its synchronized multilinear endpoint
+chord, and $\ell_i^{\rm intr}$ its legal outside-context minimum chord
+shifted once by $C_0$, then, for $\theta=1/(2H)$,
+\begin{equation}\label{paper:ep-intrinsic-allocation-equation}
+ K_{\rm sync}+C_0
+ \geq\tfrac12(L_{\rm intr}+C_0)
+             +\sum_i[\theta\ell_i^{\rm intr}+E_i].
+\end{equation}
+For a surviving native canonical edge its sufficient support is
+\begin{equation}\label{paper:ep-intrinsic-wall}
+ \theta\ell_i^{\rm intr}(t)+E_i(t)
+                           \geq g\,d_i(t)^\gamma-h_W,
+\end{equation}
+and the local pair \eqref{paper:ep-intrinsic-local} suffices for it.
+\end{proposition}
+\begin{proof}
+Fix one native cut of the chamber.  Every endpoint vertex retains that
+cut at a legal native boundary, hence has $t_v\geq V_{\rm old}$.
+By Theorem~\ref{paper:ep-intrinsic}, every such vertex obeys
+$K_v\geq c_0\overline C_v-C_0$ with $\overline C_v\geq0$.
+The synchronization identity is unchanged on subtracting the constant
+$b_0$ throughout this same-word chamber:
+\[
+ K_{\rm sync}=L_{\rm intr}+\sum_iE_i,
+ \qquad L_{\rm intr}=L_{\rm multi}-b_0.
+\]
+The endpoint minima, shifted once, satisfy
+$0\leq\ell_i^{\rm intr}\leq L_{\rm intr}+C_0$.
+There are at most $H$ coordinates, so
+$\theta\sum_i\ell_i^{\rm intr}\leq(L_{\rm intr}+C_0)/2$;
+substitution proves \eqref{paper:ep-intrinsic-allocation-equation}.
+There is no leftover $-\theta b_0$ term because the cost was normalized
+before allocation.
+
+Strong edges and reference-paid weak edges use the same named
+regularity bounds and $K_v\geq c_0\overline C_v-C_0$.
+For the remaining native canonical edges retain
+\eqref{paper:ep-intrinsic-wall}.  An old coordinate uses its genuine
+old charge (Proposition~\ref{paper:ep-old-weak}) and the same
+regularity estimate.  For a proper atomic child, the branching
+normal form and occupancy estimate then apply with this normalized
+cost: synchronization differences, spread losses and pure-cell
+lifetimes are unchanged by subtracting the chamber constant.
+Divide the available reference, spread and curve budgets by the same
+fixed fractions as in that allocation; every original cut and its
+multiplicity remains.  At $z=1$ this argument first concerns star
+histories, and extension to branching uses the separate floating-spine
+argument with this repaired endpoint input.  Entirely old chambers
+are outside the stated domain.
+\end{proof}
+
+A final two-color computation makes the normalization concrete.
+On its last native block $[l,T]$, with every other fine name cut at
+its own deadline, moving only the final boundary to $t$ gives the
+exact global fine cost
+\begin{equation}\label{paper:ep-two-color}
+ K_{\rm fullstop}(t)=\log2\,N((t,T])-(T-t).
+\end{equation}
+Put $D=\log2\,N((l,T])-(T-l)$.  After a fixed shift its forward
+pair is $(h+D,h)$ and its reverse pair $(h,h+D)$.
+This context is among the legal outside contexts of the same $q=0$
+coordinate.  Its shifted chord therefore dominates the repaired
+minimum chord at both ends, and hence throughout the block.
+Since $\ell_{\min}^{\rm intr}\geq0$, the sufficient allocated wall
+implies
+\[
+ \theta\ell_{\min}^{\rm intr}+E\geq g d^\gamma-h_W
+ \quad\Longrightarrow\quad K_{\rm fullstop}+h\geq g d^\gamma-h_W.
+\]
+More generally two lawful pairs at one exact count have the same
+increment and differ only by a constant translation; their lower pair
+is still lawful.  The ordinary all-reserve theorem evaluates the pair
+in \eqref{paper:ep-two-color} only after verifying positivity, its
+exact root count and unread-clock conditioning.  Up to fixed buffers
+it has the form $(1,1+D)$, and contains no incoming $b_0$ term.

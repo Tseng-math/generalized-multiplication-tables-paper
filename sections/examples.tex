@@ -1,0 +1,358 @@
+\section{Reading the profile in concrete families}\label{sec:examples}
+
+The exponential term alone does not distinguish all the regimes of the
+answer.  The following families separate three further effects: the
+comparison of named suffixes, the count associated with leaving an owner,
+and the ordinary terminal constraint.  They also show how several
+comparisons combine, first within one owner and then across different
+owners.  Every partition into owners below is the partition of the actual
+maximizer of \eqref{profile:saddle}.
+
+Throughout this section, \(\log3+L\) means coordinatewise addition.  A
+length vector specifies actual arithmetic cutoffs by
+\[
+ y_0=3,\qquad \log y_i=e^{L_i}\log y_{i-1}.
+\]
+Consequently every displayed estimate for \(\Phi_k(\log3+L)\) is also
+an estimate for \(H^{(k+1)}(x,\mathbf y,2\mathbf y)/x\) throughout the
+admissible region in Theorem~\ref{paper:main-H}.  Taking \(N_i=2y_i\)
+for \(i\le k\) and \(N_{k+1}\ge N_k\) gives the corresponding
+multiplication-table estimate by Theorem~\ref{paper:main-table}.
+The dimension is fixed in all comparisons.  A constant denoted by \(C\)
+is chosen once, sufficiently large in terms of that dimension.
+
+For convenient reference, write the correlation in
+\eqref{profile:edge-factor} as
+\begin{equation}
+ \rho(r,q;z)=
+ \frac{\{\log(r+z)-p\log(q+z)\}^2}
+ {\{\log(r+z)-p\log(q+z)\}^2+
+             \{\log(q+z)\}^2p(1-p)},\qquad
+ p=\frac{q+z}{r+z}.
+ \label{ex:rho}
+\end{equation}
+Here \(r,q,z\) retain their meanings in the profile; in particular,
+\(p\) is not the correlation.  The proofs of the evaluations, including
+the finite inequalities used to locate the constants, are given in
+Appendix~\ref{app:examples}.
+
+\subsection{Equal cutoffs}
+
+Put \(H=k+1\) and
+\begin{equation}
+ \alpha_H=\frac{\log((H-1)/\log H)}{\log H},\qquad
+ I_H=1+(H-1)\alpha_H-H^{\alpha_H}.
+ \label{ex:equal-rate}
+\end{equation}
+For \(L=(T,0,\ldots,0)\), the cutoffs are all \(3^{e^T}\), and
+\begin{equation}
+ \Phi_k(\log3+L)\asymp_k e^{-I_HT}T^{-3/2}.
+ \label{ex:equal-answer}
+\end{equation}
+To see the factors in this formula, replace the zero lengths by a fixed
+\(C\).  The resulting saddle has one terminal owner, with common product
+\(\alpha_H+O_k(T^{-1})\).  All binary factors have a positive constant
+lower bound.  The ordinary suffix starts in the first group, has zero
+total drift, and has one group of length \(T\), followed by bounded
+total length.  Its root factor is \(T^{-1/2}\) and its ballot factor is
+\(T^{-1}\).  Bounded arithmetic stability transfers the estimate back
+to the original equal cutoffs.  In particular the zero coordinates have
+not removed any divisor coordinate.
+
+\subsection{Three six-dimensional regimes}
+
+The next two families have a long first group, four bounded groups, and
+a long last group.  Their different relative lengths expose different
+parts of the answer.
+
+First define
+\begin{gather}
+ \sigma_c=1-\frac{\log((7\log7-2\log2)/5)}{\log7},\qquad
+ e_h=h^{\sigma_c}\log h-(h-1),
+ \label{ex:critical-constants}\\
+ a=-\frac{e_7}{e_2},\qquad
+ b=-\frac{e_6+e_5+e_4+e_3}{e_2},\qquad
+ L=(T,C,C,C,C,aT+bC).
+ \label{ex:critical-lengths}
+\end{gather}
+The constants satisfy \(\alpha_2<\sigma_c<\alpha_3\), \(54<a<55\),
+and \(66<b<67\).  The unique saddle is exactly
+\(s_1=\cdots=s_6=\sigma_c\).  Nevertheless a binary comparison remains
+unsaturated.  It is the first-group edge \(6\to1\), which keeps name
+\(6\) and removes names \(1,\ldots,5\).  Put
+\[
+ \Delta=\sum_{h=3}^6
+ \left\{h^{\sigma_c-1}(h\log h-2\log2)-(h-2)\right\}>0.
+\]
+The pair giving the smallest endpoint scales has cuts
+\[
+\begin{array}{c|cc}
+ &\tau_1,\ldots,\tau_5&\tau_6\\ \hline
+ \text{left}&0,\ldots,0&V_6\\
+ \text{right}&V_1,\ldots,V_1&V_6
+\end{array}
+\]
+and both reference costs equal \(C\Delta\).  Both completions are late.
+On the left the first group is good, and on the right it is not; the four
+middle groups are good on both sides.  Thus the full scores are
+\begin{equation}
+ X=1+C\Delta+\sqrt T+4\sqrt C,\qquad
+ Y=1+C\Delta+4\sqrt C
+ \quad (T\text{ sufficiently large}).
+ \label{ex:critical-endpoints}
+\end{equation}
+The distinction between reference cost and named endpoint score changes
+the power of \(T\).  With
+\(\chi_c=\chi(\sigma_c,\rho(6,1;1))\), the answer is
+\begin{equation}
+ \Phi_6(\log3+L)\asymp_6
+       e^{-J(L)}T^{-1/2-\chi_c}.
+ \label{ex:critical-answer}
+\end{equation}
+There is no proper-owner count.  The ordinary suffix consists of the
+last group and has a drift proportional to its length, leaving only
+the power \(T^{-1/2}\).  All remaining binary factors are bounded below.
+The exponent is explicit: if
+\(I_h^{c}=1+(h-1)\sigma_c-h^{\sigma_c}\), then
+\[
+ J(L)=(I_7^{c}+aI_2^{c})T+
+             (I_6^{c}+I_5^{c}+I_4^{c}+I_3^{c}+bI_2^{c})C.
+\]
+
+Now move the last cutoff much farther away by taking
+\begin{equation}
+ L=(T,0,0,0,0,T^3).
+ \label{ex:split-lengths}
+\end{equation}
+Write \(\alpha=\alpha_2\).  There is a unique \(s_*\in(\alpha,1)\)
+satisfying
+\begin{equation}
+ z_*=2^{\alpha/s_*},\qquad
+ (5+z_*)^{s_*-1}
+ \{(5+z_*)\log(5+z_*)-z_*\log z_*\}=5;
+ \qquad 0.54070<s_*<0.54072.
+ \label{ex:split-root}
+\end{equation}
+After replacing the four zero lengths by \(C\), the actual owners are
+\([1,5]\) and \([6]\).  Their products tend to \(s_*\) and \(\alpha\),
+respectively.  Only the proper edge \(5\to0\) in the first group is
+unsaturated.  Its endpoint scales are both bounded, giving
+\(T^{-2\chi_*}\), where
+\(\chi_*=\chi(s_*,\rho(5,0;z_*))\).  The proper count gives
+\(T^{-s_*/2}\).  The terminal length is \(T^3\), but its drift has order
+\(T\), supplied by the earlier owner.  Hence its joint ordinary and root
+factor is \(T(T^3)^{-3/2}\).  Altogether, with
+\[
+ I_2=1+\alpha-2^\alpha,\qquad
+ I_{\rm p}=1+5s_*+\alpha-(5+z_*)^{s_*},
+\]
+we obtain
+\begin{equation}
+ \Phi_6(\log3+L)\asymp_6
+ e^{-I_2T^3-I_{\rm p}T}
+ T^{1-s_*/2-2\chi_*}(T^3)^{-3/2}.
+ \label{ex:split-answer}
+\end{equation}
+The child in this proper comparison has \(z_*>1\), so \(q=0\) still
+leaves a nondegenerate binary mark.  It is distinct from the terminal
+ordinary comparison.
+
+There is a precise dimensional reason for using six coordinates in
+these two families.  For the first construction, replacing \(7\) by
+\(H\) in \eqref{ex:critical-constants} gives a product below
+\(\alpha_2\) for \(3\le H\le6\), and above it for \(H=7\).  For the
+second, the boundary sign is
+\[
+ f(H)=H^{\alpha-1}(H\log H-2\log2)-(H-2),\qquad
+ f(6)>0>f(7).
+\]
+Strict concavity of \(f\) on \([2,\infty)\) makes the strict branch
+possible precisely for \(H\ge7\) in this two-scale family.  These are
+thresholds for the stated constructions, not classifications of all
+parameter vectors.
+
+A final contrast isolates the proper count.  Fix
+\(s=107/200\), \(\theta=267/500\), and \(z=2^{\theta/s}\).  Set
+\begin{gather}
+ f_r=(r+z)^{s-1}E_r(z)-r,\qquad
+ c_r=1-z\log2\,(r+z)^{s-1},\nonumber\\
+ a=-\frac{f_1+f_2+f_3+f_4}{f_5},\qquad
+ b=\frac{ac_5+c_1+c_2+c_3+c_4}{2^\theta\log2-1},\qquad
+ L=t(a,1,1,1,1,b).
+ \label{ex:ray-lengths}
+\end{gather}
+Here \(a\) and \(b\) are positive (approximately \(10.958044\) and
+\(1651.936051\)).  The exact owners remain \([1,5]\), \([6]\), with
+products \(s,\theta\), but every binary factor is bounded below.
+Writing \(J_0=J(a,1,1,1,1,b)\), we have
+\begin{equation}
+ \Phi_6(\log3+L)\asymp_6 e^{-tJ_0}t^{-(1+s)/2}.
+ \label{ex:ray-answer}
+\end{equation}
+Thus leaving an owner can impose a count penalty even when every binary
+comparison has sufficient endpoint room.
+
+\subsection{Two comparisons in one owner}
+
+The next family has two unsaturated edges in the same proper owner.
+They share its count factor, but have different endpoint scales and
+different correlations.
+
+For \(x>y\ge1\), define
+\[
+ t(x,y)=1-\frac{\log((x\log x-y\log y)/(x-y))}{\log x}.
+\]
+Let \(z\) be the unique solution in \((1.98455,1.98457)\) of
+\begin{equation}
+ t(14+z,6+z)=t(6+z,z),\qquad
+ \sigma=t(6+z,z),\qquad \theta=\frac{\sigma\log z}{\log2}.
+ \label{ex:same-root}
+\end{equation}
+Then \(\alpha_2<\theta<\sigma\), with
+\(\sigma\) approximately \(0.551693\) and \(\theta\) approximately
+\(0.545525\).  For \(1\le r\le14\), put
+\[
+ \kappa_r=(r+z)^{\sigma-1},\qquad
+ f_r(q)=q-\kappa_r E_q(z),\qquad g_r=f_r(r).
+\]
+The defining equations give the exact identities
+\begin{equation}
+ g_6=0,\qquad f_{14}(6)=g_{14}>0,
+ \qquad g_1<0.
+ \label{ex:same-balances}
+\end{equation}
+Take \(k=15\), \(U=T^3\), and specify the lengths by
+\begin{align}
+ &L_1=T,\quad L_9=U,\quad
+ L_i=C\quad(2\le i\le13,\ i\ne9),\nonumber\\
+ &L_{14}=W=-\frac{g_{14}T+
+                C\sum_{\substack{2\le r\le13\\r\ne6}}g_r}{g_1},
+ \qquad
+ L_{15}=R=
+ \frac{\sum_{i=1}^{14}L_i(1-z\log2\,\kappa_{15-i})}
+ {2^\theta\log2-1}.
+ \label{ex:same-lengths}
+\end{align}
+All these lengths are positive; \(W\asymp T\) and \(R\asymp U\).
+The actual saddle is
+\((\sigma,\ldots,\sigma,\theta)\), so the owners are \([1,14]\) and
+\([15]\).  The two equations defining \(W,R\) balance the common
+proper-owner direction and the terminal direction.  The remaining KKT
+inequalities are strict.
+
+The first rare comparison is \(14\to6\) in group \(1\).  Keeping the
+six deepest names until their deadlines gives equal bounded reference
+costs at its endpoints.  The left completion makes the first group good,
+while the right completion does not.  The second rare comparison is
+\(6\to0\) in group \(9\).  Its six names must survive through the
+earlier first group, and this creates a cost of order \(T\) at both
+endpoints.  Precisely,
+\begin{equation}
+ (X_{1,6},Y_{1,6})\asymp(\sqrt T,1),\qquad
+ (X_{9,0},Y_{9,0})\asymp(T,T).
+ \label{ex:same-endpoints}
+\end{equation}
+Every other binary factor is bounded below.  Put
+\[
+ \chi_1=\chi(\sigma,\rho(14,6;z)),\qquad
+ \chi_2=\chi(\sigma,\rho(6,0;z)).
+\]
+There is one proper count, of order \(U^{-\sigma/2}\), and one ordinary
+root factor, of order \(U^{-1/2}\).  The resulting full profile is
+\begin{equation}
+ \Phi_{15}(\log3+L)\asymp_{15}
+ e^{-J(L)}U^{-(1+\sigma)/2}T^{-\chi_1}
+                   \left(\frac{T^2}{U}\right)^{2\chi_2},
+ \qquad U=T^3.
+ \label{ex:same-answer}
+\end{equation}
+Its exponential is explicit as well:
+\begin{equation}
+ J(L)=\sum_{i=1}^{14}L_i
+  \{1+(15-i)\sigma+\theta-(15-i+z)^\sigma\}
+       +R(1+\theta-2^\theta).
+ \label{ex:same-rate}
+\end{equation}
+This example explains why the profile takes the product of all canonical
+edge factors inside an owner, but assigns a count factor only once to
+that owner.  No assertion of independence between the two comparisons
+is involved.
+
+\subsection{Two comparisons in different owners}
+
+One more family makes the different owner powers visible.  Put
+\(k=18\), \(\alpha=\alpha_2\), and, for \(c>0\), define
+\[
+ F(s;c)=(1+e^{c/s})^{s-1}
+       \{(1+e^{c/s})\log(1+e^{c/s})-e^{c/s}(c/s)\}-1.
+\]
+Let \(v,u\) be the roots
+\begin{equation}
+ F(v;\alpha\log17)=0,\qquad
+ G_2^*=v\log(1+17^{\alpha/v}),\qquad F(u;G_2^*)=0.
+ \label{ex:multi-roots}
+\end{equation}
+They are uniquely determined in \((0,1)\) and satisfy
+\(u>v>\alpha\); approximately they are
+\(u=0.534353736\), \(v=0.531542356\).
+Set
+\begin{gather}
+ z_2^*=17^{\alpha/v},\quad z_1^*=e^{G_2^*/u},\quad
+ Z_j^*=(1+z_j^*)^{s_j^*},\quad (s_1^*,s_2^*)=(u,v),\nonumber\\
+ L_1=T,\quad L_2=T^3,\quad
+ L_i=2^{i-3}T^5\ (3\le i\le17),\quad L_{18}=T^{11}.
+ \label{ex:multi-lengths}
+\end{gather}
+For sufficiently large \(T\), the exact owners are
+\([1]\), \([2]\), \([3,18]\).  Their products satisfy
+\[
+ u_T=u+O(T^{-2}),\qquad v_T=v+O(T^{-2}),\qquad
+ \tau_T=\alpha+O(T^{-6}).
+\]
+Each of the first two owners has just the proper edge \(1\to0\).
+Their endpoint scales are
+\[
+ (X_1,Y_1)\asymp(1,1),\qquad
+ (X_2,Y_2)\asymp(T,1).
+\]
+The old first group supplies the left endpoint room in the second
+comparison.  With
+\(\chi_1=\chi(u,\rho(1,0;z_1^*))\) and
+\(\chi_2=\chi(v,\rho(1,0;z_2^*))\), the respective binary costs are
+\(T^{-2\chi_1}\), \(T^{-4\chi_2}\), and the respective count costs
+are \(T^{-u/2}\), \(T^{-3v/2}\).
+
+All \(120\) terminal binary factors have a positive constant lower
+bound.  The ordinary suffix is the last group: its length is \(T^{11}\)
+and its drift has order \(T^5\).  Its single joint factor is therefore
+\(T^{-23/2}\).  Define
+\begin{align}
+ J_0(T)={}&T(1+u+v+16\alpha-Z_1^*)
+       +T^3(1+v+16\alpha-Z_2^*)\nonumber\\
+ &+T^5\sum_{i=3}^{17}2^{i-3}
+       \{1+(h_i-1)\alpha-h_i^\alpha\}
+       +T^{11}(1+\alpha-2^\alpha),\qquad h_i=20-i.
+ \label{ex:multi-rate}
+\end{align}
+Then \(J(L)=J_0(T)+O(T^{-1})\), and
+\begin{equation}
+ \Phi_{18}(\log3+L)\asymp_{18}
+ e^{-J_0(T)}
+ T^{-23/2-u/2-3v/2-2\chi_1-4\chi_2}.
+ \label{ex:multi-answer}
+\end{equation}
+Thus the two owners contribute their own powers and counts, while the
+whole chain still has only one ordinary root.
+
+For this particular construction the dimensional threshold is governed
+by a one-step, rather than a long-interval, secant.  If
+\[
+ t_1(x)=1-\frac{\log\{x\log x-(x-1)\log(x-1)\}}{\log x},
+\]
+then \(t_1(17)<\alpha_2<t_1(18)\).  Together with the one-valley
+property in Lemma~\ref{hier:lem:valley}, this says that a terminal child
+with limiting product \(\alpha_2\) needs at least \(17\) names before
+the adjacent singleton can have a strictly larger product.  Two such
+singleton owners therefore first fit in dimension \(18\).  This
+statement concerns the specified singleton construction; the
+fifteen-dimensional example uses a different arrangement of ranks.

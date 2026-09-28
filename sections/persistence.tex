@@ -1,0 +1,1556 @@
+\section{Fractional Gaussian persistence}
+\label{pr:section}
+
+
+This section proves the probability estimates used in the divisor-box
+arguments. All conditional probabilities below integrate the marks and
+retain the gap or Gaussian environment. In particular, a fractional power
+is taken \emph{after} any permitted mark window has been summed. The
+conditioning and projection arguments preserve this convention.
+
+Write $\mathbb P$ and $\mathbb E$ for probability and expectation. Comparison
+constants are uniform on the compact parameter sets explicitly specified
+below. They may depend on fixed curve amplitudes, endpoint boxes, density
+margins, and regularity tolerances. None depends on the length of the
+process, its allowed reserve, or a count in the stated central range.
+
+\subsection{The Gaussian exponent and effective finite-time bounds}
+
+Let $X,Y$ be independent stationary standard Ornstein--Uhlenbeck processes
+with covariance $\mathbb E X_sX_t=e^{-|s-t|/2}$. For $0<\lambda,\rho<1$ put
+\begin{align}
+ A_t&=\{\sqrt\rho X_s+\sqrt{1-\rho}Y_s\ge0:0\le s\le t\},\notag\\
+ q_t(X)&=\mathbb P_Y(A_t\mid X),\qquad
+ F_{\lambda,\rho}(t)=\mathbb E_X q_t(X)^\lambda. \label{pr:defF}
+\end{align}
+We suppress the parameters when they are fixed. Finite-grid assertions
+are passed to continuous paths by decreasing events on nested dense grids
+and bounded convergence.
+
+\begin{proposition}[Existence and effective bounds]\label{pr:existence}
+The limit
+\[
+ \chi(\lambda,\rho)=\lim_{t\to\infty}-t^{-1}\log F_{\lambda,\rho}(t)
+\]
+exists. If $b(t)=-\log F(t)$ and
+$p_g=(1+e^{-g/2})/(1-e^{-g/2})$, then, for $t,g>0$,
+\begin{equation}
+ \frac{b(t)}{p_g(t+g)}\le\chi(\lambda,\rho)
+             \le\frac{b(t)}t,
+ \qquad \frac\lambda2\le\chi(\lambda,\rho)\le\frac12.
+ \label{pr:effective}
+\end{equation}
+Thus $g=2\log t$, $t>1$, gives an effective interval of width
+$O(\log t/t)$. Finite Gaussian integrals give arbitrarily accurate
+certified values of the endpoints of this interval.
+\end{proposition}
+
+\begin{proof}
+The private survival indicators on two adjacent time intervals are
+increasing functions of a Gaussian vector with nonnegative covariances.
+Gaussian association \cite{Pitt}, in the finite form proved in
+Lemma~\ref{pr:association}, first in $Y$ and then in $X$, gives
+\begin{equation}
+ F(s+t)\ge F(s)F(t).                                      \label{pr:super}
+\end{equation}
+The function $b$ is nonnegative, locally bounded and subadditive.
+Writing $T=nt+r$, $0\le r<t$, proves that its limiting slope exists
+and equals $\inf_{t>0}b(t)/t$.
+
+For completeness, the Gaussian H\"older inequality used here is the
+following finite-dimensional result: if a centered Gaussian block vector
+has covariance bounded above by $\operatorname{diag}(p_i\Sigma_{ii})$,
+then $\mathbb E\prod_i f_i(Z_i)\le\prod_i
+(\mathbb E f_i(Z_i)^{p_i})^{1/p_i}$ for nonnegative functions.
+This is \cite[Theorem~1(i)]{CDP}.
+Consider $N$ intervals of length $t$, separated by gaps $g$. The OU Markov
+property and conditional expectation at their endpoints imply that the
+covariance of linear functionals on blocks $i,j$ is bounded in absolute
+value by $r^{|i-j|}$ times their standard deviations, where $r=e^{-g/2}$.
+Consequently, by $2ab\le a^2+b^2$,
+\[
+ \operatorname{Var}\Big(\sum_i L_i\Big)
+ \le \left(1+2\sum_{k\ge1}r^k\right)\sum_i\operatorname{Var}(L_i)
+ =p_g\sum_i\operatorname{Var}(L_i).
+\]
+This is covariance domination, uniformly in the grids and $N$.
+Drop survival in the intervening gaps. Private Gaussian H\"older gives
+$q_{\rm joint}\le\prod_i q_i^{1/p_g}$. Applying the same inequality to
+the environmental expectation gives
+\[
+ F(Nt+(N-1)g)\le
+ \mathbb E\prod_iq_i^{\lambda/p_g}\le F(t)^{N/p_g}.
+\]
+Only one factor $p_g$ remains. Taking $N\to\infty$ proves the first
+inequality of \eqref{pr:effective}.
+
+The composite process in \eqref{pr:defF} is itself a standard OU process.
+Brownian time change and reflection give its ordinary survival probability
+\begin{equation}
+ a(t)=\pi^{-1}\arcsin(e^{-t/2}).                            \label{pr:ordinaryOU}
+\end{equation}
+The inequalities $q^\lambda\ge q$ and Jensen give
+$a(t)\le F(t)\le a(t)^\lambda$, proving the range of $\chi$ and also
+$b(t)\le t/2+\log\pi$. This last bound makes the width assertion explicit.
+
+Here are the finite-grid error bounds, to specify the claimed effective
+meaning. At mesh size $\Delta=t/n$, let $G_h$ denote the fractional grid
+survival moment with common threshold $h$. Conditional on two composite
+endpoints $x,y\ge h$, the intervening crossing probability is
+$\exp[-xy/\sinh(\Delta/2)]$. Therefore
+\begin{align}
+ F(t)&\le G_0,\notag\\
+ F(t)&\ge G_h-
+       \{n\exp[-h^2/\sinh(\Delta/2)]\}^{\lambda}.            \label{pr:griderror}
+\end{align}
+Indeed the conditional error probability is first raised to $\lambda$;
+Jensen bounds its expectation by its annealed probability to that power.
+Translation of the composite Gaussian grid gives
+\begin{equation}
+ |G_h-G_0|\le
+ \left\{\frac{|h|}{\sqrt{2\pi}}
+             \sqrt{1+n\tanh(\Delta/4)}\right\}^{\lambda}.
+ \label{pr:gridthreshold}
+\end{equation}
+The squared translation norm is
+$h^2\boldsymbol1^T\Sigma^{-1}\boldsymbol1
+=h^2[1+n\tanh(\Delta/4)]$, where
+$\Sigma_{ij}=e^{-|i-j|\Delta/2}$. Equal-covariance Gaussian total
+variation is at most that norm divided by $\sqrt{2\pi}$.
+Taking, for example, $h=\Delta^{1/4}$ makes both errors vanish.
+On a bounded cube the Gaussian density is uniformly continuous and the
+orthant integrand is bounded and monotone; displaced-threshold upper and
+lower cube sums, followed by Gaussian tail bounds, give certified finite
+quadratures. This completes the effective construction without any
+assumption about a divisor-volume asymptotic.
+\end{proof}
+
+\subsection{Tilted environments and the private endpoint filter}
+
+Write $\nu_{t,\lambda}$ for the environmental probability measure with
+density $q_t^\lambda/F(t)$ relative to the OU law. We require endpoint
+estimates under this measure, including the private endpoint after it
+has been conditioned to survive against the actual environment.
+
+\begin{lemma}[Order of the tilted laws]\label{pr:order}
+For $0\le\lambda\le1$,
+\begin{equation}
+ \nu_{t,0}\preceq_{\rm st}\nu_{t,\lambda}
+                         \preceq_{\rm st}\nu_{t,1}.          \label{pr:storder}
+\end{equation}
+For each $a<1/2$,
+\begin{equation}
+ \sup_{t\ge0,\,0\le u\le t}
+      \mathbb E_{\nu_{t,\lambda}}e^{aX_u^2}<\infty.          \label{pr:envmoment}
+\end{equation}
+A nonnegative decreasing environmental path functional has tilted
+expectation at most its ordinary expectation.
+\end{lemma}
+
+\begin{proof}
+On a finite grid the OU precision matrix has nonpositive off-diagonal
+entries, so its density is multivariate totally positive of order two
+(MTP$_2$). Set $Z=-Y$ and $a_\rho=\sqrt{\rho/(1-\rho)}$.
+The set $\{z_i\le a_\rho x_i\ \forall i\}$ is closed under coordinatewise
+minimum and maximum. Its indicator is MTP$_2$. Multiplication by the
+MTP$_2$ Gaussian density and marginalization over $Z$ show that $q(x)$
+is MTP$_2$. One can insert an independent product Gaussian density in
+$x$ to ensure integrability; its factors cancel in the defining inequality.
+Thus $\varphi_\Sigma(x)q(x)^\lambda$ is MTP$_2$ and is associated.
+The closure and association properties used here are given in
+\cite[Proposition~3.4 and Section~3]{Fallat}.
+Association under this tilted measure, applied to an increasing function
+and $q^{1-\lambda}$, proves the right comparison in
+\eqref{pr:storder}. Ordinary Gaussian association proves the left one.
+The decreasing-functional assertion is the same left comparison.
+
+Under $\nu_{t,1}$ rotate to
+$Z=\sqrt\rho X+\sqrt{1-\rho}Y$ and an independent standard OU process
+$V$. Only $Z$ is conditioned to be positive. Its density at time $u$ is
+\[
+ \frac{\varphi(z)\mathbb P_z(\tau_0>u)
+                    \mathbb P_z(\tau_0>t-u)}{a(t)}
+                 \boldsymbol1_{\{z>0\}},
+ \qquad
+ \mathbb P_z(\tau_0>v)=2\Phi\left(\frac z{\sqrt{e^v-1}}\right)-1.
+\]
+For each side of length at least one the latter probability is at most
+$Cz e^{-v/2}$; a shorter side contributes at most one. Separating the
+cases with zero, one or two long sides and using \eqref{pr:ordinaryOU}
+bounds the density by $C(1+z)^2\varphi(z)$, uniformly in $u,t$.
+The rotation gives uniform Gaussian exponential moments for $X_u$ under
+$\nu_{t,1}$. Apply \eqref{pr:storder} to the increasing function
+$e^{a(x_+)^2}$ and the decreasing function $e^{a(x_-)^2}$ separately.
+This proves \eqref{pr:envmoment}; dense grids give the path assertions.
+\end{proof}
+
+\begin{lemma}[Uniform private filter estimate]\label{pr:filter}
+On compact subsets of $0<\lambda,\rho<1$ there exist $a>0$ and $C<\infty$
+such that
+\begin{equation}
+ \mathbb E_X\left[e^{aX_t^2}
+  \left(\mathbb E_Y[\boldsymbol1_{A_t}e^{aY_t^2}\mid X]\right)^\lambda
+             \right]\le C F(t).                            \label{pr:mixed}
+\end{equation}
+The same assertion holds with simultaneous Gaussian weights at both
+initial and terminal endpoints, after decreasing $a$.
+\end{lemma}
+
+\begin{proof}
+Fix the environmental path and let the private wall be
+$Y_s\ge-a_\rho X_s$. The filtered endpoint density has the form
+$\mu_v(y)\propto\varphi(y)g_v(y)$, where $g_v$ is increasing and
+log-concave. Indeed the conditional OU bridge mean is increasing in its
+endpoint, and its constraints are convex; marginal log-concavity is
+Pr\'ekopa's marginalization theorem
+\cite[Theorem~6, p.~342]{Prekopa1973}, first on a finite grid and then by
+a limit.
+Thus $\mu_v$ is $1$-strongly log-concave and its mode $m_v$ is nonnegative.
+For any such density with mode $m$,
+\begin{equation}
+ |Z-m|\preceq_{\rm st}|N(0,1)|,
+ \qquad |\mathbb E Z-m|\le\sqrt{2/\pi}.                     \label{pr:mode-tail}
+\end{equation}
+To verify this directly, both functions
+$\mu(m+r)e^{r^2/2}$ and $\mu(m-r)e^{r^2/2}$ decrease for $r\ge0$.
+Their sum therefore gives likelihood-ratio domination of the radial
+half-normal density after normalization.
+The density is also dominated in monotone likelihood-ratio order by
+$m+|N|$: on $y\ge m$ its ratio to $e^{-(y-m)^2/2}$ decreases, while
+on $y<m$ the comparison density is zero. OU transition kernels are TP$_2$;
+composition with killing indicators and integration preserve this property.
+The likelihood-ratio convention allowing zero densities agrees with
+\cite[Theorem~1 and Remark~16]{DuembgenMoesching2023}; kernel composition
+here follows from the MTP$_2$ marginalization just used. Consequently
+this order propagates through a killed OU segment.
+Raising a wall also increases its normalized endpoint law, by association
+under the original truncated MTP$_2$ path measure.
+
+Consider a segment of length $v\in[1,2]$, and put $r=e^{-v/2}$,
+$B=\max(0,\sup_{\rm segment}(-a_\rho X))$. Raise the incoming law to
+$m+|N|$ and the wall to $B$. If $rm\ge B+2$, an OU-noise tube of radius
+one ensures survival with a fixed positive probability. The unconditional
+endpoint above $rm$ has a uniform Gaussian tail, so its conditional mean
+is at most $rm+C$. If $rm<B+2$, restrict the initial value to
+$[e(B+3),e(B+3)+1]$ and use the same noise tube. The restriction has
+probability at least $c e^{-C(B+1)^2}$. Dividing the unconditional
+Gaussian endpoint tail by this probability and integrating yields a
+conditional mean at most $rm+C(B+1)$. Equation \eqref{pr:mode-tail}
+therefore gives
+\begin{equation}
+ m_{\rm new}\le e^{-v/2}m+C(B+1).                            \label{pr:mode-recursion}
+\end{equation}
+An initial segment of length at most one is handled only once: raise its
+wall to its supremum and retain a fixed initial interval above
+$e(B+3)$. The same tube and tail argument bounds its mode by $C(B+1)$.
+There is no iteration with a contraction tending to one.
+
+Partition backwards from the terminal time into intervals $I_j$ of length
+at most two. Iterating \eqref{pr:mode-recursion}, including the initial
+truncation, gives
+\begin{equation}
+ m_t(X)\le C\left(1+\sum_{j\ge0}e^{-j/2}
+                         \sup_{s\in I_j}(-a_\rho X_s)_+\right)=:\mathcal M_t(X).
+ \label{pr:mode-majorant}
+\end{equation}
+OU suprema on bounded intervals have uniform Gaussian tails. Weighted
+Cauchy--Schwarz and Jensen imply
+$\sup_t\mathbb E e^{c\mathcal M_t^2}<\infty$ for some $c>0$; independence
+of the intervals is not needed. The majorant is decreasing in $X$, so
+Lemma~\ref{pr:order} transfers this bound to $\nu_{t,\lambda}$.
+Finally, for $a$ small, \eqref{pr:mode-tail} gives
+\[
+ \mathbb E[e^{aY_t^2}\mid A_t,X]
+ \le (1-4a)^{-1/2}e^{2am_t(X)^2}.
+\]
+Multiply by $q_t^\lambda$, use \eqref{pr:envmoment} and the preceding
+mode bound, and apply Cauchy--Schwarz under $\nu_{t,\lambda}$.
+This proves \eqref{pr:mixed}. Reversibility treats the other endpoint;
+Cauchy--Schwarz first inside the private law and then in the environmental
+law treats both endpoints simultaneously. The private law was never
+replaced by a fresh Gaussian after survival was imposed.
+\end{proof}
+
+\begin{theorem}[Constant-factor Gaussian survival]\label{pr:gaussian}
+Uniformly on compact subsets of $0<\lambda,\rho<1$,
+\begin{equation}
+ F(s)F(t)\le F(s+t)\le C F(s)F(t),\qquad
+ C^{-1}e^{-\chi t}\le F(t)\le e^{-\chi t}.                  \label{pr:quasimult}
+\end{equation}
+The second comparison is valid for $t\ge1$. There exist compatible,
+sufficiently wide fixed positive endpoint boxes for both Gaussian
+channels that can be imposed at a constant cost. These are the boxes
+constructed below, or fixed boxes containing them; this assertion does
+not prescribe an arbitrary narrow endpoint box.
+\end{theorem}
+
+\begin{proof}
+The Mehler density relative to two independent standard Gaussians is
+\[
+ k_r(x,y)=\frac1{\sqrt{1-r^2}}
+ \exp\left(\frac{2rxy-r^2(x^2+y^2)}{2(1-r^2)}\right)
+ \le\frac1{\sqrt{1-r^2}}
+       \exp\left(\frac{r(x^2+y^2)}{2(1+r)}\right).
+\]
+Choose a fixed gap $g$ so large that $r=e^{-g/2}$ makes the exponent
+smaller than the coefficient allowed in Lemma~\ref{pr:filter}.
+Drop survival across the gap. Apply this density bound inside the private
+conditional integral and then to the environmental transition. The two
+reference blocks are independent; \eqref{pr:mixed} at their adjacent
+endpoints gives $F(s+g+t)\le C F(s)F(t)$. On the other hand,
+\eqref{pr:super} gives $F(s+g+t)\ge F(s+t)F(g)$. This proves the first
+comparison. Iteration at $nt$ and Proposition~\ref{pr:existence} yield
+the second one.
+
+By \eqref{pr:mixed}, excluding any of the four Gaussian endpoints from
+$[-R,R]$ costs at most $Ce^{-cR^2}F(t)$ in fractional mass. Choose fixed
+$R$ so that their union costs at most $F(t)/2$. Add to each channel
+$A(e^{-s/2}+e^{-(t-s)/2})$, with any fixed $A\ge2R$. This preserves
+survival and moves all retained endpoints into the fixed positive box
+$[A-R,A(1+e^{-1/2})+R]$, uniformly for $t\ge1$.
+The Cameron--Martin translation formula \cite{CameronMartin1944}, in
+the form including an independent Gaussian initial value given in
+\cite[Theorem~2.1]{BarbourRossZheng2024}, applies after the OU-to-Brownian
+time change. The density of this shift depends only on those endpoints and is bounded above and below
+on the box, uniformly for $t\ge1$. Change variables first in the private
+integral and then in the environmental integral. The positive-box event
+therefore retains a fixed fraction of $F(t)$. A required fixed positive
+lower endpoint level can be accommodated by choosing $A$ first and then
+retaining this sufficiently wide box (or a fixed containing box).
+No restriction to an arbitrary prescribed narrower box is inferred.
+\end{proof}
+
+\subsection{Parameter stability, integrable walls, and Brownian reserves}
+
+\begin{proposition}[Local Lipschitz continuity]\label{pr:lipschitz}
+On each compact subset of $(0,1)^2$,
+\[
+ |\chi(\lambda,\rho)-\chi(\lambda',\rho')|
+             \le C(|\lambda-\lambda'|+|\rho-\rho'|).
+\]
+\end{proposition}
+\begin{proof}
+Whiten a finite Gaussian grid. Its survival indicator is a fixed function
+$f$, and $q_\rho=T_s f$, where $T_s$ is the Gaussian noise semigroup and
+$e^{-s}=\sqrt\rho$. In any unit direction Gaussian integration by parts
+and the one-dimensional rearrangement inequality give
+\[
+ |\nabla q_\rho|\le\sqrt{\frac\rho{1-\rho}} I(q_\rho),
+ \qquad I(v)=\varphi(\Phi^{-1}v).
+\]
+For clarity, the rearrangement step fixes the value $v=\mathbb E f$ and
+maximizes $|\mathbb E[Z_1 f(Z)]|$ over $0\le f\le1$; the maximizer is a
+half-space in the first coordinate, with value $I(v)$. Gaussian tail
+bounds give $I(v)^2\le Cv^2(1-\log v)$, including both endpoints.
+Differentiating under the Gaussian integral and integrating by parts,
+\[
+ \partial_s\log\mathbb E q_s^\lambda
+ =\lambda(1-\lambda)
+   \frac{\mathbb E q_s^{\lambda-2}|\nabla q_s|^2}
+        {\mathbb E q_s^\lambda}.
+\]
+Convexity of $K(\lambda)=\log\mathbb E q^\lambda$, with $K(0)=0$, gives
+$\mathbb E_{q^\lambda}[-\log q]\le-K(\lambda)/\lambda$.
+Since $\mathbb E q^\lambda\ge a(t)\ge\pi^{-1}e^{-t/2}$, both the
+$\lambda$ derivative and, on a compact $\rho$ interval, the $\rho$
+derivative are bounded in absolute value by $C(t+1)$, independently of
+the grid dimension. Smooth approximation justifies the derivatives when
+$f$ is an indicator. Integrating these bounds, passing to dense grids,
+dividing by $t$, and taking $t\to\infty$ proves the assertion.
+\end{proof}
+
+For a piecewise smooth shift $h$ on $[0,t]$, define
+\begin{align*}
+ \|h\|_{\mathcal H}^2&=h(0)^2+\int_0^t(h'+h/2)^2\,ds,\\
+ J_t(h)&=|h(0)/2-h'(0)|+|h'(t)+h(t)/2|
+                         +\int_0^t|h/4-h''|\,ds.
+\end{align*}
+Derivative jumps are included in the last total variation.
+
+\begin{lemma}[Bounded-action walls]\label{pr:wall}
+Replacing the zero composite OU wall by a deterministic wall $b$ changes
+$F(t)$ by a factor bounded above and below whenever
+$J_t(b/\sqrt\rho)+\|b/\sqrt\rho\|_{\mathcal H}^2$ is bounded.
+An endpoint-restricted version holds with compatible sufficiently wide
+boxes chosen after the wall bound, or with the endpoint boxes supplied
+by Theorem~\ref{pr:gaussian} translated together with the path.
+It is not a statement for arbitrary prescribed unchanged endpoint boxes.
+\end{lemma}
+\begin{proof}
+The Cameron--Martin linear functional is
+\[
+ L_h(X)=(h(0)/2-h'(0))X_0+(h'(t)+h(t)/2)X_t
+                   +\int_0^t(h/4-h'')X_s\,ds.
+\]
+Environmental translation alone gives exactly
+$F_b(t)/F(t)=\mathbb E_{\nu_{t,\lambda}}
+\exp[-L_h(X)-\|h\|_{\mathcal H}^2/2]$, with $h=b/\sqrt\rho$ and the
+consistent translation sign. The absolute variation of the coefficients
+of $L_h$ is bounded. Jensen with its normalized absolute coefficient
+measure and \eqref{pr:envmoment} bounds both exponential signs uniformly.
+Jensen also supplies a positive lower bound, or equivalently use the
+bound for $\mathbb E_{\nu}|L_h|$. Mixed endpoint moments, followed by
+Cauchy--Schwarz and truncation, give the same conclusion for compatible
+sufficiently wide boxes chosen after the fixed wall bound. Equivalently,
+translate the endpoint
+boxes in the same environmental change of variables. A fixed feasible
+interior margin and a finite initial or terminal tube permit the
+sufficiently wide compatible central boxes used below; their constants
+are chosen after the wall and drift bounds.
+This argument does not change the power $\lambda$.
+\end{proof}
+
+\begin{corollary}[Brownian one-end estimate]\label{pr:brownian}
+Let independent Brownian channels have environmental variance $\sigma_E^2$
+and private variance $\sigma_C^2$, bounded above and below by positive
+constants. Put $\rho=\sigma_E^2/(\sigma_E^2+\sigma_C^2)$. From reserve
+$h\ge1$, over duration $n$, with $|\delta|\sqrt n\le D$, the conditional
+private survival probability $Q$ satisfies
+\begin{equation}
+ \mathbb E Q^\lambda\asymp
+ B_n(h):=\min\{1,((1+h)/\sqrt n)^{2\chi(\lambda,\rho)}\}.
+ \label{pr:Bn}
+\end{equation}
+The upper bound allows a fixed soft wall $-h-gs^\gamma$, $0<\gamma<1/2$.
+For a sufficiently large fixed minimum reserve, the lower bound permits
+a strong wall $-h+gs^\gamma$, positive central terminal risk, and
+compatible sufficiently wide central terminal boxes of the separate
+channels. Choose these boxes after the compact-law, wall, and drift
+bounds; their locations and widths are then fixed uniformly in $n,h$.
+\end{corollary}
+\begin{proof}
+For $h^2<n$, scale from time $h^2$ and use Lamperti time $u=\log(s/h^2)$.
+Its length is $\log(n/h^2)$. Reserve, power wall and bounded scaled drift
+become bounded multiples of
+\[
+ e^{-u/2},\qquad e^{-(1/2-\gamma)u},\qquad
+ e^{-(\log(n/h^2)-u)/2}.
+\]
+Their $J$ and Hilbert norms are bounded. Drop the initial time interval
+for the upper bound and apply Lemma~\ref{pr:wall} and
+Theorem~\ref{pr:gaussian}. For the lower bound prepare, on a fixed multiple
+of $h^2$, both channels in positive central boxes using a fixed Brownian
+tube. Brownian scaling makes its probability and its endpoint transition
+density bounds uniform. Thereafter use the endpoint version of those
+lemmas. The preparation has fixed cost before the fractional power as
+well as after it. A large fixed minimum reserve makes the normalized
+strong-wall amplitude as small as required. If $h$ is comparable to or
+larger than $\sqrt n$, a fixed-scale positive tube and monotonicity give
+a constant lower bound; the upper bound is one. Reflection of both
+channels proves the same assertions for the opposite risk sign.
+\end{proof}
+
+\subsection{Independent exponential gaps: relative coupling}
+
+Let $C_i$ be iid marks in a fixed finite alphabet, with probabilities in
+a compact subset of its open simplex. Their weights have two values,
+\[
+ w(C_i)=l-bB_i\in[w_*,l],\qquad
+ p=\mathbb P(B_i=1),\qquad \omega=l-bp,
+\]
+where all parameters range over compact sets, $b,w_*>0$, and $p$ stays
+away from zero and one. Independent gaps $E_i$ have exponential mean
+$\tau$ in a positive compact interval. Write
+\begin{equation}
+ S_j=\sum_{i\le j}(w(C_i)-E_i),\quad
+ \delta=\omega-\tau,\quad
+ \rho_\tau=\frac{\tau^2}{\tau^2+b^2p(1-p)},\quad
+ F_n(h)=\mathbb E\mathbb P_C\{\min_{j\le n}S_j\ge-h\mid E\}^{\lambda}.
+ \label{pr:walk}
+\end{equation}
+The following arguments also apply to $-S$, with all monotonicities
+reversed together. Assume initially $|\delta|\sqrt n\le D$.
+
+\begin{lemma}[Crude comparisons before the exponent is known]
+\label{pr:crude}
+Uniformly for $h\ge1$, $u\ge0$,
+\begin{equation}
+ F_n(h)\ge c_D n^{-1/2},\qquad
+ F_n(h+u)\le C_D(1+u)F_n(h),\qquad
+ F_{2n}(h)\ge c_D F_n(h).                                 \label{pr:crudeineq}
+\end{equation}
+The drift bound for a doubled interval is enlarged by a fixed factor.
+The assertions remain valid for a fixed soft sub-square-root power wall,
+with a fixed polynomial in $1+u$ allowed in the middle inequality.
+\end{lemma}
+\begin{proof}
+We detail the elementary annealed preparation used here. For the centered
+walk stopped on leaving $[-h_0,B]$, upper overshoots are bounded and lower
+overshoots have exponential tails; for the reversed walk these roles
+are interchanged. Optional stopping of the walk gives an upper-exit
+probability comparable to $1/B$, from a fixed reserve $h_0>0$.
+Stopping its square minus the variance times time bounds the mean exit
+time by $C B$: on an upper exit its squared displacement is $O(B^2)$
+and that exit has probability $O(1/B)$; on a lower exit the second
+moment is bounded. Truncation first justifies both stopping identities.
+By Markov's inequality, a sufficiently large fixed multiple of $B^2$
+retains a fixed fraction of the upper exits. From height $B$, a positive
+scaled tube over a further comparable time has probability bounded below
+by the functional central limit theorem, uniformly on our compact laws.
+It can end above any prescribed fixed multiple of $B$.
+The lower-overshoot memoryless law and bounded upper overshoot provide
+uniformity at entrance. The stopped centered gap and mark martingales
+have second moments at most $C\mathbb E\tau_{\rm exit}\le CB$.
+Their probability of exceeding $RB$ before the retained entrance is
+therefore at most $C/(R^2B)$. Choosing fixed $R$ large retains a fixed
+fraction of the $B^{-1}$ entrance probability with both channel sums
+central; the subsequent tube preserves centrality at the final time.
+Small drift is handled by changing the exponential
+mean on the retained central gap-sum tube: if $m=O(B^2)$ and
+$|\delta|\sqrt m=O_D(1)$, its log density ratio is $O_D(1)$ there.
+The same proof, or its sign reversal, therefore gives a preparation of
+length $O((1+u)^2)$ from fixed reserve to height at least $u$, of
+annealed probability at least $c_D/(1+u)$.
+
+For $u\le\sqrt n$, let $p_u$ be its conditional private probability.
+Concatenating with an independent $n$-step survival from $h+u$, and
+using $\mathbb E p_u^\lambda\ge\mathbb E p_u$, gives
+$F_{n+m}(h)\ge c_D(1+u)^{-1}F_n(h+u)$. Time monotonicity gives the
+middle inequality. The same preparation and tube give ordinary survival
+at least $c_D/\sqrt n$, hence the first inequality. For $u>\sqrt n$
+these two inequalities and $F_n(h+u)\le1$ suffice.
+
+For doubling, remove environments whose centered prefix gap sum is
+unfavorable by more than $R\sqrt n$. Survival is monotone in the opposite
+direction to this unfavorable event, so product association bounds its
+$F_n$-weighted mass by its unweighted probability times $F_n$.
+Choose $R$ large. On the retained environments an appropriate favorable
+private centered endpoint of size $(R+D+c)\sqrt n$ has a fixed positive
+probability. Its mark event is monotone in the same direction as survival,
+so their intersection retains that fraction of the conditional survival
+probability. Its ending reserve is at least $c\sqrt n$.
+An independent further $n$ steps survive from this height with annealed
+probability at least a constant. If $f$ is the prefix mark probability
+and $Z$ its completed probability as a function of the future environment,
+then $0\le Z\le f$ and $\mathbb E Z\ge cf$, whence
+$\mathbb E Z^\lambda\ge cf^\lambda$. Integration proves doubling.
+All finite small lengths are absorbed using compactness and a fixed
+positive gap/mark event. For a soft wall use
+$(s+t)^\gamma\le s^\gamma+t^\gamma$ after a prefix; its additional reserve
+is polynomial in the prefix length. The preparation and favorable
+continuation remain sufficient. No value of $\chi$ is used in this proof.
+\end{proof}
+
+\begin{lemma}[Relative cost of a bad block]\label{pr:relativebad}
+Let $\mathcal D$ depend on the first $b\le n/2$ slots, including any
+coupling auxiliaries. Then
+\begin{equation}
+ \mathbb E\mathbb P_C(\text{survival},\mathcal D\mid
+                  \text{extended environment})^\lambda
+ \le C_D(1+b)^2\mathbb P(\mathcal D)^{\lambda/4}F_n(h).
+ \label{pr:earlybad}
+\end{equation}
+If instead $\mathcal D$ begins after $n/4$, its relative cost is at most
+$C_D\mathbb P(\mathcal D)^\lambda F_n(h)$. Fixed fractions in these
+statements may be changed, with corresponding constants. The same
+bounds hold for the Gaussian comparison walk and for both risk signs.
+\end{lemma}
+\begin{proof}
+If positive jumps are bounded, discard prefix survival and use the
+endpoint bound $S_b\le lb$. Independence of the remainder, Jensen over
+the prefix, and Lemma~\ref{pr:crude} give the stronger upper bound
+$C(1+b)\mathbb P(\mathcal D)^\lambda F_n(h)$.
+For unbounded positive jumps divide positive prefix endpoints into unit
+bins $[k,k+1)$. Their probabilities are bounded both by
+$\mathbb P(\mathcal D)$ and by
+$C\exp[-c\min(k^2/b,k)]$, with the fixed $O_D(\sqrt b)$ drift displacement
+absorbed in the constants and a first group of bins. Apply the reserve
+comparison bin by bin. Using the geometric mean of the two probability
+bounds and summing the Gaussian/exponential tail proves
+\eqref{pr:earlybad}; the displayed exponent $\lambda/4$ and quadratic
+polynomial are deliberately weaker than necessary. Negative endpoints
+can only decrease the available reserve. The Gaussian case has the same
+tail estimate. For a late bad block retain necessary survival on the
+first $\lfloor n/8\rfloor$ slots, independent of that block. Jensen and
+finitely many doublings prove the stated bound. These are relative
+bounds, not an assertion that the bad event is independent of survival.
+\end{proof}
+
+\begin{lemma}[Relative control of the initial coupling block]
+\label{pr:initial-coupling-block}
+Fix the compact laws and the bounded scaled-drift range in
+Lemma~\ref{pr:relativebad}, and let the fractional exponent satisfy
+$\lambda\in[\lambda_*,1]$, where $\lambda_*>0$ is fixed. Fix an integer
+$b\ge1$. Couple the centered
+exponential and binary channels separately to their scalar Gaussian
+channels on the first $b$ slots, independently of all later blocks.
+The environmental coupling is outside the private conditional
+probability, and the private coupling is inside it.
+For every prescribed $\varepsilon>0$ there is a finite $H_b$, depending
+only on these fixed data and $\varepsilon$, such that, whenever
+$n\ge2b$ and $h\ge H_b$, the following assertion holds for each
+marginal survival functional covered by Lemma~\ref{pr:relativebad}.
+There is an initial good event $\mathcal G_b$ on which the discrepancy
+of the two initial risk paths is at most $H_b/8$, and
+\[
+ \mathbb E\bigl[
+   \mathbb P_{\mathrm{private}}
+     (\mathrm{survival},\mathcal G_b^c
+           \mid\mathrm{extended\ environment})^{\lambda}\bigr]
+       \le \varepsilon F_n(h).
+\]
+The same $H_b$ works for both risk signs. A prescribed fixed strong or
+soft curve on this initial finite interval may also be absorbed in
+$H_b/8$ by increasing $H_b$ before lengths vary.
+\end{lemma}
+\begin{proof}
+Let $M_b$ be the maximum of the absolute centered partial sums of
+both original channels on the first $b$ slots and of the absolute
+Gaussian suprema on the corresponding time interval. Enlarge its
+definition by the fixed compact coefficients needed to reconstruct
+the risk. No independence between the two members of a channel
+coupling is required for the following union bound. Exponential
+moments of the gaps, boundedness of the binary increments, and the
+Gaussian maximal tail give constants $C_b,c_b>0$ such that
+\[
+ \mathbb P\{M_b>v\}\le C_b e^{-c_b v}
+ \qquad(v\ge C_b).
+\]
+The constants are independent of $n$ and $h$. The deterministic drift
+on the first $b$ slots is bounded in terms of the fixed data, because
+$n\ge2b$ and the full-horizon scaled drift is bounded.
+Choose a fixed compact-data constant $C_0$ so that, on
+$\mathcal G_b=\{M_b\le H_b/C_0\}$, the two initial risk paths differ
+by at most $H_b/8$; make the same choice large enough to pay the
+initial drift. A fixed curve on this finite interval has a finite
+maximum, which is paid by the final increase of $H_b$.
+
+The bad event reads only the first $b$ slots and their coupling
+auxiliaries. Lemma~\ref{pr:relativebad} therefore gives
+\[
+ \mathbb E\bigl[
+   \mathbb P_{\mathrm{private}}
+      (\mathrm{survival},\mathcal G_b^c
+           \mid\mathrm{extended\ environment})^{\lambda}\bigr]
+ \le C(1+b)^2
+       \bigl(C_b e^{-c_bH_b/C_0}\bigr)^{\lambda/4}F_n(h).
+\]
+After $b$ has been fixed, choose $H_b$ so that its coefficient is at
+most $\varepsilon$, uniformly for $\lambda\ge\lambda_*$. This choice
+does not depend on a persistence exponent or on the eventual reserve
+$h$. Since $h\ge H_b$, a change by $H_b/8$ lies between the reserves
+$7h/8$ and $9h/8$. The argument bounds the initial error only on
+$\mathcal G_b$; it has assigned no deterministic bound to any
+exponential gap. The finitely many experiments $n<2b$ are outside this
+lemma and are handled by their explicitly supported finite cases.
+\end{proof}
+
+\begin{theorem}[Reference one-end theorem]\label{pr:one}
+For $|\delta|\sqrt n\le D$, $h\ge1$, and either sign of $S$,
+\begin{equation}
+ F_n(h)\asymp_D
+ \min\{1,((1+h)/\sqrt n)^{2\chi(\lambda,\rho_\tau)}\}.
+ \label{pr:ONE}
+\end{equation}
+The upper estimate allows a fixed soft power wall of exponent below
+$1/2$. For $h\ge H_0$ the lower estimate may retain a fixed strong curve,
+a fixed positive central unreserved endpoint, and central gap, binary,
+and full-color endpoints. The central boxes are chosen compatible and
+sufficiently wide after the compact laws, wall, $D$, and $D'$ are fixed,
+before the coupling accuracy and minimum reserve are chosen.
+For this endpoint version take $h\le D'\sqrt n$;
+larger reserves are not needed for the endpoint assertion.
+\end{theorem}
+\begin{proof}
+We use a finite strong approximation with explicit failure tails, not an
+unconditional limiting invariance principle. The finite scalar coupling of
+Sakhanenko \cite{Sakhanenko1984}, in the finite iid form of
+Waudby-Smith, Larsson, and Ramdas \cite[Lemma~4.2, p.~12]{WLR}, followed
+by Markov's inequality (as in their equation~(17)), gives
+\[
+ \mathbb P\!\left\{\max_{j\le L}
+       \left|\sum_{i\le j}(Z_i-G_i)\right|\ge z\right\}
+ \le (1+s_*\sqrt{Lv})e^{-cs_*z},
+\]
+where $v=\operatorname{Var}(Z)$, $c>0$ is universal, and $s_*$ is strictly
+below the Sakhanenko parameter. We check this uniformly for the two
+centered channels $Z=E-\tau$ and $Z=w(C)-\omega$ before conditioning.
+Write $\tau\in[\tau_-,\tau_+]$, $b\in[b_-,b_+]$, and
+$p\in[p_-,1-p_-]$ for their fixed compact bounds. Set
+\[
+ v_- =\min\{\tau_-^2,b_-^2p_-(1-p_-)\}>0,\quad
+ v_+ =\max\{\tau_+^2,b_+^2/4\},\quad t_0=(2\tau_+)^{-1}.
+\]
+For $E=\tau U$ with $U$ exponential of mean one,
+\[
+ \mathbb E|E-\tau|^3e^{t_0|E-\tau|}
+ \le e^{1/2}\tau_+^3\int_0^\infty(u+1)^3e^{-u/2}\,du
+ =158e^{1/2}\tau_+^3.
+\]
+For the binary channel $|Z|\le b_+$, so the corresponding moment is at
+most $b_+^3e^{t_0b_+}$. Let $M$ be the larger of these two bounds,
+$t_1=\min\{t_0,v_-/(2M)\}$, and $s_*=t_1/2$. Then
+$t_1\mathbb E|Z|^3e^{t_1|Z|}\le v_-/2\le v$; Definition~2.1 and
+(6) of \cite{WLR} give a Sakhanenko parameter at least $t_1>s_*$.
+These estimates also hold for $-Z$. For any fixed $A>0$ and $L\ge2$,
+choose $C_A$ with $cs_*C_A>A+1/2$ and take $z=C_A\log L$. The displayed
+tail is at most $(1+s_*\sqrt{v_+})L^{1/2-cs_*C_A}\le C L^{-A}$.
+Increasing $C_A$ if needed gives error $C_A\log L$ with failure at most
+$C_A L^{-A}$, uniformly in the compact laws. The bounded initial block
+is treated separately below; no conditioned coupling is asserted.
+
+Couple gaps and private binary marks separately, using independent
+couplings on successive dyadic blocks, starting at a fixed scale $L_0$.
+Include Brownian interpolation oscillations in the bad events; their
+Gaussian bounds have the same arbitrarily high polynomial decay after
+increasing $C_A$. A block intersecting the horizon either ends by $n/2$
+or begins after $n/4$, apart from a bounded initial case. Apply
+Lemma~\ref{pr:relativebad} on both marginal processes. The total
+fractional failure mass is at most
+\begin{equation}
+ C F_n(h)\sum_{L\ge L_0,\ L\ {\rm dyadic}}L^{2-A\lambda/4},
+ \label{pr:KMTrelative}
+\end{equation}
+and the analogous bound holds with Brownian survival in place of $F_n$.
+Choose $A$ first, and then $L_0$, so this is any prescribed small
+fraction of the corresponding marginal survival moment.
+
+First fix a bounded-action envelope and the relative reserve interval
+$[7h/8,9h/8]$. Fix its Gaussian and compatible endpoint lower constants.
+Choose the coupling tail exponent and initial dyadic scale so the later
+relative error sum is below the required fraction of these constants.
+Apply Lemma~\ref{pr:initial-coupling-block} at that fixed initial scale;
+choose its minimum reserve last. On the resulting good event the
+initial discrepancy is at most $h/8$ and the later discrepancy is at most
+$C\log(1+s/L_0)+C\log^2(1+s/L_0)$. After Lamperti transformation the latter
+is a bounded-action curve of Lemma~\ref{pr:wall}. Increasing the minimum
+reserve reduces its normalized amplitude; it does not enlarge the
+chosen relative reserve interval. The initial bad event is paid at the
+same marginal survival scale, not by a deterministic bound on gaps.
+Finally choose the bounded-horizon threshold. None of these choices
+uses the discrete normalization being proved.
+
+The coupling is used on an extended probability space: the coupled gap
+and Brownian environment is outside the private conditional probability;
+the independent mark/Brownian coupling is inside it. The two marginal
+conditional probabilities consequently remain the genuine $q_D(E)$ and
+$q_B(W)$. On good paths the deterministic inclusions give
+\[
+ q_D\le q_{B,\mathrm{soft}}+\Delta_D,
+ \qquad q_{B,\mathrm{hard}}\le q_D+\Delta_B.
+\]
+Subadditivity and \eqref{pr:KMTrelative} absorb the first error against
+the discrete moment and the second against the Brownian moment.
+Corollary~\ref{pr:brownian} proves \eqref{pr:ONE}, without presupposing
+its normalization on either side. Reserves below the fixed threshold
+are handled by the preparation and reserve comparisons of
+Lemma~\ref{pr:crude}. The same argument retains Brownian strong curves
+and endpoint boxes; its errors are still bounded by the flat relative
+majorant.
+
+Only the binary mark was coupled. Conditional on the entire binary path,
+the full colors in each category remain independent with their conditional
+probabilities. If the binary endpoint is central, their means differ
+from the unconditional color means by $O(\sqrt n)$. Enlarging a fixed
+central color window once, the multinomial variance bound makes all
+colors central with conditional probability at least $3/4$, uniformly
+for every retained binary path. This is a constant loss before the
+fractional power. It requires no unstated multivariate KMT theorem.
+\end{proof}
+
+\subsection{Exact Gamma conditioning and relative local regularity}
+
+Let $T_n=\sum_{i=1}^nE_i$ and condition on $T_n=A>0$, where
+$|A-n\tau|\le D\sqrt n$ and $n\ge1$. Write
+$0<\tau_-\le\tau\le\tau_+<\infty$ for the fixed gap-mean range.
+All such conditioning is by a regular conditional
+density. Write $\mathbb E_A$ for the resulting environmental expectation.
+The private marks remain independent of the gaps and of one another.
+
+\begin{lemma}[Selected-gap density]\label{pr:gamma}
+For a deterministic proper set $I$ of $m<n$ coordinates, the conditional density
+relative to independent mean-$\tau$ exponentials is exactly
+\begin{equation}
+ \frac{f_{n-m}(A-\sum_{i\in I}E_i)}{f_n(A)},\qquad
+ f_k(x)=\frac{x^{k-1}e^{-x/\tau}}{\tau^k\Gamma(k)}
+                          \boldsymbol1_{\{x>0\}}.          \label{pr:RN}
+\end{equation}
+There is a fixed threshold
+$N_\Gamma=N_\Gamma(D,\tau_-,\tau_+)\ge
+\max\{1,(2D/\tau_-)^2\}$ such that the following two upper bounds
+hold for $n\ge N_\Gamma$: if $m\le cn$, $c<1$, the ratio is bounded
+above uniformly on its whole support; for any proper selected set it
+has the weaker upper bound $C_D\sqrt n$.
+If $m\le cn$, it is bounded below by a positive constant on
+$|\sum_I E_i-m\tau|\le R\sqrt n$ for
+$n\ge n_0(c,D,R)\ge N_\Gamma$,
+with constants depending on $c,D,R$ and the compact gap-mean range.
+This threshold ensures that the displayed central set lies inside
+the support of the remaining Gamma density.
+In the exact-mean case $A=n\tau$, both upper bounds hold for every
+$n\ge1$. The central lower bound still requires its stated threshold.
+No uniform upper bound is asserted for a near-central bounded-$n$
+window that permits $A\downarrow0$.
+\end{lemma}
+\begin{proof}
+Independence and convolution of Gamma densities give \eqref{pr:RN}.
+Stirling's formula, uniformly for $\tau$ in its compact interval, gives
+\[
+ \sup_x f_k(x)\le C k^{-1/2},\qquad
+ f_k(k\tau+z\sqrt k)\asymp_R k^{-1/2}
+ \quad(|z|\le R,\ k\ge N(R,\tau_-)).
+\]
+For $k=1$ the supremum is $1/\tau$ and the same upper bound holds.
+For $n\ge N_\Gamma$, enlarge the threshold for the preceding central
+estimate with $R=D$; the denominator in \eqref{pr:RN} is then comparable
+to $n^{-1/2}$, and $A\ge n\tau/2$.
+If $A=n\tau$, the explicit density and Stirling's bounds instead give
+$f_n(n\tau)\asymp n^{-1/2}$ for every $n\ge1$, uniformly in $\tau$.
+The asserted bounds follow; on the central selected set the remaining
+total has displacement $O(\sqrt n)$ from a mean with shape comparable
+to $n$. This is one joint density for all selected coordinates, not
+independence of selected blocks after conditioning.
+\end{proof}
+
+\begin{proposition}[One-end exact-total bridge]\label{pr:gamma-one}
+For fixed $D,D'$, the compact laws, and a fixed curve as below,
+there are $N_{\rm one},H_0$
+such that the following holds for $n\ge N_{\rm one}$.
+Suppose $|\omega-\tau|\sqrt n\le D$, $|A-n\tau|\le D\sqrt n$, and
+$H_0\le h\le D'\sqrt n$. The flat conditional survival probability has
+$\lambda$ moment at most $C B_n(h)$, with the exponent of
+\eqref{pr:ONE}. A stronger event has moment at least $c B_n(h)$ and can
+retain a fixed curve $g\min(j,n-j)^\gamma$, $0<\gamma<1/6$, positive
+unreserved terminal risk in $[a_0\sqrt n,a_1\sqrt n]$, and central
+full-color windows. The constants and windows can be fixed uniformly
+on the displayed parameter range.
+One may enlarge $H_0$ after fixing $N_{\rm one}$ so that
+$H_0>D'\sqrt{N_{\rm one}}$; the reserve range then itself enforces
+the length threshold. The flat upper bound alone also holds for bounded
+$n$, by increasing its constant.
+\end{proposition}
+\begin{proof}
+All density comparisons below are made after taking
+$N_{\rm one}\ge N_\Gamma$ and the required central-support thresholds.
+Keeping just the first $\lfloor n/4\rfloor$ survival constraints and
+using Lemma~\ref{pr:gamma} proves the upper bound. For the lower bound
+first assume $h\le\varepsilon\sqrt n$. On $m=\lfloor n/4\rfloor$
+slots retain the strong reference family in Theorem~\ref{pr:one}, with
+\begin{equation}
+ a_0\sqrt n\le S_m\le a_1\sqrt n,\quad
+ |T_m-m\tau|\le R\sqrt n,\quad
+ |N_c(m)-\pi_cm|\le R\sqrt n\quad\hbox{for every color }c.
+ \label{pr:prefixboxes}
+\end{equation}
+Its conditional mark probability $f$ has $\mathbb E f^\lambda\ge cB_n(h)$.
+The selected-gap density has a positive lower bound on these boxes.
+Fix one retained prefix environment and one retained prefix label word.
+For $k=n-m$, the remaining exact gap total $A-T_m$ is central. Represent
+these gaps as
+\[
+ E'_i=(A-T_m)\frac{W_i}{W_1+\cdots+W_k},
+ \qquad W_i\hbox{ iid exponential of mean one}.
+\]
+The centered polygonal partial gap sums, divided by $\sqrt k$, converge
+to $\tau$ times a Brownian bridge plus their prescribed central linear
+drift. Independently, centered color counts converge to multinomial
+Brownian motion on the zero-sum hyperplane. Its weight projection has
+positive variance. Both convergences are uniform over the central boxes
+and compact laws: every parameter sequence has a convergent subsequence;
+characteristic-function expansion identifies its Gaussian finite-dimensional
+limits, and the uniform fourth-moment bound
+$\mathbb E|\sum_{i=1}^k Z_i|^4\le C(k^2+k)$ gives tightness, including
+polygonal intervals shorter than $1/k$. Normalizing by $k^{-1}\sum W_i$
+preserves convergence by the law of large numbers.
+
+The starting risk is in a fixed positive compact interval after scaling.
+Choose a continuous color path in the zero-sum hyperplane whose weight
+projection carries it to a fixed positive final window while remaining
+strictly positive; choose the zero centered gap bridge. Each sufficiently
+small tube about these paths has positive limiting probability. The
+multinomial covariance is nondegenerate on its hyperplane, so all the
+required color paths lie in its support. A finite set of tubes covers
+the compact possible prefix endpoints and remaining central drifts.
+The minimum probability is positive, and uniform convergence transfers
+a fixed fraction to the finite bridges. Enlarging the final color windows
+once absorbs the prefix deviations. On the tube the risk is at least
+$c\sqrt n$ on the continuation, which dominates $gn^\gamma$ for large
+$n$. On the first quarter the imposed one-sided curve is already the
+required global curve. Thus every retained prefix word has joint
+remaining-environment-and-mark continuation probability at least $c>0$.
+
+For each prefix environment let $Z$ be the full successful mark probability
+as a function of the remaining environment. Exactly
+\begin{equation}
+ 0\le Z\le f,\qquad \mathbb E_{\rm remainder}Z\ge cf,
+ \qquad \mathbb E_{\rm remainder}Z^\lambda\ge cf^\lambda.
+ \label{pr:concavecontinue}
+\end{equation}
+The last inequality follows from $z^\lambda\ge f^{\lambda-1}z$ for
+$0\le z\le f$. Integrate against the central lower density in
+Lemma~\ref{pr:gamma}. This proves the lower bound. When $h$ is comparable
+to $\sqrt n$, a fixed positive tube directly gives a constant lower
+bound; alternatively use a smaller fixed multiple of $\sqrt n$ and
+monotonicity. This is an annealed continuation for each prefix word,
+not a quenched lower bound for every remaining environment. Central
+full-type windows are retained; no individual exact type is asserted
+to have constant probability.
+The length threshold also includes the uniform tube-convergence and
+endpoint-support thresholds after the windows are fixed. Indeed
+$l-\omega=bp$ is bounded below by some $\beta>0$, whereas
+$A\le n\omega+2D\sqrt n$. Thus
+$nl-A\ge\beta n-2D\sqrt n$, which exceeds $a_1\sqrt n$
+for sufficiently large $n$. For the opposite sign the corresponding
+available endpoint is $A-n(l-b)\ge b(1-p)n-2D\sqrt n$, and $b(1-p)$
+has the same kind of positive compact lower bound. Thus a positive
+terminal window is not demanded beyond the possible mark total in
+either orientation. The retained central color tubes above
+give its actual support. No lower bound is obtained by compactness at
+excluded small $n$. For the flat upper bound in the bounded range, use
+$q\le1$ and $B_n(h)\ge n^{-1/2}$ for $h\ge1$.
+\end{proof}
+
+Fix a small $\epsilon>0$, $0<\gamma<1/6$, and put $d_n(i)=\min(i,n-i)$.
+Let $\mathrm{REG}_K$ consist of the following inequalities for every
+$0\le i<j\le n$ and every color $c$:
+\begin{align}
+ |T_j-T_i-\tau(j-i)|&\le\epsilon(j-i)
+               +K[1+d_n(i)^\gamma+d_n(j)^\gamma],\notag\\
+ |N_c(i,j)-\pi_c(j-i)|&\le\epsilon(j-i)
+               +K[1+d_n(i)^\gamma+d_n(j)^\gamma].           \label{pr:REG}
+\end{align}
+
+\begin{lemma}[Relative regularity under the exact total]\label{pr:REGlemma}
+Assume $n\ge1$, $A>0$, $|A-n\tau|\le D\sqrt n$,
+$|\omega-\tau|\sqrt n\le D$, and $K\ge0$.
+If $Q_{\rm bad}(E)$ is the conditional mark probability of flat survival
+and $\mathrm{REG}_K^c$, then
+\begin{equation}
+ \mathbb E_A Q_{\rm bad}^\lambda\le C e^{-cK} B_n(h),
+ \qquad h\ge1.                                             \label{pr:relativeREG}
+\end{equation}
+The constants are uniform in the stated near-centered regime.
+\end{lemma}
+\begin{proof}
+Choose a fixed $N_{\rm REG}\ge\max\{32,N_\Gamma,(D/\epsilon)^2\}$,
+enlarging it for the fixed-fraction comparisons below, and first take
+$n\ge N_{\rm REG}$.
+For a single bad interval $(i,j]$, exponential moments and Chernoff give
+under the independent reference law
+\begin{equation}
+ \mathbb P(\mathcal D_{i,j})
+ \le C\exp\{-c\epsilon^2(j-i)
+          -c\epsilon K[1+d_n(i)^\gamma+d_n(j)^\gamma]\}.
+ \label{pr:intervaltail}
+\end{equation}
+This follows by choosing a fixed tilt $z$ with
+$\log\mathbb E e^{z(E-\tau)}\le Cz^2$ and $C|z|\le\epsilon/2$;
+the finite color variables are even bounded.
+We give a partition that preserves the survival scale under conditioning.
+
+For $j\le n/4$, retain only survival to $n/2$. The event and the bad
+interval use at most half the gaps. Lemma~\ref{pr:gamma} bounds their
+conditional moment by the independent reference moment, to which
+Lemma~\ref{pr:relativebad} applies. Its upper bound is
+$C(1+j)^2\mathbb P(\mathcal D_{i,j})^{\lambda/4}B_n(h)$.
+For $i\ge n/8$, retain necessary survival on the first $\lfloor n/16\rfloor$
+slots. It is disjoint from the bad interval; their union omits a fixed
+fraction of the gaps. After one joint density comparison they are
+independent under the reference law, giving
+$C\mathbb P(\mathcal D_{i,j})^\lambda B_n(h)$.
+The remaining intervals have $i<n/8$, $j>n/4$ and length at least $n/8$.
+For a proper gap interval use the $C\sqrt n$ density bound in
+Lemma~\ref{pr:gamma}; for the entire gap set its total is fixed and its
+linear tolerance is satisfied for large $n$. Mark distributions are
+unaffected by the gap total. Thus all these remaining errors are
+exponentially small, even after their $\lambda$ powers.
+
+In the early region, the polynomial in $j$ is summable against
+$e^{-cKj^\gamma}$ and the interval-length factor. In the late region
+near the terminal end sum in $n-i$; away from both ends the additional
+$e^{-cKn^\gamma}$ absorbs the number of intervals. There are at most
+$n^2$ macroscopic intervals, and their exponential errors are smaller
+than $e^{-cK}B_n(h)$ since $B_n(h)\ge c n^{-1/2}$.
+Subadditivity of the $\lambda$ power proves \eqref{pr:relativeREG}.
+For $1\le n<N_{\rm REG}$, every gap sub-sum is at most
+$A\le N_{\rm REG}\tau_++D\sqrt{N_{\rm REG}}$, and every color count
+is at most $N_{\rm REG}$. Consequently all of \eqref{pr:REG} hold
+deterministically whenever
+\[
+ K\ge K_{\rm fin}:=1+2N_{\rm REG}\tau_+
+                       +D\sqrt{N_{\rm REG}}+N_{\rm REG}.
+\]
+For $0\le K<K_{\rm fin}$ use $Q_{\rm bad}\le1$ and
+$B_n(h)\ge N_{\rm REG}^{-1/2}$; increasing $C$ to at least
+$e^{cK_{\rm fin}}\sqrt{N_{\rm REG}}$ proves the same estimate.
+This handles the entire bounded-$n$ range even when $A\downarrow0$,
+without a Gamma density comparison.
+This proof does not subtract an unconditional error larger than the
+survival moment.
+\end{proof}
+
+\subsection{Complete cells, every internal ordering, and Harris's inequality}
+
+We specify the deterministic projection because its converse is needed
+when a relative bad event is removed. Take $r$ independent forward
+positions $U_i$ uniform on $[0,v]$, with $v$ an integer. Fix an integer
+$N\ge1$, and set
+\begin{equation}
+ J_i=N+\left\lfloor\frac{v-N}{v}U_i\right\rfloor,
+ \qquad J_i\in\{N,\ldots,v-1\}.                            \label{pr:cellmap}
+\end{equation}
+These are independent uniform retained cells and
+$U_i-1<J_i\le U_i+N$. Let the slope per cell be $c>0$. With reverse
+coordinates $\tau_i=v-U_i$, $\xi_i=v-J_i$, use strict before-jump deficits
+\[
+ R_{\rm full}(t)=ct-\sum_{\tau_i<t}w(C_i),\qquad
+ R_{\rm cell}(t)=ct-\sum_{\xi_i<t}w(C_i).
+\]
+The displacement $\tau_i-N\le\xi_i<\tau_i+1$ and positivity of all
+weights give exactly
+\begin{equation}
+ R_{\rm cell}(t)\le c+R_{\rm full}(t-1),\qquad
+ R_{\rm full}(t)\le cN+R_{\rm cell}(t-N).                   \label{pr:twocell}
+\end{equation}
+The inequalities apply respectively for $t\ge1$ and $t\ge N$; earlier
+times have bounds $c$ and $cN$. Integer before-jump tests control the
+entire cell path since its deficit increases linearly between jumps.
+In particular a cell flat cap implies a continuous flat cap with only
+$cN$ extra reserve.
+
+There are $n=r+1$ spacings between the $r$ genuine positions and both
+endpoints. In physical units their law is that of $n$ exponential gaps
+conditioned on total $cv$. Introduce one independent dummy mark at the
+last spacing. Auxiliary after-jump and genuine before-jump risks differ
+by at most $l$ at each tested time; removing the dummy changes each
+color total by at most one. Fixed reserve and central-window adjustments
+therefore transfer Proposition~\ref{pr:gamma-one} to these actual positions.
+This transfer uses $n\ge N_{\rm one}$ after those adjustments;
+it makes no endpoint-support assertion for excluded short clocks.
+The last empty gap is retained throughout. This assertion concerns
+central windows, not a prescribed exact type or a prescribed dummy color.
+
+\begin{lemma}[Permutation-invariant regularity projection]\label{pr:cellREG}
+There is a cell event depending only on the occupancy and the color
+counts in each cell, implied by \eqref{pr:REG}, such that its occurrence
+implies the required color interval bounds, with a larger fixed
+coefficient, for \emph{every} ordering within cells. It also bounds each
+cell occupancy by a fixed constant times one plus its distance to the
+nearer physical endpoint raised to $\gamma$.
+\end{lemma}
+\begin{proof}
+Here is a full deterministic formulation. Let ordered physical positions
+$x_i=T_i$, $x_0=0,x_n=A$, be mapped to nondecreasing cells $J_i$ satisfying
+$|aJ_i-x_i|\le\Delta_0$, with fixed $a,\Delta_0$; this includes the reverse
+version of \eqref{pr:cellmap}. Put $D_A(t)=\min(t,A-t)$.
+Applying the gap inequalities in \eqref{pr:REG} to $(0,i]$ and $(i,n]$
+gives
+\[
+ (\tau-\epsilon)d_n(i)-K[1+d_n(i)^\gamma]
+ \le D_A(x_i)\le
+ (\tau+\epsilon)d_n(i)+K[1+d_n(i)^\gamma].
+\]
+The inequality $Kx^\gamma\le\eta x+C_{\eta,\gamma}K^{1/(1-\gamma)}$
+therefore implies
+\begin{equation}
+ C^{-1}d_n(i)-B_K\le D_A(x_i)\le C d_n(i)+B_K.               \label{pr:rankdistance}
+\end{equation}
+The single-gap bound gives
+$x_{i+1}-x_i\le\tau+\epsilon+K[1+d_n(i)^\gamma+d_n(i+1)^\gamma]$.
+If a physical cut $t$ is within $\Delta_0$ of $[x_i,x_{i+1}]$, subtract
+this bound from the lower bound in \eqref{pr:rankdistance} and absorb
+its sublinear term. Thus
+\begin{equation}
+ d_n(i)^\gamma\le C D_A(t)^\gamma+B'_K.                     \label{pr:cutdistance}
+\end{equation}
+This includes $i=0,n-1$.
+
+Let $I(s)=\#\{i:J_i\le s\}$, $g_s=I(s)-I(s-1)$,
+$D(s)=D_A(as)$, and let $N_c(s,t)$ count color $c$ in cells $(s,t]$.
+A cell cut $as$ is within $\Delta_0$ of $[x_{I(s)},x_{I(s)+1}]$.
+Equations \eqref{pr:REG} and \eqref{pr:cutdistance} therefore imply
+\begin{align}
+ |N_c(s,t)-\pi_c[I(t)-I(s)]|
+ &\le\epsilon[I(t)-I(s)]+K_1[1+D(s)^\gamma+D(t)^\gamma],\notag\\
+ g_s&\le K_1[1+D(s)^\gamma].                               \label{pr:cell-envelopes}
+\end{align}
+For the second assertion, the first and last positions of an occupied
+cell are separated by at most $a+2\Delta_0$; the gap lower bound then
+bounds $g_s-1$, using \eqref{pr:cutdistance} at the adjacent cell cuts.
+Furthermore, for each rank $u$ belonging to that cell,
+\begin{equation}
+ D(s)\le C d_r(u)+B''_K.                                   \label{pr:cell-rank}
+\end{equation}
+This follows from \eqref{pr:rankdistance} and the bounded displacement;
+$|d_n(u)-d_r(u)|\le1$. It can be tested solely from occupancy counts,
+since the smallest $d_r(u)$ in a cell's consecutive rank range occurs
+at one of its rank endpoints.
+
+Define the cell regularity event by \eqref{pr:cell-envelopes} and
+\eqref{pr:cell-rank}. For an arbitrary rank interval in any internal
+ordering, remove its two partial endpoint cells. Apply the first bound
+of \eqref{pr:cell-envelopes} to the remaining complete-cell interval.
+The two omitted parts have total error at most their occupancies, bounded
+by the second assertion. Convert their physical endpoint distances back
+to rank distances by \eqref{pr:cell-rank}. Adjacent cuts differ by a
+fixed amount, and $|d_r(u+1)-d_r(u)|\le1$. Consequently, for every order,
+\[
+ |N_c(u,v)-\pi_c(v-u)|\le\epsilon(v-u)
+          +K_2[1+d_r(u)^\gamma+d_r(v)^\gamma].
+\]
+If both endpoints are in one cell its entire contribution is controlled
+by that cell's occupancy. The same argument covers the first and last
+occupied cells and empty cuts. All constants are fixed before $n$ varies.
+\end{proof}
+
+\begin{theorem}[Critical complete-cell family]\label{pr:cell-critical}
+Suppose $n=r+1\asymp T$, $|cv-n\tau|\le D\sqrt n$,
+$|\omega-\tau|\sqrt n\le D$, and the retained-cell density is bounded
+strictly below a fixed $\zeta<1$. Fix $0<\gamma<1/6$.
+For $H_0\le h\le D'\sqrt T$ there is a family depending only on complete
+colored cell occupancies whose conditional mark probability $f$ satisfies
+\begin{equation}
+ \mathbb E f^\lambda\ge c
+       \min\{1,((1+h)/\sqrt T)^{2\chi(\lambda,\rho_\tau)}\}.
+ \label{pr:cell-lower}
+\end{equation}
+The same family has the following properties: the ordinary forward
+occupancy bounds $G_s\le s+1$ and $G_s\le\zeta s+C_0$; a reverse flat
+cap with reserve $h+O(1)$; a prescribed fixed strong physical curve;
+the complete-cell regularity of Lemma~\ref{pr:cellREG}, hence color
+regularity for all internal orderings; a fixed positive central window
+for the unreserved final risk; and central full-color windows.
+The constants $C_0,N,H_0$ and all window widths are fixed. The assertion
+uses $n\ge N_{\rm cell}$, with a fixed threshold chosen after these
+data and containing the adjusted $N_{\rm one}$ and central-support
+thresholds. If $n\ge c_*T$ is the fixed comparability bound, one may
+finally enlarge $H_0>D'\sqrt{N_{\rm cell}/c_*}$ so that its reserve
+range already enforces this length restriction.
+More explicitly, the two reverse restrictions may be written
+$R_{\rm cell}(k)\le h+C_1$ and
+$R_{\rm cell}(k)\le h+C_g-g\min(k,v-k)^\gamma$ at every integer cut.
+The flat extra reserve $C_1$ is independent of the selected amplitude $g$.
+
+If a necessary competitor event skips at most $J_d\le C(1+d)^a$ slots
+and retains a deterministic free block of a fixed positive fraction of
+$n$, of length at most $c_1n$ with $c_1<1$, its cell conditional probability
+$q_d$ obeys
+\begin{equation}
+ \mathbb E q_d^\lambda\le C(1+d)^C
+       \min\{1,((1+h)/\sqrt T)^{2\chi(\lambda,\rho_\tau)}\}.
+ \label{pr:cell-competitor}
+\end{equation}
+When a skip is too large to leave that block, the same bound holds after
+increasing the fixed polynomial exponent.
+\end{theorem}
+\begin{proof}
+First the ordinary occupancy conditions have fixed positive probability.
+For independent retained cells with density at most $\zeta_0<\zeta$,
+a binomial exponential bound gives
+$\mathbb P(G_s>\zeta s+C_0)\le C e^{-cC_0-cs}$.
+Choose $C_0$ large. For $G_s\le s+1$, the first $N$ cells are empty,
+and the same negative-drift bound summed over $s\ge N$ has arbitrarily
+small total when fixed $N$ is large. After deleting these fixed cells
+the density still has a uniform margin for all sufficiently large $v$.
+Thus their intersection has probability $c_{\rm occ}>0$. Both events
+are increasing when any labeled forward position is moved rightward.
+
+The order of transferring the strong event is essential. Apply
+Proposition~\ref{pr:gamma-one} first to a stronger rank curve. Subtract
+\eqref{pr:relativeREG}; on the remaining family the deterministic
+comparisons \eqref{pr:rankdistance}--\eqref{pr:cutdistance} convert this
+curve to the desired physical curve. The single-gap bound controls
+before-jump interpolation as well. Now drop REG and all proof-only
+prefix boxes, retaining the physical strong and flat conditions and the
+position-independent total-type and final-risk windows. This larger
+event still has the same lower fractional moment and is monotone in
+each independent original forward position, for every fixed mark word.
+If its conditional mark probability is $Q(U)$, Harris's product-measure
+inequality gives
+\begin{equation}
+ \mathbb E[\boldsymbol1_{\rm occ}Q(U)^\lambda]
+     \ge\mathbb P({\rm occ})\mathbb E Q(U)^\lambda.           \label{pr:Harris}
+\end{equation}
+It is applied to independent labeled positions, not to the dependent
+Dirichlet spacings. For one coordinate the inequality is the identity
+$2\operatorname{Cov}(f,g)=\mathbb E[(f(Z)-f(Z'))(g(Z)-g(Z'))]\ge0$;
+induction proves the product version. Total-type restrictions do not
+disturb monotonicity because they do not depend on the positions.
+
+Project by \eqref{pr:cellmap}. Equation \eqref{pr:twocell} and the
+H\"older modulus of $\min(t,v-t)^\gamma$ give a cell strong event and a
+separate cell flat cap. The latter has only the fixed extra reserve $c$,
+independent of the subsequent curve amplitude. By the converse in
+\eqref{pr:twocell}, a bad cell family lies, for every compatible latent
+position vector, in continuous flat survival with $cN+O(1)$ extra
+reserve and failure of a stronger continuous regularity envelope.
+Lemma~\ref{pr:REGlemma} bounds its fractional mass. Subtract this second
+REG loss and use Lemma~\ref{pr:cellREG}. Pointwise comparisons are taken
+before fractional powers: if $Q_{\rm full}(U)\le Q_{\rm cell}(J(U))$,
+then integration gives the lower direction immediately; the converse
+bad-event containment gives the upper direction for the error. No
+incorrect reversal of conditional Jensen is used.
+
+Here is a noncircular choice of constants. Fix the retained-cell deletion,
+density margin, and $c_{\rm occ}$. Fix central endpoint boxes and a small
+fraction of their flat comparison constant. Choose regularity tolerances
+and $K$ so that \eqref{pr:relativeREG} pays for both REG losses and the
+occupancy factor. Then choose the rank-curve amplitude needed in the
+cell projection. Choose the relative KMT accuracy and finally enlarge
+$H_0$ to dominate its fixed initial error and make the normalized curve
+cost small. This is possible because $\gamma<1/2$; its normalized
+amplitude decreases as $H_0$ grows. Relative error estimates are uniform
+for reserves at least one, so the earlier choices do not change.
+Finally fix $N_{\rm cell}$ above all length thresholds, and, if desired,
+make the final reserve enlargement stated in the theorem. This proves
+\eqref{pr:cell-lower}.
+
+For a competitor, discarding $J_d$ positive bounded jumps increases its
+necessary reserve by at most $lJ_d$. At the same rank index, replacing
+latent positions by cell centers changes only the two endpoint times
+by a fixed amount, not by an amount proportional to the rank. Its free
+block is therefore majorized by reference survival with reserve
+$h+C+lJ_d$. Since $n\ge N_{\rm cell}\ge N_\Gamma$,
+Lemma~\ref{pr:gamma} and Theorem~\ref{pr:one} give
+\eqref{pr:cell-competitor}. If the skip exceeds a fixed fraction of $T$,
+use $q_d\le1$; a larger fixed power of $1+d$ absorbs one since
+$B_T(h)\ge cT^{-1/2}$. This completes the same-family assertion.
+\end{proof}
+
+In the critical application $h=H_0+M/4$, $0\le M\le\sqrt T$,
+$\lambda=\theta+O_D(T^{-1/2})$, and
+$\rho_\tau=\rho_c+O_D(T^{-1/2})$. Proposition~\ref{pr:lipschitz}
+shows that the factors in \eqref{pr:cell-lower} and
+\eqref{pr:cell-competitor} are uniformly comparable to
+\[
+ \min\{1,((1+M)/\sqrt T)^{2\chi(\theta,\rho_c)}\}.
+\]
+Indeed the error in its logarithm is $O_D(\log T/\sqrt T)$.
+The assertions hold for every fixed central first count; mixing a fixed
+central Poisson slab of positive probability preserves the lower bound.
+Here the original length and each retained central count are taken above
+the fixed $N_{\rm cell}$ threshold, as required by the lower construction.
+
+\subsection{Positive drift: an effective prefix and uniform continuation}
+
+Continue with \eqref{pr:walk}, now $0<\delta=\omega-\tau\le\delta_0$,
+and condition on $T_n=n\tau$. Put
+\begin{equation}
+ B_{n,\delta}(h)=
+ \min\{1,[(1+h)(\delta+n^{-1/2})]^{2\chi(\lambda,\rho_\tau)}\}.
+ \label{pr:driftscale}
+\end{equation}
+
+\begin{theorem}[Positive-drift complete-cell family]\label{pr:cell-drift}
+For fixed $\gamma\in(0,1/6)$ and fixed curve and occupancy requirements,
+there are $\delta_0,H_0,D_0>0$ such that, for
+$0<\delta\le\delta_0$, $\delta\sqrt n\ge D_0$, $h\ge H_0$,
+the flat exact-total survival moment is at most $C B_{n,\delta}(h)$,
+and a complete-cell family with the properties of
+Theorem~\ref{pr:cell-critical} has moment at least $c B_{n,\delta}(h)$.
+Its final unreserved risk can be restricted to
+$[\delta n-C\sqrt n,\delta n+C\sqrt n]$, and its full color counts are
+central. Deterministic competitor skips satisfy the corresponding upper
+bound $C(1+J)^C B_{n,\delta}(h)$.
+\end{theorem}
+
+\begin{proof}
+Fix constants $A_0,K_0$, and set $m=\lfloor A_0/\delta^2\rfloor$.
+Choose $D_0$ later so $m\le n/8$, and decrease $\delta_0$ to absorb
+rounding. On this effective prefix $\delta\sqrt m$ is bounded. Apply
+Theorem~\ref{pr:one}, retaining
+\begin{equation}
+ S_m\in[K_0/\delta,C_{A_0,K_0}/\delta],\quad
+ |T_m-m\tau|\le C_{A_0,K_0}/\delta,\quad
+ |N_c(m)-\pi_cm|\le C_{A_0,K_0}/\delta.                     \label{pr:driftprefix}
+\end{equation}
+Its conditional probability $f$ has moment at least
+$c\min(1,[(1+h)\delta]^{2\chi})$. For $h\delta$ bounded below, a fixed
+tube at the effective scale gives this constant lower bound directly;
+large reserves help. Lemma~\ref{pr:gamma} bounds the prefix density
+above and below on \eqref{pr:driftprefix}. The upper survival bound
+already follows by retaining only this prefix.
+For this application the complete total is exactly $n\tau$, so the
+upper comparison uses the all-$n$ exact-mean clause. The central lower
+comparison uses its length threshold, enforced by the eventual choices
+of large $D_0$ and small $\delta_0$.
+
+Fix its environment and a retained label word. Let $k=n-m$ and
+$R=n\tau-T_m$. Retain remaining full-color totals within fixed
+$C_1\sqrt k$ windows around $k\pi_c$. Their joint multinomial probability
+is bounded below. Conditional on any such type, use independent reference
+parameters equal to its proportions $\pi'_c$ and to $\tau'=R/k$.
+The binary sequence is the uniform fixed-count permutation and the gaps
+are a Dirichlet bridge. The new parameters satisfy
+\[
+ \pi'_c=\pi_c+O(C_1/\sqrt n),\qquad
+ \tau'=\tau+O(C_{A_0,K_0}/(\delta n)),\qquad
+ \delta':=\sum_c\pi'_cw(c)-\tau'\ge\delta/2,
+\]
+after $D_0$ is large in terms of the constants already fixed. Also
+$\delta'\le C\delta$. The complete endpoint then belongs to the stated
+$\delta n+O(\sqrt n)$ window and is at least $c\delta n$.
+
+We verify the required continuation estimates under these two exact
+conditions. A selected initial or terminal block of at most $k/2$ gaps
+has density bounded by a constant relative to the new reference law.
+Indeed its full total is exactly $R=k\tau'$ with $\tau'$ in a positive
+compact interval, so this is again the all-$k$ exact-mean upper bound.
+The corresponding binary density ratio is
+\[
+ \frac{\mathbb P\{\operatorname{Bin}(k-j,p')=u-U_j\}}
+      {\mathbb P\{\operatorname{Bin}(k,p')=u\}},\qquad u=kp'.
+\]
+Its denominator is comparable to $k^{-1/2}$ and numerator at most
+$C(k-j)^{-1/2}$, so it too is bounded. The two ratios multiply by
+independence. Specifying all colors leaves this same binary bridge law.
+
+For independent reference increments $X=w(C)-E$, uniform exponential
+moments and Taylor expansion give, for a fixed small $a>0$,
+\[
+ \mathbb E\exp[-a\delta(X-\delta'/2)]\le1.
+\]
+The exponential supermartingale therefore gives, from $x\ge K_0/\delta$,
+\begin{equation}
+ \mathbb P\{\exists j\ge0:x+\textstyle\sum_{i\le j}X_i
+                      <x/2+\delta'j/2\}\le e^{-c\delta x}.
+ \label{pr:ruin}
+\end{equation}
+The bounded initial-half density transfers this estimate to the first
+half of the conditioned continuation. For its late half, the maximal
+Bernstein estimate for each independent centered channel is
+\[
+ \mathbb P\{\max_{j\le k/2}|\textstyle\sum_{i\le j}Z_i|>z\}
+          \le C\exp[-c\min(z^2/k,z)].
+\]
+Apply the same bounded density to the initial half and to the reversed
+terminal half. Both centered totals are fixed to zero; these halves
+cover the complete bridge, giving
+\begin{equation}
+ \mathbb P\{\max_{j\le k}|S'_j-\delta'j|>c_2\delta k\}
+                    \le C e^{-c\delta^2 k}.                \label{pr:bridge-max}
+\end{equation}
+There is no factor $k$ from a union over individual times.
+
+The global strong curve on the continuation is at most $g(m+j)^\gamma$.
+At its beginning $gm^\gamma=o(\delta^{-1})$, and its derivative is
+$O(\delta^{2-2\gamma})=o(\delta)$ as $\delta_0\to0$.
+Thus the positive linear margin in \eqref{pr:ruin} dominates it on the
+first half. On the late half $gn^\gamma=o(\delta n)$ uniformly when
+$\delta\sqrt n\ge D_0$, so \eqref{pr:bridge-max} suffices.
+Choose $K_0$ so $Ce^{-cK_0}<1/4$, then $D_0$ so the late failure is
+less than $1/4$ and all parameter comparisons hold. Every retained
+prefix word and remaining type now has conditional continuation
+probability at least $1/2$, averaged over its remaining exact gaps.
+The central type window has fixed positive mass. Thus the inequalities
+\eqref{pr:concavecontinue} hold again, proving the strong exact-total
+lower bound after integrating the central prefix density.
+
+For completeness, regularity is not inferred from endpoint centrality.
+Before exact conditioning, the same effective-prefix argument and
+\eqref{pr:ruin} prove flat reference survival comparable to
+\eqref{pr:driftscale}: use the near-centered theorem when
+$\delta\sqrt n$ is bounded, and the effective prefix otherwise.
+Hence time doubling and polynomial reserve comparison hold uniformly
+throughout this positive-drift layer. Repeat the three-region proof of
+Lemma~\ref{pr:REGlemma} with the unchanged exponential interval tails.
+It gives a relative bad moment at most
+$Ce^{-cK}B_{n,\delta}(h)$ under the exact total. The ordinary occupancy,
+physical projection, and two-stage REG/Harris argument are now precisely
+those in Theorem~\ref{pr:cell-critical}. The proof-only effective-prefix
+boxes are dropped before Harris. The final endpoint and total-type
+windows are position independent and remain.
+
+Constants can be fixed in the following order: occupancy/deletion
+requirements; effective-prefix constants $A_0,K_0$ and their endpoint
+fraction; central type widths; REG tolerance and $K$; required curve
+amplitude and relative coupling accuracy; minimum reserve $H_0$;
+then large $D_0$, small $\delta_0$, and the length threshold. The
+reference relative errors are uniform in $h\ge1$. Enlarging $H_0$ and
+shrinking $\delta_0$ make normalized curve costs small without changing
+the earlier fixed success fraction. The two displayed parameter
+inequalities enforce $n\ge(D_0/\delta_0)^2$; take these final choices
+so that this exceeds every required length threshold. Competitor blocks
+have enlarged
+reserve $h+C+lJ$ and bounded selected-gap density. Use the reference
+upper bound; if $J$ is a fixed fraction of the effective time
+$\min(n,\delta^{-2})$, the trivial bound one is absorbed by a larger
+polynomial. This proves all assertions.
+\end{proof}
+
+In the ordinary boundary application, $n\asymp T$ and the count-specific
+drift equals $d/\kappa+O(T^{-1/2})$, with $\kappa$ bounded above and below.
+The reference parameters differ from their critical values by
+$O(d+T^{-1/2})$. Proposition~\ref{pr:lipschitz} permits the critical
+exponent in the scale
+\[
+ \min\{1,[(1+h)(d+T^{-1/2})]^{2\chi_c}\}.
+\]
+Indeed $d\log(1/d)$ and $T^{-1/2}\log T$ are bounded. The region of
+bounded $d\sqrt T$ is already covered by
+Theorem~\ref{pr:cell-critical}; no intermediate drift range is omitted.
+
+\subsection{Physical Poisson time and weighted insertion}
+
+Let $\Pi$ be a homogeneous Poisson process of rate $\kappa$ on $[0,s]$,
+where $\kappa$ ranges over a fixed positive compact interval. Its points
+carry independent marks of the preceding law. For fixed $c>0$ write
+\[
+ S(t)=\sum_{u\in\Pi,\ u\le t}w(C_u)-ct,
+ \qquad \tau=c/\kappa,\qquad
+ \rho_\tau=\frac{\tau^2}{\tau^2+\operatorname{Var}(w)}.
+\]
+Before-jump and after-jump conventions differ by at most $l$ and will
+always be allowed that fixed reserve adjustment.
+
+\begin{theorem}[Physical one-end upper bound]\label{pr:physical-one}
+Fix $0<\gamma<1/2$, $g\ge0$, $H\ge1$. Given $\Pi$, let $q$ be the
+conditional mark probability that either $S(t)$ or $-S(t)$ stays above
+$-H-gt^\gamma$ for every $0\le t\le s$. If
+$|\kappa\omega-c|\sqrt s\le D$, then
+\begin{equation}
+ \mathbb E q^\lambda\le C_{D,g,\gamma}
+       \min\{1,[(1+H)/\sqrt s]^{2\chi(\lambda,\rho_\tau)}\}.
+ \label{pr:physical-upper}
+\end{equation}
+The correlation is the arrival-gap correlation $\rho_\tau$ displayed
+above. The bound also permits a fixed logarithmic wall in place of
+the power wall.
+\end{theorem}
+\begin{proof}
+We first note why the soft-wall form of Theorem~\ref{pr:one} has its
+stated uniformity. After a bad prefix of length $b$,
+$(b+j)^\gamma\le b^\gamma+j^\gamma$ changes reserve by only a fixed
+polynomial in $b$. Thus the relative bad-prefix proof is unchanged up
+to its fixed polynomial. Under Lamperti transformation from time $H^2$,
+the wall becomes $gH^{2\gamma-1}e^{-(1/2-\gamma)u}$, whose action and
+coefficient variation are bounded for $H\ge1$. The relative KMT proof
+and its absorption therefore hold for both signs; no fixed unconditional
+REG error is subtracted to prove this upper bound.
+
+Take $m=\lfloor\kappa s/2\rfloor$; bounded $s$ is absorbed in constants.
+The Poisson lower-tail probability $\mathbb P(N_s<m)$ is at most
+$e^{-c_0s}$. Extend the process beyond $s$ if necessary. Its first $m$
+scaled arrival gaps $E_i=c(t_i-t_{i-1})$ are independent exponentials
+of mean $\tau$. The extension does not alter the conditional mark
+probability on $[0,s]$.
+
+On $N_s\ge m$, physical survival imposes necessary inequalities at these
+first $m$ arrivals. For the sign $S$, at a relevant test time the
+accumulated weight is at most $lj$; hence survival implies
+$ct\le lj+H+gt^\gamma$. Since $\gamma<1$, it follows that
+$t\le C(j+H+1)$ and consequently
+$gt^\gamma\le C(j^\gamma+H+1)$. Thus the necessary rank event has reserve
+$C(H+1)$ and a fixed soft-power coefficient. For the sign $-S$, no
+arrival-time upper bound is needed when $-S(t)\ge0$: its rank lower
+wall is automatic. When $-S(t)<0$, one has $ct<\sum w\le lj$, which
+again bounds the allowed physical soft wall by a fixed rank power wall.
+This separate argument avoids reversing an invalid time inequality.
+
+At a fixed full environment the mark probability of this necessary rank
+event depends only on the first $m$ gaps. Dropping the restriction
+$N_s\ge m$ in its expectation gives
+\[
+ \mathbb E q^\lambda\le\mathbb E q_{\rm rank}^\lambda+e^{-c_0s}.
+\]
+Here $|\omega-\tau|\sqrt m\le C_D$. Apply Theorem~\ref{pr:one} with
+its soft wall to the iid arrival gaps. Since $m\asymp s$ this gives
+\eqref{pr:physical-upper}. Finally the displayed scale is at least
+$cs^{-1/2}$, because $\chi\le1/2$ and $H\ge1$, so the exponential tail
+is absorbed. A logarithm is bounded by a fixed constant plus any fixed
+positive power $t^\gamma$, proving the last assertion.
+\end{proof}
+
+\begin{corollary}[Effective physical time]\label{pr:physical-drift}
+If the physical mean $d=\kappa\omega-c\ge0$ is sufficiently small, the
+same full-horizon necessary event has fractional moment at most
+\[
+ C\min\{1,[(1+H)(d+s^{-1/2})]^{2\chi(\lambda,\rho_\tau)}\}.
+\]
+The bound is valid for either risk sign and the preceding soft walls.
+\end{corollary}
+\begin{proof}
+Retain only the deterministic interval of length
+$s_0=c_0\min(s,d^{-2})$, with $d^{-2}=\infty$ when $d=0$.
+Then $d\sqrt{s_0}$ is bounded. Apply Theorem~\ref{pr:physical-one};
+$s_0^{-1/2}\asymp d+s^{-1/2}$. When $s_0$ is bounded the conclusion
+follows from the trivial upper bound one. Restricting to this interval
+is a necessary condition for full survival, so no continuation lower
+bound is asserted or required.
+\end{proof}
+
+\begin{proposition}[Palm bounds with the survival weight retained]
+\label{pr:palm}
+Let $T\ge1$ and let $q_H(\Pi)$ be a physical conditional survival
+probability of the preceding kind on $[0,T]$. Suppose its proved upper
+bound is $C B_T(H)$, where either
+\[
+ B_T(H)=\min\{1,[(1+H)/\sqrt T]^{2\chi}\}
+ \quad\hbox{or}\quad
+ B_T(H)=\min\{1,[(1+H)(d+T^{-1/2})]^{2\chi}\}.
+\]
+For $t\in[0,T]$ set
+\[
+ Z(t)=1+\sum_{u\in\Pi,\ u\ge t}e^{-(u-t)},\qquad
+ \mathcal A=1+C_0\sup_{0\le t\le T}\frac{Z(t)^5}{(2+t)^4},
+ \qquad N_T=|\Pi|.
+\]
+For each integer $m\ge0$ and every fixed $a>1/4$,
+\begin{align}
+ \mathbb E[Z(t)^m q_H^\lambda]&\le C_m B_T(H),\notag\\
+ \mathbb E[N_T Z(t)^m q_H^\lambda]&\le C_m T B_T(H),\notag\\
+ \mathbb E[(T+N_T)\mathcal A^a q_H^\lambda]
+                                      &\le C_a T B_T(H).    \label{pr:palmweighted}
+\end{align}
+Moreover for $k\ge0$,
+\begin{equation}
+ \mathbb E[(T+N_T)
+       q_{H+k+\lceil\log\mathcal A\rceil}^{\lambda}]
+                          \le C(1+k)^C T B_T(H).             \label{pr:randomreserve}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Adding $j$ deterministic points changes every risk by at most $jl$,
+regardless of their marks. Integrating the new marks therefore gives
+the pointwise inequality
+\begin{equation}
+ q_H(\Pi+\{u_1,\ldots,u_j\})\le q_{H+jl}(\Pi).             \label{pr:insert}
+\end{equation}
+It holds for either sign. The proved survival upper bounds imply
+$\mathbb E q_{H+jl}^\lambda\le C(1+j)^C B_T(H)$, since $H\ge1$ and
+$2\chi\le1$.
+
+Expand $Z(t)^m$ and group monomials by their distinct Poisson points.
+The multivariate Mecke identity for $j$ distinct points says that
+\[
+ \mathbb E\sum_{u_1,\ldots,u_j\in\Pi}^{\ne}
+ G(u_1,\ldots,u_j,\Pi)
+ =\kappa^j\int_{[0,T]^j}
+   \mathbb E G(u_1,\ldots,u_j,\Pi+\{u_1,\ldots,u_j\}),d\boldsymbol u.
+\]
+For a Poisson process this follows directly by expanding its factorial
+probabilities $e^{-\kappa T}(\kappa T)^n/n!$, choosing the $j$ ordered
+distinct points, and reindexing $n-j$; thus no independence of the weight
+and the environment is being assumed. In each monomial the insertion
+integrals have bounded mass, since every point carries at least one
+factor $e^{-(u-t)}\boldsymbol1_{\{u\ge t\}}$. Use
+\eqref{pr:insert} after insertion to obtain the first bound in
+\eqref{pr:palmweighted}. One additional Mecke point without a decaying
+factor gives a factor $\kappa T$ and proves the second; coincidences
+with existing monomial points only reduce the number of integrations.
+
+For $j\le t<j+1$ one has $Z(t)\le eZ(j)$. Hence
+$\mathcal A^a\le C_a[1+\sum_{j\ge0}(2+j)^{-4a}Z(j)^{5a}]$.
+Bound the noninteger moment by a larger integer moment and sum the
+convergent series, since $4a>1$. This proves the last assertion of
+\eqref{pr:palmweighted}.
+Finally, on $\lceil\log\mathcal A\rceil=j$ one has
+$\mathcal A^a\ge e^{a(j-1)}$. Apply the weighted estimate with reserve
+$H+k+j$, separately in each bin, to get
+\[
+ \mathbb E[(T+N_T)q_{H+k+\lceil\log\mathcal A\rceil}^{\lambda}]
+ \le CT\sum_{j\ge0}e^{-a(j-1)} B_T(H+k+j)
+ \le C(1+k)^C T B_T(H).
+\]
+The reserve in the weighted estimate depends on the bin $j$; a single
+unweighted crowding tail would not justify this step. This proof also
+shows why arbitrary stopped depths may be controlled by the global
+crowding majorant without claiming that a stop remains fixed when
+unseen Poisson points are deleted.
+\end{proof}
+
+The probability results proved here are inputs about conditional mark
+families. Their use for divisor-box volumes requires the separate positive
+complete-cell kernel, geometric cover, and terminal-count arguments.
+In particular no pointwise identification of an actual divisor union
+with a fractional survival probability is used in any proof in this section.

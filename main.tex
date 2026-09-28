@@ -1,0 +1,89 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.05in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype,enumitem}
+\usepackage{booktabs,longtable,array,graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Generalized multiplication tables in every fixed dimension},
+  pdfauthor={Tseng}
+}
+\allowdisplaybreaks
+\emergencystretch=2em
+\raggedbottom
+\setcounter{tocdepth}{1}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\EE}{\mathbb E}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+\newcommand{\R}{\mathbb R}
+\newcommand{\calD}{\mathcal D}
+\newcommand{\calH}{\mathcal H}
+\newcommand{\gap}{\operatorname{gap}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\pos}[1]{(#1)_+}
+\newcommand{\ind}{\mathbf 1}
+\newcommand{\asympH}{\asymp_H}
+\DeclareMathOperator{\Pois}{Pois}
+\DeclareMathOperator{\Var}{Var}
+\title{Generalized multiplication tables in every fixed dimension}
+\author{Tseng}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+For each fixed integer $k\geq6$, we determine, up to constants depending
+only on $k$, the number of distinct products in an arbitrary rectangular
+$(k+1)$-dimensional multiplication table. We also obtain a uniform
+estimate for the number of integers with a product of divisors in $k$
+prescribed dyadic intervals, throughout its natural comparison range.
+Together with the earlier results in lower dimensions, this settles the
+remaining fixed-dimensional rectangular cases. A single structural
+profile describes the answer. An ordered saddle determines its exponential
+rate and equality blocks; count windows, fractional conditional
+persistence, and one ordinary terminal bridge determine the remaining
+factors. The lower bound realizes these constraints in a common family
+of divisor decompositions, while a causal covering argument proves that
+the same costs are necessary. Arithmetic stability extends the comparison
+to all relative scales, including bounded and zero original block lengths.
+\end{abstract}
+\tableofcontents
+\input{sections/introduction.tex}
+\input{sections/arithmetic_setup.tex}
+\input{sections/profile.tex}
+\input{sections/examples.tex}
+\input{sections/geometry.tex}
+\input{sections/persistence.tex}
+\input{sections/bridges.tex}
+\input{sections/lower.tex}
+\input{sections/ordered_sums.tex}
+\input{sections/causal_upper.tex}
+\input{sections/positive_core.tex}
+\input{sections/assembly.tex}
+\appendix
+\input{appendices/geometry_details.tex}
+\input{appendices/probability_details.tex}
+\input{appendices/examples_details.tex}
+\input{appendices/endpoint_details.tex}
+\input{appendices/lower_details.tex}
+\input{appendices/history_details.tex}
+\input{appendices/arithmetic_details.tex}
+\input{appendices/upper_details.tex}
+\input{appendices/dimension_six.tex}
+\bibliographystyle{plain}
+\bibliography{references/references}
+\section*{AI Disclosure}
+The author selected the problem and managed the project; the mathematical derivations were carried out by artificial intelligence.
+\end{document}

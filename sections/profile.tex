@@ -1,0 +1,217 @@
+% Input chapter: deterministic definition and lift removal.
+\section{The structural profile}
+\label{profile:definition}
+
+Throughout, $k\geq6$ is fixed, $H=k+1$, and $V_i=\sum_{g\leq i}L_g$,
+with $V_0=0$. We first define a numerical function on $L_i\geq1$.
+The final definition will cover $L_i\geq0$. The optimization dimension
+and every finite enumeration below depend only on $k$.
+
+The four factors in the profile describe four constraints on the same
+family of decompositions: exponential tilting, proper exit counts,
+conditional binary survival, and the terminal ordinary bridge. We define
+them in this order. Although the final expression is a product, the
+underlying events share counts and environments; their joint realization
+and their simultaneous necessity are proved separately below.
+
+\subsection{The saddle and the original named groups}
+On the closed ordered simplex $1\geq s_1\geq\cdots\geq s_k\geq0$ put
+\begin{align}
+ G_k&=s_k\log2,&
+ G_i&=s_i\log(1+\exp(G_{i+1}/s_i)),\\
+ Z_i&=\exp G_i,&
+ J(L;s)&=\sum_i L_i+\sum_j s_jV_j-\sum_i L_iZ_i.
+ \label{profile:saddle}
+\end{align}
+At zero products use the continuous perspective extension. Write $s=s(L)$ for the
+unique maximizer, whose existence and uniqueness are proved in
+Section~\ref{paper:geometry}. The geometric theorem supplies
+\begin{equation}
+ \tfrac12<s_k\leq s_1<1-\epsilon_H,
+ \qquad \epsilon_H=\frac{2\log2-1}{2H(\log H)^2}.
+ \label{profile:compact}
+\end{equation}
+In particular $1\leq Z_i\leq H$. A maximal consecutive group
+$[a,b]$ of equal products is called an owner; write its product as
+$\sigma$. A proper owner has $b<k$ and
+$z=\exp(G_{b+1}/\sigma)$; the terminal owner has $b=k$ and $z=1$.
+The exterior names of this owner are $a,\ldots,b$. Its native groups
+are the original groups $i\in[a,b]$, of ranks $r_i=b-i+1$.
+Original groups $g<a$ are its old groups, of rank $b-a+1$.
+Groups are never combined into a new random clock.
+
+For $l<k$ define
+\[
+ \beta_l=\frac{\exp(G_{l+1}/s_l)}{1+\exp(G_{l+1}/s_l)}.
+\]
+The reference intensity per eligible exterior name is
+\begin{equation}
+ \kappa_g=
+ \begin{cases}
+ Z_g\displaystyle\prod_{l=g}^{a-1}\beta_l/(b-a+1+z),&g<a,\\
+ (b-g+1+z)^{\sigma-1},&a\leq g\leq b.
+ \end{cases}
+ \label{profile:old-coefficients}
+\end{equation}
+Each old group retains the intensity acquired along its original route
+into this owner. Averaging these coefficients would change the
+constraints at the individual deadlines. Set
+\[
+ E_q(z)=(q+z)\log(q+z)-z\log z,\qquad
+ g_g(q)=q-\kappa_gE_q(z).
+\]
+
+\subsection{An explicit enumeration of the two endpoint scores}
+For every native group $i$ enumerate the edges $r_i\to q$, where
+$0\leq q<r_i$ for a proper owner, and $1\leq q<r_i$ for the terminal
+owner. The latter exclusion removes the degenerate ordinary edge.
+The retained exterior names are $B=\{b-q+1,\ldots,b\}$; $B$ is empty
+when $q=0$. The compound child is always retained.
+
+Here is the complete named outside-context enumeration for that edge.
+For each name $c\in\{a,\ldots,i-1\}$ choose
+$\tau_c\in\{V_0,\ldots,V_c\}$ independently. For each $c\in B$ choose
+$\tau_c\in\{V_i,\ldots,V_c\}$ independently. In the left completion
+set $\tau_c=V_{i-1}$ for all $i\leq c\leq b-q$; in the right completion
+set those same cuts to $V_i$. All other cuts are identical in the two
+completions. This gives a finite set of lawful pairs $(v^-,v^+)$.
+Every cut respects its original name's deadline; the original child
+is never split. No arbitrary old list is included in this enumeration.
+
+For either completion $v$ and original group $1\leq g\leq b$, let
+\[
+ A_{v,g}=\{c\in\{a,\ldots,b\}:\tau_c\geq V_g\},
+ \qquad q_{v,g}=|A_{v,g}|,
+ \qquad t_v=\max_{a\leq c\leq b}\tau_c.
+\]
+In an old group the shallowest eligible name is $a$, and in native
+group $g$ it is $g$. Call $g$ good when $0<q_{v,g}<r_g$ and this
+shallowest eligible name is absent from $A_{v,g}$. Define
+\begin{equation}
+ \overline C_v=\sum_{g\leq b}L_gg_g(q_{v,g}),\qquad
+ S_{\mathrm{good}}(v)=\sum_{g\text{ good}}\sqrt{L_g}.
+ \label{profile:reference}
+\end{equation}
+The endpoint geometry gives $\overline C_v\geq0$ at the physical
+optimizer. Both the old coefficients and the old lengths are included.
+
+For a proper owner put $T=\sum_{a\leq i\leq b}L_i$,
+$d=\sigma/s_{b+1}-1$, and
+\[
+ \widehat R=1+\frac{\sqrt{1+T}}{1+d\sqrt{1+T}}.
+\]
+For the terminal owner set $\widehat R=0$. Define
+\begin{equation}
+ S_v=\begin{cases}
+ 1+\widehat R+\overline C_v,&t_v\leq V_b/2,\\
+ 1+\overline C_v+S_{\mathrm{good}}(v),&t_v>V_b/2,
+ \end{cases}
+ \qquad X_e=\min_v S_{v^-},\quad Y_e=\min_v S_{v^+}.
+ \label{profile:scores}
+\end{equation}
+The early score includes the uncertainty of a proper exit-count window.
+At the late endpoint the incoming contribution cancels from the intrinsic
+cost; the additional square-root terms instead measure the fluctuation
+needed to remove an eligible shallow name while retaining deeper names.
+The two minima are taken separately over the same finite set of paired
+lawful contexts. They need not form the endpoints of a single realized
+bridge. In the lower bound, the actual type increment $\Delta$ is kept
+fixed and the legal pair is
+$x=\max(a_*X_e,a_*Y_e-\Delta)$, $y=x+\Delta$; see
+\eqref{lower:local-pair}.
+
+\subsection{The independent scalar and all canonical edge factors}
+Let $E,W$ be independent stationary standard Ornstein--Uhlenbeck
+processes, with covariance $e^{-|u-v|/2}$. For $0<\eta,\rho<1$ set
+\begin{align}
+ F_{\eta,\rho}(t)&=
+ \mathbb E_E\Big[\mathbb P_W\{
+ \sqrt\rho E_u+\sqrt{1-\rho}W_u\geq0\ (0\leq u\leq t)
+ \mid E\}^{\eta}\Big],\\
+ \chi(\eta,\rho)&=\lim_{t\to\infty}-t^{-1}\log F_{\eta,\rho}(t).
+ \label{profile:chi}
+\end{align}
+The scalar theorem proves existence, local Lipschitz continuity, and
+$\eta/2\leq\chi\leq1/2$. It is independent of $K_k$ and of all
+multirank history spaces. It also gives certified computation: if
+$b(t)=-\log F_{\eta,\rho}(t)$ and
+$p_g=(1+e^{-g/2})/(1-e^{-g/2})$, then
+\begin{equation}
+ \frac{b(t)}{p_g(t+g)}\leq\chi(\eta,\rho)\leq\frac{b(t)}t.
+ \label{profile:chi-bracket}
+\end{equation}
+The scalar finite Gaussian quadrature and crossing error bounds make
+each endpoint effective. Taking $g=2\log t$ gives vanishing width.
+
+For $e=(i,r,q)$ put $a=\log(r+z)$, $b_e=\log(q+z)$,
+$p=(q+z)/(r+z)$, and
+\begin{equation}
+ m=a-b_ep,\qquad
+ \rho_e=\frac{m^2}{m^2+b_e^2p(1-p)},\qquad
+ T_e=\frac{(1+X_e)(1+Y_e)}{1+(r+z)^\sigma L_i},\qquad
+ P_e=\min(1,T_e)^{2\chi(\sigma,\rho_e)}.
+ \label{profile:edge-factor}
+\end{equation}
+These laws are nondegenerate. In particular a proper zero-output edge
+has $z>1$, whereas the terminal zero-output edge was excluded. Every
+canonical edge is used, including edges with a bounded positive factor.
+There is no weak-edge or rare-edge threshold in this definition.
+
+\subsection{An explicit ordinary suffix}
+Here $h_i=k-i+2$ on the complete original chain. If the selected suffix
+starts at group $j$, then $V_{\rm pre}=V_{j-1}$ includes all preceding
+owners as well as the earlier terminal groups.
+For $2\leq h\leq H$ define
+\[
+ \alpha_h=\frac{\log((h-1)/\log h)}{\log h},\quad
+ c_w=\frac1{4H^2},\quad
+ \tau=\min\left\{\frac14,\frac{c_w}{2H(\log H)^2},
+ \frac14\min_{2\leq h<H}(\alpha_{h+1}-\alpha_h)\right\}.
+\]
+The thresholds $\alpha_h$ are strictly increasing. If the terminal
+product $\sigma$ lies in $[\alpha_{h_i}-\tau,\alpha_{h_i}+\tau]$ for
+a terminal native group, begin the suffix at that group; at most one
+qualifies. Otherwise begin at the first terminal native group with
+$e_i=h_i^\sigma\log h_i-(h_i-1)>0$. The KKT theorem ensures existence.
+Let $U$ be the suffix length, $M$ its largest original block, and $A,B$
+the total lengths before and after that block within the suffix. Break
+largest-block ties at the earliest index. Put
+\begin{equation}
+ D=\sum_{i\text{ in suffix}}e_iL_i,\qquad
+ \mathcal B(L)=\frac1{\sqrt{1+U}}
+       \min\left\{1,\frac{(1+B)(1+D+A)}{1+M}\right\}.
+ \label{profile:ordinary}
+\end{equation}
+Here $D\geq0$, and the suffix theorem gives $D\geq c_kV_{\rm pre}$
+and $U\geq c_kV_k$. This is the sole ordinary root factor.
+
+The positive-length raw expression is
+\begin{equation}
+ \Psi_k(L)=e^{-J(L;s(L))}\mathcal B(L)
+ \prod_{j\text{ proper}}(1+d_j\sqrt{1+T_j})^{-\sigma_j}
+ \prod_{e\text{ canonical}}P_e.
+ \label{profile:raw}
+\end{equation}
+All lengths, reference costs and products in this expression refer to
+one and the same physical parameter vector.
+\input{figures/profile_structure.tex}
+
+\subsection{The profile on the full parameter domain}
+For $\ell_i\geq\log3$ put $L_i=\ell_i-\log3$, $A_k=2(k+1)^3$,
+and define
+\begin{equation}
+ \Phi_k(\ell)=\inf_{\lambda\geq1}
+     e^{A_k\lambda}\Psi_k\big((\max(L_i,\lambda))_{i=1}^k\big).
+ \label{profile:final}
+\end{equation}
+This adds one scalar optimization. It does not use an unknown source
+threshold, a divisor volume, or an unevaluated multirank probability.
+The exponent $\chi$ is the independently specified universal scalar.
+
+
+Lemma~\ref{profile:finite-search} gives an explicit finite interval for
+this last infimum and proves that $0<\Phi_k(\ell)<\infty$.
+Every candidate length vector uses its own maximizer, exact equality
+blocks, endpoint contexts and ordinary suffix. The finite interval does
+not assert continuity across changes of equality blocks or attainment of
+the infimum; neither is needed in the proof of the arithmetic estimates.

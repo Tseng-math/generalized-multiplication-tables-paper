@@ -1,0 +1,922 @@
+\section{Geometric covers and conditional estimates for the upper bound}
+\label{app:upper-details}
+
+This appendix proves the local assertions used in
+Proposition~\ref{upper:established-inputs} and the ordinary root estimate
+of Proposition~\ref{upper:root-contract}. All clocks and all eligibility
+sets in these arguments retain their original block labels.
+
+\subsection{Rectangles and deterministic sums at stopping locations}
+\label{updetail:rectangles}
+Fix a size-truncated squarefree tuple as in Lemma~\ref{artrunc:lemma}
+and a genuine conditional fiber of its label law. For every exterior
+name $c$, let $E_c$ be its original deadline. In physical logarithmic
+coordinates, a lawful cut satisfies $0\leq\tau_c\leq E_c$.
+The class $Q_\tau$ reveals name $c$ at points to the right of $\tau_c$;
+all unrevealed eligible names remain in the compound category. Whole
+batches at an endpoint are treated on the prescribed side. Let $\pi$
+be the original categorical product law on this fiber and set
+\[
+ B=\sum_cE_c,\qquad
+ \Xi_\tau=\sum_c\tau_c-B-\log\pi(Q_\tau),\qquad
+ Z(t)=1+\sum_{x\leq t}e^{x-t}.
+\]
+The sum uses all original prefix occurrences, including those that may
+not enter a selected descendant list. Revealed factors translate the
+remaining boxes. The unresolved displacement in coordinate $c$ is at
+most $C_He^{\tau_c}Z(\tau_c)$. Bounding the remaining child coordinates
+by their original size rectangles therefore gives
+\begin{equation}
+ \operatorname{Vol}_{\rm norm}(Q_\tau)
+ \leq C_H\pi(Q_\tau)e^{\Xi_\tau}\prod_c Z(\tau_c).
+ \label{updetail:rectangle}
+\end{equation}
+In an ancestor atom $\alpha$, this formula retains its absolute
+probability $\pi(\alpha)$ and its inherited geometric multiplier.
+Conditioning divides by $\pi(\alpha)$ only temporarily; reinsertion
+restores it.
+
+The cuts used for moment estimates are fixed before drawing the
+occurrence process. To handle first failures, partition a deterministic
+physical interval $[a,b]$ into cells of length at most $\Delta$, with a
+bounded number of endpoints per unit interval. If $v$ is the right
+endpoint of a cell and $t$ belongs to that cell, positivity gives
+\begin{equation}
+ Z(t)\leq e^\Delta Z(v).
+ \label{updetail:mesh-shot}
+\end{equation}
+Indeed every term present at $t$ is also present at $v$, and its kernel
+changes by $e^{v-t}$. Suppose first-failure atoms form a lawful antichain
+and each has capacity at most
+\[
+ C\pi(q)e^{-h}\omega(t)Z(t)^d\prod_c Z(\tau_c),
+ \qquad d\leq H,
+\]
+where $\omega(t)=(1+\operatorname{dist}(t,\{a,b\}))^{-A}$, or its
+one-ended version, and the outside cuts $\tau_c$ are deterministic.
+Within one mesh cell $\omega(t)\leq C_{\Delta,A}\omega(v)$ and the
+sum of the atom probabilities is at most one. Thus the total failure
+capacity is bounded by $Ce^{-h}S$, with
+\[
+ S=\sum_v\omega(v)Z(v)^d\prod_c Z(\tau_c).
+\]
+There is no occupancy multiplier in this sum: the stopped atom
+probabilities have already been summed.
+
+For a Poisson process with bounded intensity per unit interval,
+$Z(v)$ has all fixed moments uniformly in deterministic $v$. This
+follows either by its Laplace functional or by splitting into unit
+intervals and using the exponentially decreasing coefficients.
+For sufficiently large fixed $A$, Minkowski's inequality and
+$\sum_v\omega(v)<\infty$ give $\mathbb E S^p\leq C_{H,p}$ for
+each required fixed $p$. Finite sums over the endpoint contexts have
+the same property. A cut within bounded distance of an endpoint is
+covered by finitely many extra mesh cells. An incoming selected-list
+sum is bounded pointwise by the original-list sum at the same
+deterministic threshold.
+
+The probability tests themselves may be made on the complete
+deterministic mesh, including empty cells. The risk has one-sided
+jumps and bounded linear speed; survival on that mesh implies the
+corresponding continuous necessary wall after a fixed reserve
+increase, using the appropriate side for the jump convention. The
+rising wall has bounded derivative on the fixed interval, so the
+same conclusion holds for its first-hit strip. Consequently the
+fixed-time bank estimates below are only applied at deterministic
+mesh locations.
+
+Under insertion of $q$ fixed original occurrences, every deterministic
+$Z(v)$ increases by at most $q$. Keeping the mesh and contexts fixed
+therefore gives
+\begin{equation}
+ S(G+\text{insertions})\leq C_{H,q}S(G).
+ \label{updetail:shot-insertions}
+\end{equation}
+The categorical log-likelihood changes at each fixed test by at most
+$C_Hq$, which is paid by the reserve. A Poisson--Mecke expansion of a
+fixed shot monomial uses finitely many partitions of its occurrences;
+apply this insertion bound in each term before summing the deterministic
+locations. This proves the fixed-moment and insertion assertions needed
+for all the actual stopping covers. In particular it does not estimate
+a shot directly at an unrestricted data-dependent location.
+
+\subsection{Positive prime expansion with the original root}
+\label{updetail:prime-expansion}
+Let $\mathcal P_i$ be the original prime ranges, including $2,3$ in
+$\mathcal P_1$, and put
+\[
+ H_i=\sum_{p\in\mathcal P_i}\frac1p,\quad
+ B_{\rm geo}=\sum_iV_i=\sum_i(h_i-1)L_i.
+\]
+Take fixed positive $Z_i,s_i$, put $s=s_1>0$, and define
+\[
+ J=\sum_iL_i+\sum_i s_iV_i-\sum_iZ_iL_i,
+ \qquad
+ X(G)=\frac{\sum_iN_i(G)\log Z_i-\sum_i s_iV_i}{s}.
+\]
+Let $\mathbb P_Z$ give independent occurrence counts
+$\operatorname{Pois}(Z_i/p)$ at each $p\in\mathcal P_i$.
+For every nonnegative symmetric functional $A$ on occurrence lists,
+Tonelli and the Poisson exponential formula give the exact identity
+\begin{align}
+ &e^{-\sum_iL_i}
+ \sum_{\mathbf n\geq0}\prod_i\frac1{n_i!}
+ \sum_{p_{i,a}\in\mathcal P_i}
+ A(G)\prod_{i,a}\frac1{p_{i,a}}
+ \notag\\[-2pt]
+ &\hspace{25mm}=
+ e^{-J+\sum_iZ_i(H_i-L_i)}
+       \mathbb E_Z[e^{-sX(G)}A(G)].
+ \label{updetail:exact-expansion}
+\end{align}
+To verify the exponent, the unnormalized list sum equals
+$e^{\sum_iZ_iH_i}\mathbb E_Z[A\prod_i Z_i^{-N_i}]$, and
+$\prod_i Z_i^{-N_i}=e^{-sX-\sum_i s_iV_i}$.
+
+For the saddle, $\log Z_i=G_i$ and $X$ is exactly the uncolored
+routing root. At node $j$, multiplying minus the local log-probability
+by $s_j$ gives $G_j$ when the occurrence exits and $G_j-G_{j+1}$ when
+it enters the child. Along each route these contributions telescope
+to $G_i$ at its original block. Subtracting the physical budgets
+proves the identity without a stationarity assumption or resampling
+any child list.
+
+Define $I_0(G)=e^{-B_{\rm geo}}L^{(k+1)}(\mathbf a(G))$ on the
+squarefree size-truncated support, and $I_0=0$ elsewhere. Each squarefree
+selection occurs $n_i!$ times among ordered lists, so
+Lemma~\ref{artrunc:lemma} and \eqref{updetail:exact-expansion} imply
+\begin{equation}
+ K_k(\ell)\leq
+ 2e^{-J+\sum_iZ_i(H_i-L_i)}
+       \mathbb E_Z[e^{-sX}I_0(G)].
+ \label{updetail:arithmetic-upper}
+\end{equation}
+The geometric caps hold first on that actual support. If they give
+$I_0\leq C C_l(G)$ there, with each $C_l$ nonnegative on every list,
+then $I_0\leq C\min_l C_l$ on all lists, because of the zero
+extension. Thus unrestricted repeated lists require no artificial
+size-truncation assertion. Their numerical cap minimum is evaluated
+under the same atomic Poisson law and the same root.
+
+The uniform prime harmonic estimate gives $|H_i-L_i|\leq C_H$;
+the discrepancy in \eqref{updetail:arithmetic-upper} is bounded since
+$Z_i\leq H$. Deleting a fixed initial prime set pays its finite Euler
+product and changes each $H_i$ by only a fixed amount. For later cell
+completion, if $\mu_c^*\geq\mu_c$ and
+$\sum_c(\mu_c^*-\mu_c)\leq C_H$, the product Poisson density ratio is
+at most $e^{C_H}$. It is applied once to the whole nonnegative
+integrand, retaining its minimum, powers and root. A change of the
+physical cell budget is compensated in the external root translate.
+
+\subsection{Separation of the rank intervals of rare comparisons}
+\label{updetail:rank-separation}
+In one maximal owner, write $\varepsilon=1-\sigma>0$ and
+\[
+ \kappa_r=(r+z)^{-\varepsilon},\qquad
+ g_r(a)=a-\kappa_rE_a(z).
+\]
+The transported old coefficients are retained individually. They are
+no larger than the natural coefficient at the first native capacity.
+Every lawful complete reference history has nonnegative cost by the
+KKT and reference-compression results of
+Appendix~\ref{app:endpoint-details}.
+
+Choose a fixed sufficiently small $\epsilon_0(H)>0$. An edge $r\to q$
+is weak when $|g_r(r)-g_r(q)|\leq\epsilon_0$. If $m_-,m_+$ are the
+two minimum reference costs, their common increment is
+$m_+-m_-=L_i\nu_i$. Both are nonnegative and the endpoint scores
+dominate $1+m_-$ and $1+m_+$. Hence
+\[
+ |\nu_i|L_i\leq m_-+m_+\leq X_i+Y_i.
+\]
+Since the natural mean is comparable to $L_i$, sufficiently small
+$(1+X_i)(1+Y_i)/(1+\mu_i)$ implies this fixed weakness condition.
+
+We record the three strict comparisons needed below. The normalized
+secant estimate of Appendix~\ref{app:endpoint-details} is
+\[
+ \beta_b(y)=\frac{\log((y\log y-b\log b)/(y-b))}{\log y},
+ \qquad \beta_b'(y)\leq-\frac1{24H^2}.
+\]
+For a weak edge $r\to q$ and an earlier capacity $h>r$, put
+$T_a=(a+z)^{-\varepsilon}(E_a-E_q)/(a-q)$. Weakness gives
+$|T_r-1|\leq\epsilon_0/(r-q)$, whence
+$\beta_{q+z}(r+z)-\varepsilon\leq2\epsilon_0/\log2$.
+If $\epsilon_0\leq\log2/(192H^2)$, then
+$\log T_h\leq-\log2/(48H^2)$. At the other endpoint,
+\[
+ g_h(r)-g_h(q)
+ =(r-q)\{1-(\kappa_h/\kappa_r)T_r\},
+ \quad \kappa_h/\kappa_r\leq e^{-\varepsilon_{\min}/H}.
+\]
+Taking also
+$\epsilon_0\leq(e^{\varepsilon_{\min}/H}-1)/2$ gives a positive
+lower bound at both $r$ and $h$. Concavity then proves
+\begin{equation}
+ g_h(a)-g_h(q)\geq\delta_H>0\qquad(r\leq a\leq h).
+ \label{updetail:earlier-rank}
+\end{equation}
+Reducing the coefficient increases this difference, so it also holds
+in the relevant old groups. If $q\geq1$ and $0\leq a<q$, strict
+concavity $-g_r''\geq H^{-2}$ gives
+\[
+ g_r(r)-g_r(a)\geq-H\epsilon_0+
+                \frac{(q-a)(r-a)}{2H^2}
+ \geq\frac3{4H^2}
+\]
+after $\epsilon_0\leq1/(4H^3)$. Finally the forward secant comparison
+gives, for $q<h<r$,
+\begin{equation}
+ g_h(q)-g_h(h)\geq\gamma_H>0.
+ \label{updetail:intervening-rank}
+\end{equation}
+All thresholds are chosen before any lengths.
+
+Suppose two weak edges have $r_1>r_2$ but $q_1<r_2$. Output ordering
+gives $q_2<q_1$, so $q_1\geq1$. In any left completion for the second
+edge, all earlier retained ranks are at least $r_2$. Lower every such
+rank to $q_2$, keeping the whole later history. This is a legal
+complete history. Nonnegativity and \eqref{updetail:earlier-rank}
+therefore give $X_2\geq1+\delta_HL_1$.
+
+For a right completion of the first edge, fix the prefix through its
+block and the suffix after the second block. Between their right
+endpoints $b_1,b_2$, all capacities exceed $q_1$, so none of the
+remaining names expires there. The reference cost, as a function of
+their ordered cut times, is a constant plus
+\[
+ \sum_{a=k_{\rm end}+1}^{q_1}
+ \int_{b_1}^{\tau_a}\{g_t(a)-g_t(a-1)\}\,dt.
+\]
+Each summand is concave because $\kappa(t)$ is nondecreasing. Its
+minimum on the ordered simplex occurs at a vertex, with all cuts
+at $b_1$ or $b_2$. Thus one constant rank $a\leq q_1$ can be used
+on that interval without increasing the cost. If $a<q_1$, lower the
+rank on the first block to $a$ and use the strict concavity comparison
+above: its original cost was at least $c_HL_1$. If $a=q_1$, replace
+the intervening ranks by their full eligible capacities and use
+\eqref{updetail:intervening-rank}: the original cost was at least
+$c_HL_2$. Both comparisons preserve the complete outside history.
+Consequently
+\[
+ Y_1\geq1+c_H\min(L_1,L_2),\quad
+ \overline T_1\geq c_1\frac{1+\min(L_1,L_2)}{1+L_1},\quad
+ \overline T_2\geq c_2\frac{1+L_1}{1+L_2}.
+\]
+If $L_2\geq L_1$ the first ratio is bounded below; otherwise their
+product is. Hence two sufficiently rare edges must have $q_1\geq r_2$.
+Applying this to every pair proves disjointness of the rank intervals
+$(q_i,r_i]$. The argument also applies to terminal nonzero edges:
+$z=1$, but their secant bases are at least two and their marks remain
+nondegenerate. The terminal zero-output edge remains ordinary.
+
+\subsection{The two scales of a proper zero-output comparison}
+\label{updetail:zero-scales}
+Consider a proper zero-output edge with sufficiently small persistence ratio $\overline T$. Let $M$ be the selected native block, $A,B$ the preceding and following
+native lengths, and $V_{\rm old}$ the complete old length. Put
+\[
+ P=V_{\rm old}+A,\qquad T=P+M+B,\qquad
+ R_{\rm exit}=\max\{R_0,\min(\sqrt{1+A+M+B},d^{-1})\}.
+\]
+Full input and zero output force the two completion times to be
+$P$ and $P+M$ in every outside context. The clipped-prefix estimate
+from Appendix~\ref{app:endpoint-details} gives
+$\overline C_v\geq c_H\min(t_v,T-t_v)$.
+If the block fails to cross $T/2$ strictly, one of its endpoint costs
+is at least $c_HM$ and the persistence ratio is bounded below.
+Thus sufficiently small ratio forces $P<T/2<P+M$.
+
+For upper bounds on the minima, retain every earlier name to its own
+deadline and remove the current names at the selected endpoint. Both
+contexts have no good groups. Complete owner balance gives
+\[
+ \overline C^-_{\rm full}
+ =\sum_{\rm old}L_gg_g(r_{\rm top})+
+   \sum_{\rm native\ before}L_gg_g(r_g),\qquad
+ \overline C^+_{\rm full}
+ =-\sum_{\rm native\ after}L_gg_g(r_g).
+\]
+Their costs are nonnegative and at most $C_HP$ and $C_HB$,
+respectively. Together with the clipped lower bound and the early/late
+score definition, this proves
+\begin{equation}
+ X\asymp_H1+V_{\rm old}+A+R_{\rm exit},\qquad
+ Y\asymp_H1+B.
+ \label{updetail:intrinsic-zero-pair}
+\end{equation}
+In particular rarity implies $V_{\rm old}+A+B\leq C_H\tau M$;
+for a small fixed $\tau$, $M$ dominates the entire old and native
+length. Uniformly even as $d\downarrow0$,
+\[
+ R_{\rm exit}\asymp_H
+ \varrho:=\max\left\{\varrho_0,
+ \frac{c_0\sqrt{1+M}}{1+d\sqrt{1+M}}\right\}.
+\]
+Conversely a sufficiently small
+$(1+B)(1+V_{\rm old}+A+\varrho)/(1+M)$ forces that dominance and
+midpoint crossing, so the scales characterize the same rare region.
+For the original mark
+$W=\log(r+z)-\log z\,1_{\rm child}$, complete balance also gives
+\[
+ eM=\sum_{\rm old}L_gg_g(r_{\rm top})+
+     \sum_{\rm native\ne i}L_gg_g(r_g),
+ \qquad e=(r+z)^\sigma\mathbb EW-r,
+\]
+and therefore $|e|M\leq C_H(V_{\rm old}+A+B)$.
+The two reserves in \eqref{updetail:intrinsic-zero-pair} remain
+separate when applying a one-end or two-end probability estimate.
+
+\subsection{Necessary one-end tests on original native intervals}
+\label{updetail:one-end-banks}
+Consider a weak edge $r\to q$ with $q\geq1$ on $[a,b]$, of length
+$L$, in the rare region $\overline T<\tau$, where $\tau>0$ is
+sufficiently small in terms of $H$. Write $S=r+z$, $B=q+z$, $\nu=g_r(r)-g_r(q)$, and let
+$\mathcal J$ consist of the later native groups with $q<h<r$.
+Their total length is $M_{\mathcal J}$.
+We first prove
+\begin{equation}
+ 1+X\geq c_H\sqrt{1+L},\quad
+ 1+Y\leq C_H\tau\sqrt{1+L},\quad M_{\mathcal J}\leq C_HY.
+ \label{updetail:one-end-scales}
+\end{equation}
+At a left completion the current block retains a proper deepest
+subset. If the completion is late, this is a good group and contributes
+$\sqrt L$; if it is early, its last positive time is at least $b$,
+and clipped-prefix charging gives a cost at least $c_HL$.
+This proves the first inequality, and rarity gives the second.
+For any right completion, compress the cuts between $b$ and the end
+of $\mathcal J$ to the two endpoints, by the same concavity argument
+as in Section~\ref{updetail:rank-separation}. The compressed rank is
+some $a'\leq q$. If $a'<q$, lowering the current block costs at least
+$\delta_HL$; if $a'=q$, filling the intermediate groups costs at least
+$\gamma_HM_{\mathcal J}$. Complete reference nonnegativity thus gives
+$Y\geq\min(\delta_HL,\gamma_HM_{\mathcal J})$. For sufficiently small
+$\tau$, rarity excludes the first alternative, proving the last claim.
+These arguments also hold for $z=1$ and positive $q$.
+
+The endpoint reference minima differ by $\nu L$, so
+$|\nu|L\leq X+Y$. Choose the deterministic interval length
+\begin{equation}
+ \ell=c_{\rm bank}\frac{L^2}{(1+X)^2}.
+ \label{updetail:effective-length}
+\end{equation}
+By choosing $c_{\rm bank}$ sufficiently small and then $\tau$
+sufficiently small, \eqref{updetail:one-end-scales} and rarity imply
+\[
+ \ell_{\rm scalar}\leq\ell\leq L/16,
+ \qquad |\nu|\sqrt\ell\leq C_H,
+ \qquad
+ \frac{1+Y}{\sqrt\ell}\asymp_H
+ \overline T:=\frac{(1+X)(1+Y)}{1+S^\sigma L}.
+\]
+Indeed rarity gives $1+X\leq C_H\tau L/(1+Y)$ and hence
+$\ell\geq c_H\tau^{-2}$. Neither $\ell$ nor its location is selected
+from the sampled word.
+
+Group the deepest $q$ names and the true compound child into the
+category $B$, keeping the other names separate. Reveal the complete
+coarse word in $\mathcal J$, and put
+\[
+ H_{\mathcal J}=\sum_{q<h<r}
+ \{N_h\log(h+z)-K_{B,h}\log B-(h-q)L_h\}.
+\]
+Read the current interval backwards and set
+\[
+ W=\log S-\log B\,1_B,\qquad
+ C(t)=H_{\mathcal J}+\sum_{x<t}W_x-(r-q)t.
+\]
+The original rate is $S^\sigma$ and its mean drift is $-\nu$.
+Earlier exterior coordinates keep their full original sizes;
+the intermediate ones keep their shorter deadlines; the $B$
+coordinates are projected into their original full rectangle.
+The unresolved exterior budget is the full budget minus
+$(r-q)t+\sum_{\mathcal J}(h-q)L_h$, while the observed negative
+log-probability is the mark sum above. Formula
+\eqref{updetail:rectangle} therefore gives the actual partial capacity
+$C_H\pi_t e^{C(t)}\operatorname{Shot}_t$.
+Stop at the first mesh failure of
+$C(t)\geq-h-A\log(1+t)$, including $t=0$.
+Section~\ref{updetail:rectangles} bounds the union of failures by
+$CS e^{-h}$ with all required moments.
+
+Because $H_{\mathcal J}\leq(\log H)N_{\mathcal J}$ pointwise,
+every survivor satisfies the necessary test
+\begin{equation}
+ \sum_{x<t}W_x-(r-q)t
+ \geq-h-C_HN_{\mathcal J}-A\log(1+t),\qquad 0\leq t\leq\ell.
+ \label{updetail:necessary-one-end}
+\end{equation}
+First make this implication with the entire intermediate word fixed,
+then release that word with its original mass. The right side now
+reads only $N_{\mathcal J}$; any future private test remains in the
+joint surviving-word operator.
+
+Let $Q_h$ be the conditional private probability of
+\eqref{updetail:necessary-one-end}. The signed logarithmic-wall
+one-end estimate, on the original clock with bounded scaled drift,
+gives
+\[
+ \mathbb E_{G_i}Q_h^\sigma
+ \leq C_H\min\left\{1,
+ \left(\frac{1+h+C_HN_{\mathcal J}}{\sqrt\ell}\right)^{2\chi(\sigma,\rho)}
+ \right\},\qquad
+ \rho=\frac{(\mathbb EW)^2}{\mathbb E W^2}.
+\]
+The intermediate count is independent of this original native clock,
+with mean at most $C_HM_{\mathcal J}\leq C_HY$. Its fixed moments
+are at most $C_p(1+Y)^p$. Integrating over all its counts proves
+\begin{equation}
+ \mathbb E Q_h^\sigma\leq C_H(1+h)^K\overline T^{2\chi(\sigma,\rho)}.
+ \label{updetail:one-end-moment}
+\end{equation}
+To compare with the exact-type parameter, write $a_0=\log S$,
+$b_0=\log B$, $c=r-q$, $\lambda=S^\sigma$, $\mu=\lambda L$,
+and $p=B/S$. Its centered type parameter and correlation are
+\[
+ \bar p=(a_0-c/\lambda)/b_0,
+ \qquad
+ \bar\rho=\frac{(cL/(\mu+1))^2}
+ {(cL/(\mu+1))^2+b_0^2\bar p(1-\bar p)}.
+\]
+The identity $\bar p-p=-\nu/(b_0\lambda)$ gives
+$|\bar\rho-\rho|\leq C_H(|\nu|+1/L)$.
+As $\overline T\geq c_H/\sqrt\ell$,
+$|\log\overline T|\leq C_H+\tfrac12\log\ell$.
+The scaled-drift bound and $\ell\leq L/16$ bound the product of
+this logarithm and the correlation error. Compact local Lipschitz
+continuity of $\chi$ therefore permits either parameter in
+\eqref{updetail:one-end-moment} at fixed comparison cost.
+This includes every count and all $n+1$ conditional spacings.
+Fixed insertions change the reserve by at most a constant per point;
+the Mecke argument of Section~\ref{updetail:rectangles} attaches
+the required shot powers at the same exponent $\sigma$.
+
+For a proper $r\to0$ edge, assume explicitly
+$1+X\geq c_X\sqrt{1+L}$. The child weight satisfies
+$z\geq2^{u_{\min}}>1$, so the two marks remain nondegenerate.
+Here $\mathcal J$ consists of all later native groups. At a right
+completion, postpone the current cuts to their individual deadlines.
+The complete earlier history is unchanged, and the difference of
+reference costs is
+$\sum_{0<h<r}[-g_h(h)]L_h\geq\gamma_HM_{\mathcal J}$.
+Thus $M_{\mathcal J}\leq C_HY$ directly. The preceding proof applies
+with $B=z$, $c=r$, and the child category in place of the deepest
+suffix. In particular it supplies precisely the same moment
+\eqref{updetail:one-end-moment}. The left-score hypothesis is needed:
+there is no current proper-good group when the output is zero.
+
+The sets consisting of a current block and its intermediate native
+groups are disjoint for distinct rare edges of an owner, by rank
+separation, and are disjoint across owners. Their label intervals
+have length at most $L/16$ and avoid a count middle in the same
+block. If the count middle lies in an intermediate group, its weight
+is decreasing in that count and the necessary reserve is increasing.
+For independent copies $N,N'$,
+\[
+ 2\operatorname{Cov}(f(N),g(N))
+ =\mathbb E[(f(N)-f(N'))(g(N)-g(N'))]\leq0
+\]
+when $f$ is decreasing and $g$ increasing. Applying this with all
+other groups fixed supplies the required separation without an
+independence assertion for the shared count.
+
+\subsection{Leaving a terminal suffix unread}
+\label{updetail:terminal-trimming}
+All terminal binary weak blocks lie in the negative ordinary-drift
+head. The ordinary-suffix geometry gives, before trimming,
+\[
+ D_0\geq b_HV_{\rm old}+g_0L_{\rm head},\qquad
+ U\geq c_HT_{\rm total},\qquad M_*\geq c_HT_{\rm total}/H.
+\]
+A terminal necessary test may read intermediate counts within this
+suffix. If so, start the suffix at the first capacity at most its
+output $q$. The removed initial segment has length
+\[
+ \delta\leq M_{\mathcal J}\leq C_HY
+ \leq C_H\tau\sqrt{1+L}\leq C_H'\tau L.
+\]
+For several tests use the latest one; rank separation puts all earlier
+read sets before it. The old head contains its current length $L$.
+Choosing the fixed $\tau$ small enough, bounded ordinary drifts give
+$E_H\delta\leq D_0/4$, $\delta\leq D_0/4$ and $\delta<M_*/2$.
+The largest original root block is therefore retained and
+\[
+ U'=U-\delta\asymp U,\quad M_*'=M_*,\quad
+ A_*'=A_*-\delta,\quad B_*'=B_*,\quad
+ D'=D_0-\sum_{\rm removed}e_hL_h\asymp D_0.
+\]
+The new suffix still has $D'\geq c_HV_{\rm pre}'$ and
+$U'\geq c_HT_{\rm total}$. Moreover $1+D'+A_*'$ is comparable to
+$1+D_0+A_*$, so its ordinary factor is unchanged up to constants.
+Every clock read by the necessary masks now belongs to the actual
+prefix of this suffix. When no terminal binary rare edge is present,
+no trimming is needed.
+
+\subsection{Whole-band estimates with two variable reserves}
+\label{updetail:whole-band}
+Fix a compact nondegenerate positive binary law $W$, a compact positive
+rate $\nu$ and speed $c$, and a power $\sigma$ in a compact subinterval
+of $(0,1)$. Suppose $M,L,R\geq1$ and the band width $r$ satisfies
+\begin{equation}
+ 1\leq r\leq C\sqrt M,\qquad r\leq CR,\qquad
+ |\nu\mathbb EW-c|M\leq C(L+R).
+ \label{updetail:band-assumptions}
+\end{equation}
+All interval locations are deterministic. Use a middle interval of
+length comparable to $M$, disjoint from the retained end intervals.
+An additional later-side count $N_B$ is independent, with Poisson mean
+at most $CL$. Let the positive left test have reserve at most
+$C(1+h+N_B)$ and the reflected negative right test have reserve at most
+$C(1+h+R+(1+|j|)r)$. Both allow a fixed logarithmically lowered wall.
+After fixing the entire outside private word, assume the whole band
+permits at most $Cr$ values of the middle binary count.
+
+Put $T=LR/M$ and
+$\rho_{\rm nat}=(\mathbb EW)^2/\mathbb EW^2$.
+There is a numerical majorant $B_{h,j}(G)$ for the conditional
+probability of the band and its retained tests such that
+\begin{equation}
+ \mathbb E B_{h,j}^{\sigma}
+ \leq C(1+h)^K(1+|j|)^K
+       (r/\sqrt M)^\sigma
+       \min\{1,T^{2\chi(\sigma,\rho_{\rm nat})}\}.
+ \label{updetail:whole-band-moment}
+\end{equation}
+Here the entire permitted count band is summed before the power.
+To prove this, if $\max(L,R)\leq C_0\sqrt M$, retain end intervals
+of length $M/16$. Otherwise retain only the smaller-reserve end,
+of length $\ell=\min(M/16,c_*M^2/\max(L,R)^2)$.
+Conditioning on all outside labels, the middle count is binomial,
+so its maximum atom gives the pointwise majorant
+\[
+ B_{h,j}=\min\{1,Cr/\sqrt{1+N_{\rm mid}}\}\,q_{\rm left}q_{\rm right},
+\]
+with an omitted end factor equal to one. The bound is uniform in the
+outside-dependent center. Release those outside labels only afterwards.
+The Poisson negative moment supplies $C(r/\sqrt M)^\sigma$, including
+small middle counts. On every retained end the scaled drift is bounded
+by \eqref{updetail:band-assumptions}. Thus the signed one-end estimate gives
+\[
+ \mathbb E q_H^\sigma\leq C
+ \min\{1,[(1+H)/\sqrt{1+\ell}]^{2\chi_c}\},\quad
+ \chi_c=\chi\left(\sigma,
+ \frac{(c/\nu)^2}{(c/\nu)^2+\operatorname{Var}W}\right).
+\]
+If both ends remain, independence and the moments of $N_B$ give the
+path factor $\min(1,(LR/M)^{2\chi_c})$ times the displayed reserve
+polynomials. The condition $r\leq CR$ pays all translated right bands.
+If only one end remains, its reserve divided by $\sqrt\ell$ is bounded
+by those polynomials times $LR/M$, yielding the same result.
+If $\ell$ is bounded, $\max(L,R)\geq cM$ and $T\geq c$; discard
+the path test at fixed cost while retaining the middle atom.
+On $T<1$ the drift hypothesis implies
+$|\chi_c-\chi(\sigma,\rho_{\rm nat})|\leq C(L+R)/M\leq2CT$.
+The replacement costs at most $e^{C|T\log T|}$. This proves
+\eqref{updetail:whole-band-moment}; for $T\geq1$ both numerical path
+factors equal one.
+
+For actual prime clocks these assertions follow by a pointwise
+quantile comparison. On a deterministic physical interval of length
+$\ell$, its harmonic cumulative mass is $t+O_H(1)$ for every initial
+length $t$, with the same statement for half-open intervals and their
+reflections. The harmonic-to-physical quantile map therefore satisfies
+$|T(s)-s|\leq C_H$. Its image of a homogeneous Poisson process is
+the required atomic prime process, with repeated occurrences allowed.
+A positive-jump wall is tested at its pre-jump minimum; a negative
+wall at its post-jump minimum. During the collapse of any atom the
+homogeneous partial sums dominate these minima up to the bounded
+clock error. An actual necessary wall is consequently contained in
+the homogeneous wall with a fixed reserve enlargement, for every mark
+word and every atom multiplicity. Logarithmic allowances change by
+only a fixed amount.
+
+For clarity, the full-count homogeneous estimate used here follows
+from Theorem~\ref{pr:one}. Let $m=\lfloor\nu\ell/2\rfloor$.
+The probability of fewer than $m$ arrivals by $\ell$ is exponentially
+small. Otherwise survival implies a rank wall through the first $m$
+independent exponential gaps. For the positive sign, survival at the
+$j$th arrival implies
+$cT_j\leq w_+j+h+A\log(1+T_j)$ and hence
+$T_j\leq C(j+h+1)$. For the negative sign, when this latter bound
+fails the signed risk is already nonnegative; in the complementary
+case the same logarithmic comparison applies. In either direction
+the rank-wall reserve is $C(1+h)$ with a fixed logarithmic allowance.
+Theorem~\ref{pr:one} gives
+$C(1+h)^{2\chi}(1+\ell)^{-\chi}$, and the exponentially small
+exception is absorbed. This proof includes all original counts.
+
+The fixed-width version is especially useful at first hits. Split
+a deterministic interval $[0,z)$ into its left quarter, middle half,
+and right quarter. Given both end words, a fixed terminal band admits
+at most a fixed number of middle low counts. Hence, uniformly over
+every band center $b$,
+\[
+ \sup_b q_b(G)\leq C(1+N_M)^{-1/2}\ell_h(G_L)r_{r_0}(G_R),
+\]
+and independence of these three deterministic restrictions gives
+\begin{equation}
+ \mathbb E(\sup_bq_b)^\sigma
+ \leq C(1+h)^{2\chi}(1+r_0)^{2\chi}
+                   (1+z)^{-\sigma/2-2\chi}.
+ \label{updetail:fixed-band}
+\end{equation}
+There is no extra terminal-height factor. The estimate is uniform in
+$z$ in a prescribed comparable range, not an estimate for a supremum
+over $z$; stopping covers retain their deterministic summation weights.
+
+Insertion of $q$ fixed occurrences decreases the middle negative
+count factor, relaxes the positive left reserve by at most $qw_+$,
+and makes the negative right wall stronger. The same middle-binomial
+argument can leave the original middle marks free after conditioning
+on the inserted marks. Thus both displayed bounds remain valid with
+that left reserve shift. To attach shots, for
+$\beta=4/\sigma_{\min}$ form
+\[
+ C_z(G)=\sum_{h,r_0\geq0}
+ (1+h)^{-\beta}(1+r_0)^{-\beta}
+ (1+N_M)^{-1/2}\ell_h(G_L)r_{r_0}(G_R).
+\]
+Fractional subadditivity and \eqref{updetail:fixed-band} show
+$\mathbb EC_z^\sigma\leq C(1+z)^{-\sigma/2-2\chi}$, since each
+reserve exponent is at most $-3$. Reindexing after insertion gives
+$C_z(G+q\text{ points})\leq C_q C_z(G)$.
+Expanding an integrably weighted fixed-degree shot polynomial into
+Poisson occurrence partitions and applying Mecke now preserves this
+power of $1+z$. The expansion is valid for atomic intensities as well.
+
+For the proper zero-output application, take the separate scales
+$L=1+B$ and $R=1+V_{\rm old}+A+\varrho$ from
+\eqref{updetail:intrinsic-zero-pair} and band width $\varrho$.
+They satisfy all of \eqref{updetail:band-assumptions}, including
+$\varrho\leq CR$. If $d\sqrt M<1$, then
+$\varrho\asymp\sqrt M$ and $R\geq c\sqrt M$; the left-only
+calculation gives the same bound with a width factor comparable to
+one. No series whose ratio tends to one as $d\downarrow0$ is used.
+
+\subsection{Joint count weights and the conditional routing tower}
+\label{updetail:count-tower}
+For each proper owner choose a fixed middle in a largest native block,
+write $n_j$ for its count, and set
+$M_j=(1+d_j\sqrt{1+n_j})^{-1}$.
+For each simple edge let $Q_i(h)$ be its necessary-test probability.
+The only possible overlap between a count middle and these tests is
+when the middle lies in an intermediate set $\mathcal J_i$.
+With all other clocks fixed, $M_j^{\sigma_j}$ decreases in $n_j$
+and $Q_i^{\sigma_{o(i)}}$ increases. The covariance inequality proved
+above extracts $\mathbb EM_j^{\sigma_j}$. Each middle lies in at
+most one such set by rank separation. The remaining test inputs are
+disjoint original groups, so
+\[
+ \mathbb E\left[\prod_{j<m}M_j^{\sigma_j}
+                    \prod_iQ_i(h)^{\sigma_{o(i)}}\right]
+ \leq\prod_{j<m}\mathbb EM_j^{\sigma_j}
+       \prod_i\mathbb EQ_i(h)^{\sigma_{o(i)}}.
+\]
+Splitting a Poisson count below and above half its mean gives
+\[
+ \mathbb EM_j^{\sigma_j}
+ \leq C_H(1+d_j\sqrt{1+\mu_{C_j}})^{-\sigma_j},
+\]
+uniformly even as $d_j\downarrow0$. Together with
+\eqref{updetail:one-end-moment} this gives all proper count and simple
+native factors at their respective owner powers. Fixed insertions
+only decrease $M_j$ and shift each reserve by a fixed amount; the
+same Mecke argument attaches the permitted shots. One unweighted
+count insertion pays its original mean.
+
+Here is the finite conditional argument that uses these environmental
+costs. Fix the complete original uncolored word $G$ and let
+$\mathcal Q_j$ reveal its first $j$ coarse owner routes. In a native
+block of owner $j$, every earlier owner has already expired; its
+earlier routes are deterministically child. Thus on every genuine
+$\mathcal Q_{j-1}$ atom its current labels still have probabilities
+$1/(r+z_j)$ for each exterior name and $z_j/(r+z_j)$ for the child,
+independently over original slots. Let $E_j$ avoid the count middle
+and satisfy
+$\pi_G(E_j\mid\mathcal Q_{j-1})\leq p_j(G)$ uniformly on those
+atoms; for the terminal owner assume the corresponding conditional
+bound on $E_m$. Native-only masks have this property.
+
+For any uncolored-measurable thresholds $\xi_j$, put
+$\zeta_j=\eta_j-\xi_j$. Condition on the entire current coarse route
+outside its middle. Then $E_j$ is fixed and
+\[
+ \zeta_j=H_0-\log z_j\,K_j,\qquad
+ K_j\sim\operatorname{Bin}(n_j,z_j/(r+z_j)),
+\]
+where $H_0$ may depend arbitrarily on the actual incoming list.
+The binomial maximum atom and the two exponential half-lattice sums
+give, uniformly in $H_0$ and also for $n_j=0$,
+\begin{align*}
+ \mathbb E[e^{\zeta_j}1_{\{\zeta_j\leq0\}}1_{E_j}
+                  \mid\mathcal Q_{j-1}]&\leq C M_jp_j,\\
+ \mathbb E[e^{-d_j\zeta_j}1_{\{\zeta_j>0\}}1_{E_j}
+                  \mid\mathcal Q_{j-1}]&\leq C M_jp_j.
+\end{align*}
+For the negative side use the geometric sum with ratio $e^{-\log z_j}$;
+for the positive side use $e^{-d_j\log z_j}$ and cap the bound by one.
+At $d_j=0$ the probability bound suffices. The arbitrary center is
+removed before releasing the outside route. Future child words are
+not fixed in this calculation.
+
+Backward conditioning now bounds every product of positive half-line
+factors followed by one negative half-line factor by
+$C^j\prod_{l\leq j}M_lp_l$, and the fully surviving branch by
+$C^{m-1}p_m\prod_{l<m}M_lp_l$. For completeness set
+$a_j=M_jp_j$ for $j<m$, $a_m=p_m$, $r_j=\sigma_j/\sigma_1$, and
+\[
+ B_0=\sum_{j\leq m}r_j\log a_j,\quad
+ \theta_j=r_j^{-1}\sum_{l>j}r_l\log a_l,\quad
+ \xi_j=X/r_j+\theta_j.
+\]
+Stop the actual projected route at the first $\eta_j\leq\xi_j$.
+The original capacity is $C_H\pi_G(q)e^{P_j}$, and the carry identity
+gives on this branch
+\[
+ e^{P_j}=e^{X+c_j}e^{\zeta_j}
+             \prod_{l<j}e^{-d_l\zeta_l},\qquad
+ c_j=\theta_j-\sum_{l<j}d_l\theta_l
+     =B_0-\sum_{l\leq j}\log a_l.
+\]
+The terminal branch has $c_m=-\sum_{l<m}d_l\theta_l$ and the same
+last expression. Summing genuine stopped capacities and using the
+backward estimates proves for a surviving set $\mathcal S\subseteq
+\bigcap_jE_j$ that
+\[
+ I(\mathcal S)\leq C_H
+ \min\{1,e^X\prod_ja_j^{r_j}\},\qquad
+ (\prod_ja_j^{r_j})^{\sigma_1}
+ =\prod_{j<m}M_j^{\sigma_j}\prod_jp_j^{\sigma_j}.
+\]
+If a $p_j$ vanishes, the conditional bound makes the finite surviving
+support empty, and no logarithm is required. For $m=1$ the direct
+full-word capacity proves the assertion. This calculation preserves
+the actual descendant lists and is the simple-owner tower used in
+the causal proof; hard owners supply their own three conditional
+kernels in Lemma~\ref{upper:hard-kernels}.
+
+\subsection{The ordinary rectangle and the same-count root integral}
+\label{updetail:ordinary-root}
+We prove Proposition~\ref{upper:root-contract}. Write the unread original
+suffix as blocks with $h_1>\cdots>h_m\geq2$, $w_i=\log h_i$,
+$c_i=h_i-1$, lengths $L_i\geq0$, and $U=\sum_iL_i$.
+Let $0<t\leq s<1$, $r=t/s$, in the fixed compact ranges.
+With the entire prefix fixed, take arbitrary $D>0$ and $\kappa\in\R$,
+and set
+\[
+ Z=\sum_i(w_iN_i-c_iL_i),\qquad X=\kappa+rZ.
+\]
+After the positive enlargement, the $N_i$ are independent Poisson
+counts with means comparable to $L_i$. The natural means are
+$h_i^tL_i$. Conditional on each count there are its original uniform
+positions, with all $n_i+1$ gaps. Completed harmonic-cell budgets are
+used consistently in $Z$, and their bounded difference from physical
+budgets is included in $\kappa$, keeping $X$ unchanged.
+
+Choose a largest original block $M=L_{i_*}$ and put
+\[
+ A=\sum_{i<i_*}L_i,\quad B=\sum_{i>i_*}L_i,\quad
+ B_{\rm act}=\sum_{i>i_*}(w_iN_i-c_iL_i),\quad
+ A_{\rm act}=-\sum_{i<i_*}(w_iN_i-c_iL_i).
+\]
+Then $Z=B_{\rm act}+Z_*-A_{\rm act}$ and $M\leq U\leq mM$.
+The two outside sums are independent and retain all their counts.
+
+Three actual rectangles are used before enlargement. A threshold at
+the beginning of the suffix assigns its primes freely and bounds
+earlier contributions by their full original rectangles, giving
+$I\leq Ce^Z$. A threshold within the largest block, with its $j$
+smallest prime logarithms retained, gives
+$I\leq Ce^{B_{\rm act}}W_{*,N_*}$, where $W_{*,n}$ is the capped
+ordered-sum rectangle of \eqref{ordsum:rectangle}. To verify this,
+the $h_*-1$ unresolved widths are bounded by the prefix scale times
+$1+\sum_{l\leq j}e^{(w_*/c_*)\operatorname{cell}_l}$, whereas
+the free later labels contribute $h_*^{-j}$ after normalization.
+Minimize over $j$, and use the right endpoint rectangle for the cap
+one. The remaining rectangle is $I\leq C$.
+Thus, together with a prefix cap $I\leq CDe^X$, the same tuple obeys
+\begin{equation}
+ I\leq C\widehat V,\qquad
+ \widehat V=\min\{1,e^Z,e^{B_{\rm act}}W_{*,N_*},De^X\}.
+ \label{updetail:ordinary-envelope}
+\end{equation}
+For every $n\geq0$ and $\ell\geq0$,
+Lemma~\ref{ordsum:rectangle-tail} gives
+\[
+ \mathbb P(W_{*,n}>e^{-\ell}\mid n)
+ \leq\min\left\{1,
+ \frac{C(1+\ell)(C_1+Z_*+\ell)_+}{1+n}\right\}.
+\]
+For negative $\ell$ the event is empty.
+
+First fix all outside counts and restrict $Z$ to an interval
+$[E,E+W]$ of fixed width. There are at most $1+W/\log2$ possible
+$N_*$. The two full Poisson mode bounds
+\begin{equation}
+ \sup_n p_\mu(n)\leq C(1+\mu)^{-1/2},\qquad
+ \sup_n\frac{p_\mu(n)}{1+n}\leq C(1+\mu)^{-3/2}
+ \label{updetail:poisson-modes}
+\end{equation}
+follow from Stirling near the mode and the elementary Poisson tails;
+they include $n=0$ and all noncentral counts. The event
+$e^{B_{\rm act}}W_{*,N_*}>e^{-\ell}$ has left reserve
+$1+\ell+B_{\rm act}$ and right reserve
+$C_1+Z+\ell+A_{\rm act}$. The endpoint rectangle also requires
+$Z+\ell\geq0$. Apply the two bounds in
+\eqref{updetail:poisson-modes} separately, then average the independent
+sides. Since $\mathbb E(B_{\rm act})_+\leq CB$ and
+$\mathbb E(A_{\rm act})_+\leq CA$, this gives
+\begin{align*}
+ &\mathbb P\{Z\in[E,E+W],\ e^Z>e^{-\ell},\
+                 e^{B_{\rm act}}W_{*,N_*}>e^{-\ell}\}\\
+ &\qquad\leq C(1+U)^{-1/2}
+ \min\left\{1,\frac{(1+\ell+B)(1+(E+\ell)_++A)}{1+M}\right\}.
+\end{align*}
+The root atom and ballot denominator have already been obtained
+from the same $N_*$.
+
+Put $H_0=(-\log D-\kappa)/r$ and $w=Z-H_0$. Then
+$e^{-sX}=D^se^{-tw}$ and $De^X=e^{rw}$. Positive layer cake in
+\eqref{updetail:ordinary-envelope} gives
+\begin{align*}
+ D^{-s}\mathbb E[e^{-sX}\widehat V]
+ =\int_0^\infty e^{-\ell}\,
+ \mathbb E\big[e^{-tw}1_{\{w>-\ell/r\}}
+ 1_{\{Z+\ell\geq0\}}
+ 1_{\{W_*>e^{-\ell-B_{\rm act}}\}}\big]\,d\ell.
+\end{align*}
+At fixed outside counts, $a=w+\ell/r>0$ runs along a translated
+lattice with spacing $w_*$. Moreover
+$Z+\ell=H_0+a-(1/r-1)\ell$, so its nonnegativity forces
+$a\geq-H_0$ up to a fixed geometric translation. Uniformly over
+the lattice translate and $b\geq0$,
+\begin{align*}
+ \sum_{a>0,\ a\geq-H_0-C}e^{-ta}&\leq Ce^{-t(H_0)_-},\\
+ \sum_{a>0,\ a\geq-H_0-C}e^{-ta}(C+H_0+a+b)_+
+ &\leq Ce^{-t(H_0)_-}(1+(H_0)_++b).
+\end{align*}
+For $H_0<0$, shift by $(H_0)_-$; for $H_0\geq0$, start at zero.
+This explains why no polynomial loss in the negative deficit occurs.
+Using first the first mode bound and then the second with the ballot
+tail bounds the conditional integrand before $e^{-\ell}$ by the
+minimum of
+\[
+ Ce^{s\ell-t(H_0)_-}(1+M)^{-1/2},\qquad
+ Ce^{s\ell-t(H_0)_-}(1+M)^{-3/2}
+ [1+\ell+(B_{\rm act})_+][1+(H_0)_++(A_{\rm act})_+].
+\]
+Average the independent sides separately in these two bounds, then
+take their minimum. Since $1-s$ has a fixed positive lower bound,
+integration against $e^{-(1-s)\ell}$ yields
+\begin{equation}
+ \mathbb E[e^{-sX}\widehat V]
+ \leq CD^se^{-t(H_0)_-}(1+U)^{-1/2}
+ \min\left\{1,\frac{(1+B)(1+(H_0)_++A)}{1+M}\right\}.
+ \label{updetail:joint-root}
+\end{equation}
+Missing sides contribute exactly one; an empty suffix is treated by
+the deterministic minimum with the same $1+$length conventions.
+
+The outgoing profile needed in the causal theorem is
+$J_\beta(X+\log D)$ instead of $De^X$, where
+$J_\beta(v)=\min\{1,C_\beta e^v(1+(-v)_+)^\beta\}$ and
+$\beta\geq0$ is fixed. If $J_\beta(v)>e^{-\ell}$, then
+\[
+ v>-L_\beta(\ell),\qquad
+ L_\beta(\ell)=\ell+2\beta\log(2+\ell)+C_\beta'.
+\]
+Indeed $(1+u)^\beta\leq Ce^{u/2}$ first gives
+$u=(-v)_+\leq2\ell+C$, which substituted back gives the stated
+bound. Now set $q=r(Z-H_0)+L_\beta(\ell)>0$. The tilt becomes
+$D^se^{sL_\beta(\ell)}e^{-sq}$ and
+$Z+\ell\leq H_0+q/r$. The endpoint cap still forces
+$q\geq r(H_0)_-$ up to a fixed translation. The same lattice sums
+give $e^{-t(H_0)_-}$ and the same right reserve. The only change in
+the layer integration is the weight
+\[
+ e^{-\ell+sL_\beta(\ell)}
+ \leq Ce^{-(1-s)\ell}(2+\ell)^{2s\beta},
+\]
+whose integral, also multiplied by $1+\ell$, is uniformly finite.
+This proves \eqref{updetail:joint-root} with the polynomial profile
+and hence Proposition~\ref{upper:root-contract}.
+
+For the natural suffix put
+$D_{\rm mean}=\sum_iL_i(h_i^t\log h_i-(h_i-1))\geq0$ and
+\[
+ \mathcal B_I=(1+U)^{-1/2}
+ \min\{1,(1+B)(1+D_{\rm mean}+A)/(1+M)\}.
+\]
+The preceding bound also gives
+\[
+ \mathbb E[e^{-sX}\widehat V]
+ \leq CD^s\mathcal B_Ie^{-t(H_0)_-}
+ \left[1+\frac{(H_0-D_{\rm mean})_+}{1+D_{\rm mean}+A}\right].
+\]
+The Euler root identity is
+$\kappa=-rD_{\rm mean}+\Delta_{\rm pre}$, so
+$H_0-D_{\rm mean}=-(\Delta_{\rm pre}+\log D)/r$.
+This is the explicit prefix deviation weight used in the final upper
+expectation. It remains together with $D^s$ under that expectation;
+the conditional estimate allows arbitrary correlation among prefix
+costs, counts and geometric sums.

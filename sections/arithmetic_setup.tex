@@ -1,0 +1,192 @@
+\section{Divisor volumes and the plan of proof}
+\label{paper:arithmetic-setup}
+
+The two counting problems have a common geometric representation.
+For $3\leq y_1\leq\cdots\leq y_k$, let $\mathcal A_k(\mathbf y)$
+consist of squarefree tuples $\mathbf a=(a_1,\ldots,a_k)$ with prime
+factors of $a_1$ at most $y_1$, and those of $a_i$, $i\geq2$, in
+$(y_{i-1},y_i]$. Thus $2$ and $3$ belong to the first prime range.
+The components are pairwise coprime, and an empty selection in any
+component is allowed. Define
+\begin{align}
+\mathcal L^{(k+1)}(\mathbf a)
+ &=\bigcup_{\substack{d_1,\ldots,d_k\in\mathbb N\\
+       d_1\cdots d_j\mid a_1\cdots a_j\ (1\leq j\leq k)}}
+       \prod_{j=1}^k[\log(d_j/2),\log d_j),\label{paper:divisor-boxes}\\
+L^{(k+1)}(\mathbf a)&=\operatorname{vol}_k\mathcal L^{(k+1)}(\mathbf a),\notag\\
+K_k(\ell)&=e^{-\sum_{i=1}^k h_iL_i}
+       \sum_{\mathbf a\in\mathcal A_k(\mathbf y)}
+       \frac{L^{(k+1)}(\mathbf a)}{a_1\cdots a_k},
+       \qquad h_i=k-i+2.\label{paper:K}
+\end{align}
+Here $L_i=\ell_i-\log3\geq0$ and
+$\log y_i=e^{L_i}\log y_{i-1}$, starting from $y_0=3$.
+The volume $L^{(k+1)}$ and the block lengths $L_i$ are different objects.
+No size restriction on the integers $a_i$ is imposed in \eqref{paper:K}.
+The empty tuple alone contributes $(\log2)^k$ before normalization.
+
+A prime from the $i$th range can be assigned to one of the divisor
+coordinates $i,\ldots,k$, or left unused. These are its $h_i$ eligible
+labels. The union in \eqref{paper:divisor-boxes} records all the
+resulting decompositions, counting overlapping boxes only once.
+This overlap, rather than the number of decompositions, is the source
+of the difficulty. The harmonic weight makes it possible to study the
+prime locations and their labels separately while retaining the original
+divisor union.
+
+Koukoulopoulos's arithmetic comparison
+\cite[Theorem~1.7]{Kouk} gives
+\begin{equation}
+\frac{H^{(k+1)}(x,\mathbf y,2\mathbf y)}x
+ \asymp_k K_k(\ell(\mathbf y))
+\quad\text{if}\quad
+x\geq 2^k y_1\cdots y_k y_k.
+\label{main:admissible}
+\end{equation}
+The first prime range in that comparison begins below $y_1$ and includes
+the small primes; the choice $y_0=3$ above fixes only the logarithmic
+normalization. Bounded changes in these normalizing factors are absorbed
+by constants depending on $k$. We prove the table transfer, including
+bounded axes, in Section~\ref{paper:assembly}.
+
+\begin{theorem}\label{main:uniform}
+For every fixed $k\geq6$, the function defined in
+\eqref{profile:final} satisfies
+\[
+ K_k(\ell)\asymp_k\Phi_k(\ell)
+ \qquad(\ell\in[\log3,\infty)^k).
+\]
+\end{theorem}
+
+There are three parts to the proof. On positive physical lengths
+$Q_i\geq1$, a covering argument gives
+$K_k(\log3+Q)\ll_k\Psi_k(Q)$. A separate construction gives
+$K_k(\log3+L)\gg_k\Psi_k(L^{L_*})$, where
+$L_i^{L_*}=\max(L_i,L_*)$ and $L_*=L_*(k)$ is fixed once.
+Finally, stability of the original harmonic sum compares the arithmetic
+quantities at $L$ and $L^\lambda$. It allows the unknown threshold
+$L_*$ to be removed from the definition of the answer by taking the
+explicit infimum in \eqref{profile:final}.
+
+The same ordered saddle appears in both estimates. Its tilt extracts
+the exponential cost $e^{-J}$. Within each maximal equality block of
+the saddle, a shared prime clock acts as an environment for several
+private label constraints. This is why a fractional moment of a
+conditional survival probability appears: averaging the environment
+before taking the owner power would describe a different event.
+Exit-count windows contribute their own powers. The final ordinary
+suffix has one count variable that must simultaneously supply the root
+and permit path survival. The proof keeps these requirements together.
+
+The deterministic definitions come first, followed by explicit examples
+and the saddle geometry. We then establish the scalar persistence and
+conditioned bridge estimates, construct the common accepting measure
+for the lower bound, and prove the upper bound directly for the full
+divisor union. Arithmetic stability closes the proof on the original
+parameter domain.
+
+\subsection{Size truncation of the harmonic volume sum}
+\label{artrunc:section}
+
+The arithmetic quantity in the main theorem sums all squarefree tuples
+in their prescribed prime blocks. The actual rectangle arguments may
+nevertheless start with a size-truncated tuple. The following positive
+weighted truncation proves this implication independently of any sharp
+upper bound, Poisson approximation, saddle point, or proposed profile.
+
+Fix $H=k+1$ and $3\leq y_1\leq\cdots\leq y_k$. Write
+$V(\mathbf a)=L^{(k+1)}(\mathbf a)$ and
+\[
+ S(\mathbf y)=\sum_{\mathbf a\in\mathcal A_k(\mathbf y)}
+             \frac{V(\mathbf a)}{a_1\cdots a_k}.
+\]
+All prime sets here are finite; in particular all following rearrangements
+are identities between finite nonnegative sums. Choose one absolute
+constant $C_{\rm W}$ for the elementary weighted prime estimate
+\begin{equation}
+ \sum_{p\leq y}\frac{\log p}{p}\leq C_{\rm W}\log y
+ \qquad(y\geq3).
+ \label{artrunc:weighted-primes}
+\end{equation}
+For example the usual Chebyshev bound for $\sum_{p\leq y}\log p$ and
+partial summation give this estimate; see \cite{RosserSchoenfeld1962}. Put
+\[
+ \tau_k=2kH C_{\rm W}+1,
+ \qquad
+ S_{\rm tr}(\mathbf y)=
+ \sum_{\substack{\mathbf a\in\mathcal A_k(\mathbf y)\\
+                         a_i\leq y_i^{\tau_k}\ (1\leq i\leq k)}}
+                \frac{V(\mathbf a)}{a_1\cdots a_k}.
+\]
+
+\begin{lemma}[Uniform positive weighted truncation]
+\label{artrunc:lemma}
+Uniformly in the ordered cutoffs,
+\begin{equation}
+ S_{\rm tr}(\mathbf y)\leq S(\mathbf y)
+                   \leq2 S_{\rm tr}(\mathbf y).
+ \label{artrunc:comparison}
+\end{equation}
+The same comparison holds after multiplication by the exact normalizing
+factor defining $K_k$. Every truncated tuple has, for each $i$,
+\begin{equation}
+ \log(a_1\cdots a_i)
+       \leq\tau_k\sum_{g\leq i}\log y_g
+       \leq k\tau_k\log y_i.
+ \label{artrunc:prefix-size}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Let $p$ be a prime in original block $i$, and remove it from that
+coordinate of a squarefree tuple. Inserting $p$ back permits at most
+$k-i+2\leq H$ eligible routing labels, including the unused label.
+For each label the new divisor-box union is a translate of the old
+one. Therefore, if $p$ does not already divide the tuple,
+\begin{equation}
+ V(b_1,\ldots,pb_i,\ldots,b_k)\leq H V(\mathbf b).
+ \label{artrunc:slot-growth}
+\end{equation}
+Using the squarefree identity $\log a_i=\sum_{p\mid a_i}\log p$ gives
+the exact decomposition
+\begin{align}
+ \sum_{\mathbf a\in\mathcal A_k(\mathbf y)}
+       \frac{V(\mathbf a)\log a_i}{a_1\cdots a_k}
+ &=\sum_{p\text{ in block }i}\frac{\log p}{p}
+       \sum_{\substack{\mathbf b\in\mathcal A_k(\mathbf y)\\p\nmid b_i}}
+       \frac{V(b_1,\ldots,pb_i,\ldots,b_k)}{b_1\cdots b_k}
+       \notag\\
+ &\leq H S(\mathbf y)
+                \sum_{p\text{ in block }i}\frac{\log p}{p}
+ \leq H C_{\rm W}\log y_i\,S(\mathbf y).
+ \label{artrunc:first-moment}
+\end{align}
+The prime blocks are disjoint, so removal and reinsertion in this
+identity preserve every original prime-range restriction. In the
+inequality we only enlarged the inner nonnegative sum.
+
+For the bad set $a_i>y_i^{\tau_k}$, multiply its indicator by
+$\log a_i/(\tau_k\log y_i)\geq1$ and use
+\eqref{artrunc:first-moment}. A union bound over $i$ yields
+\[
+ S(\mathbf y)-S_{\rm tr}(\mathbf y)
+ \leq\frac{kH C_{\rm W}}{\tau_k}S(\mathbf y)
+ <\frac12S(\mathbf y).
+\]
+This proves \eqref{artrunc:comparison}. The common normalizing factor
+does not change its ratio. Finally \eqref{artrunc:prefix-size} follows
+from the individual size bounds and the ordering of the cutoffs.
+\end{proof}
+
+In particular, every divisor coordinate whose available primes lie in
+the first $i$ original groups has logarithmic width at most
+$C_k\log y_i$ on the truncated tuples. Earlier contributions to a
+remaining coordinate obey the same bound at the last earlier cutoff.
+These are precisely the full-size baseline rectangles used by the
+actual routing covers. The constant $C_k=k\tau_k$, and its fixed
+powers, are absorbed into their dimension constants and fixed reserves;
+no physical length, KKT product or owner is changed. Apply those covers
+first to this truncated sum, and only then perform the positive repeated-
+prime and cell enlargements. Lemma~\ref{artrunc:lemma} supplies the upper
+bound for the original full sum. It is not a claim that an unrestricted
+repeated tuple satisfies the size inequalities.

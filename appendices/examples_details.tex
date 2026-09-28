@@ -1,0 +1,756 @@
+\section{Proofs of the worked examples}\label{app:examples}
+
+This appendix derives the evaluations in Section~\ref{sec:examples}
+from the saddle and the named endpoint definitions.  We first record the
+two observations that permit exact face calculations and the passage
+from positive vectors to arithmetic families with repeated cutoffs.
+
+\subsection{Stationarity and bounded coordinates}
+
+Suppose a candidate saddle has a proper owner \([1,n]\) with product
+\(s\), followed by a singleton terminal owner with product \(\theta<s\).
+Write \(z=2^{\theta/s}\), \(r_i=n-i+1\), and
+\(\kappa_r=(r+z)^{s-1}\).  On this face the two common-direction
+stationarity equations are
+\begin{align}
+ &\sum_{i=1}^n L_i\{\kappa_{r_i}E_{r_i}(z)-r_i\}=0,
+ \label{exapp:owner-balance}\\
+ &L_{n+1}(2^\theta\log2-1)
+   =\sum_{i=1}^nL_i\{1-z\log2\,\kappa_{r_i}\}.
+ \label{exapp:child-balance}
+\end{align}
+For \(1\le j<n\), the internal multiplier is
+\begin{equation}
+ \lambda_j=
+ \sum_{i=1}^j L_i
+ \{\kappa_{r_i}[E_{r_i}(z)-E_{n-j}(z)]-(r_i-n+j)\}.
+ \label{exapp:prefix-KKT}
+\end{equation}
+These formulas follow by differentiating \(G_i=s\log(r_i+z)\).
+When differentiating in \(s\), the child product \(\theta\) is held
+fixed, so the derivative of \(z\) must be included.  For example,
+\[
+ \frac{\partial}{\partial s}(r+2^{\theta/s})^s
+       =(r+z)^{s-1}E_r(z).
+\]
+For the prefix in \eqref{exapp:prefix-KKT}, the child has weight
+\(n-j+z\); taking the difference of the corresponding entropy
+increments gives the displayed formula.  Its sign convention agrees
+with \eqref{hier:eq:KKT}.  Thus nonnegative internal multipliers,
+zero exterior multipliers, and strict separation of the two products
+verify all KKT conditions.  Theorem~\ref{geom:thm:global} then identifies
+the candidate as the unique global saddle.  The same calculation for a
+single terminal owner uses \(z=1\), with common-direction balance
+\begin{equation}
+ \sum_iL_i\{h_i^s\log h_i-(h_i-1)\}=0.
+ \label{exapp:terminal-balance}
+\end{equation}
+
+We use the word \emph{saturated} below in the asymptotic sense that a
+binary factor has a positive lower bound independent of the parameter
+tending to infinity.  It need not equal one.  If one endpoint score is
+\(\gg L_i\), the other is at least one, and the native intensity remains
+in a fixed compact interval, the factor for group \(i\) is saturated.
+Every edge on a bounded positive clock is saturated for the same reason.
+
+Choose \(C\ge L_*(k)\), where \(L_*(k)\) is the fixed threshold in
+Theorem~\ref{lower:lifted}.  On vectors all of whose coordinates exceed
+this threshold, that theorem and Theorem~\ref{positive:upper} give
+\(K_k\asymp_k\Psi_k\); Theorem~\ref{main:uniform} then gives
+\(\Phi_k\asymp_k\Psi_k\).  Replacing a fixed number of zero coordinates
+by \(C\) changes the total log-parameter distance by a bounded amount.
+Theorem~\ref{thm:ell-stability} therefore transfers the arithmetic
+estimate to the original vector.  This proves the required statements
+about \(\Phi_k\) without any assertion about where its defining
+infimum is attained.  In particular, a raw saddle is never assigned
+to a vector with zero coordinates.
+
+\subsection{A finite rational calculation used below}
+\label{exapp:certificate-method}
+
+All decimal endpoints in this appendix denote exact rational numbers.
+We give the finite inequalities explicitly and describe a single
+rational procedure for verifying them.  For \(1\le x\le2\), let
+\(w=(x-1)/(x+1)\).  Then
+\begin{equation}
+ 2\sum_{j=0}^{N-1}\frac{w^{2j+1}}{2j+1}
+ \le\log x\le
+ 2\sum_{j=0}^{N-1}\frac{w^{2j+1}}{2j+1}
+ +\frac{2w^{2N+1}}{(2N+1)(1-w^2)}.
+ \label{exapp:log-bounds}
+\end{equation}
+This follows by integrating the geometric series for
+\(2/(1-w^2)\), and bounding all remaining denominators below by
+\(2N+1\).  General positive rational arguments are reduced to
+\([1,2]\) by extracting powers of two and, if necessary, taking
+reciprocals.  For \(0\le x<N+2\), Taylor's series gives
+\begin{equation}
+ \sum_{j=0}^N\frac{x^j}{j!}\le e^x\le
+ \sum_{j=0}^N\frac{x^j}{j!}
+ +\frac{x^{N+1}}{(N+1)!}\frac{1}{1-x/(N+2)}.
+ \label{exapp:exp-bounds}
+\end{equation}
+Indeed, successive omitted terms have ratio at most \(x/(N+2)\).
+Reduce a nonnegative argument to \([0,1/4]\), then square back;
+negative arguments are handled by reciprocation.
+
+The bounds below result from \(48\) terms in
+\eqref{exapp:log-bounds}, degree \(40\) in
+\eqref{exapp:exp-bounds}, and outward rounding to the rational grid
+\(10^{-40}\mathbb Z\) after each operation.  Interval addition,
+multiplication, and division use their elementary rational endpoint
+formulas; divisions are used only when zero is excluded from the
+denominator interval.  Monotonicity supplies interval logarithms and
+exponentials.  Thus each table is a finite rational inequality, with
+explicit remainders.  Exact zeros used in the constructions are instead
+proved algebraically from their defining equations.
+
+The finite sums and interval operations specified here suffice to
+reproduce every bound below.  Neither numerical optimization nor
+floating-point equality tests are needed.
+
+\subsection{Equal cutoffs}
+
+Evaluate the positive vector \(Q=(T,C,\ldots,C)\).  At a common
+product \(s\), equation \eqref{exapp:terminal-balance} is strictly
+increasing in \(s\), and gives
+\(s=\alpha_H+O_k(T^{-1})\).  For \(1\le j<k\), its multiplier is
+\begin{equation}
+ \lambda_j=T\left[
+ H^{\alpha_H-1}\{H\log H-(H-j)\log(H-j)\}-j\right]+O_k(1).
+ \label{exapp:equal-KKT}
+\end{equation}
+The term in brackets is positive.  To prove this, apply strict
+convexity of \(x\log x\): the secant over \([H-j,H]\) has larger
+slope than the secant over \([1,H]\).  The latter equals
+\(H^{1-\alpha_H}\), since
+\(H^{\alpha_H}\log H=H-1\).  Multiplication by
+\(jH^{\alpha_H-1}\) gives the claim.  All internal multipliers are
+therefore positive for large \(T\), and common-direction stationarity
+proves the asserted single owner.
+
+For each first-group binary edge \(k\to q\), \(1\le q<k\), the left
+completion retains exactly \(q\) names through the first group.  Its
+reference cost is
+\[
+ T\{q-H^{\alpha_H-1}(q+1)\log(q+1)\}+O_k(1)\gg_k T.
+\]
+The inequality follows because \((q+1)\log(q+1)/q\) is strictly
+increasing and the corresponding quantity at \(q=k\) is
+\(H^{1-\alpha_H}\).  The other clocks are fixed, so all binary
+factors are saturated.  The ordinary suffix starts in group \(1\),
+because \(|s-\alpha_H|<\tau\) for large \(T\).  Equation
+\eqref{exapp:terminal-balance} gives \(D=0\), while
+\(U=T+(k-1)C\), \(M=T\), \(A=0\), and \(B=(k-1)C\).
+Formula \eqref{profile:ordinary} gives \(T^{-3/2}\).
+Finally \(J(Q)=I_HT+O_k(1)\).  The bounded-coordinate argument above
+proves \eqref{ex:equal-answer}.
+
+\subsection{The critical six-dimensional family}
+
+Use \(\sigma_c,e_h,a,b\) from
+\eqref{ex:critical-constants}--\eqref{ex:critical-lengths}.  Put
+\[
+ f_h(q)=q-h^{\sigma_c-1}(q+1)\log(q+1),\qquad
+ \Delta_h(Q)=h^{\sigma_c-1}(h\log h-Q\log Q)-(h-Q).
+\]
+Thus \(f_h(0)=0\), \(f_h(h-1)=-e_h\), and
+\(\Delta_h(Q)=f_h(Q-1)-f_h(h-1)\).  The finite inequalities needed
+here are
+\begin{gather}
+ e_2>0,\qquad e_h<0\quad(3\le h\le7),\nonumber\\
+ \Delta_7(2)=0,\qquad
+ \Delta_7(Q)>0\quad(3\le Q\le6),\qquad
+ \Delta_h(Q)>0\quad(3\le h\le6,\ 2\le Q<h).
+ \label{exapp:critical-signs}
+\end{gather}
+The zero is exactly the definition of \(\sigma_c\).  The rational
+bounds of \S\ref{exapp:certificate-method} give
+\[
+ \begin{array}{c|c}
+ \text{quantity}&\text{enclosure or lower bound}\\ \hline
+ \sigma_c&(0.540128277594,\ 0.540128277595)\\
+ e_2&(0.00790656,\ 0.00790657)\\
+ a&(54.82474304,\ 54.82474305)\\
+ b&(66.42545992,\ 66.42545993)\\
+ \min\{\Delta_h(Q):(h,Q)\ne(7,2)\text{ in \eqref{exapp:critical-signs}}\}
+       &>0.1079
+ \end{array}
+\]
+They also give
+\(\sigma_c-\alpha_2>1/(8\cdot7^3(\log7)^2)\) and
+\(\alpha_3-\sigma_c>1/(8\cdot7^3(\log7)^2)\).
+Since the right side is an upper bound for the profile's \(\tau\),
+the ordinary suffix is exactly the last group.  The signs of \(e_h\)
+also follow from these two inequalities and the strict increase of
+\(\alpha_h\).
+
+The common-direction balance holds exactly by the definitions of
+\(a,b\).  For \(1\le j\le5\), the prefix derivative gives
+\[
+ \lambda_j=\sum_{i=1}^jL_i\Delta_{8-i}(7-j).
+\]
+For \(j\le4\), each summand is positive by
+\eqref{exapp:critical-signs}.  At \(j=5\), the first summand is zero
+and
+\(\lambda_5=C\sum_{h=3}^6\Delta_h(2)>0\).
+Together with \(\lambda_6=0\), these verify the full KKT system.
+In particular the fixed positive buffers keep the last internal
+multiplier positive; the actual family is not an owner-merging boundary.
+
+We next verify both endpoint minima, rather than just exhibit one
+favorable pair.  For the edge \(6\to1\), the only freely chosen cut
+is \(\tau_6\in\{V_1,\ldots,V_6\}\).  If \(\tau_6<V_6\), there is
+no negative contribution from the final group.  The function \(f_h\)
+is strictly concave, vanishes at zero, and is positive at \(h-1\)
+for \(h\ge3\).  It is therefore positive at every intermediate
+integer.  The first-group contribution is \(\gg T\) on both sides.
+If \(\tau_6=V_6\), use total balance to subtract the full surviving
+configuration.  Since \(\Delta_7(2)=0\), both reference costs are
+exactly \(C\sum_{h=3}^6\Delta_h(2)=C\Delta\).  The completion is
+late, and its good groups are exactly those listed before
+\eqref{ex:critical-endpoints}.  Hence the two scores in that equation
+are the separate minima for all sufficiently large \(T\).
+
+For the other edges, a completion with \(\tau_6<V_6\) again has cost
+\(\gg T\): a retained name survives the first group, and no negative
+last-group contribution occurs.  If \(\tau_6=V_6\), at least one
+name survives every group, and total balance gives
+\begin{equation}
+ \overline C_v=\sum_{i=1}^5L_i
+          \Delta_{8-i}(q_{v,i}+1).
+ \label{exapp:critical-context}
+\end{equation}
+Every summand is nonnegative.  In group \(1\), an edge with
+\(q\ge2\) has left cost \(\gg T\).  In a middle group, a proper
+subset of the names survives on the left, giving left cost \(\gg C\).
+These bounds saturate every remaining edge.  The ordinary factor has
+\(U=M=L_6\), \(A=B=0\), and \(D=e_2L_6\), and is therefore
+\(\asymp T^{-1/2}\).  Formula \eqref{profile:edge-factor} applied
+to \eqref{ex:critical-endpoints} supplies \(T^{-\chi_c}\).
+This proves \eqref{ex:critical-answer} and the stated explicit
+expression for \(J(L)\).
+
+For completeness, let
+\(\sigma_c(H)=1-\log((H\log H-2\log2)/(H-2))/\log H\).
+The values of \(\sigma_c(H)-\alpha_2\), for \(H=3,4,5,6\), lie
+respectively in
+\[
+ \begin{array}{cc}
+ (-0.117568,-0.117566),&(-0.056865,-0.056864),\\
+ (-0.024370,-0.024368),&(-0.003499,-0.003498).
+ \end{array}
+\]
+Thus \(H=7\) is the first admissible integer in this critical
+first/last-group construction.
+
+\subsection{The separated six-dimensional family}
+
+It is useful to check the dimensional boundary for the same family
+with \(n=k-1\) and \(H=n+2\).  Let \(\alpha=\alpha_2\) and define
+\[
+ f(H)=H^{\alpha-1}(H\log H-2\log2)-(H-2).
+\]
+The rational calculation gives
+\begin{equation}
+ 0.025<f(6)<0.026,\qquad -0.110<f(7)<-0.109,
+ \qquad 2\alpha-1<\alpha(1-\alpha)\log2.
+ \label{exapp:split-signs}
+\end{equation}
+For real \(x\ge2\), direct differentiation gives
+\[
+ f''(x)=x^{\alpha-2}\left[
+ \alpha(\alpha-1)\log x+2\alpha-1
+ -\frac{2\log2(1-\alpha)(2-\alpha)}x\right]<0.
+\]
+Indeed, the first two terms already have negative sum by
+\eqref{exapp:split-signs}.  Since \(f(2)=0\), strict concavity and
+the two signs imply \(f(H)>0\) for integer \(3\le H\le6\) and
+\(f(H)<0\) for integer \(H\ge7\).
+
+At fixed \(\theta=\alpha\), the derivative of
+\((n+2^{\theta/s})^s\) is
+\((n+z)^{s-1}E_n(z)\), and its second derivative is strictly positive.
+For instance, with \(c=\theta\log2\), \(p=z/(n+z)\), and
+\(A=\log(n+z)-p\log z\), it equals
+\[
+ (n+z)^s\{A^2+c^2p(1-p)/s^3\}>0.
+\]
+Thus the equation \((n+z)^{s-1}E_n(z)=n\) has at most one root.
+Its left side minus \(n\) equals \(f(H)\) at \(s=\alpha\)
+and is positive at \(s=1\), since
+\(E_n(z)=\int_0^n(1+\log(z+t))\,dt>n\).
+For \(H\ge7\) this proves existence of a unique root above
+\(\alpha\).  In dimension six the interval
+\((0.54070,0.54072)\) isolates it by opposite signs at its endpoints.
+For \(H\le6\), the last multiplier on the terminal diagonal has
+positive limiting coefficient \(f(H)\); the other prefix coefficients
+are positive by concavity as well.  This proves the dimensional
+assertion for this family.
+
+Now take \(Q=(T,C,C,C,C,B)\), \(B=T^3\), in dimension six.
+Solve \eqref{exapp:owner-balance}--\eqref{exapp:child-balance} with
+\(n=5\).  After division by \(T\) and \(B\), respectively, the
+limiting equations are \eqref{ex:split-root} and
+\(2^\theta\log2=1\).  Their Jacobian is triangular with positive
+diagonal entries.  The implicit function theorem gives
+\begin{equation}
+ s=s_*+O(T^{-1}+T/B),\qquad
+ \theta=\alpha+O(T/B).
+ \label{exapp:split-products}
+\end{equation}
+The exterior multiplier is zero by the first equation.  For
+\(1\le j<5\), the leading internal multiplier is
+\[
+ T\left[(5+z_*)^{s_*-1}
+ \{(5+z_*)\log(5+z_*)-(5+z_*-j)\log(5+z_*-j)\}-j\right].
+\]
+Strict convexity of \(x\log x\), compared with its secant on
+\([z_*,5+z_*]\), makes this positive.  The remaining terms are
+\(O(1)\).  The products have a fixed limiting gap, so these are
+the full KKT conditions for precisely the two asserted owners.
+
+The first edge \(5\to0\) has no outside cuts.  On the left all five
+names end at zero; the completion is early and has bounded score,
+since the proper exit gap has a positive limit.  On the right they end
+at \(V_1=T\), a late cut for the proper owner.  Its reference cost is
+\(T\{5-(5+z)^{s-1}E_5(z)\}=O(1)\), by
+\eqref{exapp:owner-balance}, and it has no good group.  Thus both
+endpoint scores are \(\asymp1\).
+For a first-group edge with \(q\ge1\), the left cost is
+\[
+ T\{q-(5+z_*)^{s_*-1}E_q(z_*)\}+O(1)\gg T.
+\]
+This follows from strict convexity of \(E_q(z_*)\) in \(q\), or
+equivalently from strict increase of \(E_q(z_*)/q\), with equality
+only at rank \(5\).  The middle clocks are bounded.  The terminal
+singleton has no binary edge.  Hence the sole unsaturated binary
+factor has order \(T^{-2\chi_*}\), and the sole proper count has
+order \(T^{-s_*/2}\).  The use of the limiting products in these
+powers is valid by \eqref{exapp:split-products} and the local
+Lipschitz continuity of \(\chi\).
+
+Finally, \eqref{exapp:child-balance} gives
+\[
+ D=c_*T+O(1+T^2/B),\qquad
+ c_*=1-z_*\log2\,(5+z_*)^{s_*-1}>0.
+\]
+The rational bounds give \(0.4403<c_*<0.4404\); positivity alone
+is needed.  Thus
+\(\mathcal B_{\rm ord}\asymp T B^{-3/2}\).
+At the limiting products the objective is
+\(I_2B+I_{\rm p}T+O(1)\).  Taylor expansion at those products has
+linear error \(O(1)\) and quadratic error
+\(O(T\lvert s-s_*\rvert^2+B\lvert\theta-\alpha\rvert^2)=O(1)\).
+The mixed derivatives are \(O(T)\), so their contribution is also
+bounded.  This proves \(J(Q)=I_2B+I_{\rm p}T+O(1)\) and
+\eqref{ex:split-answer}, including the transfer from \(Q\) to the
+original repeated cutoffs.
+
+\subsection{The positive ray}
+
+For \eqref{ex:ray-lengths}, equations
+\eqref{exapp:owner-balance}--\eqref{exapp:child-balance} hold by
+the definitions of \(a,b\).  Direct use of
+\eqref{exapp:prefix-KKT} gives the following enclosures:
+\[
+ \begin{array}{c|cccc}
+ j&1&2&3&4\\ \hline
+ \lambda_j/t&(1.77059,1.77060)&(2.97343,2.97344)&
+ (3.37910,3.37911)&(2.61456,2.61457)
+ \end{array}
+\]
+The products are strictly separated, so this proves the exact saddle.
+
+Here the complete endpoint verification is small enough to specify
+directly.  Represent the cut \(V_d\) of name \(c\) by its integer
+index \(d_c\).  For an edge \((i,q)\), choose
+\[
+ d_c\in\{0,\ldots,c\}\quad(c<i),\qquad
+ d_c\in\{i,\ldots,c\}\quad(6-q\le c\le5),
+\]
+and set \(d_c=i-1\) on the left and \(d_c=i\) on the right for
+\(i\le c\le5-q\).  This is exactly the paired-template definition
+of the profile, including zero cuts and ties.  With
+\(w=(a,1,1,1,1)\), each cost is the explicit expression
+\begin{equation}
+ \frac{\overline C_v}{t}=
+ \sum_{g=1}^5 w_g\left[q_g-(6-g+z)^{s-1}E_{q_g}(z)\right],
+ \qquad q_g=\#\{c:d_c\ge g\}.
+ \label{exapp:ray-cost}
+\end{equation}
+The following table gives rational lower bounds for its minimum over
+all templates on the indicated side.  The template count makes the
+finite set in each row explicit.
+\begin{center}
+\begin{tabular}{cccrr}
+\(i\)&\(q\)&side&templates&lower bound\\ \hline
+1&0&right&1&0.5490\\
+1&1&left&5&2.4949\\
+1&2&left&20&3.3791\\
+1&3&left&60&2.9734\\
+1&4&left&120&1.7705\\
+2&0&left&2&0.5490\\
+2&1&left&8&0.6686\\
+2&2&left&24&0.4464\\
+2&3&left&48&0.1751\\
+3&0&left&6&0.4791\\
+3&1&left&18&0.4284\\
+3&2&left&36&0.1837\\
+4&0&left&24&0.3280\\
+4&1&left&48&0.1805\\
+5&0&left&120&0.1455
+\end{tabular}
+\end{center}
+For example, the first row has all cuts at \(V_1\), so its cost is
+\(a[5-(5+z)^{s-1}E_5(z)]\).  Every other row is obtained by the
+same explicit sum \eqref{exapp:ray-cost} over the displayed independent
+integer choices, with \(\log,\exp\) bounded by
+\eqref{exapp:log-bounds}--\eqref{exapp:exp-bounds}.
+Thus each edge has one endpoint score \(\gg t\) and the other at
+least one, proving saturation of all fifteen factors.
+The proper count is \(\asymp t^{-s/2}\).
+The terminal group has \(U=M=bt\) and
+\(D=(2^\theta\log2-1)bt\asymp t\), so its ordinary factor is
+\(\asymp t^{-1/2}\).  Homogeneity gives \(J(L)=tJ_0\).
+All lengths tend to infinity, proving \eqref{ex:ray-answer} directly.
+
+\subsection{Two comparisons within one owner}
+
+We first justify all fixed constants in \eqref{ex:same-root}.  Let
+\(D_{r,q}(z)=(E_r(z)-E_q(z))/(r-q)\) and
+\(t_{r,q}(z)=1-\log D_{r,q}(z)/\log(r+z)\).  Differentiation gives
+\begin{equation}
+ t_{r,q}'(z)=
+ \frac{\log D_{r,q}(z)}{(r+z)\{\log(r+z)\}^2}
+ -\frac{\log(r+z)-\log(q+z)}
+ {(r-q)D_{r,q}(z)\log(r+z)}.
+ \label{exapp:secant-derivative}
+\end{equation}
+On \(I=[1.98455,1.98457]\), the rational bounds give
+\begin{gather*}
+ (t_{14,6}-t_{6,0})(1.98455)
+       \in(-0.000000199838,-0.000000199837),\\
+ (t_{14,6}-t_{6,0})(1.98457)
+       \in(0.000000161388,0.000000161389),\\
+ 0.01806066<(t_{14,6}-t_{6,0})'(z)<0.01806187
+       \qquad(z\in I).
+\end{gather*}
+The intermediate value theorem and strict monotonicity therefore
+give exactly one root in \(I\).  The same calculation on \(I\)
+gives
+\begin{equation}
+ \begin{gathered}
+ \alpha_2<\theta<\sigma,\qquad
+ -0.166<g_1<-0.165,\qquad 1.604<g_{14}<1.605,\\
+ \min_{1\le r\le14}(1-z\log2\,\kappa_r)>0.1574.
+ \end{gathered}
+ \label{exapp:same-fixed-signs}
+\end{equation}
+The identities \(g_6=0\) and \(f_{14}(6)=g_{14}\) follow exactly
+from the two secant equations, since
+\((r+z)^{\sigma-1}(E_r-E_q)=r-q\) is equivalent to
+\(\sigma=t_{r,q}(z)\).  With
+\(\Delta_r=\kappa_r(E_r-E_6)-(r-6)\), further positive bounds are
+\[
+\begin{array}{c|rrrrrrr}
+ r&7&8&9&10&11&12&13\\ \hline
+ \Delta_r&
+ >0.1725&>0.2765&>0.3250&>0.3277&>0.2916&>0.2222&>0.1238
+\end{array}
+\]
+The two coefficients in \(W\) and the leading coefficient in \(R\)
+are enclosed by
+\begin{gather*}
+ 9.6779<-g_{14}/g_1<9.6822,\\
+ 25.0555<-\frac{\sum_{2\le r\le13,\ r\ne6}g_r}{g_1}<25.0707,\\
+ 39.1859<\frac{1-z\log2\,\kappa_6}{2^\theta\log2-1}<39.214.
+\end{gather*}
+Thus all lengths in \eqref{ex:same-lengths} are positive.  Each
+\(f_r(q)\) is strictly concave in \(q\).  Its zero at \(q=0\)
+and the equalities just proved imply
+\begin{equation}
+ f_6(q)>0\ (0<q<6),\qquad
+ f_{14}(q)>g_{14}\ (6<q<14),\qquad
+ f_{14}(q)>0\ (0<q\le14).
+ \label{exapp:same-concavity}
+\end{equation}
+
+The lengths \(W,R\) give exactly
+\eqref{exapp:owner-balance}--\eqref{exapp:child-balance} for \(n=14\).
+For an internal index \(j\), put \(q=14-j\) in
+\eqref{exapp:prefix-KKT}.  If \(j<8\), the first term is
+\(T[f_{14}(q)-g_{14}]>0\), while the others are \(O(C)\).
+If \(j=8\), the first term vanishes exactly and the other seven
+terms are the strictly positive middle margins displayed above,
+multiplied by \(C\).  If \(9\le j\le13\), the ninth group gives
+\(Uf_6(q)>0\), with all other terms \(O(T+C)\).
+Since \(U=T^3\), all internal multipliers are positive for large
+\(T\).  The exterior multipliers vanish and \(\sigma>\theta\),
+proving the asserted exact owner partition.
+
+Only groups \(1,9,14\) have growing clocks in the proper owner;
+all other binary factors are automatically saturated.  For the edge
+\((i,q)=(1,6)\), keep names \(9,\ldots,14\) until their own
+deadlines.  Comparing the two completions with the full configuration
+and using \(f_{14}(6)=g_{14}\), both reference costs equal
+\[
+ C\sum_{r=7}^{13}\{\kappa_r(E_r-E_6)-(r-6)\}.
+\]
+The cuts are late.  The left side makes the first group good, and
+both sides make precisely the seven intermediate groups of ranks
+\(7,\ldots,13\) good.  In particular the displayed pair gives
+\(X_{1,6}\ll\sqrt T\), \(Y_{1,6}\ll1\).
+
+To prove the lower bound for \(X_{1,6}\), consider any legal
+completion.  If between one and five names survive through the
+rank-six group, its cost is \(Uf_6(q')\gg U\), and all other
+possibly negative contributions have total magnitude \(O(T+C)\).
+If none survives, the rank-one compensating length \(W\) contributes
+nothing, while the first-group contribution is \(g_{14}T\).
+If all six survive but name \(14\) ends before its deadline
+\(V_{14}\), the rank-one negative contribution is again absent,
+leaving \(g_{14}T+O(C)\).  In the remaining case name \(14\)
+reaches \(V_{14}\); the completion is late and the first group is
+good on the left.  Its score is then at least \(\sqrt T\).
+These cases exhaust the templates and prove
+\((X_{1,6},Y_{1,6})\asymp(\sqrt T,1)\).
+
+For \((i,q)=(9,0)\), all six deep names end at \(V_8\) or \(V_9\).
+At least these six names survive the first group.  Since the number
+there lies between \(6\) and \(14\), strict concavity and equal
+endpoint values give a contribution at least \(g_{14}T\).  In
+group \(9\), the left and right contributions are respectively
+\(f_6(0)U=f_6(6)U=0\).  No name survives into the group of length
+\(W\).  The remaining costs are \(O(C)\).  These bounds apply to
+every completion.  Conversely, ending every earlier name at zero
+gives costs \(O(T+C)\), and the good-group correction is at most
+\(\sqrt T+11\sqrt C\): the long rank-six group has either no
+survivor or all its names.  The exit reserve is bounded.
+Thus both endpoint scores have order \(T\).
+
+It remains to exclude additional unsaturated edges on the three
+growing clocks.  In group \(1\), the edge \(q=0\) has a bounded
+left score and right reference cost \(g_{14}T\), so it is saturated.
+For \(1\le q\le5\), the left completion has at most five survivors
+in group \(9\).  A nonempty surviving set there costs \(\gg U\);
+an empty set leaves \(Tf_{14}(q)+O(C)\gg T\), with no rank-one
+compensation.  For \(7\le q\le13\), the entire possible negative
+rank-one compensation is \(g_1W=-g_{14}T+O(C)\).
+The first-group cost still leaves
+\(T[f_{14}(q)-g_{14}]+O(C)\gg T\), and the rank-six contribution
+is nonnegative.  In group \(9\), each edge with \(q\ge1\) has
+left cost \(Uf_6(q)+O(T+C)\gg U\).  Finally, group \(14\) has
+only \(q=0\).  Its left completion keeps name \(14\) through
+group \(9\), but supplies no negative rank-one contribution.
+If fewer than six names survive group \(9\), its cost is
+\(\gg U\); otherwise the first group contributes at least
+\(g_{14}T\), up to bounded errors.  Since \(W\asymp T\), this
+also saturates the edge.  These cases cover every canonical edge.
+
+The proper native length is \(\asymp U\), and its exit gap is a
+fixed positive constant, so its count is \(U^{-\sigma/2}\).
+The terminal singleton has length \(R\asymp U\) and fixed positive
+drift coefficient \(2^\theta\log2-1\).  Its factor is
+\(U^{-1/2}\).  Inserting the two endpoint pairs in
+\eqref{profile:edge-factor} proves \eqref{ex:same-answer}.
+Direct substitution into \eqref{profile:saddle} gives
+\eqref{ex:same-rate}.
+
+\subsection{Two comparisons in different owners}
+
+Write \(z=e^{c/s}\), \(Z=(1+z)^s\), and
+\(A=\log(1+z)-z\log z/(1+z)\).  The rank-one equation is
+\(F(s;c)=ZA-1\).  At fixed \(c>0\), differentiation gives
+\begin{equation}
+ \partial_sF(s;c)=Z\left[A^2+
+               \frac{c^2}{s^3}\frac{z}{(1+z)^2}\right]>0.
+ \label{exapp:rankone-monotone}
+\end{equation}
+Moreover \(F(1;c)>0\), because
+\((1+z)\log(1+z)-z\log z>1\) when \(z>1\).
+The rational inequalities
+\[
+ t_1(17)-\alpha\in(-0.00026097,-0.00026095),\qquad
+ t_1(18)-\alpha\in(0.00374983,0.00374984)
+\]
+give \(F(\alpha;\alpha\log17)<0\).  The roots of
+\eqref{ex:multi-roots} are isolated by
+\begin{equation}
+ 0.531542356069<v<0.531542356071,\qquad
+ 0.5343537358<u<0.5343537362.
+ \label{exapp:multi-root-bounds}
+\end{equation}
+For the first interval substitute its endpoints in
+\(F(s;\alpha\log17)\); for the second use the entire first
+interval in \(G_2^*\), and substitute the second pair of endpoints
+in \(F(s;G_2^*)\).  The signs are respectively negative and positive
+under the rational bounds of \S\ref{exapp:certificate-method}.
+Equation \eqref{exapp:rankone-monotone} proves uniqueness, and the
+enclosures prove the two strict gaps.
+
+On the proposed face, set
+\(s_1=u_T\), \(s_2=v_T\), \(s_3=\cdots=s_{18}=\tau_T\).
+Solve
+\begin{equation}
+ \partial_{s_1}J=0,\qquad \partial_{s_2}J=0,\qquad
+ \sum_{j=3}^{18}\partial_{s_j}J=0.
+ \label{exapp:multi-stationary}
+\end{equation}
+After division by \(T,T^3,T^{11}\), respectively, the limiting
+system is \eqref{ex:multi-roots} together with
+\(2^\alpha\log2=1\).  Its Jacobian is triangular when the terminal
+variable is solved first.  Its diagonal entries are nonzero by
+\eqref{exapp:rankone-monotone} and
+\(\frac{d}{d\tau}(2^\tau\log2)|_{\tau=\alpha}=\log2\).
+The normalized perturbation in the second equation is \(O(T^{-2})\),
+and in the last it is \(O(T^{-6})\); the first is an exact native
+equation with perturbed child.  Applying the implicit function
+theorem successively gives
+\begin{equation}
+ u_T-u=O(T^{-2}),\quad v_T-v=O(T^{-2}),\quad
+ \tau_T-\alpha=O(T^{-6}).
+ \label{exapp:multi-convergence}
+\end{equation}
+
+We verify all internal terminal KKT inequalities.  At the limiting
+products their leading coefficients, after division by \(T^5\), are
+\begin{equation}
+ \Lambda_j=\sum_{i=3}^j2^{i-3}
+ \left[h_i^{\alpha-1}
+   \{h_i\log h_i-(19-j)\log(19-j)\}-(j-i+1)\right],
+ \quad 3\le j\le17.
+ \label{exapp:multi-KKT}
+\end{equation}
+Rational lower bounds for these fifteen expressions are in the middle
+column below.  The old groups contribute \(O(T^3)\), and parameter
+perturbations give smaller errors; hence
+\(\lambda_j/T^5=\Lambda_j+O(T^{-2})>0\).  The first two equations
+of \eqref{exapp:multi-stationary} give \(\lambda_1=\lambda_2=0\),
+and its last equation gives \(\lambda_{18}=0\).  This verifies the
+entire KKT system and the exact owner partition.
+
+The same table records the finite signs needed to saturate all
+terminal binary edges.  For \(3\le h\le17\), put
+\begin{equation}
+ \delta_{h,q}=h-1-q-
+ h^{\alpha-1}\{h\log h-(q+1)\log(q+1)\},
+ \qquad 1\le q\le h-2.
+ \label{exapp:terminal-edge-difference}
+\end{equation}
+The last column bounds \(\min_{1\le q\le h-2}|\delta_{h,q}|\)
+from below.  Each entry is obtained by the finite sum
+\eqref{exapp:multi-KKT} or the \(h-2\) values in
+\eqref{exapp:terminal-edge-difference}, with the rational series
+bounds already specified.
+\begin{center}
+\begin{tabular}{rr|rr}
+\(j\)&lower bound for \(\Lambda_j\)&\(h\)&lower bound for
+\(\min_q|\delta_{h,q}|\)\\ \hline
+3&0.000739&3&0.13787\\
+4&0.010639&4&0.16404\\
+5&0.068703&5&0.11999\\
+6&0.299317&6&0.02515\\
+7&1.046964&7&0.10933\\
+8&3.195478&8&0.00702\\
+9&8.902046&9&0.05276\\
+10&23.236999&10&0.06103\\
+11&57.730006&11&0.04796\\
+12&137.702459&12&0.02228\\
+13&316.297189&13&0.01094\\
+14&696.898091&14&0.01397\\
+15&1448.473445&15&0.01498\\
+16&2693.099320&16&0.00755\\
+17&3533.706046&17&0.000739
+\end{tabular}
+\end{center}
+In particular all these lower bounds exceed \(7/10000\).
+
+For the singleton owner \([1]\), there is just one paired template,
+and no good group.  Its left reference cost is zero.  Its right
+reference cost is also zero by \(\partial_{s_1}J=0\).
+The left cut is early and the right cut is late.  Since its exit gap
+has a positive limit,
+\(X_1=1+\widehat R_1\asymp1\), \(Y_1=1\).
+
+The singleton owner \([2]\) also has just one pair, with cuts
+\(V_1\) and \(V_2\).  Let \(A_2\) be its native entropy
+increment, so that \(A_2Z_2\to1\).  Its left reference cost is
+\begin{equation}
+ \overline C_{2,-}=T(1-A_2Z_1\beta_1),\qquad
+ 1-A_2Z_1\beta_1\longrightarrow
+          1-(\beta_1^*)^{1-u}>0.
+ \label{exapp:old-singleton-score}
+\end{equation}
+Here the identity
+\(Z_1\beta_1=Z_2\beta_1^{1-s_1}\) follows directly from the
+recursion, and accounts for the transported old intensity.
+The right reference cost is zero by \(\partial_{s_2}J=0\).
+The left cut is early since \(T\ll T^3\), and the right cut is
+late.  No good group is possible in rank one.  Thus
+\(X_2\asymp T\) and \(Y_2=1\).
+The two binary ratios are \(\asymp T^{-1}\) and
+\(\asymp T^{-2}\), respectively.  Their powers tend to
+\(2\chi_1,2\chi_2\).  Local Lipschitz continuity and
+\eqref{exapp:multi-convergence} allow replacement by those limiting
+powers at a bounded multiplicative cost.  The proper count factors
+are \(T^{-u/2}\) and \(T^{-3v/2}\).
+
+For any terminal edge in group \(i\), changing from its left to
+its right completion changes cuts only across that group.  Therefore
+the reference-cost difference is exactly
+\(L_i\delta_{h_i,q}(\tau_T)\), where the notation in
+\eqref{exapp:terminal-edge-difference} now uses \(\tau_T\) instead
+of \(\alpha\).  The finite lower bounds and
+\eqref{exapp:multi-convergence} keep its absolute value
+\(\gg L_i\).  If the difference is positive, every right reference
+cost is \(\gg L_i\), because every left reference cost is
+nonnegative.  If it is negative, every left cost is \(\gg L_i\).
+Thus one entire side has this lower bound before taking the two
+separate minima.  All \(\sum_{h=3}^{17}(h-2)=120\) binary factors
+are saturated; no enumeration of their many individual contexts
+is required.
+
+The ordinary suffix starts in group \(18\), since
+\(\tau_T\to\alpha_2\).  The common terminal balance gives
+\begin{equation}
+ D=(2^{\tau_T}\log2-1)T^{11}
+   =d_0T^5+O(T^3)+O(T^{-1}),\qquad
+ d_0=\sum_{i=3}^{17}2^{i-3}
+             \{h_i-1-h_i^\alpha\log h_i\}>0.
+ \label{exapp:multi-ordinary}
+\end{equation}
+Each summand of \(d_0\) is positive because \(\alpha_h>\alpha_2\)
+for \(h>2\).  To obtain the error bound, the old groups have total
+length \(O(T^3)\), and changing the product in the nonfinal terminal
+groups costs \(O(T^5|\tau_T-\alpha|)=O(T^{-1})\).
+Now \(U=M=T^{11}\), \(A=B=0\), so
+\(\mathcal B_{\rm ord}\asymp T^{-11/2}T^5/T^{11}=T^{-23/2}\).
+
+Finally, \(J_0(T)\) in \eqref{ex:multi-rate} is precisely the
+objective at the limiting products \((u,v,\alpha)\).  Its residual
+first derivative is zero in the first direction, \(O(T)\) in the
+second, and \(O(T^5)\) in the common terminal direction.
+Together with \eqref{exapp:multi-convergence}, the linear change is
+\(O(T\,T^{-2}+T^5T^{-6})=O(T^{-1})\).
+For the quadratic change, differentiating the recursion on a compact
+neighborhood gives diagonal bounds \(O(T)\), \(O(T^3)\),
+\(O(T^{11})\).  Mixed derivatives involving the first direction
+are \(O(T)\), and the remaining mixed derivative is \(O(T^3)\):
+only groups preceding both differentiated nodes can contribute.
+Their products with the respective increments are no larger than
+\(O(T^{-1})\).  Hence \(J(L)-J_0(T)=O(T^{-1})\).
+All coordinates tend to infinity, and the positive-vector comparison
+proves \eqref{ex:multi-answer}.
+
+To finish the dimensional statement, suppose a terminal owner has
+\(C\) names including its permanent child and limiting product
+\(\alpha_2\).  A singleton immediately above it solves
+\(F(s;\alpha_2\log C)=0\).  By
+\eqref{exapp:rankone-monotone}, its product exceeds \(\alpha_2\)
+exactly when \(t_1(C+1)>\alpha_2\).  The one-valley property
+of Lemma~\ref{hier:lem:valley} and
+\(t_1(17)<\alpha_2<t_1(18)\) show that the first integer value
+is \(C=17\).  Two preceding singleton owners require
+\(H=19\), or \(k=18\).  The root enclosures above verify that
+both strict gaps are realized in this first admissible case.
