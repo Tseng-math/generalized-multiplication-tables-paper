@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Exact rational-interval checks for the manuscript's worked examples.
 
-The logarithm and exponential bounds follow Appendix C. Exact zeros are
+The logarithm and exponential bounds follow the worked-examples appendix. Exact zeros are
 analytic identities, not numerical assertions. Requires only Python 3.
 Run without optimization: python3 reproducibility/verify_examples.py
 """

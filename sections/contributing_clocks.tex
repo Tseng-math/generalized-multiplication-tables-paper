@@ -1,0 +1,703 @@
+\section{Contributing clocks and the entropy of the profile}
+\label{fp:sec:arithmetic}
+
+We apply the neighboring-moment estimates to one fixed accepting source
+from Sections~\ref{lower:chapter}--\ref{lower:frozen}. All its original
+physical groups, fine types, count windows, allocated walls, costs and
+adaptive targets are retained. The source measure below includes the
+regularity and bank acceptance on unselected prefix blocks as well as
+the selected binary comparisons.
+
+\subsection{One source for a compact interval of moment orders}
+
+Fix a dimension-dependent compact interval
+$J=[p_-,p_+]\Subset(0,1)$ which contains the whole range of owner
+products in \eqref{profile:compact} in its interior. The margin from
+these products to the endpoints of $J$ is fixed and positive. The
+physical saddle and every original mark law are held fixed when a
+test order $p\in J$ is varied.
+
+For a physical vector $L$ in the sufficiently large positive-length
+region, let $\mathcal I$ be the selected native binary comparisons
+of Section~\ref{lower:data}. There is at most one such comparison
+in an original physical block. If $i\in\mathcal I$, write $e_i$
+for its physical canonical edge and put
+\begin{equation}
+ \eta_i=\sigma_{\operatorname{owner}(i)},\qquad
+ \rho_i=\rho_{e_i},\qquad
+ \tau_i=-2\log\min\{1,T_{e_i}\},
+ \label{fp:eq:physical-duration}
+\end{equation}
+where $T_e,\rho_e$ are exactly those of
+\eqref{profile:edge-factor}. In particular
+$P_{e_i}=\exp\{-\tau_i\chi(\eta_i,\rho_i)\}$.
+The durations and correlations in this section are deterministic
+functions of the physical vector. Every sum involving them is over
+selected comparisons unless another index set is displayed.
+Unselected blocks have $D_i=1$ and contribute no duration or Gaussian
+parameter; they still retain their actual local acceptance.
+
+\begin{lemma}[Uniform neighboring moments of a fixed cell source]
+\label{fp:lem:fixed-source-window}
+The complete-cell source and its costs can be chosen once, uniformly
+for $p\in J$, so that at every supported complete prefix type
+$\omega$ and admitted original count vector,
+\begin{equation}
+ \begin{split}
+ &0\le q_i(\omega,g_i)\le1,\qquad
+ 0<D_i(g_i)\le1,\qquad q_i\le C_kD_i,\\
+ &\EE_{g_i}q_i(\omega,g_i)^p
+   \asymp_k\EE_{g_i}D_i(g_i)^p
+   \asymp_k\exp\{-\tau_i\chi(p,\rho_i)\},\qquad p\in J.
+ \end{split}
+ \label{fp:eq:actual-window}
+\end{equation}
+Here $g_i$ has the original exact-total cell law
+\eqref{ld:exact-cell-law}. The same $q_i,D_i$ occur for every $p$.
+Each $D_i$ reads only the uncolored cell occupancies, including their
+total, and is independent of the fine type after that total is fixed.
+\end{lemma}
+\begin{proof}
+Choose the compact scalar ranges with the test order ranging over
+all of $J$. Theorem~\ref{bridge:all-reserves} and
+Corollary~\ref{bridge:contracted} then supply common wall, reserve
+and binary regularity constants. The refinement in
+Lemma~\ref{ld:named-REG} reads both true mark lists and has a uniform
+conditional success probability for each retained binary word and
+full type. Choose its constants once for these same walls.
+
+In \eqref{ld:cost-envelope}, choose a single floor exponent satisfying
+$D_0p_->2\sup_{p\in J,\rho}\chi(p,\rho)+1$ over the compact
+correlation range. Fix the literal exit widths and use this floor to
+bound the whole logarithmic target and recoloring range. Then choose
+the coefficient tail and the all-transfer envelopes
+\eqref{ld:all-e-parameters} uniformly for $p\in J$, with their
+geometric depth coefficient fixed below the available history budget.
+Finally choose the spare strong-wall and named regularity margins,
+macroscopic-bank support, complete-cell allowances, and final count
+and root thresholds, in the order of \eqref{ld:targets} and the end
+of Section~\ref{ld:cells}. None of these later choices changes $D_0$
+or requires evaluating a target before its envelope has been fixed.
+
+The lower bridge moment, the upper envelope moment
+\eqref{ld:cost-moment}, and the relative macroscopic-bank retention
+\eqref{ld:local-bank-retention} are uniform in this compact order
+range. The direct cell construction \eqref{ld:cell-local} preserves
+them directly for the same functions of the cell word, with the
+private acceptance evaluated before taking its power. The pointwise inequality
+$q_i\le C_kD_i$ supplies the other sides of the two moment
+comparisons.
+
+Initially these comparisons use the exact count, compatible local
+pair and centered correlation of \eqref{lower:conditional-factor}.
+The central-count estimate \eqref{ld:count-comparison} and the
+physical-correlation comparison following
+\eqref{lower:natural-correlation} are uniform in $p\in J$ by the
+compact Lipschitz bound for $\chi$. More explicitly, on a rare
+branch the additional correlation error is
+$O_k(T_{e_i}+L_i^{-1})$ and
+$T_{e_i}\ge c_k/(1+L_i)$; its product with $|\log T_{e_i}|$ is
+bounded. Replacing endpoint scales by fixed comparable scales changes
+the effective duration by $O_k(1)$. Threshold crossings and
+saturated comparisons also have bounded effective duration.
+These observations yield \eqref{fp:eq:actual-window} with the
+physical parameters \eqref{fp:eq:physical-duration}.
+
+On the actual arithmetic grid, keep the physical saddle frozen as
+in Section~\ref{lower:frozen}. Its bounded grid defects and exact
+local increments give the same endpoint and
+exponent-times-log comparisons uniformly over $J$. The preceding
+argument therefore applies directly to the grid functions. The
+resulting neighboring-moment inequalities determine the physical
+centers below. Bounded supported experiments retain their
+prescribed finite support and fixed positive mass throughout.
+\end{proof}
+
+\subsection{The whole prefix source and the unselected blocks}
+
+Let $\mathcal P$ be the set of original blocks before the unread
+ordinary suffix. For each admitted prefix total vector $\mathbf n$,
+let $\mu_{\mathbf n}$ be the one count-only measure on complete
+prefix types in \eqref{ld:whole-count-mass}. Its mass is uniformly
+comparable to $\prod_{j<m}w_j$. Conditional on a complete type,
+all original cell clocks are independent. At a selected block retain
+$q_i$ from Lemma~\ref{fp:lem:fixed-source-window}. At
+$i\in\mathcal P\setminus\mathcal I$, denote its actual private
+local regularity and bank acceptance by $q_i^{\rm reg}(\omega,g_i)$.
+The unselected-block case of \eqref{ld:local-bank-retention},
+together with the named refinement, gives
+\begin{equation}
+ 0\le q_i^{\rm reg}\le1,\qquad
+ c_k\le\EE_{g_i}q_i^{\rm reg}(\omega,g_i)\le1
+ \label{fp:eq:unselected-mass}
+\end{equation}
+uniformly in the whole supported type. Equivalently, the lower
+fractional moment already established with $D_i=\Psi_i=1$ implies
+this lower first moment by Jensen.
+
+To include the remaining central uncolored totals explicitly, let
+$\nu(d\mathbf n)$ be their original independent natural Poisson
+law restricted to their prescribed central windows. Put
+\begin{equation}
+ \mathcal W=\int\mu_{\mathbf n}(1)\,\nu(d\mathbf n),\qquad
+ d\PP_{\rm ref}
+ =\mathcal W^{-1}\nu(d\mathbf n)\mu_{\mathbf n}(d\omega)
+       \prod_{i\in\mathcal P}d\PP_{i,n_i}(g_i),
+ \label{fp:eq:source-reference}
+\end{equation}
+where $\PP_{i,n_i}$ is \eqref{ld:exact-cell-law}. The same
+definitions can be used conditional on any one admitted total
+vector, by taking $\nu$ concentrated there. This reference law
+retains the coupled type coordinates under the count-only acceptance.
+
+Set
+\begin{equation}
+ \begin{split}
+ U(\omega,g)&=\prod_{i\in\mathcal P\setminus\mathcal I}
+                      q_i^{\rm reg}(\omega,g_i),\\
+ R_i&=q_i/D_i,\qquad
+ W_{\rm pre}(\omega,g)
+       =U(\omega,g)\prod_{i\in\mathcal I}R_iD_i^{\eta_i},\\
+ Z_{\rm pre}&=\EE_{\rm ref}W_{\rm pre},\qquad
+ d\mathfrak M=Z_{\rm pre}^{-1}W_{\rm pre}\,d\PP_{\rm ref}.
+ \end{split}
+ \label{fp:eq:source-weight}
+\end{equation}
+The deterministic factor $\prod_{j<m}w_j^{\sigma_j-1}$ from
+the owner costs cancels on normalization. Thus $\mathfrak M$ is
+the complete prefix mixed source, including its unselected blocks.
+
+\begin{lemma}[Integrating the unselected acceptance]
+\label{fp:lem:unselected-integration}
+At a fixed $(\mathbf n,\omega)$, integrating the unselected
+clocks in \eqref{fp:eq:source-weight} replaces their factor by
+\begin{equation}
+ H(\mathbf n,\omega)
+   =\prod_{i\in\mathcal P\setminus\mathcal I}
+                     \EE_{g_i}q_i^{\rm reg}(\omega,g_i),
+ \qquad c_k\le H\le1.
+ \label{fp:eq:unselected-type-weight}
+\end{equation}
+This is a bounded reweighting of the same coupled count-only type
+measure. In particular, uniformly on compact subsets of
+$s_i<1$, $p_i=\eta_i-s_i-t_i\in\operatorname{int}J$,
+\begin{align}
+ Z_{\rm pre}&\asymp_k
+       \exp\{-\sum_{i\in\mathcal I}\tau_i\chi(\eta_i,\rho_i)\},
+       \label{fp:eq:complete-source-Z}\\
+ \log\EE_{\mathfrak M}
+       e^{\sum_{i\in\mathcal I}(s_iS_i+t_iT_i)}
+   &=\sum_{i\in\mathcal I}\tau_i
+       [\chi(\eta_i,\rho_i)-\chi(p_i,\rho_i)]+O_k(1),
+       \label{fp:eq:complete-source-spectrum}
+\end{align}
+where $S_i=-\log q_i$, $T_i=-\log D_i$ on the mixed support.
+\end{lemma}
+\begin{proof}
+At a fixed complete type, the unselected factors use only their
+own original clocks. Their exact integral is the product in
+\eqref{fp:eq:unselected-type-weight}; its bounds follow from
+\eqref{fp:eq:unselected-mass} and the fixed number of blocks.
+The selected clocks remain independent conditional on that type.
+For arbitrary fixed $a_i>0$ and $p_i\in J$, Lemma~\ref{fp:lem:mixed-power}
+and \eqref{fp:eq:actual-window} give
+\[
+ \EE_{g_i}R_i^{a_i}D_i^{p_i}
+      \asymp_k e^{-\tau_i\chi(p_i,\rho_i)}.
+\]
+Multiply these integrals at the fixed type, retain $H$ inside the
+whole type sum, and use its uniform upper and lower bounds. Tonelli
+then integrates that one coupled measure and the central totals.
+Taking $a_i=1,p_i=\eta_i$ gives the normalization. For the moment
+numerator take $a_i=1-s_i$ and use the exact identity
+$R_iD_i^{\eta_i}e^{s_iS_i+t_iT_i}=R_i^{1-s_i}D_i^{p_i}$.
+Division by the normalization proves the spectrum with $O_k(1)$
+error.
+\end{proof}
+
+\subsection{Clock shells, entropy, and projection}
+
+Define physical centers and an uncolored prefix event by
+\begin{equation}
+ m_i=\tau_i\partial_p\chi(\eta_i,\rho_i),\qquad
+ \mathcal G_A=\bigcap_{i\in\mathcal I}
+       \{|T_i-m_i|\le A\sqrt{1+\tau_i}\}.
+ \label{fp:eq:source-shell}
+\end{equation}
+
+\begin{proposition}[Contributing clock shells]
+\label{fp:prop:source-shell}
+Uniformly over the physical large-length region and the admitted
+central-count support,
+\begin{equation}
+ \mathfrak M(\mathcal G_A^c)\le C_ke^{-c_kA},\qquad A\ge1.
+ \label{fp:eq:shell-tail}
+\end{equation}
+Both $S_i$ and $T_i$ satisfy
+\begin{equation}
+ \mathfrak M\{|S_i-m_i|>u\},\quad
+ \mathfrak M\{|T_i-m_i|>u\}
+ \le C_k\exp\{-c_k\min(u^2/(1+\tau_i),u)\}.
+ \label{fp:eq:complete-source-concentration}
+\end{equation}
+Moreover
+\begin{equation}
+ \mathfrak M\{\log(D_i/q_i)>v\}\le C_ke^{-v},\qquad
+ \log(D_i/q_i)\ge-\log C_k,
+ \label{fp:eq:complete-source-ratio}
+\end{equation}
+and
+\begin{equation}
+ \KL(\mathfrak M\Vert\PP_{\rm ref})
+  =\sum_{i\in\mathcal I}\tau_i
+       [\chi(\eta_i,\rho_i)-\eta_i\partial_p\chi(\eta_i,\rho_i)]
+       +O_k\!\left(\sum_{i\in\mathcal I}\sqrt{1+\tau_i}+1\right).
+ \label{fp:eq:source-entropy}
+\end{equation}
+The same entropy formula holds for projection to the complete
+uncolored prefix occupancies, with the corresponding reference
+marginal. The expected conditional entropy of the discarded type
+information is $O_k(1)$. The event $\mathcal G_A$ reads neither a
+fine name nor an unread ordinary-suffix clock.
+\end{proposition}
+\begin{proof}
+The local $C^{1,1}$ estimate of Theorem~\ref{fp:thm:regularity},
+applied to \eqref{fp:eq:complete-source-spectrum}, gives the
+two-sided Bernstein bound by Chernoff exactly as in
+Proposition~\ref{fp:prop:history-target}. Here the order interval
+has a fixed margin around every $\eta_i$. For $A\ge1$,
+$\min(A^2,A\sqrt{1+\tau_i})\ge A$; a union bound gives the shell
+estimate. At a fixed type, the proof of the ratio tail uses
+$R_i\mathbf1_{\{R_i<e^{-v}\}}\le e^{-v}$. The other selected
+integrals and the factor $H$ have uniform comparisons, so the same
+argument proves \eqref{fp:eq:complete-source-ratio} for the
+complete source. In particular each $\EE_{\mathfrak M}|\log R_i|$
+is bounded.
+
+Conditional on the type and selected clocks, the unselected clocks
+have density $U/H$ relative to their original product law. Since
+$0\le U\le1$ and $H\ge c_k$,
+\[
+ \EE_{\mathfrak M}[-\log U\mid\mathbf n,\omega,g_{\mathcal I}]
+     =H^{-1}\EE[U(-\log U)\mid\mathbf n,\omega]
+     \le (e c_k)^{-1}.
+\]
+Thus the unselected source restrictions have bounded entropy cost.
+Integrating \eqref{fp:eq:complete-source-concentration} gives
+$\EE_{\mathfrak M}T_i=m_i+O_k(\sqrt{1+\tau_i})$.
+Expansion of the exact density
+\[
+ \log\frac{d\mathfrak M}{d\PP_{\rm ref}}
+  =\log U+\sum_{i\in\mathcal I}\log R_i
+       -\sum_{i\in\mathcal I}\eta_iT_i-\log Z_{\rm pre}
+\]
+proves \eqref{fp:eq:source-entropy}, including the case
+$\mathcal I=\varnothing$.
+
+For clarity, define the two Gibbs laws relative to this same full
+reference measure by densities proportional to
+$\prod_{i\in\mathcal I}D_i^{\eta_i}$ and
+$\prod_{i\in\mathcal I}q_i^{\eta_i}$, respectively. Their
+normalizers and $Z_{\rm pre}$ are comparable. The respective
+density ratios of $\mathfrak M$ are bounded by constants times
+$U\prod_iR_i$ and $U\prod_iR_i^{1-\eta_i}$, hence are uniformly
+bounded. Both forward Gibbs relative entropies, and the corresponding
+finite-time Gibbs variational excesses, are consequently $O_k(1)$.
+For the $D$-Gibbs law its density is measurable with respect to the
+complete uncolored occupancies (including the totals). Its conditional
+type law given those occupancies agrees exactly with that of
+$\PP_{\rm ref}$. The relative-entropy chain rule, as in
+Corollary~\ref{fp:cor:projection}, bounds the entropy of the
+discarded information by $O_k(1)$ and proves the marginal formula.
+All physical centers remain deterministic when the original central
+totals are integrated in \eqref{fp:eq:source-reference}.
+\end{proof}
+
+\subsection{Restriction and transfer to original prime tuples}
+
+\begin{theorem}[Full-order arithmetic lower family]
+\label{fp:thm:arithmetic-family}
+For each fixed $k$, the source constants and complete-cell conventions
+can be chosen as above. There are fixed $L_*(k)$ and $A(k)$ such
+that for every physical vector $L_i\ge L_*(k)$ there is a family
+$\mathcal A_A(L)$ of the original squarefree tuples in
+\eqref{paper:K} satisfying
+\begin{equation}
+ e^{-\sum_i h_iL_i}
+ \sum_{\mathbf a\in\mathcal A_A(L)}
+       \frac{L^{(k+1)}(\mathbf a)}{a_1\cdots a_k}
+       \asymp_k\Psi_k(L),\qquad h_i=k-i+2.
+ \label{fp:eq:arithmetic-family}
+\end{equation}
+Every tuple in this family has complete-cell occupancy in
+$\mathcal G_A$ and retains the original uncolored count/root support
+and size restrictions. Thus the family contributes a fixed positive
+dimension-dependent fraction of the entire harmonic volume sum.
+\end{theorem}
+\begin{proof}
+The joint ordinary-suffix kernel \eqref{ld:cell-root-kernel}
+holds pointwise on each retained complete prefix. Multiply it by
+the original owner cost factors and
+$\mathbf1_{\mathcal G_A^c}$. The complete prefix measure in
+\eqref{fp:eq:source-weight}, including $U$, is exactly the one
+which results when these factors are integrated against the private
+prefix mass. Equations~\eqref{fp:eq:shell-tail} and
+\eqref{ld:cell-root-kernel} therefore bound the removed mixed
+source mass by $C_ke^{-c_kA}$ times the original mixed source mass.
+
+Keep the costs, floors, targets, strong curves, count bands and root
+rule unchanged, and restrict the accepted source by
+$\mathbf1_{\mathcal G_A}$. The recoloring kernel preserves every
+uncolored cell occupancy, so its transported density is exactly
+\begin{equation}
+ F_A(g,\omega)=\mathbf1_{\mathcal G_A}(g)F_y^{I,\rm cell}(g,\omega).
+ \label{fp:eq:restricted-density}
+\end{equation}
+The pointwise mass identity \eqref{ld:cell-density} includes its
+original root indicator. In the exact nominal identity
+\eqref{ld:exact-first-mass}, the remaining factors involving
+$E_y$ and the root error are bounded above and below. Consequently
+the removed nominal first mass is at most $C_ke^{-c_kA}$ of the
+whole first mass. Choose the fixed $A(k)$ large enough to retain
+a fixed positive fraction. The nominal mass remains comparable to
+$\Psi_k(L)$ by \eqref{lower:nominal-mass} and the frozen-grid
+comparison of Section~\ref{lower:frozen}.
+
+For any retained anchor and any original history,
+$M_h(F_A;\omega)\le M_h(F_y^{I,\rm cell};\omega)$. The original
+unnormalized collision row \eqref{lower:unnormalized-row} thus
+retains its constant under the restriction. For every retained
+occupancy the pointwise squarefree supply
+\eqref{lower:actual-supply} also remains valid. Apply the original
+prime-cell kernel to $F_A$ on that occupancy. With
+$Z_{F_A}(g)=\sum_\omega F_A(g,\omega)$, it gives
+\[
+ \int f_A\ge c_kW_gZ_{F_A}(g),\qquad
+ \int f_A^{1+\delta}\le C_kW_gZ_{F_A}(g).
+\]
+The same H\"older inequality as \eqref{lower:holder} yields
+$\operatorname{meas}\{f_A>0\}\ge c_kW_gZ_{F_A}(g)$.
+
+Here is an explicit tuple definition. For every occupancy $g$ let
+$\mathcal A(g)$ be its original squarefree tuple set from
+\eqref{lower:actual-supply}, with the source size restrictions, and set
+\begin{equation}
+ \mathcal A_A(L)=
+    \bigcup_{g:Z_{F_A}(g)>0}\mathcal A(g).
+ \label{fp:eq:tuple-family-definition}
+\end{equation}
+These sets have disjoint occupancies. The positive set of $f_A$ is
+contained in the original divisor union for each such tuple.
+Summing the preceding bound over $g$ and retaining the nominal
+normalization proves the lower bound in
+\eqref{fp:eq:arithmetic-family}. Its upper bound follows by
+inclusion in the entire sum \eqref{paper:K} and
+Theorem~\ref{positive:upper}. Bounded grid-length losses change the
+normalizing exponent only by a dimension-dependent constant.
+
+All these objects are constructed on the actual complete prime-cell
+grid with the physical products and owner structure frozen. The
+grid comparison \eqref{lower:frozen-defects} uses the exact budget
+of Section~\ref{lower:frozen}.
+Since \eqref{fp:eq:restricted-density} only removes accepted words,
+the original count, root, occupancy and size support is preserved.
+\end{proof}
+
+Each $\mathbf a\in\mathcal A_A(L)$ determines its occupancies
+$g_{i,c}(\mathbf a)$ by counting its prime factors in the fixed
+complete cells. We define $D_i(\mathbf a)=D_i(g_i(\mathbf a))$.
+The shell and targets are therefore actual functions of the original
+tuple, evaluated from its uncolored occupancies. The condition
+$Z_{F_A}(g)>0$ in \eqref{fp:eq:tuple-family-definition} expresses
+the existence of an accepted fine word; $q_i(\omega,g_i)$ still
+depends on that word's fine type.
+
+\subsection{The original adaptive targets and their physical centers}
+
+Retain \eqref{lower:owner-cost}, \eqref{lower:targets} and
+\eqref{lower:triangular}, with $w_m=1$ for the terminal owner:
+\[
+ y_j=-\log w_j+
+       \sum_{\substack{i\in\mathcal I\\\operatorname{owner}(i)=j}}T_i,
+ \qquad x=\sum_j\frac{\sigma_j}{\sigma_1}y_j.
+\]
+Define deterministic physical centers by
+\begin{align}
+ \bar y_j&=-\log w_j+
+       \sum_{\substack{i\in\mathcal I\\\operatorname{owner}(i)=j}}
+           \tau_i\partial_p\chi(\sigma_j,\rho_i),
+           \label{fp:eq:ybar}\\
+ \bar x&=\sum_j\frac{\sigma_j}{\sigma_1}\bar y_j.
+           \label{fp:eq:xbar}
+\end{align}
+
+\begin{corollary}[Target and root localization on original tuples]
+\label{fp:cor:targets}
+Every tuple in \eqref{fp:eq:tuple-family-definition} satisfies
+\begin{align}
+ |y_j-\bar y_j|&\le C_kA
+       \sqrt{1+\sum_{\substack{i\in\mathcal I\\
+                                      \operatorname{owner}(i)=j}}\tau_i},
+       \label{fp:eq:y-error}\\
+ |x-\bar x|&\le C_kA\sqrt{1+\sum_{i\in\mathcal I}\tau_i}.
+       \label{fp:eq:x-error}
+\end{align}
+Let $L'_i$ be the actual complete-cell lengths,
+$V'_j=\sum_{i\le j}L'_i$, and retain the physical $s_i,G_i$.
+The exact uncolored grid root on a tuple is
+\begin{equation}
+ X_1^{\rm grid}(\mathbf a)=
+    \frac{\sum_iG_i\,\omega(a_i)-\sum_js_jV'_j}{\sigma_1},
+ \qquad
+ X_1^{\rm grid}=x+\epsilon,\qquad -C_k\le\epsilon\le0.
+ \label{fp:eq:tuple-root}
+\end{equation}
+Here $\omega(a_i)$ denotes the number of prime factors of the
+squarefree integer $a_i$. If $e_j$ is the original integer recoloring
+recursion, then it differs by
+$O_k(A\sqrt{1+\sum_i\tau_i}+1)$ from the deterministic real recursion
+\[
+ \bar e_0=0,\qquad
+ \bar e_j=(\bar y_j+A_j\bar e_{j-1})/b_j.
+\]
+\end{corollary}
+\begin{proof}
+Sum the shell inequalities within each owner and use Cauchy--Schwarz
+and the dimension-bounded number of selected blocks. The ratios
+$\sigma_j/\sigma_1$, the reciprocals of $b_j$, and the remaining
+recursion coefficients are dimension-bounded. Iterating the
+recursion difference, with the error in $[0,1)$ at each ceiling,
+proves the stated recoloring estimate.
+
+The first expression in \eqref{fp:eq:tuple-root} is the uncolored
+count/root identity \eqref{paper:ep-root-telescope} on the complete
+original chain, evaluated algebraically at the frozen physical
+coefficients and the actual grid budget.
+The actual reservoir count is the floor in \eqref{ld:new-root},
+using this grid budget as specified in Section~\ref{lower:frozen}.
+Thus its floor error is in $[-r_m w_*,0]$, where
+$r_m=\sigma_m/\sigma_1$ and $w_*\le\log(k+1)$ is the reservoir
+mark. This proves the second assertion in
+\eqref{fp:eq:tuple-root}. Recoloring fixes all uncolored counts,
+and the shell restriction fixes the root rule, so the identity
+holds on every tuple of the family. Thus the root is the complete-cell
+count functional with frozen marks $G_i$ and grid budgets $V_j'$.
+\end{proof}
+
+The derivative in \eqref{fp:eq:ybar} is with respect to the test
+moment order while the physical vector, mark law and correlation
+are fixed. The exact support and recoloring rules continue to use
+the adaptive targets $y_j,x$; the centers describe their localization.
+
+For the complete normalized prefix source, every fixed real linear
+path target $X_{\rm path}=\sum_{i\in\mathcal I}a_iT_i$ also obeys
+\begin{equation}
+ \log\EE_{\mathfrak M}e^{hX_{\rm path}}
+   =\sum_{i\in\mathcal I}\tau_i
+       [\chi(\eta_i,\rho_i)-\chi(\eta_i-ha_i,\rho_i)]+O_k(1)
+ \label{fp:eq:source-target-spectrum}
+\end{equation}
+for small fixed $h$. A deterministic count-window contribution can
+be added exactly; the conditional statement likewise holds at fixed
+admitted totals. The selected local deviation conclusion of
+Theorem~\ref{fp:thm:history-local-ldp} applies when the effective
+durations have a common diverging scale.
+
+\begin{remark}[Scope of the arithmetic localization]
+\label{fp:rem:arithmetic-scope}
+The localization describes a full-order subfamily in the sufficiently
+large positive-length region, measured by harmonic divisor volume.
+The local deviation principle concerns the normalized prefix source.
+For bounded or zero physical lengths, arithmetic stability controls
+the total sum; localization of the contributing clocks in that region
+would require a separate argument.
+\end{remark}
+
+\subsection{Environmental entropy and the structural profile}
+\label{fp:sec:interpretation}
+The scalar exponent measures a balance between selecting a favorable
+clock and asking its private labels to survive. To make this balance
+precise, let $\mathsf P_t$ be the OU environmental law and write
+$S_t=-\log q_t$. The classical Gibbs variational formula
+\cite[Section~1.4]{DupuisEllis1997}, applied to $\eta S_t$, gives
+\begin{equation}\label{fp:eq:gibbs-identity}
+ b_t(\eta,\rho)=\inf_{\mathsf Q\ll\mathsf P_t}
+ \{\KL(\mathsf Q\Vert\mathsf P_t)+\eta\EE_{\mathsf Q}S_t\}.
+\end{equation}
+Indeed, for $d\nu_{\eta,t}=q_t^\eta d\mathsf P_t/F_{\eta,\rho}(t)$,
+subtracting $b_t$ from the expression in braces gives
+$\KL(\mathsf Q\Vert\nu_{\eta,t})$. Define
+\begin{equation}\label{fp:eq:selection-cost}
+ v(\eta,\rho)=\partial_\eta\chi(\eta,\rho),\qquad
+ d(\eta,\rho)=\chi(\eta,\rho)-\eta v(\eta,\rho).
+\end{equation}
+Theorem~\ref{fp:thm:regularity} gives
+\[
+ \EE_{\nu_{\eta,t}}S_t=t v(\eta,\rho)+O(\sqrt t),\qquad
+ \KL(\nu_{\eta,t}\Vert\mathsf P_t)
+       =t d(\eta,\rho)+O(\sqrt t).
+\]
+In particular $d(\eta,\rho)\ge0$. The complete mixed source has the
+corresponding sums of these leading quantities by
+Proposition~\ref{fp:prop:source-shell}. Its selected local factors
+are $qD^{\eta-1}$, and its unselected acceptance has bounded entropy
+cost.
+
+The full scalar large-deviation principle in
+Theorem~\ref{fp:thm:scalar-ldp} makes the environmental cost explicit.
+Its good rate function $I_\rho$ satisfies
+\begin{equation}\label{fp:eq:scalar-var}
+ \begin{split}
+ \chi(\eta,\rho)&=\min_{v\ge0}\{I_\rho(v)+\eta v\},\\
+ \argmin_{v\ge0}\{I_\rho(v)+\eta v\}
+   &=\{\partial_\eta\chi(\eta,\rho)\}.
+ \end{split}
+\end{equation}
+These identities follow from convex duality for
+$\Lambda_\rho(\theta)=-\chi(-\theta,\rho)$ at $\theta=-\eta$;
+differentiability makes its subgradient a singleton. Thus
+$d(\eta,\rho)=I_\rho(v(\eta,\rho))$.
+
+For a canonical edge $e$ in \eqref{profile:edge-factor}, write
+$\sigma_e=\sigma_{\operatorname{owner}(e)}$ for its owner product and set
+\begin{equation}\label{fp:eq:edge-clock}
+ \tau_e=2[-\log T_e]_+,\qquad
+ P_e=e^{-\tau_e\chi(\sigma_e,\rho_e)}.
+\end{equation}
+Proposition~\ref{fp:prop:poisson} and \eqref{fp:eq:scalar-var} now
+express the positive-length profile as two entropy costs:
+\begin{align}\label{fp:eq:profile-var}
+ -\log\Psi_k(L)
+ ={}&\sum_iL_i\mathcal Q(Z_i)-\log\mathcal B(L)
+       +\sum_{j\ \mathrm{proper}}
+          \sigma_j\log(1+d_j\sqrt{1+T_j})\notag\\
+ &+\inf_{(v_e\ge0)}\sum_e\tau_e
+             \{I_{\rho_e}(v_e)+\sigma_ev_e\}.
+\end{align}
+Here $T_j$ denotes owner $j$'s native length as in
+\eqref{profile:raw}. For every active edge the minimizing coordinate is
+$v_e=\partial_\eta\chi(\sigma_e,\rho_e)$; a coordinate with
+$\tau_e=0$ has no effect. The sum separates by the proved product
+formula \eqref{profile:raw}: each summand uses the scalar OU rate
+function for its edge.
+The Poisson cost is measured in the physical lengths $L_i$, whereas
+the persistence cost is measured in the effective times $\tau_e$,
+which are often logarithmic in those lengths. The constant-factor
+bridge estimates remain necessary to recover the arithmetic order.
+
+\subsection{The loss from averaging the clock first}
+Let $\Psi_k^{\mathrm{ann}}$ be the expression \eqref{profile:raw}
+with each $\chi(\sigma_e,\rho_e)$ replaced by $\sigma_e/2$.
+This substitution keeps the saddle, endpoint scores, count windows
+and ordinary suffix fixed.
+\begin{corollary}\label{fp:cor:anneal-profile}
+Uniformly on the positive-length domain,
+\begin{equation}\label{fp:eq:anneal-profile}
+ \log\frac{\Psi_k^{\mathrm{ann}}(L)}{\Psi_k(L)}
+ =\sum_e\tau_e\left[\chi(\sigma_e,\rho_e)-\frac{\sigma_e}{2}\right]
+ \asymp_k\sum_e\tau_e.
+\end{equation}
+Both sides are zero if all $\tau_e$ vanish. Along a parameter family,
+the ratio tends to infinity exactly when $\sum_e\tau_e\to\infty$.
+\end{corollary}
+\begin{proof}
+The owner products are bounded away from zero and one. On the
+canonical nondegenerate parameter range, the correlations have a
+positive lower bound depending only on $k$. Apply
+Theorem~\ref{fp:thm:annealing} for the lower estimate and
+$\chi(\sigma_e,\rho_e)\le1/2$ for the upper estimate.
+\end{proof}
+
+\subsection{The critical six-coordinate family}
+In the family \eqref{ex:critical-lengths}, take the fixed middle
+length $C$ above the threshold of Theorem~\ref{fp:thm:arithmetic-family}.
+The rare edge is $6\to1$, with owner product $\sigma_c$ and correlation
+\[
+ \rho_c=\frac{(7\log7-2\log2)^2}
+              {(7\log7-2\log2)^2+10(\log2)^2}.
+\]
+Its low-mark probability is $2/7$, so this is exactly
+$\rho(6,1;1)$ in \eqref{ex:rho}. Put
+\[
+ \chi_c=\chi(\sigma_c,\rho_c),\qquad
+ v_c=\partial_\eta\chi(\sigma_c,\rho_c),\qquad
+ d_c=\chi_c-\sigma_cv_c=I_{\rho_c}(v_c).
+\]
+The endpoints \eqref{ex:critical-endpoints} give
+$\tau_e=\log T+O_k(1)$. Thus \eqref{ex:critical-answer} becomes
+\begin{equation}\label{fp:eq:six-example}
+ \Phi_6(\log3+L)
+ \asymp_6 e^{-J(L)}T^{-1/2}\,T^{-d_c}\,T^{-\sigma_cv_c}.
+\end{equation}
+The last two factors respectively describe the environmental selection
+cost and the conditional path cost at the selected clock. Under the
+mixed source, the environmental entropy is
+$d_c\log T+O_k(\sqrt{\log T})$. Moreover, the arithmetic family in
+Theorem~\ref{fp:thm:arithmetic-family} can be chosen so that
+\begin{equation}\label{fp:eq:six-shell}
+ -\log D=v_c\log T+O_k(\sqrt{\log T}),\qquad
+ X_1^{\mathrm{grid}}=v_c\log T+O_k(\sqrt{\log T}).
+\end{equation}
+Here $X_1^{\mathrm{grid}}$ is the uncolored count root of the
+complete-cell construction, including its bounded rounding error,
+as in Corollary~\ref{fp:cor:targets}. The bounded clocks contribute
+only bounded target terms. This locates a full-order lower family
+of original prime tuples.
+Finally the comparison that averages first is too large by a factor
+$\asymp T^{\Delta_c}$, where
+\[
+ \Delta_c=\chi_c-\sigma_c/2
+ \ge\frac{\rho_c}{16\pi}\min\{\sigma_c,1-\sigma_c\}>0.
+\]
+Since $T=\log(\log y_1/\log3)$, this is a power of $\log\log y_1$.
+
+\subsection{How overlap changes the environmental cost}
+The original comparison constraints can share a clock. A separate
+calculation for deterministic OU windows shows explicitly why the
+cost of a shared environment differs from that of independent ones.
+Use the conditional probabilities $q_{j,I}$ and joint pressures
+$\Xi_A$ of \eqref{fp:eq:joint-pressure}.
+Theorem~\ref{fp:thm:overlap} gives
+\[
+ \EE\prod_j q_{j,I_j}^{p_j}
+ \asymp\exp\left[-\int_\R
+       \Xi_{\{j:s\in I_j^\circ\}}(\boldsymbol p;\boldsymbol\beta)\,ds\right]
+\]
+for any fixed number of deterministic intervals, uniformly in their
+lengths and positions. If all slopes equal $\sqrt{\rho/(1-\rho)}$,
+then the conditional probabilities on the same window coincide, so
+\begin{equation}\label{fp:eq:overlap-scalar}
+ \Xi_A=\chi\left(\sum_{j\in A}p_j,\rho\right),\qquad
+ \EE\prod_jq_{\rho,I_j}^{p_j}
+ \asymp\exp\left[-\int_\R\chi(w_{\boldsymbol p}(s),\rho)\,ds\right],
+\end{equation}
+where $w_{\boldsymbol p}=\sum_jp_j\ind_{I_j}$ and the value
+$\chi(0,\rho)=0$ denotes the region with no active interval.
+For $I_j=t[a_j,b_j]$, write
+$\Xi_\Gamma(\boldsymbol p)=\int\chi(\sum_jp_j\ind_{[a_j,b_j]}(s),\rho)\,ds$.
+The finitely many active sets and Theorem~\ref{fp:thm:regularity} give
+\begin{equation}\label{fp:eq:overlap-derivative}
+ \partial_{p_j}\Xi_\Gamma
+ =\int_{a_j}^{b_j}\partial_p\chi(w_{\boldsymbol p}(s),\rho)\,ds,
+\end{equation}
+where in this formula $w_{\boldsymbol p}=\sum_jp_j\ind_{[a_j,b_j]}$.
+The entropy rate of the joint Gibbs environment is consequently
+\begin{equation}\label{fp:eq:overlap-entropy}
+ \Xi_\Gamma-\boldsymbol p\cdot\nabla\Xi_\Gamma
+ =\int\{\chi(w_{\boldsymbol p}(s),\rho)
+       -w_{\boldsymbol p}(s)\partial_p\chi(w_{\boldsymbol p}(s),\rho)\}\,ds,
+\end{equation}
+with zero integrand outside the active union. The same leading rate
+holds for mixed envelopes satisfying the joint window
+\eqref{fp:eq:joint-window}.
+
+For two intervals of length $t$ with overlap $h$, the formula reads
+\begin{equation}\label{fp:eq:overlap-two}
+ \EE[q_{I_1}^{p_1}q_{I_2}^{p_2}]
+ \asymp e^{-(t-h)[\chi(p_1,\rho)+\chi(p_2,\rho)]
+                  -h\chi(p_1+p_2,\rho)}.
+\end{equation}
+In particular, at $p_1=p_2=1/2$ it equals, up to constants,
+$e^{-2(t-h)\chi(1/2,\rho)-h/2}$. These deterministic-window
+identities explain the shared-clock effect; the arithmetic profile
+uses the conditioned, exact-type construction proved above.

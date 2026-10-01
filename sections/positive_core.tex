@@ -23,8 +23,7 @@ We give the arithmetic and probability details of this extension.
 The geometric covers, scalar all-count estimates, and conditional owner
 tower are the established inputs and theorems of
 Section~\ref{upper:section}. Their length thresholds concern only
-effective scalar banks; bounded banks are treated below. No lower
-occupancy event or squarefree supply estimate is used.
+effective scalar banks; bounded banks are treated below.
 Lemma~\ref{artrunc:lemma} first restricts the full arithmetic sum to the
 size-truncated original tuples used by those covers, at a factor of two.
 Its prime blocks include the original first primes $2$ and $3$.
@@ -105,8 +104,6 @@ Mecke partition, so only a fixed finite number of such insertions occurs.
 Its exponentially or summably polynomially weighted intensity moments
 remain bounded under \eqref{positive:quantile}. The joint subset moment
 estimate therefore retains the original power $\sigma_j$ of every owner.
-No assertion about arbitrary changes of an already averaged path mass is
-needed.
 
 \subsection{Bounded effective banks}
 If an effective bank has length exceeding a fixed scalar threshold plus
@@ -127,9 +124,9 @@ has a count factor bounded below; both weighted half-lines are at most
 one. These arguments are uniform for all $L_i\geq1$.
 
 \subsection{One domination for the entire completed Poisson law}
-The unread ordinary root suffix is conveniently represented by equal
-mass cells. The following elementary fact handles the completion without
-changing any private power or invoking monotonicity under added points.
+The unread ordinary root suffix is represented by equal mass cells.
+The following whole-law comparison handles the completion with all
+private powers kept inside the integrand.
 
 \begin{lemma}[Whole-law mass completion]
 \label{positive:poisson-domination}
@@ -156,16 +153,15 @@ conditional law cancels from the ratio. Integrating $F$ proves the claim.
 
 For example $F$ may contain the minimum of all actual rectangles, the
 true root tilt, shots, and several conditional masses raised to different
-owner powers. There is no exchange of powers or conditional expectations
-in \eqref{positive:whole-domination}. The optional coupling
-$N_c^*=N_c+\operatorname{Pois}(\mu_c^*-\mu_c)$ does not assert that
-$F(N_c)$ is pointwise dominated by $F(N_c^*)$.
+owner powers. The coupling
+$N_c^*=N_c+\operatorname{Pois}(\mu_c^*-\mu_c)$ represents the two
+laws. Inequality~\eqref{positive:whole-domination} compares complete
+integrands by their likelihood ratio; it requires no pointwise
+monotonicity under added points.
 
 In our use the actual same-tuple minimum has already been formed. All
 prefix costs and gates are fixed before the ordinary suffix is sampled.
-We apply the lemma to its whole nonnegative suffix integrand. In
-particular we do not sum an uncontrolled sequence of insertion constants
-over a new Poisson count.
+We apply the lemma once to its whole nonnegative suffix integrand.
 
 \subsection{A bounded total cell deficit and the physical rectangle}
 For an ordinary block with $h$ colors put $\eta=\log h/(h-1)$.
@@ -205,8 +201,8 @@ in \eqref{positive:total-deficit}. Combining it with
 within $O_H(1)$ of $j\eta_i$. Consequently replacing actual positions by
 cell positions multiplies a whole expression
 $1+\sum_\ell e^{t_\ell}$ by at most $e^{O_H(1)}$.
-Its exponent $h-1$ is bounded. There is no error exponential in the
-number of occurrences. The actual original rectangle is proved before
+Its exponent $h-1$ is bounded, so the comparison constant is uniform
+in the number of occurrences. The actual original rectangle is proved before
 this replacement and before repeated-prime enlargement.
 
 Under the completed Poisson law, conditional on the total $N=n$, cell
@@ -229,8 +225,8 @@ counts and the original root coefficient $r$,
  \kappa'&=\kappa+r\sum_i c_i(U_i'-L_i).
  \label{positive:exact-root}
 \end{align}
-This is an exact identity, with $\kappa'-\kappa=O_H(1)$. There is no
-second root draw and no change of the suffix's conditional Gibbs law.
+This exact identity has $\kappa'-\kappa=O_H(1)$ and preserves the
+root draw and the suffix's conditional Gibbs law.
 
 Let $D>0$ be the complete prefix cost after the causal cover. The
 all-count ordinary rectangle theorem of
@@ -247,15 +243,15 @@ On the completed suffix it yields
 \end{equation}
 It also permits the established fixed polynomial outgoing envelope.
 The single largest-block Poisson atom and the ballot denominator were
-extracted jointly in this bound. Lemma~\ref{positive:poisson-domination}
-does not supply, or require, an additional atom.
+extracted jointly in this bound, and
+Lemma~\ref{positive:poisson-domination} preserves that bound.
 
 All quantities with $1+$length in \eqref{positive:root-upper} are
 comparable to their physical versions. For a large suffix one may use
 its physical largest block, whose completed length remains comparable;
 for a bounded suffix the numerical factors have a fixed positive lower
-bound. A grid mean negative by $O_H(1)$ causes no problem, since the
-translate in \eqref{positive:root-upper} is arbitrary. The physical KKT
+bound. The arbitrary translate in \eqref{positive:root-upper} absorbs
+a grid mean negative by $O_H(1)$. The physical KKT
 inequality $D_{\rm nat}\geq c_HV_{\rm pre}$ is used only when averaging
 the prefix. The bounded change of $\kappa$ is absorbed by
 $1+D_{\rm nat}+A$. The joint subset moment and the one-count Mecke bound

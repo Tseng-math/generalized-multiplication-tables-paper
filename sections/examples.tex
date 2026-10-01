@@ -31,8 +31,8 @@ For convenient reference, write the correlation in
  p=\frac{q+z}{r+z}.
  \label{ex:rho}
 \end{equation}
-Here \(r,q,z\) retain their meanings in the profile; in particular,
-\(p\) is not the correlation.  The proofs of the evaluations, including
+Here \(r,q,z\) retain their meanings in the profile, and \(p\) is
+the low-mark probability.  The proofs of the evaluations, including
 the finite inequalities used to locate the constants, are given in
 Appendix~\ref{app:examples}.
 
@@ -56,10 +56,9 @@ lower bound.  The ordinary suffix starts in the first group, has zero
 total drift, and has one group of length \(T\), followed by bounded
 total length.  Its root factor is \(T^{-1/2}\) and its ballot factor is
 \(T^{-1}\).  Bounded arithmetic stability transfers the estimate back
-to the original equal cutoffs.  In particular the zero coordinates have
-not removed any divisor coordinate.
+to the original equal cutoffs with all divisor coordinates retained.
 
-\subsection{Three six-dimensional regimes}
+\subsection{Three regimes with six divisor coordinates}
 
 The next two families have a long first group, four bounded groups, and
 a long last group.  Their different relative lengths expose different
@@ -115,9 +114,13 @@ the power \(T^{-1/2}\).  All remaining binary factors are bounded below.
 The exponent is explicit: if
 \(I_h^{c}=1+(h-1)\sigma_c-h^{\sigma_c}\), then
 \[
- J(L)=(I_7^{c}+aI_2^{c})T+
+J(L)=(I_7^{c}+aI_2^{c})T+
              (I_6^{c}+I_5^{c}+I_4^{c}+I_3^{c}+bI_2^{c})C.
 \]
+Section~\ref{fp:sec:interpretation} further splits $T^{-\chi_c}$
+into its environmental entropy and conditional path costs. It also
+locates the clock and count-root values on a family of original tuples
+that supplies the order in \eqref{ex:critical-answer}.
 
 Now move the last cutoff much farther away by taking
 \begin{equation}
@@ -275,8 +278,7 @@ Its exponential is explicit as well:
 \end{equation}
 This example explains why the profile takes the product of all canonical
 edge factors inside an owner, but assigns a count factor only once to
-that owner.  No assertion of independence between the two comparisons
-is involved.
+that owner, through the simultaneous construction on its common clock.
 
 \subsection{Two comparisons in different owners}
 
@@ -353,6 +355,6 @@ then \(t_1(17)<\alpha_2<t_1(18)\).  Together with the one-valley
 property in Lemma~\ref{hier:lem:valley}, this says that a terminal child
 with limiting product \(\alpha_2\) needs at least \(17\) names before
 the adjacent singleton can have a strictly larger product.  Two such
-singleton owners therefore first fit in dimension \(18\).  This
+singleton owners therefore first fit at \(k=18\).  This
 statement concerns the specified singleton construction; the
-fifteen-dimensional example uses a different arrangement of ranks.
+example with \(k=15\) uses a different arrangement of ranks.

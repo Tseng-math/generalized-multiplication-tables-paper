@@ -62,9 +62,9 @@ $t_{g+1}-t_g\geq d_*/\log H$.  At native capacity $h$ write
  T_h(R)=1-\frac{\log(E_{\min(h,R)}(z)/\min(h,R))}{\log(h+z)}.
 \]
 For $h\leq R$, Lemma~\ref{paper:ep-secants} gives
-$T_h'(R)\geq1/(24H^2)$; for $h\geq R$,
+$\partial_h T_h(R)\geq1/(24H^2)$; for $h\geq R$,
 \[
- T_h'(R)=\frac{\log(E_R/R)}{(h+z)\log^2(h+z)}
+ \partial_h T_h(R)=\frac{\log(E_R/R)}{(h+z)\log^2(h+z)}
  \geq\frac{\log(2\log2)}{H\log^2H}.
 \]
 The function is continuous at $R$, and native capacities fall by
@@ -293,19 +293,28 @@ part of this transport.
 Let maximal platforms be indexed in decreasing products
 $\sigma_1>\cdots>\sigma_M$, with
 $u_j=\sigma_{j+1}/\sigma_j$ and $d_j=1/u_j-1$.
-Let $T_j$ be the native length of proper platform $j$, and suppose
-$V_j\leq C_HT_j$ and $T_j\geq T_0$ for the proper platforms in
+Let $T_j$ be the native length of proper platform $j$, and put
+$V_j=\sum_{a\leq j}T_a$.
+Fix $C_y\geq0$ and target numbers
+$0\leq y_j\leq C_y\log(2+T_j)$ for $j<M$, held fixed throughout
+the count selection and transport. For grouped platform outputs $Z_j$,
+define $\eta_j=\sum_{a\leq j}(\sigma_a/\sigma_j)(Z_a-y_a)$
+for $1\leq j<M$.
+Suppose
+$V_j\leq C_HT_j$ and $T_j\geq T_0(H,C_y)$ for the proper platforms in
 question.  Conditional on admitted original uncolored count windows,
 there is a count-only acceptance, in fixed full-leaf central windows,
 of mass
 \begin{equation}\label{paper:ep-diagonal-mass}
- \asymp_H\prod_{j<M}\frac{R_j}{\sqrt{T_j}},\qquad
+ \asymp_{H,C_y}\prod_{j<M}\frac{R_j}{\sqrt{T_j}},\qquad
  R_j=\max\{R_0,\min(\sqrt{T_j},d_j^{-1})\},
 \end{equation}
 on which all strict carries satisfy
 $aR_j\leq\eta_j\leq bR_j$ for fixed $0<a<b$.
+The constants and central windows depend only on $H,C_y$.
 This acceptance can be transported through the proper endpoint boxes,
-with a further dimension-only factor and without changing the carries.
+with a further factor depending only on $H,C_y$ and without changing
+the carries.
 \end{proposition}
 \begin{proof}
 Choose in each proper platform an original block $B_j$ of length at
@@ -320,9 +329,8 @@ Coarsen just the pair $\{c_j,t_j\}$, fixing its total count $m_j$,
 all coarsened words and all other leaf words.  Its unread split count
 $K_j$, counting $t_j$, has the original binomial law
 $\operatorname{Bin}(m_j,p_j)$, independently for different $j$.
-These are original conditional words, not new point lists.
 
-Let $Z_j$ be the grouped platform output and
+For $2\leq j<M$, these carries satisfy
 $\eta_j=Z_j-y_j+\eta_{j-1}/u_{j-1}$.
 Changing one $c_j$ to $t_j$ raises $Z_j$ by $b_j$, lowers
 $Z_{j+1}$ by $A_{j+1}$ and changes no other grouped output.
@@ -339,35 +347,38 @@ There is a fixed central coarsening event of constant probability on
 which all coarsened categories and all other original-block leaf
 counts lie in their own-scale central windows.  It leaves all $K_j$
 unread.  On it $m_j\asymp_HT_j$ and
-$|h_j+b_jm_jp_j|\leq C_H\sqrt{T_j}$.
+$|h_j+b_jm_jp_j|\leq C_{H,C_y}\sqrt{T_j}$.
 To verify the last estimate, the natural grouped proper output has
 mean zero at a strict boundary; the sum of finitely many own-group
-errors through $j$ is $O_H(\sqrt{1+V_j})$, while the admitted targets
-$0\leq y_j\leq C_y\log(2+T_j)$ are absorbed by the same bound.
+errors through $j$ is $O_H(\sqrt{1+V_j})$. Since
+$T_a\leq V_j\leq C_HT_j$ for $a\leq j$, the weighted sum of targets
+through $j$ is $O_{H,C_y}(\log(2+T_j))$ and is absorbed by the
+displayed square-root bound.
 
 Choose $R_0$ large enough that $(b-a)R_0>2\sup_jb_j$, then
-$T_0\geq R_0^2$ large enough for all resulting binomial windows to
+$T_0=T_0(H,C_y)\geq R_0^2$ large enough for all resulting binomial windows to
 be interior.  For each coarsening, the condition
 $aR_j\leq h_j+b_jK_j\leq bR_j$ is an interval of
-$\asymp_HR_j$ integers within $C_H\sqrt{m_j}$ of its mean.
-Each such atom has mass $\asymp_Hm_j^{-1/2}$, so independence of
+$\asymp_{H,C_y}R_j$ integers within $C_{H,C_y}\sqrt{m_j}$ of its mean.
+Each such atom has mass $\asymp_{H,C_y}m_j^{-1/2}$, so independence of
 the unread split counts proves \eqref{paper:ep-diagonal-mass}.
 The full fine-leaf counts still lie in fixed enlarged central windows.
-The event is an explicit polytope of original counts; neither a
-count-of-types loss nor an early fractional power has been introduced.
+The event is an explicit polytope of original counts with the full
+band mass just computed.
 
-Its actual entrances are $a_{0j}=y_j+\eta_j\geq0$ and
-$b_{0j}=\eta_{j-1}/u_{j-1}\geq0$.
+Its actual entrances are $a_{0j}=y_j+\eta_j\geq0$ for $j<M$,
+with $b_{01}=0$ when $M>1$ and
+$b_{0j}=\eta_{j-1}/u_{j-1}\geq0$ for $2\leq j<M$.
 Apply Lemma~\ref{paper:ep-count-transport} successively to the
 finitely many proper owners.  Each replacement preserves that owner's
 permanent-child word, all preceding coarse words and the finer child
 word, hence every $Z_j$ and $\eta_j$.  The source acceptance remains
 inside the linear integral at each step.  The resulting subprobability
-measure has mass reduced only by a dimension constant; its bounded
+measure has mass reduced only by a constant depending on $H,C_y$; its bounded
 density can be normalized to an acceptance in $[0,1]$.
 This is an unfiltered count transport.  A later path condition is
 imposed only after this count source has been built.
-Finally $0\leq d_j\eta_j\leq C_H$ on the bands, so the exact
+Finally $0\leq d_j\eta_j\leq C_{H,C_y}$ on the bands, so the exact
 full-word likelihood ratios in \eqref{paper:ep-likelihood-cancel}
 are bounded above and below; the native products themselves have not
 been replaced or perturbed.
@@ -535,8 +546,8 @@ Its full-stop guards follow deterministically from
 Lemma~\ref{paper:ep-clipped-prefix} and the two nonnegative entrances.
 For terminal $z=1$, each full-group logarithmic sum is
 $\log(r_g+1)n_g$, independent of all refinements.  Hence neither
-$Z_{\rm term}$, the uncolored root, nor $b_0$ changes, and no second
-root atom is paid.  Proper binary words are coarse and remain fixed.
+$Z_{\rm term}$, the uncolored root, nor $b_0$ changes.  Proper binary
+words are coarse and remain fixed.
 The stronger row \eqref{paper:ep-box-strong}, with $\theta=1/4$,
 is exactly \eqref{paper:ep-terminal-raw-row}.
 This is a count admission; terminal within-block paths are imposed

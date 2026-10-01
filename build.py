@@ -21,6 +21,7 @@ def main():
     compiler = shutil.which(args.compiler)
     if compiler is None:
         parser.error('Tectonic was not found. Install it or pass --compiler /path/to/tectonic.')
+    compiler = str(Path(compiler).resolve())
 
     with tempfile.TemporaryDirectory(prefix='multiplication-tables-build-') as directory:
         temporary = Path(directory)
@@ -44,11 +45,10 @@ def main():
             print(log, file=sys.stderr)
             return 1
         shutil.copyfile(pdf, ROOT / PDF_NAME)
-        shutil.copyfile(bibliography, ROOT / 'main.bbl')
         for line in result.stdout.splitlines():
             if 'warning:' in line.lower():
                 print(line, file=sys.stderr)
-    print(f'Built {PDF_NAME} and main.bbl.')
+    print(f'Built {PDF_NAME}.')
     return 0
 
 

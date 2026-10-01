@@ -4,82 +4,60 @@
 
 [Read the paper](generalized-multiplication-tables.pdf)
 
-This repository contains the complete manuscript, including its technical
-appendices, bibliography, vector figure, and code for reproducing the finite
-rational-interval checks in the worked examples.
-
-For each fixed integer $k\geq 6$, the paper determines the order of rectangular
-$(k+1)$-dimensional multiplication tables for arbitrary ordered side lengths,
-and gives a uniform estimate for $H^{(k+1)}$ on the stated dyadic comparison
-range. The definitions, hypotheses, and proofs are in the manuscript.
+The complete manuscript, bibliography, figure source, and exact rational-interval
+checks for the worked examples are included in this repository.
 
 ## Contents
 
 | Path | Contents |
 | --- | --- |
-| `generalized-multiplication-tables.pdf` | Compiled paper |
-| `main.tex` | LaTeX entry point |
+| `main.tex` | Manuscript entry point |
 | `sections/` | Main text |
-| `appendices/` | Technical appendices in the same paper |
-| `figures/` | TikZ source for the profile diagram |
-| `references/references.bib` | All references cited in the paper |
-| `main.bbl` | Generated bibliography for submission systems |
-| `build.py` | Build helper that keeps temporary files outside the repository |
-| `reproducibility/` | Worked-example verification code and its reproducible results |
+| `appendices/` | Technical appendices |
+| `figures/` | TikZ figure source |
+| `references/references.bib` | Bibliography |
+| `generalized-multiplication-tables.pdf` | Final paper |
+| `build.py` | Build helper |
+| `reproducibility/` | Verification script and reference results |
 
-## Build the paper
+## Build
 
-Run commands from the repository root. No files from another project or research
-directory are required.
-
-### Tectonic
-
-Install Tectonic and Python 3, then run:
+Requires Python 3.7 or later and Tectonic on `PATH`. Run from the repository root:
 
 ```sh
 python3 build.py
 ```
 
-This regenerates `generalized-multiplication-tables.pdf` and `main.bbl`.
-Tectonic obtains standard TeX resources on its first run. Once these resources
-are cached, `python3 build.py --offline` builds without network access.
-If Tectonic is not on `PATH`, pass `--compiler /path/to/tectonic`.
+This rebuilds `generalized-multiplication-tables.pdf`, including the bibliography.
+Intermediate files are created in a temporary directory and removed automatically.
+All manuscript inputs are included; Tectonic downloads standard TeX resources on
+the first build, which requires an internet connection.
 
-### TeX Live or MiKTeX
-
-A standard LaTeX installation with BibTeX can also compile the sources:
+Once those resources are cached, build offline with:
 
 ```sh
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
-bibtex main
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
+python3 build.py --offline
 ```
 
-These commands produce `main.pdf`. The included `main.bbl` is a convenience;
-the full bibliography can be regenerated from `references/references.bib`.
+If Tectonic is not on `PATH`, specify its executable:
 
-The sources use the standard AMS packages, Latin Modern, geometry, microtype,
-enumitem, booktabs, longtable, array, graphicx, TikZ and hyperref. No shell escape,
-external images, proprietary fonts, custom document class, or custom bibliography
-style is needed.
+```sh
+python3 build.py --compiler /path/to/tectonic
+```
 
-## Reproduce the worked-example checks
-
-With Python 3, run:
+## Reproduce the worked examples
 
 ```sh
 python3 reproducibility/verify_examples.py
 ```
 
-The script uses only the Python standard library, performs exact rational
-interval calculations, prints `PASS`, and regenerates
-`reproducibility/examples_results.json`. The checked-in result is provided for
-comparison. Run Python normally, without `-O`, because assertions verify the
-finite inequalities.
+The script uses only the Python standard library. It verifies rational bounds,
+root isolations, KKT signs, all 15 ray comparisons and all 120 terminal comparisons,
+then prints `PASS` and regenerates `reproducibility/examples_results.json`.
+The included JSON contains the reference results. Run Python without `-O`, since
+the checks use assertions. The corresponding analytic proofs are in the
+worked-examples section and appendix of the paper.
 
-The checks cover logarithm and exponential enclosures, root isolation, KKT
-signs, the 15 comparisons in the six-dimensional ray, and the 120 terminal
-comparisons in the 18-dimensional family. The analytic derivations and exact
-identities are given in Section 4 and Appendix C; the script supplements those
-proofs.
+## AI Disclosure
+
+The author selected the problem and managed the project; the mathematical derivations were carried out by artificial intelligence.

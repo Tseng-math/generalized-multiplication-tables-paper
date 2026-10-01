@@ -38,6 +38,11 @@
 \newcommand{\asympH}{\asymp_H}
 \DeclareMathOperator{\Pois}{Pois}
 \DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Ent}{Ent}
+\DeclareMathOperator{\KL}{D_{\mathrm{KL}}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\chieta}{\partial_\eta\chi}
 \title{Generalized multiplication tables in every fixed dimension}
 \author{Tseng}
 \date{}
@@ -56,7 +61,13 @@ rate and equality blocks; count windows, fractional conditional
 persistence, and one ordinary terminal bridge determine the remaining
 factors. The lower bound realizes these constraints in a common family
 of divisor decompositions, while a causal covering argument proves that
-the same costs are necessary. Arithmetic stability extends the comparison
+the same costs are necessary. The saddle rate is a Poisson relative
+entropy. For sufficiently large positive block lengths, the derivative
+of the persistence spectrum locates the selected environments and the
+adaptive targets in a family of original prime tuples contributing the
+full order of the harmonic volume sum. Averaging
+the environment before taking the fractional power incurs a strictly
+positive exponent loss. Arithmetic stability extends the comparison
 to all relative scales, including bounded and zero original block lengths.
 \end{abstract}
 \tableofcontents
@@ -66,15 +77,21 @@ to all relative scales, including bounded and zero original block lengths.
 \input{sections/examples.tex}
 \input{sections/geometry.tex}
 \input{sections/persistence.tex}
+\input{sections/environmental_selection.tex}
 \input{sections/bridges.tex}
 \input{sections/lower.tex}
 \input{sections/ordered_sums.tex}
 \input{sections/causal_upper.tex}
 \input{sections/positive_core.tex}
 \input{sections/assembly.tex}
+\input{sections/contributing_clocks.tex}
+\input{sections/open_problems.tex}
 \appendix
 \input{appendices/geometry_details.tex}
 \input{appendices/probability_details.tex}
+\input{appendices/joint_persistence.tex}
+\input{appendices/scalar_deviations.tex}
+\input{appendices/mixed_histories.tex}
 \input{appendices/examples_details.tex}
 \input{appendices/endpoint_details.tex}
 \input{appendices/lower_details.tex}

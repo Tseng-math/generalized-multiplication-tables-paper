@@ -465,8 +465,7 @@ lower bound.  All walls and REG restrictions were already inside
 \(q\), and the dominating cost \(D\) does not change.  The same
 argument applies to an unselected regular block with \(D=\Psi=1\).
 This local fractional estimate is taken before any later scale or
-root probability is integrated.  In particular it does not subtract
-an absolute failure probability from the complete chain's rare mass.
+root probability is integrated.
 For large \(T\), \eqref{ld:broad-bank} also guarantees at least
 \(cn\) occurrences of each of its two names, enough for every
 prescribed \(O(\log T)\) recoloring.
@@ -491,9 +490,8 @@ prefix positions, with
 It retains the displaced good-name box.  The conditional terminal
 completion in \ref{paper:ep-terminal-admission} has constant mass
 for each retained prefix type and each suffix root vector in the
-specified central construction.  Projecting private names alone
-would not prove independence from suffix uncolored counts; that
-independence follows from the preceding support of the proper-owner
+specified central construction.  Independence from suffix uncolored
+counts follows from the preceding support of the proper-owner
 construction.
 
 For each fixed complete type, take the legal pair of
@@ -523,8 +521,7 @@ count.  Applying \eqref{ld:local-bank-retention} incorporates all
 prescribed macroscopic recoloring intervals without changing these
 estimates.
 
-For clarity, the following measure identity explains why different
-owner powers cause no additional loss.
+The following measure identity retains the individual owner powers.
 \begin{lemma}[Whole-type mixed moment]\label{ld:mixed}
 Let \(\mu\) be any finite positive measure on complete types,
 independent of the original independent environments \(G_i\), and
@@ -556,8 +553,7 @@ The upper bound follows from \(q_i\le CD_i\).  These expectations
 are finite by that same upper bound.  At a fixed complete type the
 original environments are independent, so their local integrands
 can be multiplied.  Tonelli then integrates the resulting uniform
-two-sided bounds over the entire \(\mu\).  No type weight is
-raised separately to a fractional power.
+two-sided bounds over the entire \(\mu\).
 \end{proof}
 
 For the present prefix,
@@ -827,9 +823,7 @@ the actual accepted target by
 \end{equation}
 The mass identity holds for every fixed full uncolored environment,
 including its root indicator and the adaptive vector \(e(G)\).
-The density of a discarded push-forward need not have a positive
-pointwise lower bound; it is the exact integrated identity in
-\eqref{ld:literal-density} that preserves mass.
+Thus \eqref{ld:literal-density} preserves the integrated mass.
 
 \subsection{The reconstructed support and its common upper costs}
 
@@ -849,9 +843,8 @@ satisfies the exact identity
  \widetilde Z(0)=x_0,\quad\widetilde Z(P)=y_0.
  \label{ld:slot-identity}
 \end{align}
-This follows solely from \(N_{B,\rm target}=N_{B,\rm source}
--L_{\rm flip}\); it needs no assertion about improvement of an
-actual target endpoint minimum.
+This follows from \(N_{B,\rm target}=N_{B,\rm source}
+-L_{\rm flip}\).
 
 For every possible chosen subset in the fixed interior bank,
 \begin{equation}
@@ -871,10 +864,8 @@ the left side is at most \(e\).  The spare \(2g\) curve in
 above the final threshold.  Its endpoints are exactly the original
 source pair.  On an unflipped native block the word and local type
 are unchanged, and the inverse complete type recovers the same
-pair.  A previous owner's recoloring can change a later old list,
-but cannot change any point of its later native clock.  Consequently
-this proof does not divide a logarithmic change at one owner's
-scale by a different short-block length.
+pair.  A previous owner's recoloring preserves every point of the
+later native clock, so the estimate uses that block's own length.
 
 Named REG is preserved with the predetermined spare constants.
 Any interval meeting the macro bank either has length \(\gg P\)
@@ -906,9 +897,7 @@ After fixing the true revealed assignments and full target type,
 binary fraction lies between \(p_-\) and \(p_+\).
 The joint exact-subset comparison \eqref{ld:joint-subset-density}
 then applies to both intervals on the original target word.  This
-argument uses the direct support \eqref{ld:transported-wall}; it
-does not assume the conclusion of a compensated-path statement to
-admit the target.
+argument uses the direct support \eqref{ld:transported-wall}.
 
 The joint clock comparison \eqref{ld:joint-clock-density} is
 unchanged.  The new drift term times \(\sqrt{L_d}\) is at most
@@ -923,8 +912,8 @@ active reserve ratio is \(O(\log^2(2+n)/n)\).  The proof of
  \label{ld:all-e-moments}
 \end{equation}
 using the same floor and coefficient tail.  All costs here are fixed
-from the entire range \(E_{max}\), before any target is evaluated.
-No logarithmic reserve enlargement appears.
+from the entire range \(E_{max}\), before any target is evaluated,
+with the original source reserves.
 
 For the class upper, use the count-only prefix acceptance
 \(A_{\rm pre}\), extended by one on suffix names, and drop the
@@ -1084,9 +1073,8 @@ If a branch threshold is crossed, both bases are comparable to that
 fixed threshold and the same conclusion holds.  The dimension-bounded
 number of original Poisson central windows has constant joint mass;
 the source vanishes off them.  Integrating
-\eqref{ld:conditional-first-mass} pays no new type or root atom and
-gives \eqref{lower:nominal-mass}.  Fixed positive allowances can
-then be changed to the profile's normalization because all scores
+\eqref{ld:conditional-first-mass} gives \eqref{lower:nominal-mass}.
+Fixed positive allowances can then be changed to the profile's normalization because all scores
 are finite minima of sums of nonnegative terms, and all exponents
 remain in compact ranges.
 
@@ -1223,9 +1211,8 @@ slots have their uniform multiset law.  By construction,
  D_i^{I,\rm cell}(G_i)=D_i^{I,\rm cell}(g_i).
 \]
 Thus integration over a cell fiber preserves \(q_i\),
-\(q_i^\eta\), and \(q_iD_i^{\eta-1}\) exactly.  There is no
-Jensen interchange.  At a fixed complete type the block experiments
-remain independent; Lemma~\ref{ld:mixed} therefore applies before
+\(q_i^\eta\), and \(q_iD_i^{\eta-1}\) exactly.  At a fixed
+complete type the block experiments remain independent; Lemma~\ref{ld:mixed} therefore applies before
 the full measure \(\mu\) is integrated.
 
 The owner costs, \(y_j\), and \(x\) are now functions of prefix
@@ -1266,9 +1253,8 @@ is cell-invariant.  At every boundary the same slot identity
 \eqref{ld:slot-identity} holds.  Macro interiority and the spare
 strong wall prove \eqref{ld:transported-wall} at these boundaries,
 then \eqref{ld:boundary-wall} extends it to every lift with a fixed
-allowance.  No batch size or target introduces a logarithmic endpoint
-loss.  Named boundary REG is retained by the same macro-length or
-macro-depth argument, and the terminal suffix is unchanged.
+allowance uniform in the batch size and target.  Named boundary REG
+is retained by the same macro-length or macro-depth argument, and the terminal suffix is unchanged.
 
 The output and exit identities
 \eqref{ld:output-changes}--\eqref{ld:terminal-carry} are count
@@ -1280,8 +1266,7 @@ transfers that mass with its fixed normalization.  The exact
 likelihood calculation \eqref{ld:exact-first-mass} and the
 central-count comparison \eqref{ld:count-comparison} consequently
 give the same \(e^{-J}\) times the factors in
-\eqref{lower:nominal-mass}.  There is no extra factor for cells,
-within-cell positions, private type summation, or the terminal root.
+\eqref{lower:nominal-mass}.
 
 All constants can be fixed in the order stated before
 \eqref{ld:targets}, with the mesh bound included among the initial

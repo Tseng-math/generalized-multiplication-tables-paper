@@ -38,7 +38,12 @@ $z=\exp(G_{b+1}/\sigma)$; the terminal owner has $b=k$ and $z=1$.
 The exterior names of this owner are $a,\ldots,b$. Its native groups
 are the original groups $i\in[a,b]$, of ranks $r_i=b-i+1$.
 Original groups $g<a$ are its old groups, of rank $b-a+1$.
-Groups are never combined into a new random clock.
+Each original group retains its own random clock.
+
+In the divisor model, name $c$ is coordinate $d_c$: primes in group $i$
+may be assigned to $c\geq i$, and $V_c$ is its deadline. Assignments to
+coordinates beyond $b$, together with the unused primes, form the
+owner's compound child.
 
 For $l<k$ define
 \[
@@ -75,8 +80,8 @@ $\tau_c\in\{V_i,\ldots,V_c\}$ independently. In the left completion
 set $\tau_c=V_{i-1}$ for all $i\leq c\leq b-q$; in the right completion
 set those same cuts to $V_i$. All other cuts are identical in the two
 completions. This gives a finite set of lawful pairs $(v^-,v^+)$.
-Every cut respects its original name's deadline; the original child
-is never split. No arbitrary old list is included in this enumeration.
+Every cut respects its original name's deadline, and the compound child
+remains intact. These choices specify the entire enumeration.
 
 For either completion $v$ and original group $1\leq g\leq b$, let
 \[
@@ -114,9 +119,8 @@ At the late endpoint the incoming contribution cancels from the intrinsic
 cost; the additional square-root terms instead measure the fluctuation
 needed to remove an eligible shallow name while retaining deeper names.
 The two minima are taken separately over the same finite set of paired
-lawful contexts. They need not form the endpoints of a single realized
-bridge. In the lower bound, the actual type increment $\Delta$ is kept
-fixed and the legal pair is
+lawful contexts. The lower bound makes the two scores compatible by
+keeping the actual type increment $\Delta$ fixed and choosing the legal pair
 $x=\max(a_*X_e,a_*Y_e-\Delta)$, $y=x+\Delta$; see
 \eqref{lower:local-pair}.
 
@@ -155,7 +159,6 @@ $p=(q+z)/(r+z)$, and
 These laws are nondegenerate. In particular a proper zero-output edge
 has $z>1$, whereas the terminal zero-output edge was excluded. Every
 canonical edge is used, including edges with a bounded positive factor.
-There is no weak-edge or rare-edge threshold in this definition.
 
 \subsection{An explicit ordinary suffix}
 Here $h_i=k-i+2$ on the complete original chain. If the selected suffix
@@ -193,7 +196,12 @@ The positive-length raw expression is
  \label{profile:raw}
 \end{equation}
 All lengths, reference costs and products in this expression refer to
-one and the same physical parameter vector.
+one and the same physical parameter vector. The rate $J$ is a Poisson
+entropy, and each persistence exponent splits into an environmental
+selection cost and a conditional path cost. These interpretations,
+proved in Section~\ref{fp:sec:interpretation}, also locate, for sufficiently
+large positive lengths, a family of prime tuples contributing the full
+order of the arithmetic sum.
 \input{figures/profile_structure.tex}
 
 \subsection{The profile on the full parameter domain}
@@ -204,14 +212,11 @@ and define
      e^{A_k\lambda}\Psi_k\big((\max(L_i,\lambda))_{i=1}^k\big).
  \label{profile:final}
 \end{equation}
-This adds one scalar optimization. It does not use an unknown source
-threshold, a divisor volume, or an unevaluated multirank probability.
-The exponent $\chi$ is the independently specified universal scalar.
+This completes the numerical definition with one scalar optimization;
+$\chi$ is the universal scalar specified in \eqref{profile:chi}.
 
 
 Lemma~\ref{profile:finite-search} gives an explicit finite interval for
 this last infimum and proves that $0<\Phi_k(\ell)<\infty$.
 Every candidate length vector uses its own maximizer, exact equality
-blocks, endpoint contexts and ordinary suffix. The finite interval does
-not assert continuity across changes of equality blocks or attainment of
-the infimum; neither is needed in the proof of the arithmetic estimates.
+blocks, endpoint contexts and ordinary suffix.

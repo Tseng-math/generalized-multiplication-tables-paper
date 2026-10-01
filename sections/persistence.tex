@@ -562,8 +562,7 @@ polynomial are deliberately weaker than necessary. Negative endpoints
 can only decrease the available reserve. The Gaussian case has the same
 tail estimate. For a late bad block retain necessary survival on the
 first $\lfloor n/8\rfloor$ slots, independent of that block. Jensen and
-finitely many doublings prove the stated bound. These are relative
-bounds, not an assertion that the bad event is independent of survival.
+finitely many doublings prove the stated relative bound.
 \end{proof}
 
 \begin{lemma}[Relative control of the initial coupling block]
@@ -598,10 +597,9 @@ Let $M_b$ be the maximum of the absolute centered partial sums of
 both original channels on the first $b$ slots and of the absolute
 Gaussian suprema on the corresponding time interval. Enlarge its
 definition by the fixed compact coefficients needed to reconstruct
-the risk. No independence between the two members of a channel
-coupling is required for the following union bound. Exponential
-moments of the gaps, boundedness of the binary increments, and the
-Gaussian maximal tail give constants $C_b,c_b>0$ such that
+the risk. A union bound using exponential moments of the gaps,
+boundedness of the binary increments, and the Gaussian maximal tail
+gives constants $C_b,c_b>0$ such that
 \[
  \mathbb P\{M_b>v\}\le C_b e^{-c_b v}
  \qquad(v\ge C_b).
@@ -654,7 +652,7 @@ larger reserves are not needed for the endpoint assertion.
 \begin{proof}
 We use a finite strong approximation with explicit failure tails, not an
 unconditional limiting invariance principle. The finite scalar coupling of
-Sakhanenko \cite{Sakhanenko1984}, in the finite iid form of
+Sakhanenko \cite[Theorem~1, p.~5]{Sakhanenko1984}, in the finite iid form of
 Waudby-Smith, Larsson, and Ramdas \cite[Lemma~4.2, p.~12]{WLR}, followed
 by Markov's inequality (as in their equation~(17)), gives
 \[
@@ -1520,8 +1518,8 @@ The multivariate Mecke identity for $j$ distinct points says that
 \]
 For a Poisson process this follows directly by expanding its factorial
 probabilities $e^{-\kappa T}(\kappa T)^n/n!$, choosing the $j$ ordered
-distinct points, and reindexing $n-j$; thus no independence of the weight
-and the environment is being assumed. In each monomial the insertion
+distinct points, and reindexing $n-j$, with the weight evaluated in
+the resulting environment. In each monomial the insertion
 integrals have bounded mass, since every point carries at least one
 factor $e^{-(u-t)}\boldsymbol1_{\{u\ge t\}}$. Use
 \eqref{pr:insert} after insertion to obtain the first bound in

@@ -2,11 +2,11 @@
 \label{ordsumrepair:section}
 
 The proof of \cite[Lemma~5.3, pp.~31--33]{KoukLocal} uses a real
-threshold followed by integer bands. That coverage requires the threshold
-to be rounded up. We give the corrected proof here, relative to the two
-unchanged order-statistics inputs stated below, and derive exactly the
-$A=0$ case needed from \cite[Lemma~5.5]{Kouk}. All constants below may depend on fixed $C>1$ and $\mu>1$, and no
-uniformity as $\mu\downarrow1$ is asserted.
+threshold followed by integer bands. We give the proof with an explicit
+integer-rounding correction in this band decomposition and recover the
+$A=0$ case of \cite[Lemma~5.5]{Kouk} used below. The two order-statistics
+inputs are stated next. All constants below may depend on fixed $C>1$
+and $\mu>1$.
 
 Put
 \begin{align*}
@@ -362,5 +362,4 @@ by a fixed factor. Thus $Z=n\log h-(h-1)U$ exactly. A bounded change
 of physical budget is kept in the external root translate, as in
 Section~\ref{positive:section}. If there are no cells, the completed
 Poisson count is identically zero and is covered directly. The subsequent
-Poisson maximum-atom and layer integrals use the \emph{same} count;
-no additional ordinary or root factor is appended.
+Poisson maximum-atom and layer integrals use the same count.

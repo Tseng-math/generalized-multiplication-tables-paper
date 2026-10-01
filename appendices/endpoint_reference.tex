@@ -102,8 +102,7 @@ For example, at $R=r_j$ the left side is precisely the incoming
 buffer minus the remaining native drift, hence the multiplier
 $\lambda_{j-1}$.  This also checks the two zero endpoint values.
 These coefficients describe the unconditioned natural reference;
-conditioning an old word does not replace its actual list by this
-reference.
+conditional estimates retain each old word's actual list.
 
 \begin{proposition}[Reference nonnegativity]\label{paper:ep-reference-positive}
 Every lawful original coarse history on this platform alphabet has
@@ -128,7 +127,7 @@ $i$, and the resulting star-spine cost is exactly
 \begin{align}
  \overline C_{\rm sp}
  &=\overline F_{\rm full}(\tau_0)
-       +\sum_{l=1}^q\{overline F_{A_l}(\tau_l)
+       +\sum_{l=1}^q\{\overline F_{A_l}(\tau_l)
                          -\overline F_{A_l}(\tau_{l-1})\}\\
  &=\int_0^T[d(t)-\kappa(t)E_{d(t)}(z)]\,dt.\label{paper:ep-spine-integral}
 \end{align}
@@ -278,8 +277,7 @@ Lemma~\ref{paper:ep-secants} gives
 whereas the two weak bounds give at most $1/(48H^2)$.
 \end{proof}
 Thus surviving deepest output sets are strictly nested in physical
-order within one platform.  This is an ordering statement, not an
-independence assertion for their original words.
+order within one platform.
 
 We record explicitly the uniform old coefficients used in the estimates.
 If every natural product lies in $[\varepsilon_H,1-\varepsilon_H]$,
@@ -615,7 +613,7 @@ $E_i(t)\geq-C_H\vartheta L_i-C_HK(1+L_i^\zeta)$,
 converts this to $c'_HL_i-C$.  Choose $\vartheta$ first small, then
 use Young's inequality on $L_i^\zeta$ ($\zeta<1$).  Nonweak edges
 use their favored endpoint.  Multiple coordinates share the same
-finite cost budget; this observation does not multiply probabilities.
+finite deterministic cost budget.
 \end{proof}
 
 \subsection{A terminal suffix without proper weak binary edges}

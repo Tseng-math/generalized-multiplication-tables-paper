@@ -60,8 +60,8 @@ capacity is bounded by $Ce^{-h}S$, with
 \[
  S=\sum_v\omega(v)Z(v)^d\prod_c Z(\tau_c).
 \]
-There is no occupancy multiplier in this sum: the stopped atom
-probabilities have already been summed.
+The stopped atom probabilities have already been summed in this
+expression.
 
 For a Poisson process with bounded intensity per unit interval,
 $Z(v)$ has all fixed moments uniformly in deterministic $v$. This
@@ -154,9 +154,8 @@ Lemma~\ref{artrunc:lemma} and \eqref{updetail:exact-expansion} imply
 The geometric caps hold first on that actual support. If they give
 $I_0\leq C C_l(G)$ there, with each $C_l$ nonnegative on every list,
 then $I_0\leq C\min_l C_l$ on all lists, because of the zero
-extension. Thus unrestricted repeated lists require no artificial
-size-truncation assertion. Their numerical cap minimum is evaluated
-under the same atomic Poisson law and the same root.
+extension. Their numerical cap minimum is therefore evaluated on
+unrestricted repeated lists under the same atomic Poisson law and root.
 
 The uniform prime harmonic estimate gives $|H_i-L_i|\leq C_H$;
 the discrepancy in \eqref{updetail:arithmetic-upper} is bounded since
@@ -651,7 +650,7 @@ They satisfy all of \eqref{updetail:band-assumptions}, including
 $\varrho\leq CR$. If $d\sqrt M<1$, then
 $\varrho\asymp\sqrt M$ and $R\geq c\sqrt M$; the left-only
 calculation gives the same bound with a width factor comparable to
-one. No series whose ratio tends to one as $d\downarrow0$ is used.
+one, uniformly as $d\downarrow0$.
 
 \subsection{Joint count weights and the conditional routing tower}
 \label{updetail:count-tower}

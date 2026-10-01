@@ -1,0 +1,345 @@
+\section{The full scalar LDP for stationary equal-rate OU processes}\label{fp:app:ldp}
+Let $E,W$ be independent stationary standard OU processes with covariance
+$e^{-|s-t|/2}$, and retain $q_t(E)$ and $S_t=-\log q_t(E)$ from
+\eqref{fp:eq:basic}. We prove the exact negative-moment domain, regularity
+of its pressure, and a full large-deviation principle. The stationary
+initial law and equal covariance functions of the two channels are part
+of this model.
+
+\begin{theorem}[Full scalar large deviations]\label{fp:thm:scalar-ldp}
+Fix $0<\rho<1$, let $\beta^2=\rho/(1-\rho)$ and set
+\[
+ \theta_c=\beta^{-2}=\frac{1-\rho}{\rho}.
+\]
+The limit
+\begin{equation}\label{fp:eq:Lambda}
+ \Lambda_\rho(\theta)
+ =\lim_{t\to\infty}\frac1t\log\EE e^{\theta S_t}
+ =\lim_{t\to\infty}\frac1t\log\EE q_t^{-\theta}
+\end{equation}
+exists and is finite for every $\theta<\theta_c$, and
+\begin{equation}\label{fp:eq:Lambda-c11}
+ \Lambda_\rho\in C^{1,1}_{\mathrm{loc}}(( -\infty,\theta_c)).
+\end{equation}
+For every $t>0$, $\EE q_t^{-\theta}=\infty$ when $\theta\ge\theta_c$. Furthermore,
+\begin{equation}\label{fp:eq:Lambda-boundaries}
+ \Lambda_\rho(\theta)\to+\infty,\quad
+ \Lambda_\rho'(\theta)\to+\infty\quad(\theta\uparrow\theta_c),
+ \qquad
+ \Lambda_\rho'(\theta)\to0\quad(\theta\to-\infty).
+\end{equation}
+The variables $Y_t=S_t/t$ satisfy a full LDP at speed $t$ with good convex rate
+\begin{equation}\label{fp:eq:rate}
+ I_\rho(y)=\sup_{\theta<\theta_c}\{\theta y-\Lambda_\rho(\theta)\}.
+\end{equation}
+Explicitly, for every Borel set $A\subset\R$,
+\begin{align}
+ -\inf_{A^\circ}I_\rho
+ &\le\liminf_{t\to\infty}\frac1t\log\PP(Y_t\in A)\notag\\
+ &\le\limsup_{t\to\infty}\frac1t\log\PP(Y_t\in A)
+ \le-\inf_{\overline A}I_\rho.\label{fp:eq:full-ldp}
+\end{align}
+\end{theorem}
+
+\subsection{The exact negative-moment domain}
+On a finite grid with covariance $\Sigma$, simultaneous whitening gives
+\[
+ q(x)=\PP\{Z+\beta x\in C\},\qquad
+ C=\Sigma^{-1/2}\R_+^n,
+\]
+where $x,Z$ are standard normal. Since $C$ is a cone,
+\[
+ q=T_{\sqrt\rho}\ind_C,
+ \qquad T_rf(x)=\EE f(rx+\sqrt{1-r^2}Z).
+\]
+We use the Gaussian reverse-hypercontractive inequality
+\cite[Section~3.3, equation~(3.14)]{CDP}:
+\begin{equation}\label{fp:eq:reverse-HC}
+ \|T_rf\|_s\ge\|f\|_p,
+ \qquad s<p<1,\qquad
+ r^2\le\frac{1-p}{1-s}.
+\end{equation}
+Negative exponent norms mean $\|f\|_s=(\EE f^s)^{1/s}$ for positive $f$.
+Reverse hypercontractivity originates with Borell~\cite{Borell1982}.
+We give the logarithmic Sobolev calculation, following the semigroup
+method in \cite{MosselOleszkiewiczSen2013}, to fix the Gaussian
+normalization. For the OU semigroup $P_u=T_{e^{-u}}$, set
+$r(u)=1-(1-p)e^{2u}$ and
+$v_u=P_uf>0$. Then
+\begin{align*}
+ \frac d{du}\log\|v_u\|_{r(u)}
+ ={}&\frac{r'(u)}{r(u)^2}
+       \frac{\Ent(v_u^{r(u)})}{\EE v_u^{r(u)}}\\
+ &-(r(u)-1)
+       \frac{\EE[v_u^{r(u)-2}|\nabla v_u|^2]}{\EE v_u^{r(u)}}.
+\end{align*}
+Gross's Gaussian logarithmic Sobolev inequality~\cite{Gross1975} gives
+\[
+ \Ent(v^r)\le\frac{r^2}{2}\EE[v^{r-2}|\nabla v|^2].
+\]
+Because $r'=2(r-1)<0$, substitution reverses the direction in the first term and makes the derivative nonnegative. Start with bounded strictly positive $f$, pass through exponent zero by the geometric-mean limit, and approximate an indicator from above. This proves the form needed in \eqref{fp:eq:reverse-HC}.
+
+For $0<\theta<\theta_c$, take
+\[
+ s=-\theta,\qquad p=1-\rho(1+\theta)>0.
+\]
+Since a negative power reverses the norm inequality, one obtains
+\[
+ \EE q_{\mathrm{grid}}^{-\theta}
+ \le a_{\mathrm{grid}}^{-\theta/[1-\rho(1+\theta)]}.
+\]
+Along nested dense grids, $q_{\mathrm{grid}}\downarrow q_t$ and $a_{\mathrm{grid}}\downarrow a(t)>0$. Monotone convergence therefore gives
+\begin{equation}\label{fp:eq:neg-bound}
+ \EE q_t^{-\theta}
+ \le a(t)^{-\theta/[1-\rho(1+\theta)]}<\infty.
+\end{equation}
+In particular,
+\begin{equation}\label{fp:eq:Lambda-upper}
+ \limsup_t\frac1t\log\EE e^{\theta S_t}
+ \le\frac{\theta}{2[1-\rho(1+\theta)]}.
+\end{equation}
+
+For the converse, the initial constraint gives $q_t(E)\le\Phi(\beta E_0)$. The Gaussian lower-tail estimate implies that $\EE\Phi(\beta G)^{-\theta}$ dominates a positive constant times
+\[
+ \int^\infty x^\theta
+ \exp\left[\frac{\theta\beta^2-1}{2}x^2\right]dx.
+\]
+It is infinite when $\theta\beta^2\ge1$, including equality. Thus the finite-time moment domain is exact. Section~\ref{fp:subsec:boundary-divergence} proves the corresponding divergence of the limiting pressure.
+
+\subsection{Covariance interpolation and the existence of all required limits}
+Consider two consecutive parts of a finite ordered OU grid. Multiply the one adjacent correlation joining them by $v\in[0,1]$. The new covariance $\Sigma_v$ has unchanged within-block entries and cross-block entries multiplied by $v$. Hence
+\[
+ \dot\Sigma_{ii}=0,\qquad\dot\Sigma_{ij}\ge0\quad(i\ne j).
+\]
+Indeed an ordered OU grid has the representation
+$X_{k+1}=r_kX_k+\sqrt{1-r_k^2}\,G_{k+1}$, with independent standard
+$G_{k+1}$ and $0<r_k<1$. Replacing only the joining $r_k$ by $vr_k$
+has exactly the stated effect on the cross-block covariance. The
+precision remains tridiagonal with nonpositive off-diagonal entries,
+including at $v=0$. Thus its Gaussian density is MTP$_2$; see
+\cite[Section~4.1]{Fallat}. Write
+\[
+ u_v(z)=\PP\{N(0,\Sigma_v)\le z\}.
+\]
+MTP$_2$ and marginalization give
+\begin{equation}\label{fp:eq:cdf-mtp}
+ u_i\ge0,\qquad\partial_{ij}\log u\ge0\quad(i\ne j).
+\end{equation}
+Indeed the set $\{(w,z):w_i\le z_i\ \forall i\}$ is closed under
+coordinatewise minimum and maximum. Its indicator times the Gaussian
+density is MTP$_2$ in $(w,z)$, and marginalization preserves MTP$_2$
+by \cite[Proposition~3.4]{Fallat}. An independent product density in
+$z$ can be inserted and cancelled to obtain an integrable joint density.
+
+For $\eta>-\beta^{-2}$ set
+\[
+ H_\eta(v)=\EE_{X_v\sim N(0,\Sigma_v)}u_v(\beta X_v)^\eta.
+\]
+Differentiate the environmental covariance using Gaussian integration by parts, and the private covariance using its heat equation. The two contributions are
+\begin{equation}\label{fp:eq:interpolation}
+ H_\eta'(v)
+ =\frac\eta2\sum_{i,j}\dot\Sigma_{ij}
+ \EE\left[u^{\eta-2}
+ \{(1+\beta^2)u u_{ij}+\beta^2(\eta-1)u_i u_j\}\right],
+\end{equation}
+where derivatives of $u$ are evaluated at $\beta X_v$. The bracket rewrites exactly as
+\begin{equation}\label{fp:eq:interpolation-positive}
+ (1+\beta^2)u^2\partial_{ij}\log u
+ +(1+\eta\beta^2)u_i u_j.
+\end{equation}
+Only $i\ne j$ terms occur. By \eqref{fp:eq:cdf-mtp} and $1+\eta\beta^2>0$, the bracket is nonnegative. Thus
+\begin{equation}\label{fp:eq:interpolation-sign}
+ H_\eta'(v)\ge0\quad(\eta>0),\qquad
+ H_\eta'(v)\le0\quad(-\beta^{-2}<\eta<0).
+\end{equation}
+To justify differentiation for negative powers, first fix the grid.
+The covariance path is uniformly positive definite. After whitening,
+Lemma~\ref{fp:lem:curvature} bounds first and second spatial derivatives
+of $\log u$ by fixed polynomials, uniformly in $v$. The
+reverse-hypercontractive proof above applies to every $\Sigma_v$.
+Its ordinary orthant probability is bounded below uniformly in $v$:
+Gaussian association gives at least $2^{-n}$ for a grid of $n$ points.
+Choose $\theta'$ with $-\eta<\theta'<\beta^{-2}$. The resulting
+uniform $\theta'$ inverse-moment bound and H\"older's inequality
+control every polynomial-weighted differentiated integrand.
+One may first differentiate with smooth cutoffs and then remove them
+using this uniform integrability. The positive-power case follows by
+the same polynomial bounds and $u^\eta\le1$.
+
+At $v=0$ the two blocks are independent, and at $v=1$ their original
+joint law is restored. For adjacent continuous intervals choose nested
+dense grids with no duplicated boundary point. In each block, points
+approach the common endpoint from its own side; continuity then imposes
+that endpoint constraint in both marginal limits. For negative powers,
+monotone convergence and the finite bound \eqref{fp:eq:neg-bound}
+justify this limit. If $M_\theta(t)=\EE e^{\theta S_t}$, we obtain
+\begin{equation}\label{fp:eq:theta-subadd}
+ M_\theta(s+t)\le M_\theta(s)M_\theta(t),
+ \qquad0<\theta<\theta_c,
+\end{equation}
+whereas
+\begin{equation}\label{fp:eq:theta-superadd}
+ M_\theta(s+t)\ge M_\theta(s)M_\theta(t),
+ \qquad\theta<0.
+\end{equation}
+For positive $\theta$, \eqref{fp:eq:neg-bound} bounds $\log M_\theta(t)$ above by $C(t+1)$ and it is nonnegative. For negative $\theta$, \eqref{fp:eq:linear-b} bounds it below by $-C(t+1)$ and it is nonpositive. Continuous-parameter subadditivity or superadditivity therefore proves existence and finiteness in \eqref{fp:eq:Lambda}; more precisely,
+\begin{equation}\label{fp:eq:Lambda-inf-sup}
+ \Lambda_\rho(\theta)=
+ \begin{cases}
+ \inf_{t>0}t^{-1}\log M_\theta(t),&0<\theta<\theta_c,\\
+ 0,&\theta=0,\\
+ \sup_{t>0}t^{-1}\log M_\theta(t),&\theta<0.
+ \end{cases}
+\end{equation}
+
+\subsection{Differentiability throughout the finite domain}
+On a whitened grid, write $A=-\log q$ and
+\[
+ d\nu_\theta\propto e^{\theta A}d\gamma,
+ \qquad V_\theta(x)=|x|^2/2-\theta A(x).
+\]
+Lemma~\ref{fp:lem:curvature} gives
+\begin{equation}\label{fp:eq:kappa-theta}
+ D^2V_\theta\succeq\kappa_\theta I,\qquad
+ \kappa_\theta=
+ \begin{cases}
+ 1,&\theta\le0,\\
+ 1-\theta\beta^2,&0<\theta<\theta_c.
+ \end{cases}
+\end{equation}
+For $\theta\le0$, convexity of $A$ gives the lower bound $I_d$. Brascamp--Lieb and \eqref{fp:eq:curvature} imply
+\[
+ \Var_{\nu_\theta}(A)
+ \le\frac{2\beta^2}{\kappa_\theta}\EE_{\nu_\theta}A.
+\]
+Consequently, for $\Lambda_{t,\mathrm{grid}}=t^{-1}\log\EE e^{\theta A}$,
+\begin{equation}\label{fp:eq:Lambda-curvature}
+ 0\le\Lambda_{t,\mathrm{grid}}''(\theta)
+ \le\frac{2\beta^2}{\kappa_\theta}
+       \Lambda_{t,\mathrm{grid}}'(\theta).
+\end{equation}
+The moment bounds on a slightly larger compact subinterval of $(-\infty,\theta_c)$ and convex secants give a uniform bound for $\Lambda_{t,\mathrm{grid}}'$ for $t\ge1$. Thus the second derivatives are uniformly bounded on compacts. A neighboring exponent dominates $A^je^{\theta A}$, $j\le2$, when passing to dense grids. The same bounds hold for the continuous-time $\Lambda_t$.
+
+Apply Arzel\`a--Ascoli to the first derivatives and use
+\[
+ \Lambda_t(b)-\Lambda_t(a)=\int_a^b\Lambda_t'(\theta)\,d\theta
+\]
+together with pointwise convergence. Every subsequential derivative limit is the derivative of $\Lambda_\rho$. Hence \eqref{fp:eq:Lambda-c11} holds and
+\begin{equation}\label{fp:eq:Lambda-derivative-limit}
+ \Lambda_t'\longrightarrow\Lambda_\rho'
+ \quad\text{locally uniformly on }(-\infty,\theta_c).
+\end{equation}
+
+\subsection{Extensive divergence at the finite boundary}
+\label{fp:subsec:boundary-divergence}
+Take a unit-spaced grid of $n$ times in $[0,t]$, with $n/t\to1$. Its covariance is $\Sigma_{ij}=r^{|i-j|}$, $r=e^{-1/2}$. Let $Q=\Sigma^{-1}$. Both matrices have eigenvalues in $[K^{-1},K]$, with $K=(1+r)/(1-r)$; this also follows from the explicit tridiagonal precision and row-sum bounds.
+
+For an environmental vector satisfying $Qx\le0$, choose the nonnegative Chernoff vector $h=-\beta Qx$. Then
+\begin{equation}\label{fp:eq:chernoff-cone}
+ q_{\mathrm{grid}}(x)=\PP\{Z\ge-\beta x\}
+ \le e^{\beta h^Tx+\frac12h^T\Sigma h}
+ =e^{-\beta^2x^TQx/2}.
+\end{equation}
+Since $q_t\le q_{\mathrm{grid}}$, for $0<\theta<\theta_c$ and $\delta=1-\theta\beta^2$,
+\begin{align}
+ M_\theta(t)
+ &\ge\int_{\{Qx\le0\}}e^{\theta\beta^2x^TQx/2}\,dN(0,\Sigma)(x)\notag\\
+ &=\delta^{-n/2}\PP\{QX\le0\},\qquad X\sim N(0,\Sigma).\label{fp:eq:boundary-integral}
+\end{align}
+The equality uses homogeneity of the cone. Now $QX\sim N(0,Q)$; on $[-1,0]^n$ its density is at least
+\[
+ (2\pi K)^{-n/2}e^{-Kn/2}.
+\]
+Thus $\PP(QX\le0)\ge e^{-Cn}$, and
+\begin{equation}\label{fp:eq:boundary-divergence}
+ \Lambda_\rho(\theta)
+ \ge\frac12\log\frac1{1-\theta\beta^2}-C.
+\end{equation}
+This proves divergence of $\Lambda_\rho$ at $\theta_c$; convexity proves divergence of its derivative. The linear number of grid constraints makes the divergence extensive in time.
+
+For the other boundary, fix $a>0$ and set
+\[
+ p_a=\PP(E_s\ge a\ (0\le s\le1)),\qquad
+ r_a=\PP(W_s\ge-\beta a\ (0\le s\le1)).
+\]
+Both are positive. Association on consecutive unit intervals gives
+\[
+ \EE q_t^\eta\ge p_a^{\lceil t\rceil}r_a^{\eta\lceil t\rceil},
+ \qquad \Lambda_\rho(-\eta)\ge\log p_a+\eta\log r_a.
+\]
+First let $\eta\to\infty$, then $a\to\infty$, using $r_a\to1$. Since $\Lambda_\rho(-\eta)\le0$, this yields $\Lambda_\rho(-\eta)/(-\eta)\to0$. Convexity proves $\Lambda_\rho'(-\infty)=0$. This completes \eqref{fp:eq:Lambda-boundaries}.
+
+\subsection{The full upper and lower LDP bounds}
+We now apply the G\"artner--Ellis argument~\cite{DemboZeitouni2010}
+to the pressure just constructed, giving the upper and lower bounds
+explicitly.
+
+For any fixed $0<\theta_0<\theta_c$, Chernoff gives
+\[
+ \limsup_{t\to\infty}\frac1t\log\PP(Y_t>R)
+ \le\Lambda_\rho(\theta_0)-\theta_0R\longrightarrow-\infty.
+\]
+Since $Y_t\ge0$, the laws are exponentially tight.
+
+By continuity of $\Lambda_\rho'$ and its two boundary limits, each $y>0$ is $\Lambda_\rho'(\theta)$ for some interior parameter. Convexity then gives
+\[
+ I_\rho(y)=\theta y-\Lambda_\rho(\theta).
+\]
+Under
+\[
+ \frac{d\PP_{\theta,t}}{d\PP}
+ =e^{\theta S_t-t\Lambda_t(\theta)},
+\]
+the mean of $Y_t$ tends to $y$ by \eqref{fp:eq:Lambda-derivative-limit}, and its variance is $\Lambda_t''(\theta)/t=O(t^{-1})$. Thus $\PP_{\theta,t}(|Y_t-y|<\epsilon)\to1$. Changing measure back yields
+\[
+ \liminf_{t\to\infty}\frac1t\log\PP(|Y_t-y|<\epsilon)
+ \ge-I_\rho(y)-|\theta|\epsilon.
+\]
+Let $\epsilon\downarrow0$ to obtain the local lower bound. The endpoint $y=0$ is obtained by positive approximation if $I_\rho(0)<\infty$: convexity and lower semicontinuity then imply right continuity there. If $I_\rho(0)=\infty$ it adds no lower-bound obligation. For $y<0$, \eqref{fp:eq:rate} is infinite, by the sublinear left asymptotic of $\Lambda_\rho$.
+
+For the upper bound, each fixed $\theta$ gives a Chernoff bound on a sufficiently small neighborhood of a point. Choose an almost-optimal supporting parameter in \eqref{fp:eq:rate}, cover a compact set by finitely many such neighborhoods, and use exponential tightness outside that compact set. This proves the closed-set upper bound. The rate is convex and lower semicontinuous; it dominates $\theta_0y-\Lambda_\rho(\theta_0)$ on $y\ge0$, so its sublevel sets are compact. Theorem~\ref{fp:thm:scalar-ldp} is proved.
+
+\subsection{Consequences for the spectrum and tilted environments}
+Define the extended spectrum
+\[
+ \widetilde\chi(\eta,\rho)=-\Lambda_\rho(-\eta),
+ \qquad \eta>-(1-\rho)/\rho.
+\]
+It agrees with \eqref{fp:eq:positive-spectrum} on positive orders. Convex duality gives
+\begin{equation}\label{fp:eq:duality-extended}
+ \widetilde\chi(\eta,\rho)=\inf_{y\ge0}\{I_\rho(y)+\eta y\},\qquad
+ I_\rho(y)=\sup_{\eta>-(1-\rho)/\rho}
+ \{\widetilde\chi(\eta,\rho)-\eta y\}.
+\end{equation}
+The minimizer in the first formula is uniquely $\Lambda_\rho'(-\eta)$: equality in convex duality forces $y$ into the singleton subgradient of the differentiable function $\Lambda_\rho$ at $-\eta$. This proves \eqref{fp:eq:scalar-var}.
+
+The unique zero of $I_\rho$ is $\gamma_\rho=\Lambda_\rho'(0)$, and
+\begin{equation}\label{fp:eq:quenched-derivative}
+ \partial_\eta\widetilde\chi(0,\rho)=\gamma_\rho
+ =\lim_{t\to\infty}\frac1t\EE[-\log q_t].
+\end{equation}
+Small positive and negative Chernoff parameters give exponential concentration about $\gamma_\rho$. Borel--Cantelli along integers and monotonicity of $S_t$ imply $S_t/t\to\gamma_\rho$ almost surely. Jensen and \eqref{fp:eq:Lambda-upper} give
+\[
+ \frac12\le\gamma_\rho\le\frac1{2(1-\rho)}.
+\]
+Theorem~\ref{fp:thm:annealing} improves the lower bound to
+\begin{equation}\label{fp:eq:gamma-strict}
+ \gamma_\rho\ge\frac12+\frac\rho{16\pi},
+\end{equation}
+since for $0<\eta\le1/2$ it bounds $\chi(\eta,\rho)/\eta$ from below, and this quotient tends to $\partial_\eta\widetilde\chi(0,\rho)$.
+
+For the pure $q_t^\eta$-tilted OU environment, $Y_t$ has the full good rate
+\begin{equation}\label{fp:eq:tilted-rate}
+ I_{\eta,\rho}(y)=I_\rho(y)+\eta y-\chi(\eta,\rho),\qquad\eta>0.
+\end{equation}
+One proves this by the same change of measure on compact sets; the nonnegative linear tilt and exponential tightness control the upper tail. Its unique zero is $\partial_\eta\chi(\eta,\rho)$. The mixed arithmetic source has the separate local conclusion in
+Theorem~\ref{fp:thm:history-local-ldp}.
+
+Finally,
+\begin{equation}\label{fp:eq:tail-slope}
+ \lim_{y\to\infty}\frac{I_\rho(y)}y
+ =\theta_c=\frac{1-\rho}{\rho}.
+\end{equation}
+Every $\theta<\theta_c$ gives the lower limiting slope. For $y\ge\gamma_\rho$, negative $\theta$ cannot improve the dual supremum over its value at zero, because $\Lambda_\rho(\theta)\ge\gamma_\rho\theta$. For $\theta\ge0$, $\Lambda_\rho(\theta)\ge0$, so $I_\rho(y)\le\theta_cy$. This proves the opposite inequality.
+
+The exact Lamperti representation $E_u=e^{-u/2}B^E_{e^u}$, $W_u=e^{-u/2}B^W_{e^u}$ transfers the scalar statement to Brownian random-wall survival on $[1,R]$ with speed $\log R$. The initial law is the distribution induced by Brownian time $1$.

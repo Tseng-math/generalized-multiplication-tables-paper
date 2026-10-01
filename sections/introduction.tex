@@ -137,11 +137,11 @@ More precise questions about the square table have recently seen
 further progress. Sawhney announced joint work with Green giving an
 asymptotic formula with a periodic amplitude for the two-dimensional
 integer square table~\cite{SawhneyGreenAnnouncement2025}. Their
-paper~\cite{GreenSawhney2026} proves an asymptotic formula for the
+paper~\cite[Theorem~1.1]{GreenSawhney2026} proves an asymptotic formula for the
 permutation analogue and describes the integer-table work as
-forthcoming. Sabuncu and T\'afula~\cite{SabuncuTafula2026} study the
-regime in which the dimension grows sufficiently rapidly relative to
-a common side length. The present results concern uniform two-sided
+forthcoming. Sabuncu and T\'afula~\cite[Theorem~1.2]{SabuncuTafula2026}
+study the eventual polynomial dependence on dimension for a common
+side length. The present results concern uniform two-sided
 bounds for arbitrary side lengths in each fixed dimension.
 
 \subsection{What the profile records}
@@ -149,9 +149,8 @@ bounds for arbitrary side lengths in each fixed dimension.
 The exponential part of the answer is governed by an ordered saddle
 $s_1\geq\cdots\geq s_k$. Its maximal consecutive blocks of equal
 coordinates organize the constraints; we call these blocks
-\emph{owners}. Equality of saddle coordinates does not identify the
-original prime ranges or the divisor coordinates. Those ranges retain
-their own lengths, and the coordinates retain their own deadlines.
+\emph{owners}. Within an owner, the original prime ranges retain their own lengths,
+and the divisor coordinates retain their own deadlines.
 This information is needed to distinguish several losses that can occur
 at the same exponential scale.
 
@@ -184,8 +183,7 @@ of the common environment to the path variance. The exponent is an
 independent scalar object, whose existence and required uniform
 estimates are proved in this paper. The factors $P_e$ retain this
 conditional information. Their product is established by a compatible
-construction and successive conditional estimates; it does not require
-independence of all the underlying path events.
+construction and successive conditional estimates on the shared clocks.
 
 This description builds on the order-statistics and clustering ideas
 of Ford and Koukoulopoulos. Fractional moments themselves already
@@ -199,6 +197,46 @@ specified common lift of every original coordinate and an infimum over
 that lift. The saddle and all its associated data are recomputed at each
 lift. An arithmetic stability argument proves that this definition also
 covers zero and bounded original lengths.
+
+\subsection{Environmental selection and contributing clocks}
+
+The profile also describes which configurations supply the arithmetic
+lower bound. At the physical saddle, the rate $J$ is exactly the relative
+entropy of independent Poisson counts with means $L_iZ_i$ relative to
+those with means $L_i$; see Proposition~\ref{fp:prop:poisson}.
+The persistence factors describe a further selection of the common
+clock, related to the quenched random-wall model of Mallein and
+Mi\l o\'s~\cite{MalleinMilos2018}. We extend $\chi(p,\rho)$ to every positive moment order and prove
+that it is locally $C^{1,1}$ in $p$. Under the corresponding tilted law,
+$\partial_p\chi$ is the limiting conditional survival cost per unit
+time, while $\chi-p\partial_p\chi$ is the environmental entropy rate.
+Theorem~\ref{fp:thm:annealing} shows quantitatively that
+$\chi(\eta,\rho)>\eta/2$ for $0<\eta,\rho<1$. Thus averaging the
+clock before taking the fractional power loses a positive part of the
+exponent, which can change the order of the arithmetic answer.
+
+The accepting measure used in the lower bound has mixed weights
+$qD^{\eta-1}$, where $q$ is a conditional private-path probability and
+$D$ is its environmental envelope. A neighboring-moment argument gives
+this measure the same leading concentration and entropy as the
+corresponding Gibbs law, with bounded Gibbs variational error.
+Section~\ref{fp:sec:arithmetic} applies the argument to the complete
+source, retaining its type information and regularity restrictions.
+For sufficiently large positive physical lengths, it constructs a
+family of original squarefree tuples carrying a fixed positive fraction
+of the harmonic volume sum. On this family, the envelope costs and the
+existing adaptive count and root targets lie within square-root windows
+of centers determined by $\partial_p\chi$. The construction restricts
+the same accepting measure used for the arithmetic lower bound, so its
+collision and prime-supply estimates continue to apply.
+
+The entropy interpretation of the profile is completed in
+Section~\ref{fp:sec:interpretation}. The probability results supporting
+it include constant-factor joint positive-moment and deterministic-overlap
+laws, a full scalar large-deviation principle with an exact inverse-moment
+boundary, and conditional mixed-moment estimates for finitely many
+adapted stages. Their proofs are given in
+Appendices~\ref{fp:app:joint}--\ref{fp:app:history-scope}.
 
 \subsection{The proof}
 
@@ -218,12 +256,14 @@ finite bridges with exact totals, and the simultaneous treatment of
 several comparisons. The ordinary order-statistics estimates enter
 separately. For the ordered-sum upper estimate, the method of
 \cite[Lemma~5.3]{KoukLocal} requires an integer threshold in its band
-decomposition. We give the corrected argument in full, starting from
-its Lemmas~5.1 and~5.2, and deduce the real-threshold, all-positive-count
-case needed here. The ordinary lower estimate is the separate
+decomposition. Starting from its Lemmas~5.1 and~5.2, we give the argument
+with the integer rounding made explicit and recover the $A=0$ case of
+\cite[Lemma~5.5]{Kouk}, including real thresholds and all positive counts.
+The ordinary lower estimate is the separate
 \cite[Lemma~8.3]{Kouk}.
-All proofs needed for the stated results, including the boundary
-transfers, are contained in this paper and its technical appendices.
+The new comparison arguments and boundary transfers are proved here;
+the external arithmetic and order-statistics inputs are stated with
+their hypotheses and cited explicitly.
 The numbering of results cited from \cite{Kouk} refers throughout to
 arXiv:1102.3236v3; for \cite{KoukLocal} it refers to the author version
 linked in the bibliography.

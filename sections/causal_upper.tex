@@ -3,10 +3,8 @@
 \label{upper:section}
 
 This section proves the upper bound on the original divisor union.
-In particular, a probability family used for a lower bound is never
-substituted for that union.  The new point is the treatment of a proper
-full-to-zero native transition with two small endpoint reserves.  A
-conditional rising cover supplies both exponential half-line kernels
+The main step treats a proper full-to-zero native transition with two
+small endpoint reserves.  A conditional rising cover supplies both exponential half-line kernels
 needed by the original routing filtration.  Their powers are the
 products of their respective owners, rather than the final product.
 
@@ -667,12 +665,10 @@ kernels.  It has the same upper bound.  For the terminal branch,
 $P_m=X+c_m-\sum_{\ell<m}d_\ell\zeta_\ell$.  Integrate its true
 native mask first and then use the earlier positive kernels.
 
-This is a conditional tower, not simultaneous independence of owner
-outputs.  Varying a native child count changes the actual future child
-list, but that future has already been integrated by a uniform
-conditional bound.  No future fine word is held fixed while declaring
-the current middle binomial.  The original probabilities of ancestor
-atoms are retained throughout.
+The conditional tower integrates each future child word by a uniform
+bound before varying the current native count.  The current middle
+therefore retains its conditional binomial law, and ancestor atoms
+retain their original probabilities.
 
 By \eqref{upper:pool-bounds} and
 \eqref{upper:offset-cancellation}, each branch is at most
@@ -780,7 +776,6 @@ $\mathcal P_{\rm ret}$.  Changing between the finitely many fixed
 rarity thresholds only changes a dimension constant, so the full
 $\mathcal P_{\rm native}$ is equivalent.  The current correlations
 were retained by Proposition~\ref{upper:established-inputs} and the
-bank comparisons.  Finally invoke the actual lower and the actual
-bounded-lift stability, rather than stability of a previously selected
-probability packet.  There is no second root draw or root atom.
+bank comparisons.  Finally invoke the actual lower and the arithmetic
+bounded-lift stability.
 \end{proof}

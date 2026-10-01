@@ -588,8 +588,8 @@ endpoint occupancy bounds the number of tuples by a fixed polynomial
 in these quantities. Exponential or stretched-exponential penalties
 sum that polynomial, and only dimension-many chambers occur. Repeated
 representatives in the enlarged parent space obey the same product
-upper bound. The actual original comparison class is never replaced
-by a synchronized class in this argument.
+upper bound. Throughout, the comparison class remains the original
+one.
 
 \subsection{Global endpoint costs and the uncontracted root}
 
@@ -767,8 +767,7 @@ are precisely the atomic ones:
  \qquad
  \Delta_i=(r_i-q)L_i-\log S_i\,n_i+\log(q+z)K_{i,B}.
 \]
-No child clock has been resampled. Let $\ell_i^{\rm intr}$ be the
-repaired chord from the two actual all-context intrinsic minima,
+Let $\ell_i^{\rm intr}$ be the repaired chord from the two actual all-context intrinsic minima,
 shifted by their fixed reserve $h_{\rm intr}$.
 If the child is early, $t_{j+1}\ge b_i\ge L_i$, so both global
 endpoints have a charge $cL_i+h_*$ after one fixed shift. If the
@@ -881,7 +880,7 @@ allows the intrinsic comparison. Averaging the outside choices gives
 The first branch plus regularity pays the inward curve; the second
 plus the same actual $\mathcal R_\alpha$ is supplied by the contracted
 source wall. The identity $\min(A,B)+E=\min(A+E,B+E)$ completes
-this case without a child independence assertion.
+this case.
 
 Strong coordinates have a fixed reference drift gap and are paid
 from their cheaper endpoint. Old weak and native proper-input or
@@ -933,7 +932,7 @@ Only the unique physical block $[l,b]$ crossing $T/2$ can vary the
 flag, unless another fixed-late cut forces all flags to zero. The
 coordinate marginals and controlled movement give
 $|\mathcal S-s_m(v^\#)|\le C_H\sum d_\alpha/L$ in this block,
-without independence: for an early representative use the union bound
+as follows: for an early representative use the union bound
 for a right choice; for a late one use one chosen-right coordinate to
 bound the all-left event. If $L\ge T/4$, then
 $A\log(2+T)d/L\le A\log(2+4L)L^{-\gamma}d^\gamma$,
@@ -1279,8 +1278,6 @@ $\delta>0$ and using original-pivot summability proves
                               \le C_\delta D_{\rm all}^{\delta}.
  \label{history:full-row}
 \end{equation}
-The original class $Q_h$ has been retained throughout; its accepted
-mass has never been replaced by that of $h^*$ or $v$.
 
 \subsection{Bounded family weights and the arithmetic first mass}
 
@@ -1300,8 +1297,8 @@ The finite weighted class identity is exactly
  \label{history:weighted-class-identity}
 \end{equation}
 It is simply the expansion of the class power sum, so a pointwise
-bound $R_F\le C$ on $F>0$ gives a total at most $CZ_F$, with no
-second acceptance mass. For any positive product law $\pi$,
+bound $R_F\le C$ on $F>0$ gives a total at most $CZ_F$. For any
+positive product law $\pi$,
 \[
  M_h(F;Y)=\frac{\pi(Q_h(Y))}{\pi(Y)}q_h^{\rm rel}(F;Y).
 \]
@@ -1329,22 +1326,26 @@ measure yields
  \gg W_gZ_F.
 \]
 Its support is in the original divisor union. Occupancies partition
-the tuple space and can be summed. Fractional bounded acceptance needs
-no auxiliary coin or additional thinning loss.
+the tuple space and can be summed, retaining the linear dependence
+on the bounded acceptance.
 
 Finally, extra nominal data may be removed in a linear first-mass
-identity when their support is already cell-measurable. If the joint
-law of $(Y,\Xi)$ and a bounded acceptance $a(Y,\Xi)$ are equivariant
-under within-cell permutations, and accepted realizations have an
-invariant cell-label support $S(Y)$, then
-$F(Y)=\mathbb E[a(Y,\Xi)\mid Y,g]$ is invariant and
-$0\le F\le\mathbf1_S$. For every positive invariant reference law
-$\pi_0$ and nonnegative $Y$-measurable weight $w$,
+identity when their support is already cell-measurable. Suppose that,
+conditional on $g$, the joint law of $(Y,\Xi)$ and an acceptance
+$a(Y,\Xi)\in[0,1]$ are equivariant under within-cell permutations,
+and accepted realizations have an invariant cell-label support $S(Y)$.
+Let $\pi_0(Y)=\mathbb P_{\rm joint}(Y\mid g)$ be the actual marginal,
+and set $F(Y)=\mathbb E_{\rm joint}[a(Y,\Xi)\mid Y,g]$ where
+$\pi_0(Y)>0$, with $F(Y)=0$ otherwise. Then $F$ is invariant and
+$0\le F\le\mathbf1_S$. For every nonnegative $Y$-measurable weight $w$,
 \[
- \sum_Y\pi_0(Y)w(Y)F(Y)=\mathbb E_{\rm joint}[w(Y)a(Y,\Xi)].
+ \sum_Y\pi_0(Y)w(Y)F(Y)
+       =\mathbb E_{\rm joint}[w(Y)a(Y,\Xi)\mid g].
 \]
-Use $w=v/\pi_0$ for a desired counting weight $v$, and Tonelli for
-an outer occupancy integral. The conditional law of $\Xi$ may depend
+For a desired nonnegative counting weight $v$, take $w=v/\pi_0$
+where $\pi_0>0$ and $w=0$ otherwise; the left side is then
+$\sum_Yv(Y)F(Y)$. Use Tonelli for an outer occupancy integral.
+The conditional law of $\Xi$ may depend
 on $Y$. This preserves linear likelihood factors; it does not commute
 conditional expectation with a fractional power. Uniform deletion of
 specified-color slot subsets and count-dependent target laws are

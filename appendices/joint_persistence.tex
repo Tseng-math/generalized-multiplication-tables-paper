@@ -1,0 +1,283 @@
+\section{Joint positive OU pressure and deterministic overlaps}\label{fp:app:joint}
+For independent stationary standard OU processes $E,W_1,\ldots,W_m$, fixed slopes $\beta_j>0$ and positive orders $p_j$, put
+\[
+ q_{j,I}(E)=\PP_{W_j}\{W_{j,s}\ge-\beta_jE_s\ (s\in I)\mid E\}.
+\]
+Write $q_{j,t}=q_{j,[0,t]}$ and let $\mu$ denote the stationary environmental OU path law. For a nonempty active set $A$, define
+\begin{equation}\label{fp:eq:joint-pressure}
+ \Xi_A(\boldsymbol p;\boldsymbol\beta)
+ =-\lim_{t\to\infty}t^{-1}\log\EE\prod_{j\in A}q_{j,[0,t]}^{p_j},
+ \qquad \Xi_\varnothing=0.
+\end{equation}
+The existence of this limit is part of the theorem below. This appendix proves the positive-moment inputs independently of a full LDP and independently of arithmetic estimates. All comparison constants can be chosen uniformly on compact positive order and wall-slope sets, for a fixed number of comparisons.
+
+\subsection{Association and the order of tilted environments}
+On a finite ordered time grid, the OU precision matrix is tridiagonal with nonpositive off-diagonal entries. Its density is MTP$_2$. Here a nonnegative density $f$ is MTP$_2$ when
+\[
+ f(x\wedge y)f(x\vee y)\ge f(x)f(y).
+\]
+The product, marginalization and association properties used below are standard; see~\cite[Proposition~3.4 and Section~3, especially equation~(3.5)]{Fallat}. Gaussian association also follows directly from nonnegative covariances~\cite{Pitt}.
+
+For $q_j(E)=\PP(W_j\ge-\beta_jE\mid E)$, set $Z=-W_j$. The indicator of $\{Z_i\le\beta_jE_i\ \forall i\}$ is MTP$_2$: its support is closed under coordinatewise minimum and maximum. Multiply by the MTP$_2$ density of $Z$ and an independent product Gaussian density in $E$, integrate out $Z$, and cancel the auxiliary product density. This proves that $q_j(E)$ is MTP$_2$. It is also increasing in $E$.
+
+Therefore
+\[
+ d\mu_{\boldsymbol p,t}\propto\prod_jq_j^{p_j}\,d\mu
+\]
+is associated for every $p_j\ge0$. If $0\le p_j\le n_j$ coordinatewise,
+\begin{equation}\label{fp:eq:tilt-order}
+ \mu\preceq_{\rm st}\mu_{\boldsymbol p,t}\preceq_{\rm st}\mu_{\mathbf n,t}.
+\end{equation}
+The first comparison applies original Gaussian association to an increasing test and $\prod_jq_j^{p_j}$. The second applies association under $\mu_{\boldsymbol p,t}$ to the same test and $\prod_jq_j^{n_j-p_j}$. For nested dense grids including the endpoints, the private grid survival probabilities decrease to the path survival probabilities. Dominated convergence passes each bounded cylindrical association and order inequality to the path law. Approximation by finite-grid maxima, followed by truncation and monotone convergence, gives the same inequalities for the endpoint and short-interval supremum functionals used below.
+
+\subsection{An exact cone time-change identity}
+Choose integers $n_j\ge p_j$ and write
+\[
+ U=(E,W_{j,\ell}:1\le\ell\le n_j),\qquad
+ d=1+\sum_jn_j.
+\]
+Its coordinates are independent stationary standard OU processes. Set
+\[
+ C=\{(e,w):w_{j,\ell}+\beta_je\ge0\ \forall j,\ell\},\qquad
+ p_C(t)=\PP\{U_s\in C\ (0\le s\le t)\}.
+\]
+The environmental marginal conditioned on this event is $\mu_{\mathbf n,t}$. All constraint signals have nonnegative covariances at all pairs of times. Consequently
+\begin{equation}\label{fp:eq:cone-assoc}
+ p_C(s+t)\ge p_C(s)p_C(t).
+\end{equation}
+
+\begin{lemma}[Quadratic endpoint weights shorten cone time]\label{fp:lem:cone-time}
+For $0<a<1/2$, set
+\[
+ v=(1-2a)^{-1},\qquad
+ f_v(h)=\log\left(1+\frac{e^h-1}{v}\right).
+\]
+For $0\le s\le t$,
+\begin{equation}\label{fp:eq:cone-time}
+ \EE\left[e^{a|U_s|^2};\ U_u\in C\ (0\le u\le t)\right]
+ =v^{d/2}p_C(f_v(s)+f_v(t-s)).
+\end{equation}
+In particular,
+\begin{equation}\label{fp:eq:cone-endpoint}
+ \sup_{t\ge0,\,0\le s\le t}
+ \EE[e^{a|U_s|^2}\mid U_{[0,t]}\subset C]
+ \le\frac{v^{d/2}}{p_C(2\log v)}<\infty.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Multiplication by $e^{a|U_s|^2}$ changes the $N(0,I_d)$ density of $U_s$ into $v^{d/2}$ times the density of $N(0,vI_d)$. Given $U_s$, the past and future are independent reversed and forward OU branches. Starting from $\sqrt vG$, a branch has representation
+\[
+ e^{-h/2}(\sqrt vG+B_{e^h-1}).
+\]
+Divide by $\sqrt v$ and scale Brownian time. Membership in the cone becomes the usual OU cone condition for a branch of duration $f_v(h)$; the remaining multiplier is positive and does not change cone membership. The two branches share a standard Gaussian initial point and recombine into a stationary OU segment of duration $f_v(s)+f_v(t-s)$. This proves \eqref{fp:eq:cone-time}.
+
+Since $0\le h-f_v(h)\le\log v$, the new duration $t'$ differs from $t$ by at most $2\log v$. By \eqref{fp:eq:cone-assoc} and monotonicity,
+\[
+ p_C(t)\ge p_C(t')p_C(t-t')\ge p_C(t')p_C(2\log v).
+\]
+This gives \eqref{fp:eq:cone-endpoint}. The positive coordinate orthant is contained in $C$, so $p_C(2\log v)\ge a(2\log v)^d>0$, uniformly in the positive slopes.
+\end{proof}
+
+Apply \eqref{fp:eq:tilt-order} separately to $e^{a(E_s^+)^2}$ and $e^{a(E_s^-)^2}$. Lemma~\ref{fp:lem:cone-time} and the original Gaussian law give
+\begin{equation}\label{fp:eq:env-endpoint}
+ \sup_{t\ge0,\,0\le s\le t}
+ \EE_{\mu_{\boldsymbol p,t}}e^{aE_s^2}<\infty,
+ \qquad 0<a<1/2.
+\end{equation}
+On a compact positive order set the dominating integers $n_j$ can be fixed once.
+
+\subsection{The deterministic filter under positive tilts}
+The deterministic part of Lemma~\ref{pr:filter} is independent of the
+moment order and applies pathwise before any environmental tilt.
+In the notation of its proof,
+\eqref{pr:mode-tail} and \eqref{pr:mode-recursion} apply to the actual
+private endpoint law conditioned on the whole environmental path and
+survival. The proof includes the possibly truncated initial law, a
+single initial segment of length at most one, and all subsequent
+segments of lengths in $[1,2]$, retaining the incoming conditional
+private law at each step.
+
+For each slope $\beta_j$ and each endpoint $v\in\{0,t\}$, time
+reversal and \eqref{pr:mode-majorant} supply a nonnegative decreasing
+functional $M_{j,v}$ dominating the private endpoint mode, of the form
+\begin{equation}\label{fp:eq:mode-majorant}
+ M_{j,v}(E)=C\left(1+\sum_{\ell\ge0}e^{-\ell/2}
+                \sup_{s\in I_{v,\ell}}(-\beta_jE_s)_+\right).
+\end{equation}
+The intervals have length at most two and are ordered inward from
+$v$; absent intervals contribute zero. Constants are uniform when
+the slopes vary in a compact subset of $(0,\infty)$. The proof of
+Lemma~\ref{pr:filter} gives, for some $c>0$,
+\begin{equation}\label{fp:eq:mode-moment}
+ \sup_{t\ge0}\EE_\mu e^{cM_{j,0}^2}
+ +\sup_{t\ge0}\EE_\mu e^{cM_{j,t}^2}<\infty.
+\end{equation}
+These interval suprema are controlled together: if
+$a_\ell=e^{-\ell/2}$ and $A=\sum a_\ell$, weighted
+Cauchy--Schwarz bounds $(\sum a_\ell B_\ell)^2$ by
+$A\sum a_\ell B_\ell^2$, and Jensen bounds its exponential
+expectation by the supremum of the uniformly bounded short-interval
+OU supremum exponential moments. Since the functionals in
+\eqref{fp:eq:mode-moment} are decreasing, the first stochastic-order
+comparison in \eqref{fp:eq:tilt-order} transfers these bounds to
+$\mu_{\boldsymbol p,t}$ for every positive order vector.
+
+The radial bound \eqref{pr:mode-tail}, followed by
+Cauchy--Schwarz within the conditional private law, gives, for small
+$a>0$,
+\begin{equation}\label{fp:eq:private-endpoint}
+ \EE_{W_j}[e^{a(W_{j,0}^2+W_{j,t}^2)}\mid
+                  \mathrm{survival}\ j,E]
+ \le C\exp\{Ca(M_{j,0}^2+M_{j,t}^2)\}.
+\end{equation}
+Thus only the environmental endpoint estimate
+\eqref{fp:eq:env-endpoint} needed extension beyond total order one;
+that extension was supplied by the integer replica cone and its
+exact time change above.
+
+\subsection{Joint endpoint weights and quasi-multiplicativity}
+For each private channel set
+\[
+ Q_{j,t}^{(a)}(E)=
+ \EE_{W_j}[\ind_{\{\mathrm{survival}\ j\}}
+             e^{a(W_{j,0}^2+W_{j,t}^2)}\mid E],\qquad
+ Z(t)=\EE\prod_jq_{j,t}^{p_j}.
+\]
+By \eqref{fp:eq:env-endpoint}, \eqref{fp:eq:mode-moment}, \eqref{fp:eq:private-endpoint}, and finitely many H\"older inequalities, there are $a>0,C<\infty$ such that
+\begin{equation}\label{fp:eq:joint-EP}
+ \EE\left[e^{a(E_0^2+E_t^2)}
+            \prod_j\bigl(Q_{j,t}^{(a)}(E)\bigr)^{p_j}\right]
+ \le CZ(t),\qquad t\ge0.
+\end{equation}
+To see the normalization explicitly, divide by $Z(t)$. Each private ratio $Q_j^{(a)}/q_j$ is bounded by \eqref{fp:eq:private-endpoint}; the resulting decreasing exponential majorants and the environmental endpoint exponential have uniform moments. Choose $a$ small enough to absorb the finite positive exponents and H\"older powers.
+
+\begin{theorem}[Joint positive pressure with constant-factor error]\label{fp:thm:joint-constant}
+For every fixed nonempty finite collection of positive $p_j,\beta_j$, the pressure \eqref{fp:eq:joint-pressure} exists, is finite and positive, and
+\begin{equation}\label{fp:eq:joint-quasi}
+ Z(s)Z(t)\le Z(s+t)\le C Z(s)Z(t).
+\end{equation}
+Consequently
+\begin{equation}\label{fp:eq:joint-constant}
+ C^{-1}e^{-t\Xi}\le Z(t)\le e^{-t\Xi},\qquad t\ge1.
+\end{equation}
+All constants are locally uniform. In particular, \eqref{fp:eq:constant} holds for every positive scalar order.
+\end{theorem}
+\begin{proof}
+For fixed $E$, Gaussian association in each private process gives $q_{j,s+t}\ge q_{j,s}q_{j,t}\circ\vartheta_s$. Environmental association then proves the first inequality in \eqref{fp:eq:joint-quasi}. Hence $b=-\log Z$ is subadditive.
+
+If $K=\sum_j\max(1,p_j)$, association between the increasing functions $q_j^{p_j}$ and Jensen give
+\[
+ Z(t)\ge a(t)^K,\qquad 0\le b(t)\le K(t/2+\log\pi).
+\]
+Thus $\Xi=\lim b(t)/t=\inf_{t>0}b(t)/t$ exists and is finite: the usual subadditive argument applies because the displayed bound controls $b$ on every bounded time interval, including a remainder tending to zero. Also $Z\le\EE q_j^{p_j}$. For $p_j\le1$, Jensen gives $\EE q_j^{p_j}\le a(t)^{p_j}$; for $p_j\ge1$, $q_j^{p_j}\le q_j$. Hence $\Xi\ge\min(1,p_j)/2>0$.
+
+For a fixed gap $g$, write $r=e^{-g/2}$. The density of two separated stationary OU blocks relative to independent blocks is the endpoint Mehler ratio
+\[
+ k_r(x,y)=\frac1{\sqrt{1-r^2}}
+ \exp\left[\frac{2rxy-r^2(x^2+y^2)}{2(1-r^2)}\right]
+ \le\frac1{\sqrt{1-r^2}}
+ e^{r(x^2+y^2)/(2(1+r))}.
+\]
+Choose a fixed $g$ large enough that this quadratic coefficient fits into \eqref{fp:eq:joint-EP}. Drop survival across the gap, apply this bound first inside every private conditional integral and then to the environmental transition. The two reference blocks are independent, and \eqref{fp:eq:joint-EP} gives
+\[
+ Z(s+g+t)\le C_0Z(s)Z(t).
+\]
+The lower product inequality also gives $Z(s+g+t)\ge Z(s+t)Z(g)$. This proves the upper bound in \eqref{fp:eq:joint-quasi}. Therefore
+\[
+ b(s)+b(t)-\log C\le b(s+t)\le b(s)+b(t).
+\]
+Iterate at integer multiples of $t$ and pass to the limiting slope to get
+\[
+ t\Xi\le b(t)\le t\Xi+\log C.
+\]
+The same estimate can be used down to $t=0$ after a fixed enlargement of $C$: for $0\le t\le1$, the preceding bound gives $Z(t)\ge a(1)^K$, while $Z(t)\le1$ and $\Xi$ is locally bounded above. This explicitly supplies the uniform short-time constant needed for arbitrarily short overlap pieces. This proves the theorem.
+\end{proof}
+
+\subsection{Differentiation, concentration, and selected local deviations}
+\begin{proposition}\label{fp:prop:joint-regularity}
+The joint pressure is nondecreasing and concave in $\boldsymbol p$ and belongs to $C^{1,1}_{\mathrm{loc}}((0,\infty)^m)$. Under the joint tilt, let $\mathbf Y_t=(-\log q_j/t)_j$ and $\mathbf y=\nabla\Xi(\boldsymbol p)$. Then
+\begin{equation}\label{fp:eq:joint-concentration}
+ \mu_{\boldsymbol p,t}(\|\mathbf Y_t-\mathbf y\|_\infty>\epsilon)
+ \le C\exp[-ct\min\{\epsilon^2,\epsilon\}].
+\end{equation}
+Furthermore,
+\begin{align}
+ \lim_{\delta\downarrow0}\liminf_{t\to\infty}\frac1t
+ \log\PP(\|\mathbf Y_t-\mathbf y\|_\infty<\delta)
+ &=\lim_{\delta\downarrow0}\limsup_{t\to\infty}\frac1t
+ \log\PP(\|\mathbf Y_t-\mathbf y\|_\infty<\delta)\notag\\
+ &=-[\Xi(\boldsymbol p)-\boldsymbol p\cdot\nabla\Xi(\boldsymbol p)].\label{fp:eq:joint-local-ldp}
+\end{align}
+The same bracket is $\lim_t t^{-1}\KL(\mu_{\boldsymbol p,t}\Vert\mu)$.
+\end{proposition}
+\begin{proof}
+On a whitened finite grid put $A_j=-\log q_j$. Lemma~\ref{fp:lem:curvature} applies to each $A_j$ with constant $\beta_j^2$. The joint tilted potential $|x|^2/2+\sum_jp_jA_j$ has Hessian at least $I$. For any $v\in\R^m$,
+\begin{align*}
+ \Var_{\boldsymbol p}\left(\sum_jv_jA_j\right)
+ &\le\EE_{\boldsymbol p}\left|\sum_jv_j\nabla A_j\right|^2\\
+ &\le2\left(\sum_jv_j^2\beta_j^2\right)
+         \sum_j\EE_{\boldsymbol p}A_j.
+\end{align*}
+Concavity of $b_t$ in each coordinate and nonnegativity on the coordinate face give
+\[
+ \EE_{\boldsymbol p}A_j\le b_t(\boldsymbol p)/p_j=O(t+1).
+\]
+Thus the Hessians of $b_t/t$ are uniformly bounded on positive compact sets. Grid limits of the derivatives follow from slightly smaller positive exponents, which dominate polynomial factors in the $A_j$. Equicontinuity and integration of the gradients give $C^{1,1}$ regularity. The $O(1)$ error in Theorem~\ref{fp:thm:joint-constant} also gives $\nabla(b_t/t)-\nabla\Xi=O(t^{-1/2})$ locally.
+
+For small $|h|$ with $\boldsymbol p-he_j$ positive,
+\[
+ \EE_{\boldsymbol p,t}e^{h(S_j-ty_j)}
+ =e^{-hty_j}\frac{Z_{\boldsymbol p-he_j}(t)}{Z_{\boldsymbol p}(t)}
+ \le Ce^{Lth^2/2}.
+\]
+Two-sided Chernoff and a union bound prove \eqref{fp:eq:joint-concentration}. For the local deviations, write exactly
+\[
+ \PP(B_\delta)
+ =Z_{\boldsymbol p}(t)
+   \EE_{\boldsymbol p,t}[e^{t\boldsymbol p\cdot\mathbf Y_t}\ind_{B_\delta}].
+\]
+On $B_\delta$, replace the exponent by $t\boldsymbol p\cdot\mathbf y$ with error at most $t\delta\|\boldsymbol p\|_1$. Use \eqref{fp:eq:joint-concentration} and then let $\delta\downarrow0$. Finally
+\[
+ \KL(\mu_{\boldsymbol p,t}\Vert\mu)
+ =b_t(\boldsymbol p)-\boldsymbol p\cdot\nabla b_t(\boldsymbol p),
+\]
+which gives the entropy rate at the selected points.
+\end{proof}
+
+\subsection{Proof of the deterministic-overlap formula}
+\begin{theorem}\label{fp:thm:overlap}
+For finitely many deterministic positive-length intervals $I_j$, put
+$A(s)=\{j:s\in I_j^\circ\}$. Then
+\begin{equation}\label{fp:eq:overlap-main}
+ \EE\prod_jq_{j,I_j}^{p_j}
+ \asymp\exp\left[-\int_\R
+             \Xi_{A(s)}(\boldsymbol p;\boldsymbol\beta)\,ds\right].
+\end{equation}
+The constants are independent of all interval lengths, locations and
+overlaps, and locally uniform in the positive orders and slopes for
+a fixed number of intervals.
+\end{theorem}
+\begin{proof}
+Sort all interval endpoints and partition the active union into positive-length intervals $J_\ell$ of lengths $L_\ell$, with constant active sets $A_\ell$. There are at most $2m-1$ such elementary intervals. Conditional association in each private process gives
+\[
+ q_{j,I_j}\ge\prod_{\ell:J_\ell\subset I_j}q_{j,J_\ell}.
+\]
+After raising to positive powers, environmental association and Theorem~\ref{fp:thm:joint-constant} give the lower bound
+\[
+ \EE\prod_jq_{j,I_j}^{p_j}
+ \ge\prod_\ell Z_{A_\ell}(L_\ell)
+ \ge c\exp[-\sum_\ell L_\ell\Xi_{A_\ell}].
+\]
+
+For the upper bound choose the fixed gap $g$ in the proof of Theorem~\ref{fp:thm:joint-constant} uniformly over all active subsets. Keep the elementary intervals with length at least $2g$ and remove $g/2$ from each end. Their cores have length $L_\ell-g\ge g$ and are pairwise separated by at least $g$. Drop all other survival constraints. For each private channel its active cores form an ordered subsequence. Its joint law relative to independent stationary cores is a product of endpoint Mehler ratios. Bound these as above, then do the same for the environmental core law. Each core endpoint is used at most once on each side. Apply \eqref{fp:eq:joint-EP} inside each reference core to obtain
+\[
+ \EE\prod_jq_{j,I_j}^{p_j}
+ \le C\prod_{\ell:L_\ell\ge2g} Z_{A_\ell}(L_\ell-g).
+\]
+The total active duration deleted is at most $C_mg$. All active-set pressures have locally uniform finite upper bounds. Hence
+\[
+ \sum_{L_\ell\ge2g}(L_\ell-g)\Xi_{A_\ell}
+ =\sum_\ell L_\ell\Xi_{A_\ell}+O(1).
+\]
+Theorem~\ref{fp:thm:joint-constant} proves the upper bound. This also covers the case in which all elementary intervals are short. Endpoints shared by adjacent intervals are handled by continuity; the stated integrals are unaffected by sets of zero length.
+\end{proof}

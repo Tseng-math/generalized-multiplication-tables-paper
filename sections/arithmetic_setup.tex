@@ -22,7 +22,7 @@ K_k(\ell)&=e^{-\sum_{i=1}^k h_iL_i}
 Here $L_i=\ell_i-\log3\geq0$ and
 $\log y_i=e^{L_i}\log y_{i-1}$, starting from $y_0=3$.
 The volume $L^{(k+1)}$ and the block lengths $L_i$ are different objects.
-No size restriction on the integers $a_i$ is imposed in \eqref{paper:K}.
+The sum in \eqref{paper:K} includes all such squarefree tuples.
 The empty tuple alone contributes $(\log2)^k$ before normalization.
 
 A prime from the $i$th range can be assigned to one of the divisor
@@ -83,7 +83,9 @@ and the saddle geometry. We then establish the scalar persistence and
 conditioned bridge estimates, construct the common accepting measure
 for the lower bound, and prove the upper bound directly for the full
 divisor union. Arithmetic stability closes the proof on the original
-parameter domain.
+parameter domain. We then return to the same lower source to identify
+the contributing clocks and interpret the profile's entropy costs in
+Section~\ref{fp:sec:arithmetic}.
 
 \subsection{Size truncation of the harmonic volume sum}
 \label{artrunc:section}
@@ -184,9 +186,9 @@ $C_k\log y_i$ on the truncated tuples. Earlier contributions to a
 remaining coordinate obey the same bound at the last earlier cutoff.
 These are precisely the full-size baseline rectangles used by the
 actual routing covers. The constant $C_k=k\tau_k$, and its fixed
-powers, are absorbed into their dimension constants and fixed reserves;
-no physical length, KKT product or owner is changed. Apply those covers
+powers, are absorbed into their dimension constants and fixed reserves,
+with the physical lengths, KKT products and owners fixed. Apply those covers
 first to this truncated sum, and only then perform the positive repeated-
 prime and cell enlargements. Lemma~\ref{artrunc:lemma} supplies the upper
-bound for the original full sum. It is not a claim that an unrestricted
-repeated tuple satisfies the size inequalities.
+bound for the original full sum. The size inequalities enter at the
+truncated squarefree stage, before the repeated-prime enlargement.

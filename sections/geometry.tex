@@ -233,8 +233,7 @@ at the point under consideration, for \(0\le\tau\le1\),
  \frac{d}{d\tau}\bigl((n+z)^\tau A(n,z)\bigr)
  \le H(\log H)^2.
 \]
-This is an auxiliary fixed-\(z\) comparison, not another
-differentiation along the top-block ray.
+This auxiliary comparison keeps \(z\) fixed.
 If \(\sigma\ge1-\varepsilon_H\), it follows that
 \[
  (n+z)^\sigma A(n,z)-n
@@ -391,9 +390,8 @@ For \(a<b\), summing \eqref{geom:eq:hessianentry} over the two blocks gives
        \le \frac C{V_{\max(e_a,e_b)}}.            \label{geom:eq:restrictedinverse}
 \end{equation}
 There are only finitely many such partitions, so a single constant
-works for all of them.  This is a restriction of the original Hessian
-to its current equality subspace; it does not replace that objective
-by a different lower-dimensional model.
+works for all of them.  The Hessian is that of the original objective
+restricted to its current equality subspace.
 
 \subsection{Moving optimizers and differentiation across faces}
 
@@ -444,8 +442,8 @@ concavity on the segment joining the maximizers give, with
 \]
 Here the first bound uses \eqref{geom:eq:hessian} and
 \eqref{geom:eq:Vcompare}, and the second uses bounded length derivatives
-of the gradient.  This proves a Lipschitz bound.  It is used only
-to establish regularity, not as the final componentwise estimate.
+of the gradient.  This Lipschitz bound establishes the regularity
+needed for the componentwise estimate below.
 The gradient path is also Lipschitz since the objective is smooth
 on the compact product set and the length path is affine.
 
@@ -505,8 +503,7 @@ An equality with zero multiplier may persist on a set of positive
 measure, split, or reform.  The preceding argument includes all such
 possibilities: tangency comes from absolute continuity of the gaps,
 and the differentiated stationarity equation uses only the current
-block's strictly separated exterior boundaries.  No optimizer with
-a fictitiously frozen active set is introduced.
+block's strictly separated exterior boundaries.
 \end{remark}
 
 \subsection{Values, multipliers, and own-scale parameters}
@@ -635,7 +632,6 @@ then gives
     \ge a\tau-CV_j\tau^2\ge c\,\frac{a^2}{V_j}.
                                                         \label{geom:eq:singlelower}
 \end{equation}
-No remainder has been discarded.
 
 For the matching bound, put \(\Delta s=s^*-\bar s\) and
 \(g=\gap_j(s^*)\).  Since the original gap is zero,
@@ -648,8 +644,8 @@ complementarity at all other edges yield
   &=ag-\sum_{i\ne j}\bar\lambda_i\gap_i(s^*)\le ag.
                                                         \label{geom:eq:singlelinear}
 \end{align}
-The neighboring nonnegative multipliers have retained their correct
-negative contribution; no neighboring edge has been frozen.
+The neighboring nonnegative multipliers retain their negative
+contribution.
 Moreover
 \[
  \sum_iV_i(\Delta s_i)^2
@@ -672,9 +668,7 @@ The natural bounded-rate opening coordinate is thus
 \]
 This is a statement about the exact optimized rate.  If this coordinate
 diverges, using the restricted-face rate instead of the unrestricted
-one produces an unbounded exponential discrepancy.  The conclusion
-does not rest on a local Taylor approximation with an uncontrolled
-third-order remainder.
+one produces an unbounded exponential discrepancy.
 
 \subsection{Simultaneous release of a prescribed face}
 
@@ -748,9 +742,8 @@ and both optima coincide.  This proves
 Theorem~\ref{geom:thm:opening}.
 
 \begin{remark}
-This comparison is simultaneous: it does not replace the exact
-optimization by a succession of separately truncated Taylor expansions.
-It gives a weighted total displacement, but does not assert
+The simultaneous comparison gives a weighted total displacement,
+but does not assert
 \(\gap_j(s^*)\asymp a_j/V_j\) for every member of a multi-edge release.
 Several signed multipliers may interact through the order constraints.
 \end{remark}
@@ -931,6 +924,33 @@ Division by $s_1$ proves \eqref{hier:eq:rootcenter}. Finally
 $2\le S_j\le H$ and \eqref{hier:eq:compact} bound $r_j$ above and below,
 which gives the stated constants.
 \end{proof}
+
+\begin{proposition}[Poisson entropy at the saddle]\label{fp:prop:poisson}
+For positive original lengths, let $s=s(L)$ be the ordered optimizer
+in \eqref{profile:saddle}. With $\mathcal Q(z)=z\log z-z+1$,
+\begin{equation}\label{fp:eq:poisson}
+ J(L;s)=\sum_{i=1}^k L_i\mathcal Q(Z_i).
+\end{equation}
+Equivalently, $J$ is the relative entropy of independent Poisson counts
+with means $L_iZ_i$ with respect to independent counts with means $L_i$.
+\end{proposition}
+\begin{proof}
+The upper and lower simplex faces are inactive, so dilation of all
+products is feasible in both directions, even on an equality face.
+Homogeneity of the $G_i$ and stationarity give
+\[
+ 0=\sum_j s_j\partial_{s_j}J
+   =\sum_j s_jV_j-\sum_iL_iZ_iG_i.
+\]
+Substitute $G_i=\log Z_i$ into \eqref{profile:saddle}.
+For a single count,
+$\KL(\Pois(Lz)\Vert\Pois(L))=L\mathcal Q(z)$;
+relative entropy adds over independent coordinates.
+\end{proof}
+The identity describes the physical tilt that supplies the exponential
+factor of the profile. The persistence factors describe a second
+selection, on the shorter time scale of the conditional bridges;
+Section~\ref{fp:sec:interpretation} identifies its entropy cost.
 
 \subsection{Complete unit-step chains: sign and effective time}
 
@@ -1152,9 +1172,8 @@ $\lambda_{a-1}-\lambda_b=0$. Substituting these derivatives proves
 At the single node $a-1$, the multiplier margin is
 $m_{a-1}=\lambda_{a-1}-\lambda_{a-2}=-\lambda_{a-2}\le0$.
 Equation \eqref{hier:eq:nodebalance}, followed by its routing factor
-$\beta_{a-1}$, is exactly \eqref{hier:eq:incoming}. This step uses the
-actual mixture of all older incoming intensities, not a replacement
-by a single natural intensity.
+$\beta_{a-1}$, is exactly \eqref{hier:eq:incoming}. This step retains
+the actual mixture of all older incoming intensities.
 \end{proof}
 
 \begin{lemma}[Whole-platform entropy surplus]\label{hier:lem:surplus}
@@ -1346,8 +1365,7 @@ then
 Uniform Stirling inequalities therefore put
 $e^{-\mu_R}\mu_R^n/n!$ between fixed positive multiples of
 $\mu_R^{-1/2}$. Because $\mu_R\asymp L_d\asymp V$, this proves
-\eqref{hier:eq:rootatom}. In particular the proof
-does not subtract an absolute central-limit error from a rare mass.
+\eqref{hier:eq:rootatom} pointwise on every admitted outside fiber.
 The floor in \eqref{hier:eq:rootinteger} gives \eqref{hier:eq:rootinterval}
 exactly. Finally condition on $\mathcal O$ and use the pointwise
 conditional estimate to obtain \eqref{hier:eq:weightedatom}.
