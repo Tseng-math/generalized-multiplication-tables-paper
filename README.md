@@ -1,49 +1,63 @@
-# Generalized multiplication tables in every fixed dimension
+# Dyadic divisor products and rectangular multiplication tables
 
-**Tseng**
+**Author: Tseng**
 
-[Read the paper](generalized-multiplication-tables.pdf)
+[Read the paper](dyadic-divisor-products-and-rectangular-multiplication-tables.pdf).
+This repository contains the LaTeX source, compiled manuscript, and
+reproducibility checks for the worked examples.
 
-The complete manuscript, bibliography, figure source, and exact rational-interval
-checks for the worked examples are included in this repository.
+For every fixed integer $k\ge1$, the paper gives a uniform
+order-of-magnitude formula for the dyadic divisor-product count
+
+$$
+H^{(k+1)}(x,\mathbf y,2\mathbf y),\qquad
+3\le y_1\le\cdots\le y_k,\quad
+x\ge2^k(y_1\cdots y_k)y_k.
+$$
+
+It also gives a formula for the number of distinct products in every
+rectangular multiplication table with real ordered sides
+$1\le N_1\le\cdots\le N_{k+1}$, including bounded sides and
+coincident cutoffs. Comparison constants depend only on $k$.
+The manuscript also develops conditional persistence estimates and a
+scalar large-deviation principle.
 
 ## Contents
 
-| Path | Contents |
+| File | Purpose |
 | --- | --- |
-| `main.tex` | Manuscript entry point |
-| `sections/` | Main text |
-| `appendices/` | Technical appendices |
-| `figures/` | TikZ figure source |
-| `references/references.bib` | Bibliography |
-| `generalized-multiplication-tables.pdf` | Final paper |
-| `build.py` | Build helper |
-| `reproducibility/` | Verification script and reference results |
+| [main.tex](main.tex) | Complete manuscript, including appendices and bibliography |
+| [dyadic-divisor-products-and-rectangular-multiplication-tables.pdf](dyadic-divisor-products-and-rectangular-multiplication-tables.pdf) | Compiled paper |
+| [build.py](build.py) | Portable build helper |
+| [reproducibility/verify_examples.py](reproducibility/verify_examples.py) | Exact rational checks for the two worked profiles |
+| [CITATION.cff](CITATION.cff) | Citation metadata |
+
+The source uses standard LaTeX packages. It has no separate figures,
+source inputs, bibliography database, or generated data dependencies.
 
 ## Build
 
-Requires Python 3.7 or later and Tectonic on `PATH`. Run from the repository root:
+Requires Python 3.9 or later and [Tectonic](https://tectonic-typesetting.github.io/)
+on `PATH`. From the repository root, run:
 
 ```sh
 python3 build.py
 ```
 
-This rebuilds `generalized-multiplication-tables.pdf`, including the bibliography.
-Intermediate files are created in a temporary directory and removed automatically.
-All manuscript inputs are included; Tectonic downloads standard TeX resources on
-the first build, which requires an internet connection.
-
-Once those resources are cached, build offline with:
+This rebuilds the named PDF above. Intermediate files are created in a
+temporary directory and removed automatically. Tectonic may download
+standard TeX resources on the first build; an offline build requires
+those resources to be cached:
 
 ```sh
 python3 build.py --offline
-```
-
-If Tectonic is not on `PATH`, specify its executable:
-
-```sh
 python3 build.py --compiler /path/to/tectonic
 ```
+
+A local Tectonic resource bundle and cache can be selected with
+`--bundle /path/to/bundle --cache-dir /path/to/cache`.
+Alternatively, with a TeX distribution and `latexmk` installed, run
+`python3 build.py --compiler latexmk`. No BibTeX or Biber step is needed.
 
 ## Reproduce the worked examples
 
@@ -51,13 +65,28 @@ python3 build.py --compiler /path/to/tectonic
 python3 reproducibility/verify_examples.py
 ```
 
-The script uses only the Python standard library. It verifies rational bounds,
-root isolations, KKT signs, all 15 ray comparisons and all 120 terminal comparisons,
-then prints `PASS` and regenerates `reproducibility/examples_results.json`.
-The included JSON contains the reference results. Run Python without `-O`, since
-the checks use assertions. The corresponding analytic proofs are in the
-worked-examples section and appendix of the paper.
+The checks use only Python's standard library and exact rational interval
+bounds with explicit series remainders. They check the scalar constants
+and geometric comparisons in Section 3.7; the script states its precise
+coverage. These checks do not evaluate the conditional persistence
+exponent or certify the full theorems. They print `PASS` and leave no
+generated files in the repository.
 
-## AI Disclosure
+## Cite
+
+Citation metadata is provided in [CITATION.cff](CITATION.cff).
+This is an unpublished manuscript; no DOI is assigned here.
+
+```bibtex
+@unpublished{TsengDyadicDivisorProducts2026,
+  author = {Tseng},
+  title = {Dyadic divisor products and rectangular multiplication tables},
+  year = {2026},
+  note = {Manuscript},
+  url = {https://github.com/Tseng-math/generalized-multiplication-tables-paper}
+}
+```
+
+## AI disclosure
 
 The author selected the problem and managed the project; the mathematical derivations were carried out by artificial intelligence.
